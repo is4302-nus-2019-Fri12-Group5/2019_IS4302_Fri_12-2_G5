@@ -19,22 +19,13 @@
 * @transaction
 */
 
-function addPatientHospital(args) {
-  	
-	return getAssetRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-      	args.patient.currentHospitals.push(args.hospital);    	
-    	return patientRegistry.update(args.patient);
-  	});
-
-}
-
-/*function AddPatientHospital(args) {
+function AddPatientHospital(args) {
 	args.patient.currentHospitals.push(args.hospital)
 
 	return getAssetRegistry('org.healthcare.Patient').then(function(patientRegistry) {
 		return patientRegistry.update(args.patient);
 	});
-}*/
+}
 
 
 /**
