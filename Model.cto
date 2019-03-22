@@ -1,0 +1,174 @@
+//namespace org.example.basic
+
+namespace org.healthcare
+/**
+* Participants
+*/
+abstract participant Person identified by NRIC {
+	o String NRIC
+	o String firstName
+	o String lastName
+	o DateTime dateOfBirth
+	o Address address
+	o String phoneNum optional
+	o String nationality optional
+	o String race optional
+	o Gender gender optional
+}
+
+participant Doctor extends Person {
+	o String licenseNum
+	o String department
+	o String title
+    --> Hospital hospital optional
+}
+
+participant Patient extends Person {
+	--> Hospital[] currentHospitals optional
+	o DateTime lastVisit
+}
+
+
+participant Hospital identified by registrationID {
+	o String registrationID
+	o String name
+	--> Doctor[] doctors optional
+}
+
+concept Address {
+	o String street
+	o String aptNum
+	o String country
+	o String city
+	o String postalCode
+}
+
+enum Gender {
+	o MALE
+	o FEMALE
+}
+
+/**
+* Assets
+*/
+
+asset BasicMedicalInformation identified by basicID {
+	o String basicID
+	--> Person person
+	o BloodType bloodType
+	o String height
+	o String weight
+	o String allergies optional
+	o String disabilities optional
+}
+
+asset MedicalRecord identified by recordID {
+	o String recordID
+	o DateTime date
+	o String diagnosis
+	o Ward wardInfo optional
+    o DateTime lastModified
+    --> Person person
+	--> Doctor doctor
+	--> Hospital hospital
+	--> Prescription[] prescription
+}
+
+asset Prescription identified by presID {
+	o String presID
+   	o String drugName
+	o String quantity optional
+	o UnitType unitType optional
+	o String dosage optional
+	o String duration optional
+    --> MedicalRecord medicalRecord
+}
+
+concept Ward {
+	o String level
+	o String roomNum
+	o String bedNum
+}
+
+enum BloodType {
+	o A_POSITIVE
+	o A_NEGATIVE
+	o B_POSITIVE
+	o B_NEGATIVE
+	o O_POSITIVE
+	o O_NEGATIVE
+	o AB_POSITIVE
+	o AB_NEGATIVE
+}
+
+enum UnitType {
+	o TABLET
+	o ML
+}
+
+/*
+ *Transaction
+ */
+
+transaction UpdatePersonalInfo {
+	--> Person person
+	o String firstName optional
+	o String lastName optional
+	o DateTime dateOfBirth optional
+	o Address address optional
+	o String phoneNum optional
+	o String nationality optional
+	o String race optional
+	o Gender gender optional
+}
+
+transaction AddDocToHospital {
+	--> Hospital hospital
+	o Doctor doctor
+}
+
+transaction RemoveDocFromHospital {
+	--> Hospital hospital
+	o Doctor doctor
+}
+
+transaction AddPatientHospital {
+	--> Patient patient
+	--> Hospital hospital
+}
+
+transaction RemovePatientHospital {
+	--> Patient patient
+	o Hospital hospital
+}
+
+transaction CreateMedicalRecord {
+	o MedicalRecord medicalrecord
+}
+
+transaction UpdateMedicalRecord {
+	--> MedicalRecord medicalrecord
+	o DateTime date optional
+	o String diagnosis optional
+	o Ward wardInfo optional
+	o Prescription prescription optional
+    o DateTime lastModified
+}
+
+transaction CreatePrescription {
+  	o Prescription prescription
+}
+
+transaction UpdatePrescription {
+  	--> Prescription prescription
+	o String quantity
+	o UnitType unittype
+	o String dosage
+	o String duration
+    o DateTime lastModified
+}
+
+
+
+
+
