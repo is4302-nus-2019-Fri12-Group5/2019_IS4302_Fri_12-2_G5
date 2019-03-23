@@ -19,13 +19,25 @@
 * @transaction
 */
 
-function AddPatientHospital(args) {
-	args.patient.currentHospitals.push(args.hospital)
+async function AddPatientHospital(args) {
+	
+	let patient = args.patient;
+	let hospital = args.hospital;
+  
+  patient.currentHospitals.push(hospital);
 
-	return getAssetRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-		return patientRegistry.update(args.patient);
-	});
+  const patientRegistry =  await getParticipantRegistry('org.healthcare.Patient');
+  await patientRegistry.update(patient);
 }
+
+/*function AddPatientHospital(args) {
+  args.patient.currentHospitals.push(args.hospital)
+
+  return getAssetRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+	  return patientRegistry.update(args.patient);
+  });
+} 
+*/
 
 
 /**
@@ -34,18 +46,18 @@ function AddPatientHospital(args) {
 */
 
 function UpdatePersonalInfo(args) {
-	args.person.firstName = args.firstName;
-	args.person.lastName = args.lastName;
-	args.person.dateOfBirth = args.dateOfBirth;
-	args.person.address = args.address;
-	args.person.phoneNum = args.phoneNum;
-	args.person.nationality = args.nationality;
-	args.person.race = args.race;
-	args.person.gender = args.gender;
+  args.person.firstName = args.firstName;
+  args.person.lastName = args.lastName;
+  args.person.dateOfBirth = args.dateOfBirth;
+  args.person.address = args.address;
+  args.person.phoneNum = args.phoneNum;
+  args.person.nationality = args.nationality;
+  args.person.race = args.race;
+  args.person.gender = args.gender;
 
-	return getAssetRegistry('org.acme.model.Person').then(function(personRegistry) {
-		return personRegistry.update(args.person);
-	});
+  return getParticipantRegistry('org.healthcare.Person').then(function(personRegistry) {
+	  personRegistry.update(args.person);
+  });
 }
 
 
@@ -56,11 +68,11 @@ function UpdatePersonalInfo(args) {
 */
 
 function AddDocToHospital(args) {
-	args.hospital.doctors.push(args.doctor);
+  args.hospital.doctors.push(args.doctor);
 
-	return getAssetRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
-		return hospitalRegistry.update(args.hospital);
-	});
+  return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
+	  return hospitalRegistry.update(args.hospital);
+  });
 }
 
 
@@ -71,15 +83,15 @@ function AddDocToHospital(args) {
 */
 
 function RemoveDocFromHospital(args) {
-	for (i in args.doctor) {
-		if (args.hospital.doctors.indexOf(i) > -1) {
-			args.hospital.doctors.splice(args.hospital.doctors.indexOf(i), 1)
-		}
-	}
+  for (i in args.doctor) {
+	  if (args.hospital.doctors.indexOf(i) > -1) {
+		  args.hospital.doctors.splice(args.hospital.doctors.indexOf(i), 1)
+	  }
+  }
 
-	return getAssetRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
-		return hospitalRegistry.update(args.hospital);
-	});
+  return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
+	  return hospitalRegistry.update(args.hospital);
+  });
 
 }
 
@@ -92,15 +104,15 @@ function RemoveDocFromHospital(args) {
 */
 
 function RemovePatientHospital(args) {
-	for (i in args.hospital) {
-		if (args.patient.currentHospitals.indexOf(i) > -1) {
-			args.patient.currentHospitals.splice(args.patient.currentHospitals.indexOf(i), 1)
-		}
-	}
+  for (i in args.hospital) {
+	  if (args.patient.currentHospitals.indexOf(i) > -1) {
+		  args.patient.currentHospitals.splice(args.patient.currentHospitals.indexOf(i), 1)
+	  }
+  }
 
-	return getAssetRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-		return patientRegistry.update(args.patient);
-	});
+  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+	  return patientRegistry.update(args.patient);
+  });
 }
 
 
@@ -109,16 +121,16 @@ function RemovePatientHospital(args) {
 * @param {org.healthcare.UpdateMedicalRecord} args - the UpdateMedicalRecord transaction arguments * @transaction
 */
 function UpdateMedicalRecord(args) {
-  
-    args.MedicalRecord.doctor = args.doctor
-    args.MedicalRecord.date = args.date
-    args.MedicalRecord.diagnosis = args.diagonsis
-    args.MedicalRecord.wardInfo = args.wardInfo
-    args.MedicalRecord.medication = args.medication
 
-    return getAssetRegistry('org.acme.model.MedicalRecord').then(function(MedicalRecordRegistry){
-        return MedicalRecordRegistry.update(args.MedicalRecord);
-    });
+  args.MedicalRecord.doctor = args.doctor
+  args.MedicalRecord.date = args.date
+  args.MedicalRecord.diagnosis = args.diagonsis
+  args.MedicalRecord.wardInfo = args.wardInfo
+  args.MedicalRecord.medication = args.medication
+
+  return getAssetRegistry('org.healthcare.MedicalRecord').then(function(MedicalRecordRegistry){
+	  return MedicalRecordRegistry.update(args.MedicalRecord);
+  });
 }
 
 /**
@@ -126,20 +138,20 @@ function UpdateMedicalRecord(args) {
 * @transaction
 */
 async function CreateMedicalRecord(CreateMedicalRecord) {
-    return getAssetRegistry('org.Assets.MedicalRecord')
-    .then(function(result) {
-        var factory = getFactory();
-        var newAsset = factory.newResource(
-        'org.healthcare', 
-        'MedicalRecord', 
-        CreateMedicalRecord.medicalrecord.recordID); 
-        newAsset.person = CreateMedicalRecord.medicalrecord.person
-        newAsset.date = CreateMedicalRecord.medicalrecord.date
-        newAsset.doctor = CreateMedicalRecord.medicalrecord.doctor
-        newAsset.diagnosis = CreateMedicalRecord.medicalrecord.diagnosis
-        newAsset.wardInfo = CreateMedicalRecord.medicalrecord.wardInfo
-    	newAsset.medication = CreateMedicalRecord.medicalrecord.medication
-        return result.add(newAsset);
-     });
+  return getAssetRegistry('org.healthcare.MedicalRecord')
+  .then(function(result) {
+	  var factory = getFactory();
+	  var newAsset = factory.newResource(
+	  'org.healthcare', 
+	  'MedicalRecord', 
+	  CreateMedicalRecord.medicalrecord.recordID); 
+	  newAsset.person = CreateMedicalRecord.medicalrecord.person
+	  newAsset.date = CreateMedicalRecord.medicalrecord.date
+	  newAsset.doctor = CreateMedicalRecord.medicalrecord.doctor
+	  newAsset.diagnosis = CreateMedicalRecord.medicalrecord.diagnosis
+	  newAsset.wardInfo = CreateMedicalRecord.medicalrecord.wardInfo
+	  newAsset.medication = CreateMedicalRecord.medicalrecord.medication
+	  return result.add(newAsset);
+   });
 }
 
