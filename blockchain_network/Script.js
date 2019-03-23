@@ -156,25 +156,42 @@ function UpdateMedicalRecord(args) {
 * @transaction
 */
 async function CreateMedicalRecord(CreateMedicalRecord) {
-  	                           
- var factory = getFactory();
- var newMedicalRecord = factory.newResource('org.healthcare', 'MedicalRecord', 'CreateMedicalRecord.medicalrecord.recordID'); 
+  	
+  	
+  return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
+    
+    return getParticipantRegistry('org.healthcare.Patient').then(function(participantRegistry) {
+    
+   	let currentMedicalRecord = CreateMedicalRecord.medicalrecord;
+ 
+ 	var factory = getFactory();
+ 	var newMedicalRecord = factory.newResource('org.healthcare', 'MedicalRecord', currentMedicalRecord.recordID); 
+	// Attribute      
+    newMedicalRecord.date = currentMedicalRecord.date
+    newMedicalRecord.diagnosis = currentMedicalRecord.diagnosis
+    newMedicalRecord.wardInfo = currentMedicalRecord.wardInfo
+    newMedicalRecord.lastModified = currentMedicalRecord.lastModified
+    // Relationship
+  	newMedicalRecord.patient = currentMedicalRecord.patient; 
+  	newMedicalRecord.doctor = currentMedicalRecord.doctor;
+  	newMedicalRecord.hospital = currentMedicalRecord.hospital;
+  	
+    medicalRecordRegistry.add(newMedicalRecord);
+  	currentMedicalRecord.patient.medicalRecords.push(newMedicalRecord);
+  	participantRegistry.update(currentMedicalRecord.patient);
       
-    newMedicalRecord.date = CreateMedicalRecord.medicalrecord.date
-    newMedicalRecord.diagnosis = CreateMedicalRecord.medicalrecord.diagnosis
-    newMedicalRecord.wardInfo = CreateMedicalRecord.medicalrecord.wardInfo
-    newMedicalRecord.lastModified = CreateMedicalRecord.medicalrecord.lastModified
-    newMedicalRecord.patient = CreateMedicalRecord.medicalrecord.patient
-    newMedicalRecord.doctor = CreateMedicalRecord.medicalrecord.doctor
-    newMedicalRecord.hospital = CreateMedicalRecord.medicalrecord.hospital
-    
-  	const medicalRecordRegistry = await getAssetRegistry('org.healthcare.MedicalRecord')
-    
-	await medicalRecordRegistry.add(newMedicalRecord);
-    await CreateMedicalRecord.medicalrecord.patient.medicalRecords.push(medicalRecordRegistry.get(newMedicalRecord.recordID));
+    });
+  });
   
-  	const participantRegistry = await getParticipantRegistry('org.healthcare.Patient');
-  	await participantRegistry.update(CreateMedicalRecord.medicalrecord.patient);
+  
+  /* return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
+    medicalRecordRegistry.add(newMedicalRecord);
+    currentMedicalRecord.patient.medicalRecords.push(medicalRecordRegistry.get(newMedicalRecord.recordID));
+  });
+  
+  return getParticipantRegistry('org.healthcare.Patient').then(function(participantRegistry) {
+	participantRegistry.update(currentMedicalRecord.patient);
+  }); */
   	
 }
 

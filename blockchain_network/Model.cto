@@ -72,7 +72,7 @@ asset MedicalRecord identified by recordID {
     --> Person patient
 	--> Doctor doctor
 	--> Hospital hospital
-	--> Prescription[] prescription
+	--> Prescription[] prescription optional
 }
 
 asset Prescription identified by presID {
