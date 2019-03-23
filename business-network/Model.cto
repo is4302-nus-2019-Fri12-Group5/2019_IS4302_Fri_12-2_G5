@@ -25,6 +25,7 @@ participant Doctor extends Person {
 
 participant Patient extends Person {
 	--> Hospital[] currentHospitals optional
+    --> MedicalRecord[] medicalRecords optional
 	o DateTime lastVisit
 }
 
@@ -68,7 +69,7 @@ asset MedicalRecord identified by recordID {
 	o String diagnosis
 	o Ward wardInfo optional
     o DateTime lastModified
-    --> Person person
+    --> Person patient
 	--> Doctor doctor
 	--> Hospital hospital
 	--> Prescription[] prescription
@@ -124,12 +125,12 @@ transaction UpdatePersonalInfo {
 
 transaction AddDocToHospital {
 	--> Hospital hospital
-	o Doctor doctor
+	--> Doctor doctor
 }
 
 transaction RemoveDocFromHospital {
 	--> Hospital hospital
-	o Doctor doctor
+	--> Doctor doctor
 }
 
 transaction AddPatientHospital {
@@ -139,7 +140,7 @@ transaction AddPatientHospital {
 
 transaction RemovePatientHospital {
 	--> Patient patient
-	o Hospital hospital
+	--> Hospital hospital
 }
 
 transaction CreateMedicalRecord {
