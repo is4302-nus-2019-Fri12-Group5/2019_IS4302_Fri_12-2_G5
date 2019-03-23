@@ -167,10 +167,10 @@ async function CreateMedicalRecord(CreateMedicalRecord) {
  	var factory = getFactory();
  	var newMedicalRecord = factory.newResource('org.healthcare', 'MedicalRecord', currentMedicalRecord.recordID); 
 	// Attribute      
-    newMedicalRecord.date = currentMedicalRecord.date
-    newMedicalRecord.diagnosis = currentMedicalRecord.diagnosis
-    newMedicalRecord.wardInfo = currentMedicalRecord.wardInfo
-    newMedicalRecord.lastModified = currentMedicalRecord.lastModified
+    newMedicalRecord.date = currentMedicalRecord.date;
+    newMedicalRecord.diagnosis = currentMedicalRecord.diagnosis;
+    newMedicalRecord.wardInfo = currentMedicalRecord.wardInfo;
+    newMedicalRecord.lastModified = currentMedicalRecord.lastModified;
     // Relationship
   	newMedicalRecord.patient = currentMedicalRecord.patient; 
   	newMedicalRecord.doctor = currentMedicalRecord.doctor;
@@ -181,18 +181,42 @@ async function CreateMedicalRecord(CreateMedicalRecord) {
   	participantRegistry.update(currentMedicalRecord.patient);
       
     });
-  });
-  
-  
-  /* return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
-    medicalRecordRegistry.add(newMedicalRecord);
-    currentMedicalRecord.patient.medicalRecords.push(medicalRecordRegistry.get(newMedicalRecord.recordID));
-  });
-  
-  return getParticipantRegistry('org.healthcare.Patient').then(function(participantRegistry) {
-	participantRegistry.update(currentMedicalRecord.patient);
-  }); */
+  }); 	
+}
+
+/**
+* @param {org.healthcare.CreatePrescription} args - the CreateMedicalRecord transaction arguments
+* @transaction
+*/
+async function CreatePrescription(args) {
   	
+  return getAssetRegistry('org.healthcare.Prescription').then(function(prescriptionRegistry) {
+    
+    return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
+    
+   	let passedInPrescription = args.prescription;
+ 
+ 	var factory = getFactory();
+ 	var newPrescription = factory.newResource('org.healthcare', 'Prescription', passedInPrescription.presID); 
+	// Attribute      
+    newPrescription.drugName = passedInPrescription.drugName;
+    newPrescription.quantity = passedInPrescription.quantity;
+    newPrescription.unitType = passedInPrescription.unitType;
+    newPrescription.dosage = passedInPrescription.dosage;
+    newPrescription.duration = passedInPrescription.duration;
+    // Relationship
+  	newPrescription.medicalRecord = passedInPrescription.medicalRecord;
+    
+    // Add the new prescription to list of asset
+    prescriptionRegistry.add(newPrescription);
+    
+    // Add the new prescription into the medical record's prescription array
+    passedInPrescription.medicalRecord.prescriptions.push(newPrescription);
+      
+    // Update the medical record after the prescription has been added into the medicalRecord's prescription array
+    medicalRecordRegistry.update(passedInPrescription.medicalRecord);
+    });
+  }); 	
 }
 
 /*
