@@ -2,7 +2,7 @@
 IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 
-<img src="https://raw.githubusercontent.com/flexdinesh/react-redux-boilerplate/master/app/components/Header/images/banner.png" alt="react redux boilerplate banner" align="center" />
+<img src="is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/app/components/Header/images/banner.png" alt="is4302 banner" align="center" />
 
 <br />
 
@@ -23,16 +23,12 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
   <a href="https://travis-ci.org/flexdinesh/react-redux-boilerplate">
     <img src="https://travis-ci.org/flexdinesh/react-redux-boilerplate.svg" alt="Build Status" />
   </a>
-  <!-- Gitter -->
-  <a href="https://gitter.im/flexdinesh/react-redux-boilerplate">
-    <img src="https://camo.githubusercontent.com/54dc79dc7da6b76b17bc8013342da9b4266d993c/68747470733a2f2f6261646765732e6769747465722e696d2f6d78737462722f72656163742d626f696c6572706c6174652e737667" alt="Gitter Chat" />
-  </a>
 </div>
 
 <br />
 
 <div align="center">
-  <sub>Created by <a href="https://twitter.com/flexdinesh">Dinesh Pandiyan</a></sub>
+  <sub>Created by <a href="https://twitter.com/flexdinesh">IS4302 Fri 12-2pm Group 5</a></sub>
 </div>
 
 ## Quick start
@@ -44,14 +40,12 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 Now you're ready build our Blockchain Application!
 
+This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. 
 
 ## Why? [![start with why](https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg?style=flat)](http://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action)
 
-This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. 
 
-
-## Features [![start with feature](https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg?style=flat)](http://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action)
-
+## Features 
 
 
 
