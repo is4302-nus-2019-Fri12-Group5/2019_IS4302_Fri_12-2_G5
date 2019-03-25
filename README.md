@@ -2,7 +2,8 @@
 IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 
-<img src="is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/app/components/Header/images/banner.png" alt="is4302 banner" align="center" />
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/app/components/Header/images/banner.png" alt="is4302 banner" align="center" />
+
 
 <br />
 
