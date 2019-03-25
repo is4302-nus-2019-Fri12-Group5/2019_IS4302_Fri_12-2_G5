@@ -24,11 +24,49 @@ async function AddPatientHospital(args) {
 	let patient = args.patient;
 	let hospital = args.hospital;
   
-  patient.currentHospitals.push(hospital);
+  	patient.currentHospitals.push(hospital);
 
-  const patientRegistry =  await getParticipantRegistry('org.healthcare.Patient');
-  await patientRegistry.update(patient);
+    const patientRegistry =  await getParticipantRegistry('org.healthcare.Patient');
+    await patientRegistry.update(patient);
 }
+
+
+/**
+* @param {org.healthcare.RemovePatientHospital} args - the RemovePatientHospital transaction arguments
+* @transaction
+*/
+
+function removePatientHospital(args) {
+
+  // A list of hospital
+  let hospitalList = args.patient.currentHospitals;
+  let selectedHospital = args.hospital;
+  
+  for(i = 0; i < hospitalList.length; i++) {
+    
+    if ( hospitalList[i].registrationID == selectedHospital.registrationID ) {
+    	hospitalList.splice(hospitalList[i], 1);
+      	break;
+    }
+  }
+  
+  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+    patientRegistry.update(args.patient);
+  });
+}
+
+/* function RemovePatientHospital(args) {
+  
+  for (i in args.hospital) {
+	  if (args.patient.currentHospitals.indexOf(i) > -1) {
+		  args.patient.currentHospitals.splice(args.patient.currentHospitals.indexOf(i), 1)
+	  }
+  }
+
+  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+	  return patientRegistry.update(args.patient);
+  });
+} */
 
 /*function AddPatientHospital(args) {
   args.patient.currentHospitals.push(args.hospital)
@@ -97,26 +135,6 @@ function RemoveDocFromHospital(args) {
 
 
 
-
-/**
-* @param {org.healthcare.RemovePatientHospital} args - the RemovePatientHospital transaction arguments
-* @transaction
-*/
-
-function RemovePatientHospital(args) {
-  for (i in args.hospital) {
-	  if (args.patient.currentHospitals.indexOf(i) > -1) {
-		  args.patient.currentHospitals.splice(args.patient.currentHospitals.indexOf(i), 1)
-	  }
-  }
-
-  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-	  return patientRegistry.update(args.patient);
-  });
-}
-
-
-
 /**
 * @param {org.healthcare.UpdateMedicalRecord} args - the UpdateMedicalRecord transaction arguments * @transaction
 */
@@ -134,9 +152,33 @@ function UpdateMedicalRecord(args) {
 }
 
 /**
-* @param {org.healthcare.CreateMedicalRecord} args - the CreateMedicalRecord transaction arguments
+* @param {org.healthcare.CreateMedicalRecord} CreateMedicalRecord - the CreateMedicalRecord transaction arguments
 * @transaction
 */
+async function CreateMedicalRecord(CreateMedicalRecord) {
+  	                           
+ var factory = getFactory();
+ var newMedicalRecord = factory.newResource('org.healthcare', 'MedicalRecord', 'CreateMedicalRecord.medicalrecord.recordID'); 
+      
+    newMedicalRecord.date = CreateMedicalRecord.medicalrecord.date
+    newMedicalRecord.diagnosis = CreateMedicalRecord.medicalrecord.diagnosis
+    newMedicalRecord.wardInfo = CreateMedicalRecord.medicalrecord.wardInfo
+    newMedicalRecord.lastModified = CreateMedicalRecord.medicalrecord.lastModified
+    newMedicalRecord.patient = CreateMedicalRecord.medicalrecord.patient
+    newMedicalRecord.doctor = CreateMedicalRecord.medicalrecord.doctor
+    newMedicalRecord.hospital = CreateMedicalRecord.medicalrecord.hospital
+    
+  	const medicalRecordRegistry = await getAssetRegistry('org.healthcare.MedicalRecord')
+    
+	await medicalRecordRegistry.add(newMedicalRecord);
+    await CreateMedicalRecord.medicalrecord.patient.medicalRecords.push(medicalRecordRegistry.get(newMedicalRecord.recordID));
+  
+  	const participantRegistry = await getParticipantRegistry('org.healthcare.Patient');
+  	await participantRegistry.update(CreateMedicalRecord.medicalrecord.patient);
+  	
+}
+
+/*
 async function CreateMedicalRecord(CreateMedicalRecord) {
   return getAssetRegistry('org.healthcare.MedicalRecord')
   .then(function(result) {
@@ -154,4 +196,6 @@ async function CreateMedicalRecord(CreateMedicalRecord) {
 	  return result.add(newAsset);
    });
 }
+
+*/
 
