@@ -14,20 +14,33 @@
 
 /* global getAssetRegistry getFactory emit */
 
+
+/**
+* @param {org.healthcare.UpdateMedicalRecord} args - the UpdateMedicalRecord transaction arguments * @transaction
+*/
+function UpdateMedicalRecord(args) {
+
+  args.medicalrecord.date = args.date
+  args.medicalrecord.diagnosis = args.diagnosis
+  args.medicalrecord.wardInfo.setPropertyValue(args.medicalrecord.wardInfo, args.wardInfo.level)
+  //args.medicalrecord.wardInfo.setPropertyValue(args.medicalrecord.wardInfo.roomNum, args.wardInfo.roomNum)
+  //args.medicalrecord.wardInfo.setPropertyValue(args.medicalrecord.wardInfo.bedNum, args.wardInfo.bedNum)
+
+  return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
+	  return medicalRecordRegistry.update(args.MedicalRecord);
+  });
+}
+
 /**
 * @param {org.healthcare.AddPatientHospital} args - the AddPatientHospital transaction arguments
 * @transaction
 */
 
 async function AddPatientHospital(args) {
-	
-	let patient = args.patient;
-	let hospital = args.hospital;
-  
-  	patient.currentHospitals.push(hospital);
-
-    const patientRegistry =  await getParticipantRegistry('org.healthcare.Patient');
-    await patientRegistry.update(patient);
+  	return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+      args.patient.currentHospitals.push(args.hospital);
+      patientRegistry.update(args.patient);
+    });
 }
 
 
@@ -36,7 +49,7 @@ async function AddPatientHospital(args) {
 * @transaction
 */
 
-function removePatientHospital(args) {
+function RemovePatientHospital(args) {
 
   // A list of hospital
   let hospitalList = args.patient.currentHospitals;
@@ -45,7 +58,7 @@ function removePatientHospital(args) {
   for(i = 0; i < hospitalList.length; i++) {
     
     if ( hospitalList[i].registrationID == selectedHospital.registrationID ) {
-    	hospitalList.splice(hospitalList[i], 1);
+    	args.patient.currentHospitals.splice(args.patient.currentHospitals[i], 1);
       	break;
     }
   }
@@ -68,37 +81,45 @@ function removePatientHospital(args) {
   });
 } */
 
-/*function AddPatientHospital(args) {
-  args.patient.currentHospitals.push(args.hospital)
-
-  return getAssetRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-	  return patientRegistry.update(args.patient);
-  });
-} 
-*/
-
-
 /**
-* @param {org.healthcare.UpdatePersonalInfo} args - the UpdatePersonalInfo transaction arguments
+* @param {org.healthcare.UpdatePatientPersonalInfo} args - the UpdatePersonalInfo transaction arguments
 * @transaction
 */
 
-function UpdatePersonalInfo(args) {
-  args.person.firstName = args.firstName;
-  args.person.lastName = args.lastName;
-  args.person.dateOfBirth = args.dateOfBirth;
-  args.person.address = args.address;
-  args.person.phoneNum = args.phoneNum;
-  args.person.nationality = args.nationality;
-  args.person.race = args.race;
-  args.person.gender = args.gender;
+async function UpdatePatientPersonalInfo(args) {
+  args.patient.firstName = args.firstName;
+  args.patient.lastName = args.lastName;
+  args.patient.dateOfBirth = args.dateOfBirth;
+  args.patient.address = args.address;
+  args.patient.phoneNum = args.phoneNum;
+  args.patient.nationality = args.nationality;
+  args.patient.race = args.race;
+  args.patient.gender = args.gender;
 
-  return getParticipantRegistry('org.healthcare.Person').then(function(personRegistry) {
-	  personRegistry.update(args.person);
+  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+	  patientRegistry.update(args.patient);
   });
 }
 
+/**
+* @param {org.healthcare.UpdateDoctorPersonalInfo} args - the UpdatePersonalInfo transaction arguments
+* @transaction
+*/
 
+async function UpdateDoctorPersonalInfo(args) {
+  args.doctor.firstName = args.firstName;
+  args.doctor.lastName = args.lastName;
+  args.doctor.dateOfBirth = args.dateOfBirth;
+  args.doctor.address = args.address;
+  args.doctor.phoneNum = args.phoneNum;
+  args.doctor.nationality = args.nationality;
+  args.doctor.race = args.race;
+  args.doctor.gender = args.gender;
+
+  return getParticipantRegistry('org.healthcare.Doctor').then(function(doctorRegistry) {
+	  doctorRegistry.update(args.doctor);
+  });
+}
 
 /**
 * @param {org.healthcare.AddDocToHospital} args - the AddDocToHospital transaction arguments
@@ -106,9 +127,8 @@ function UpdatePersonalInfo(args) {
 */
 
 function AddDocToHospital(args) {
-  args.hospital.doctors.push(args.doctor);
-
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
+      args.hospital.doctors.push(args.doctor);
 	  return hospitalRegistry.update(args.hospital);
   });
 }
@@ -121,10 +141,16 @@ function AddDocToHospital(args) {
 */
 
 function RemoveDocFromHospital(args) {
-  for (i in args.doctor) {
-	  if (args.hospital.doctors.indexOf(i) > -1) {
-		  args.hospital.doctors.splice(args.hospital.doctors.indexOf(i), 1)
-	  }
+  
+  let doctorList = args.hospital.doctors;
+  let selectedDoctor = args.doctor;
+  
+  for(i = 0; i < doctorList.length; i++) {
+    
+    if ( doctorList[i].registrationID == selectedDoctor.registrationID ) {
+    	args.hospital.doctors.splice(args.hospital.doctors[i], 1);
+      	break;
+    }
   }
 
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
@@ -134,22 +160,6 @@ function RemoveDocFromHospital(args) {
 }
 
 
-
-/**
-* @param {org.healthcare.UpdateMedicalRecord} args - the UpdateMedicalRecord transaction arguments * @transaction
-*/
-function UpdateMedicalRecord(args) {
-
-  args.MedicalRecord.doctor = args.doctor
-  args.MedicalRecord.date = args.date
-  args.MedicalRecord.diagnosis = args.diagonsis
-  args.MedicalRecord.wardInfo = args.wardInfo
-  args.MedicalRecord.medication = args.medication
-
-  return getAssetRegistry('org.healthcare.MedicalRecord').then(function(MedicalRecordRegistry){
-	  return MedicalRecordRegistry.update(args.MedicalRecord);
-  });
-}
 
 /**
 * @param {org.healthcare.CreateMedicalRecord} CreateMedicalRecord - the CreateMedicalRecord transaction arguments
@@ -239,4 +249,5 @@ async function CreateMedicalRecord(CreateMedicalRecord) {
 }
 
 */
+
 

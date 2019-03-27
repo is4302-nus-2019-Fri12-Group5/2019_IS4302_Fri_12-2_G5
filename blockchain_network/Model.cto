@@ -111,8 +111,20 @@ enum UnitType {
  *Transaction
  */
 
-transaction UpdatePersonalInfo {
-	--> Person person
+transaction UpdatePatientPersonalInfo {
+	--> Patient patient
+	o String firstName optional
+	o String lastName optional
+	o DateTime dateOfBirth optional
+	o Address address optional
+	o String phoneNum optional
+	o String nationality optional
+	o String race optional
+	o Gender gender optional
+}
+
+transaction UpdateDoctorPersonalInfo {
+	--> Doctor doctor
 	o String firstName optional
 	o String lastName optional
 	o DateTime dateOfBirth optional
@@ -152,7 +164,6 @@ transaction UpdateMedicalRecord {
 	o DateTime date optional
 	o String diagnosis optional
 	o Ward wardInfo optional
-	o Prescription prescription optional
     o DateTime lastModified
 }
 
