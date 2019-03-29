@@ -14,6 +14,7 @@ abstract participant Person identified by NRIC {
 	o String nationality optional
 	o String race optional
 	o Gender gender optional
+    --> BasicMedicalInformation basicMedicalInformation
 }
 
 participant Doctor extends Person {
@@ -156,11 +157,11 @@ transaction RemovePatientHospital {
 }
 
 transaction CreateMedicalRecord {
-	o MedicalRecord medicalrecord
+	o MedicalRecord medicalRecord
 }
 
 transaction UpdateMedicalRecord {
-	--> MedicalRecord medicalrecord
+	--> MedicalRecord medicalRecord
 	o DateTime date optional
 	o String diagnosis optional
 	o Ward wardInfo optional
@@ -174,13 +175,31 @@ transaction CreatePrescription {
 transaction UpdatePrescription {
   	--> Prescription prescription
 	o String quantity
-	o UnitType unittype
+	o UnitType unitType
 	o String dosage
 	o String duration
     o DateTime lastModified
 }
 
+transaction CreatePatientBasicMedicalInformation {
+	o String basicID
+    --> Patient patient
+	o BloodType bloodType
+	o String height
+	o String weight
+	o String allergies 
+	o String disabilities 
+}
 
+transaction CreateDoctorBasicMedicalInformation {
+	o String basicID
+    --> Doctor doctor
+	o BloodType bloodType
+	o String height
+	o String weight
+	o String allergies 
+	o String disabilities 
+}
 
 
 

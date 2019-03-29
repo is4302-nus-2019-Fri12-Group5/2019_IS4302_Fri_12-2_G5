@@ -1,33 +1,95 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/**
+* @param {org.healthcare.CreateDoctorBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments * @transaction
+*/
+async function CreateDoctorBasicMedicalInformation(args) {
+	
+  return getAssetRegistry('org.healthcare.BasicMedicalInformation').then(function(basicMedicalInformationRegistry) {
+    
+    return getParticipantRegistry('org.healthcare.Doctor').then(function(doctorRegistry) {
+      
+      var factory = getFactory();
+      var newBasicMedicalRecord = factory.newResource('org.healthcare', 'BasicMedicalRecord', args.basicID); 
 
-/* global getAssetRegistry getFactory emit */
+      // Relationship
+      newBasicMedicalRecord.doctor = args.doctor;
+      // Attribute
+      newBasicMedicalRecord.bloodType = args.bloodType ;
+      newBasicMedicalRecord.height = args.height ;
+      newBasicMedicalRecord.weight = args.weight;
+      newBasicMedicalRecord.allergies = args.allergies;
+      newBasicMedicalRecord.disabilities = args.disabilities;
 
+      basicMedicalInformationRegistry.add(newBasicMedicalRecord);
+      
+      args.person.basicMedicalInformation = newBasicMedicalRecord;
+      personRegistry.update(args.doctor);
+    });
+    
+  });
+}
+
+/**
+* @param {org.healthcare.CreatePatientBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments * @transaction
+*/
+async function CreatePatientBasicMedicalInformation(args) {
+	
+  return getAssetRegistry('org.healthcare.BasicMedicalInformation').then(function(basicMedicalInformationRegistry) {
+    
+    return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+      
+      var factory = getFactory();
+      var newBasicMedicalRecord = factory.newResource('org.healthcare', 'BasicMedicalRecord', args.basicID); 
+
+      // Relationship
+      newBasicMedicalRecord.patient = args.patient;
+      // Attribute
+      newBasicMedicalRecord.bloodType = args.bloodType ;
+      newBasicMedicalRecord.height = args.height ;
+      newBasicMedicalRecord.weight = args.weight;
+      newBasicMedicalRecord.allergies = args.allergies;
+      newBasicMedicalRecord.disabilities = args.disabilities;
+
+      basicMedicalInformationRegistry.add(newBasicMedicalRecord);
+      
+      args.person.basicMedicalInformation = newBasicMedicalRecord;
+      personRegistry.update(args.patient);
+    });
+    
+  });
+}
+
+
+/**
+* @param {org.healthcare.UpdatePrescription} args - the UpdatePrescription transaction arguments * @transaction
+*/
+async function UpdatePrescription(args) {
+  
+  return getAssetRegistry('org.healthcare.Prescription').then(function(prescriptionRegistry) {
+    
+      args.medicalRecord.quantity = args.quantity;
+      args.medicalRecord.unitType = args.unitType;
+      args.medicalRecord.dosage = args.dosage;
+      args.medicalRecord.duration = args.duration;
+      args.medicalRecord.lastModified = args.lastModified;
+	  
+      return prescriptionRegistry.update(args.prescription);
+  });
+}
 
 /**
 * @param {org.healthcare.UpdateMedicalRecord} args - the UpdateMedicalRecord transaction arguments * @transaction
 */
-function UpdateMedicalRecord(args) {
-
-  args.medicalrecord.date = args.date
-  args.medicalrecord.diagnosis = args.diagnosis
-  args.medicalrecord.wardInfo.setPropertyValue(args.medicalrecord.wardInfo, args.wardInfo.level)
-  //args.medicalrecord.wardInfo.setPropertyValue(args.medicalrecord.wardInfo.roomNum, args.wardInfo.roomNum)
-  //args.medicalrecord.wardInfo.setPropertyValue(args.medicalrecord.wardInfo.bedNum, args.wardInfo.bedNum)
-
+async function UpdateMedicalRecord(args) {
+  
   return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
-	  return medicalRecordRegistry.update(args.MedicalRecord);
+    
+      args.medicalRecord.date = args.date;
+      args.medicalRecord.diagnosis = args.diagnosis;
+      args.medicalRecord.wardInfo.level = args.wardInfo.level;
+      args.medicalRecord.wardInfo.roomNum = args.wardInfo.roomNum;
+      args.medicalRecord.wardInfo.bedNum = args.wardInfo.bedNum;
+	  
+      return medicalRecordRegistry.update(args.medicalRecord);
   });
 }
 
@@ -43,13 +105,12 @@ async function AddPatientHospital(args) {
     });
 }
 
-
 /**
 * @param {org.healthcare.RemovePatientHospital} args - the RemovePatientHospital transaction arguments
 * @transaction
 */
 
-function RemovePatientHospital(args) {
+async function RemovePatientHospital(args) {
 
   // A list of hospital
   let hospitalList = args.patient.currentHospitals;
@@ -68,18 +129,6 @@ function RemovePatientHospital(args) {
   });
 }
 
-/* function RemovePatientHospital(args) {
-  
-  for (i in args.hospital) {
-	  if (args.patient.currentHospitals.indexOf(i) > -1) {
-		  args.patient.currentHospitals.splice(args.patient.currentHospitals.indexOf(i), 1)
-	  }
-  }
-
-  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-	  return patientRegistry.update(args.patient);
-  });
-} */
 
 /**
 * @param {org.healthcare.UpdatePatientPersonalInfo} args - the UpdatePersonalInfo transaction arguments
@@ -126,21 +175,19 @@ async function UpdateDoctorPersonalInfo(args) {
 * @transaction
 */
 
-function AddDocToHospital(args) {
+async function AddDocToHospital(args) {
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
       args.hospital.doctors.push(args.doctor);
 	  return hospitalRegistry.update(args.hospital);
   });
 }
 
-
-
 /**
 * @param {org.healthcare.RemoveDocFromHospital} args - the RemoveDocFromHospital transaction arguments
-* @transaction
+* @transaction 
 */
 
-function RemoveDocFromHospital(args) {
+async function RemoveDocFromHospital(args) {
   
   let doctorList = args.hospital.doctors;
   let selectedDoctor = args.doctor;
@@ -159,20 +206,17 @@ function RemoveDocFromHospital(args) {
 
 }
 
-
-
 /**
 * @param {org.healthcare.CreateMedicalRecord} CreateMedicalRecord - the CreateMedicalRecord transaction arguments
 * @transaction
 */
 async function CreateMedicalRecord(CreateMedicalRecord) {
   	
-  	
   return getAssetRegistry('org.healthcare.MedicalRecord').then(function(medicalRecordRegistry) {
     
     return getParticipantRegistry('org.healthcare.Patient').then(function(participantRegistry) {
     
-   	let currentMedicalRecord = CreateMedicalRecord.medicalrecord;
+   	let currentMedicalRecord = CreateMedicalRecord.medicalRecord;
  
  	var factory = getFactory();
  	var newMedicalRecord = factory.newResource('org.healthcare', 'MedicalRecord', currentMedicalRecord.recordID); 
@@ -237,17 +281,28 @@ async function CreateMedicalRecord(CreateMedicalRecord) {
 	  var newAsset = factory.newResource(
 	  'org.healthcare', 
 	  'MedicalRecord', 
-	  CreateMedicalRecord.medicalrecord.recordID); 
-	  newAsset.person = CreateMedicalRecord.medicalrecord.person
-	  newAsset.date = CreateMedicalRecord.medicalrecord.date
-	  newAsset.doctor = CreateMedicalRecord.medicalrecord.doctor
-	  newAsset.diagnosis = CreateMedicalRecord.medicalrecord.diagnosis
-	  newAsset.wardInfo = CreateMedicalRecord.medicalrecord.wardInfo
-	  newAsset.medication = CreateMedicalRecord.medicalrecord.medication
+	  CreateMedicalRecord.medicalRecord.recordID); 
+	  newAsset.person = CreateMedicalRecord.medicalRecord.person
+	  newAsset.date = CreateMedicalRecord.medicalRecord.date
+	  newAsset.doctor = CreateMedicalRecord.medicalRecord.doctor
+	  newAsset.diagnosis = CreateMedicalRecord.medicalRecord.diagnosis
+	  newAsset.wardInfo = CreateMedicalRecord.medicalRecord.wardInfo
+	  newAsset.medication = CreateMedicalRecord.medicalRecord.medication
 	  return result.add(newAsset);
    });
 }
+ 
+ 
+function RemovePatientHospital(args) {
+  
+  for (i in args.hospital) {
+	  if (args.patient.currentHospitals.indexOf(i) > -1) {
+		  args.patient.currentHospitals.splice(args.patient.currentHospitals.indexOf(i), 1)
+	  }
+  }
 
-*/
-
+  return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
+	  return patientRegistry.update(args.patient);
+  });
+} */
 
