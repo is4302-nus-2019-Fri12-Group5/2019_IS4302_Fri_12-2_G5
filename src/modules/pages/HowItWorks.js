@@ -23,7 +23,7 @@ const HowItWorks = (props) => (
   <div>
     {/* SEO */}
     <Helmet>
-      <title>How it works? - Crate</title>
+      <title>How it works? - MediChain</title>
     </Helmet>
 
     {/* Top title bar */}
@@ -31,50 +31,62 @@ const HowItWorks = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H3 font="secondary">How it works</H3>
 
-        <p style={{ marginTop: '1em', color: grey2 }}>Just 3 easy steps to subscribe and receive your monthly
-          subscription
-          of trendy clothes and accessories</p>
+        <p style={{ marginTop: '1em', color: grey2 }}>Just 3 easy steps to approach the doctor and get subscription issued!</p>
       </GridCell>
     </Grid>
 
-    {/* 1 - Fill Out Your Style Profile */}
+    {/* 1 - Choose Your Hospital */}
     <Grid>
       <GridCell justifyCenter={true} style={{ textAlign: 'center', padding: '8em 0em' }}>
         <Icon size={4} style={{ color: grey3, textShadow: textLevel1 }}>looks_one</Icon>
 
-        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Subscribe to your crate</H4>
+        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Choose Your Hospital</H4>
 
-        <p style={{ marginTop: '0.5em', color: grey3 }}>Choose one or multiple crates as per your need.</p>
+        <p style={{ marginTop: '0.5em', color: grey3 }}>The trusted hospitals will be added to your list!</p>
       </GridCell>
 
-      <GridCell style={{ background: `url('${ APP_URL }/images/stock/how-it-works/1.jpg') center top no-repeat` }}/>
+      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_1.jpg') center top no-repeat` }}/>
     </Grid>
 
-    {/* 2 - Receive a Fix Delivery */}
+    {/* 2 - Choose Your Doctor */}
     <Grid>
-      <GridCell style={{ background: `url('${ APP_URL }/images/stock/how-it-works/2.jpg') center top no-repeat` }}/>
+      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_2.jpg') center top no-repeat` }}/>
 
       <GridCell justifyCenter={true} style={{ textAlign: 'center', padding: '8em 0em' }}>
         <Icon size={4} style={{ color: grey3, textShadow: textLevel1 }}>looks_two</Icon>
 
-        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Receive a Fix Delivery</H4>
+        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Choose Your Doctor</H4>
 
-        <p style={{ marginTop: '0.5em', color: grey3 }}>Get 3 to 5 pieces of clothing or accessories delivered to your door.</p>
+        <p style={{ marginTop: '0.5em', color: grey3 }}>All trusted doctors will be added to your list!</p>
       </GridCell>
     </Grid>
 
-    {/* 3 - Keep what you want */}
+    {/* 3 - Pay when booking appointment! */}
     <Grid>
       <GridCell justifyCenter={true} style={{ textAlign: 'center', padding: '8em 0em' }}>
         <Icon size={4} style={{ color: grey3, textShadow: textLevel1 }}>looks_3</Icon>
 
-        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Keep what you want</H4>
+        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Pay when booking appointment!</H4>
 
-        <p style={{ marginTop: '0.5em', color: grey3 }}>Only pay for what you keep. Returns are easy and free.</p>
+        <p style={{ marginTop: '0.5em', color: grey3 }}>Pay immediately through MediChain!</p>
       </GridCell>
 
-      <GridCell style={{ background: `url('${ APP_URL }/images/stock/how-it-works/3.jpg') center top no-repeat` }}/>
+      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_3.jpg') center top no-repeat` }}/>
     </Grid>
+
+      {/* 4 - Pay when booking appointment! */}
+      <Grid>
+          <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_4.jpg') center top no-repeat` }}/>
+
+          <GridCell justifyCenter={true} style={{ textAlign: 'center', padding: '8em 0em' }}>
+              <Icon size={4} style={{ color: grey3, textShadow: textLevel1 }}>looks_4</Icon>
+
+              <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Check Your Medical Record Online!</H4>
+
+              <p style={{ marginTop: '0.5em', color: grey3 }}>Check your medical record anywhere at any time!</p>
+
+          </GridCell>
+      </Grid>
 
     {/* Bottom call to action bar */}
     <Grid style={{ backgroundColor: grey }}>
