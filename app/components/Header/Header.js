@@ -7,9 +7,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   render() {
     return (
       <div className="header">
-        <a href="https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare">
-          <img src={Banner} alt="react-redux-boilerplate - Logo" />
-        </a>
+        <img src={Banner} alt="react-redux-boilerplate - Logo" />
         <div className="nav-bar">
           <Link className="router-link" to="/">
             Home
