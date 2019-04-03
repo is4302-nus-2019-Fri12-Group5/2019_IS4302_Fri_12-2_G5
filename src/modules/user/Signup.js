@@ -27,7 +27,6 @@ class Signup extends Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
       error: '',
       isLoading: false,
@@ -35,6 +34,7 @@ class Signup extends Component {
         name: '',
         email: '',
         password: '',
+        nric: '',
       }
     }
   }
@@ -98,19 +98,19 @@ class Signup extends Component {
         <GridCell>
           <Grid gutter={true} alignCenter={true}>
             <GridCell justifyCenter={true}>
-              <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/stock/men/1.jpg`}/>
+              <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
             </GridCell>
 
             <GridCell>
               <Grid>
                 <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/2.jpg`}/>
+                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_2.jpg`}/>
                 </GridCell>
               </Grid>
 
               <Grid>
                 <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/3.jpg`}
+                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_3.jpg`}
                              style={{ marginTop: '1.9em' }}/>
                 </GridCell>
               </Grid>
@@ -158,6 +158,18 @@ class Signup extends Component {
                 value={this.state.user.password}
                 onChange={this.onChange}
                 style={{ marginTop: '1em' }}
+              />
+
+              {/* NRIC */}
+              <Input
+                  type="NRIC"
+                  fullWidth={true}
+                  placeholder="NRIC"
+                  required="required"
+                  name="password"
+                  value={this.state.user.nric}
+                  onChange={this.onChange}
+                  style={{ marginTop: '1em' }}
               />
             </div>
 

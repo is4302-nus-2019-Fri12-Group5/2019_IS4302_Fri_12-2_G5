@@ -38,13 +38,13 @@ const Header = (props) => {
 
           {/* Left menu */}
           <Menu style={{ float: 'left', marginTop: '0.5em', marginLeft: '2em' }}>
-            <MenuItem to={home.men.path}>Men</MenuItem>
+            <MenuItem to={home.men.path}>Hospitals</MenuItem>
 
-            <MenuItem to={home.women.path}>Women</MenuItem>
+            <MenuItem to={home.women.path}>History</MenuItem>
 
-            <MenuItem to={home.howItWorks.path}>How It Works</MenuItem>
+            <MenuItem to={home.howItWorks.path}>Balance</MenuItem>
 
-            <MenuItem to={home.whatsNew.path}>What's New</MenuItem>
+            <MenuItem to={home.whatsNew.path}>How It Works</MenuItem>
           </Menu>
         </GridCell>
 

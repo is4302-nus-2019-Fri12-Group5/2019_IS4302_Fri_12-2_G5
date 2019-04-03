@@ -80,26 +80,26 @@ class Login extends Component {
       <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
         {/* SEO */}
         <Helmet>
-          <title>Login to your account - Crate</title>
+          <title>Login to your account - MediChain</title>
         </Helmet>
 
         {/* Left Content - Image Collage */}
         <GridCell>
           <Grid gutter={true} alignCenter={true}>
             <GridCell justifyCenter={true}>
-              <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/stock/women/1.jpg`}/>
+              <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
             </GridCell>
 
             <GridCell>
               <Grid>
                 <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/men/2.jpg`}/>
+                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_2.jpg`}/>
                 </GridCell>
               </Grid>
 
               <Grid>
                 <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/men/3.jpg`}
+                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_3.jpg`}
                              style={{ marginTop: '1.9em' }}/>
                 </GridCell>
               </Grid>

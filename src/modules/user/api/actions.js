@@ -82,7 +82,7 @@ export function register(userDetails) {
     return axios.post(routeApi, mutation({
       operation: 'userSignup',
       variables: userDetails,
-      fields: ['id', 'name', 'email']
+      fields: ['id', 'name', 'email', 'NRIC', 'gender', 'birthday DD/MM/YYYY']
     }))
   }
 }

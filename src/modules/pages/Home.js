@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { Grid, GridCell } from '../../ui/grid'
 import { H1, H4 } from '../../ui/typography'
 import Button from '../../ui/button'
-import { white } from '../../ui/common/colors'
+import {white} from '../../ui/common/colors'
 import { textLevel1 } from '../../ui/common/shadows'
 
 // App Imports
@@ -23,7 +23,7 @@ const Home = (props) => (
   <div>
     {/* Home */}
     <Grid alignCenter={true} style={{
-      backgroundImage: `url('${ APP_URL }/images/cover.jpg')`,
+      backgroundImage: `url('${ APP_URL }/images/cover.png')`,
       backgroundAttachment: 'fixed',
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
@@ -33,15 +33,15 @@ const Home = (props) => (
     }}>
       {/* SEO */}
       <Helmet>
-        <title>Monthly supply of clothes and accessories for Men and Women - Crate</title>
+        <title> MediChain </title>
       </Helmet>
 
       {/* Content */}
       <GridCell>
-        <H1 font="secondary" style={{ textShadow: textLevel1 }}>Crate</H1>
+        <H1 font="secondary" style={{ textShadow: textLevel1 }}>MediChain</H1>
 
         <H4 style={{ textShadow: textLevel1, marginTop: '0.5em' }}>
-          Your monthly subscription of trendy clothes and accessories
+            Manage Your Medical Needs on Blockchain!
         </H4>
 
         {/* Call to action */}
