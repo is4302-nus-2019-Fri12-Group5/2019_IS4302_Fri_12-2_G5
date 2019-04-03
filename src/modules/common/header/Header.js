@@ -38,9 +38,9 @@ const Header = (props) => {
 
           {/* Left menu */}
           <Menu style={{ float: 'left', marginTop: '0.5em', marginLeft: '2em' }}>
-            <MenuItem to={home.men.path}>Hospitals</MenuItem>
+            <MenuItem to={home.hospital.path}>Hospitals</MenuItem>
 
-            <MenuItem to={home.women.path}>History</MenuItem>
+            <MenuItem to={home.history.path}>History</MenuItem>
 
             <MenuItem to={home.howItWorks.path}>Balance</MenuItem>
 

@@ -18,30 +18,30 @@ import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
 // Component
-const Men = (props) => (
+const Hospital = (props) => (
   <Grid alignCenter={true} style={{ padding: '2em' }}>
     {/* SEO */}
     <Helmet>
-      <title>Monthly supply of clothes and accessories for Men - Crate</title>
+      <title>Hospital List For You</title>
     </Helmet>
 
     {/* Left Content - Image Collage */}
     <GridCell>
       <Grid gutter={true} alignCenter={true}>
         <GridCell justifyCenter={true}>
-          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/stock/men/1.jpg`} />
+          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/hospital_1.jpg`} />
         </GridCell>
 
         <GridCell>
           <Grid>
             <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/men/2.jpg`} />
+              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/hospital_2.jpg`} />
             </GridCell>
           </Grid>
 
           <Grid>
             <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/men/3.jpg`} style={{ marginTop: '1.9em' }} />
+              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/hospital_3.jpg`} style={{ marginTop: '1.9em' }} />
             </GridCell>
           </Grid>
         </GridCell>
@@ -50,10 +50,10 @@ const Men = (props) => (
 
     {/* Right Content */}
     <GridCell style={{ textAlign: 'center' }}>
-      <H2 font="secondary">Monthly crates for Men</H2>
+      <H2 font="secondary">Hospital List For You</H2>
 
       <H5 style={{ marginTop: '0.5em' }}>
-        Save time. Look great. The personal styling service customized to your fit, lifestyle & spending preferences.
+        Choose a hospital to find your doctor! Book the reservation today!
       </H5>
 
       {/* Call to action */}
@@ -71,7 +71,7 @@ const Men = (props) => (
 )
 
 // Component Properties
-Men.propTypes = {
+Hospital.propTypes = {
   user: PropTypes.object.isRequired
 }
 
@@ -82,4 +82,4 @@ function menState(state) {
   }
 }
 
-export default connect(menState, {})(Men)
+export default connect(menState, {})(Hospital)

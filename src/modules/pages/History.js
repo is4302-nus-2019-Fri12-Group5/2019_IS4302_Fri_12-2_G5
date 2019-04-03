@@ -18,7 +18,7 @@ import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/user'
 
 // Component
-const Women = (props) => (
+const History = (props) => (
   <Grid alignCenter={true} style={{ padding: '2em' }}>
     {/* SEO */}
     <Helmet>
@@ -71,7 +71,7 @@ const Women = (props) => (
 )
 
 // Component Properties
-Women.propTypes = {
+History.propTypes = {
   user: PropTypes.object.isRequired
 }
 
@@ -82,4 +82,4 @@ function womenState(state) {
   }
 }
 
-export default connect(womenState, {})(Women)
+export default connect(womenState, {})(History)

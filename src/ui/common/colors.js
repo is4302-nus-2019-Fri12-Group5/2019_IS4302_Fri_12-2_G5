@@ -4,7 +4,7 @@ export const primary = '#267ef0'
 
 export const primaryAccent = '#59b0fc'
 
-export const secondary = '#EA5455'
+export const secondary = '#ea3f3f'
 
 export const secondaryAccent = '#FEB692'
 
