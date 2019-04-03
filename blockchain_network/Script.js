@@ -1,6 +1,23 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* global getAssetRegistry getFactory emit */
+
 /**
-* @param {org.healthcare.CreateDoctorBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments * @transaction
-*/
+ * @param {org.healthcare.CreateDoctorBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments
+ * @transaction
+ */
 async function CreateDoctorBasicMedicalInformation(args) {
 	
   return getAssetRegistry('org.healthcare.BasicMedicalInformation').then(function(basicMedicalInformationRegistry) {
@@ -8,54 +25,51 @@ async function CreateDoctorBasicMedicalInformation(args) {
     return getParticipantRegistry('org.healthcare.Doctor').then(function(doctorRegistry) {
       
       var factory = getFactory();
-      var newBasicMedicalRecord = factory.newResource('org.healthcare', 'BasicMedicalRecord', args.basicID); 
+      var newBasicMedicalRecord = factory.newResource('org.healthcare', 'BasicMedicalInformation', args.doctorBasicMedicalInformation.basicID); 
 
       // Relationship
-      newBasicMedicalRecord.doctor = args.doctor;
+      newBasicMedicalRecord.person = args.doctorBasicMedicalInformation.person;
       // Attribute
-      newBasicMedicalRecord.bloodType = args.bloodType ;
-      newBasicMedicalRecord.height = args.height ;
-      newBasicMedicalRecord.weight = args.weight;
-      newBasicMedicalRecord.allergies = args.allergies;
-      newBasicMedicalRecord.disabilities = args.disabilities;
+      newBasicMedicalRecord.bloodType = args.doctorBasicMedicalInformation.bloodType ;
+      newBasicMedicalRecord.height = args.doctorBasicMedicalInformation.height;
+      newBasicMedicalRecord.weight = args.doctorBasicMedicalInformation.weight;
+      newBasicMedicalRecord.allergies = args.doctorBasicMedicalInformation.allergies;
+      newBasicMedicalRecord.disabilities = args.doctorBasicMedicalInformation.disabilities;
 
       basicMedicalInformationRegistry.add(newBasicMedicalRecord);
       
-      args.person.basicMedicalInformation = newBasicMedicalRecord;
-      personRegistry.update(args.doctor);
+      args.doctorBasicMedicalInformation.person.basicMedicalInformation = newBasicMedicalRecord;
+      
+      doctorRegistry.update(args.doctorBasicMedicalInformation.person);
     });
     
   });
 }
 
 /**
-* @param {org.healthcare.CreatePatientBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments * @transaction
-*/
+ * @param {org.healthcare.CreatePatientBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments
+ * @transaction
+ */
 async function CreatePatientBasicMedicalInformation(args) {
-	
-  return getAssetRegistry('org.healthcare.BasicMedicalInformation').then(function(basicMedicalInformationRegistry) {
+    const basicMedicalInformationRegistry = await getAssetRegistry('org.healthcare.BasicMedicalInformation');
+    const patientRegistry = await getParticipantRegistry('org.healthcare.Patient');
     
-    return getParticipantRegistry('org.healthcare.Patient').then(function(patientRegistry) {
-      
-      var factory = getFactory();
-      var newBasicMedicalRecord = factory.newResource('org.healthcare', 'BasicMedicalRecord', args.basicID); 
-
-      // Relationship
-      newBasicMedicalRecord.patient = args.patient;
-      // Attribute
-      newBasicMedicalRecord.bloodType = args.bloodType ;
-      newBasicMedicalRecord.height = args.height ;
-      newBasicMedicalRecord.weight = args.weight;
-      newBasicMedicalRecord.allergies = args.allergies;
-      newBasicMedicalRecord.disabilities = args.disabilities;
-
-      basicMedicalInformationRegistry.add(newBasicMedicalRecord);
-      
-      args.person.basicMedicalInformation = newBasicMedicalRecord;
-      personRegistry.update(args.patient);
-    });
+    var factory = getFactory();
+    var newBasicMedicalInformation = factory.newResource('org.healthcare', 'BasicMedicalInformation', args.basicID); 
     
-  });
+    // Relationship
+    newBasicMedicalInformation.person = args.patient;
+    // Attribute
+    newBasicMedicalInformation.bloodType = args.bloodType;
+    newBasicMedicalInformation.height = args.height;
+    newBasicMedicalInformation.weight = args.weight;
+    newBasicMedicalInformation.allergies = args.allergies;
+    newBasicMedicalInformation.disabilities = args.disabilities;
+
+    await basicMedicalInformationRegistry.add(newBasicMedicalInformation);
+    
+    args.patient.basicMedicalInformation = newBasicMedicalInformation;
+    await patientRegistry.update(args.patient);
 }
 
 
@@ -66,11 +80,11 @@ async function UpdatePrescription(args) {
   
   return getAssetRegistry('org.healthcare.Prescription').then(function(prescriptionRegistry) {
     
-      args.medicalRecord.quantity = args.quantity;
-      args.medicalRecord.unitType = args.unitType;
-      args.medicalRecord.dosage = args.dosage;
-      args.medicalRecord.duration = args.duration;
-      args.medicalRecord.lastModified = args.lastModified;
+      args.prescription.quantity = args.quantity;
+      args.prescription.unitType = args.unitType;
+      args.prescription.dosage = args.dosage;
+      args.prescription.duration = args.duration;
+      args.prescription.lastModified = args.lastModified;
 	  
       return prescriptionRegistry.update(args.prescription);
   });
@@ -177,6 +191,7 @@ async function UpdateDoctorPersonalInfo(args) {
 
 async function AddDocToHospital(args) {
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
+      args.doctor.hospital = args.hospital;
       args.hospital.doctors.push(args.doctor);
 	  return hospitalRegistry.update(args.hospital);
   });
@@ -201,6 +216,7 @@ async function RemoveDocFromHospital(args) {
   }
 
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
+      args.doctor.hospital.setIdentifier("resource:org");
 	  return hospitalRegistry.update(args.hospital);
   });
 
@@ -273,6 +289,16 @@ async function CreatePrescription(args) {
   }); 	
 }
 
+/**
+ * @param {org.healthcare.TopUpWalletBalance} args - the TopUpWalletBalance transaction arguments
+ * @transaction
+ */
+async function topUpWalletBalance(args) {
+    args.patient.walletBalance += args.topUpAmount;
+    const patientRegistry = await getParticipantRegistry('org.healthcare.Patient');
+    await patientRegistry.update(args.patient);
+}
+
 /*
 async function CreateMedicalRecord(CreateMedicalRecord) {
   return getAssetRegistry('org.healthcare.MedicalRecord')
@@ -305,4 +331,3 @@ function RemovePatientHospital(args) {
 	  return patientRegistry.update(args.patient);
   });
 } */
-
