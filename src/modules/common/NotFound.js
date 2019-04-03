@@ -17,7 +17,7 @@ const NotFound = () => (
   <div>
     {/* SEO */}
     <Helmet>
-      <title>Lost? - Crate</title>
+      <title>Lost? - MediChain</title>
     </Helmet>
 
     {/* Top title bar */}
@@ -33,13 +33,13 @@ const NotFound = () => (
           <img src={`${ APP_URL }/images/crate-broken.png`} alt="404" style={{ width: '10em' }}/>
         </p>
 
-        <H3 font="secondary">Page you are looking for does not exists or has removed. It's 404.</H3>
+        <H3 font="secondary">404 Not Found - Page you are looking for does not exists or has removed.</H3>
 
         <p style={{ marginTop: '2em' }}>What can you do?</p>
 
         <p style={{ marginTop: '0.5em' }}>You can go to <Link to={home.home.path}>home page.</Link> or contact us for
           any
-          help.</p>
+          help @ IS4302 Fri 12-2 Group 5.</p>
       </GridCell>
     </Grid>
   </div>

@@ -42,9 +42,9 @@ const Header = (props) => {
 
             <MenuItem to={home.history.path}>History</MenuItem>
 
-            <MenuItem to={home.howItWorks.path}>Balance</MenuItem>
+            <MenuItem to={home.howItWorks.path}>How It Works</MenuItem>
 
-            <MenuItem to={home.whatsNew.path}>How It Works</MenuItem>
+            <MenuItem to={home.whatsNew.path}>Balance</MenuItem>
           </Menu>
         </GridCell>
 

@@ -1,6 +1,6 @@
 {
-  "name": "Crate",
-  "short_name": "Crate",
+  "name": "MediChain",
+  "short_name": "MediChain",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#3E4EB8",

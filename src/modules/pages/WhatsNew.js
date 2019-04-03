@@ -40,16 +40,15 @@ class WhatsNew extends PureComponent {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>What's new - Crate</title>
+          <title>Balance - MediChain</title>
         </Helmet>
 
         {/* Top title bar */}
         <Grid style={{ backgroundColor: grey }}>
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-            <H3 font="secondary">What's new</H3>
+            <H3 font="secondary">Your Account Balance:     230 </H3>
 
-            <p style={{ marginTop: '1em', color: grey2 }}>Watch this space to keep updated with latest clothes and
-              accessories we add to your crates.</p>
+            <p style={{ marginTop: '1em', color: grey2 }}>Watch this space to keep updated with your transaction record!</p>
           </GridCell>
         </Grid>
 
@@ -59,12 +58,12 @@ class WhatsNew extends PureComponent {
             isLoading
               ? <Loading/>
               : list.length > 0
-                ? list.map(product => (
-                    <GridCell key={product.id} style={{ textAlign: 'center' }}>
-                      <ProductItem product={product}/>
+                ? list.map(transaction_history => (
+                    <GridCell key={transaction_history.id} style={{ textAlign: 'center' }}>
+                      <ProductItem product={transaction_history}/>
                     </GridCell>
                   ))
-                : <EmptyMessage message="No products to show" />
+                : <EmptyMessage message="No history to show" />
           }
         </Grid>
 

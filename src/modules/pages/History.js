@@ -22,26 +22,26 @@ const History = (props) => (
   <Grid alignCenter={true} style={{ padding: '2em' }}>
     {/* SEO */}
     <Helmet>
-      <title>Monthly supply of clothes and accessories for Women - Crate</title>
+      <title>Check Your Medical or Transaction History Here!</title>
     </Helmet>
 
     {/* Left Content - Image Collage */}
     <GridCell>
       <Grid gutter={true} alignCenter={true}>
         <GridCell justifyCenter={true}>
-          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/stock/women/1.jpg`} />
+          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/history_1.jpg`} />
         </GridCell>
 
         <GridCell>
           <Grid>
             <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/2.jpg`} />
+              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/history_2.jpg`} />
             </GridCell>
           </Grid>
 
           <Grid>
             <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/stock/women/3.jpg`} style={{ marginTop: '1.9em' }} />
+              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/history_3.jpg`} style={{ marginTop: '1.9em' }} />
             </GridCell>
           </Grid>
         </GridCell>
@@ -50,10 +50,10 @@ const History = (props) => (
 
     {/* Right Content */}
     <GridCell style={{ textAlign: 'center' }}>
-      <H2 font="secondary">Monthly crates for Women</H2>
+      <H2 font="secondary">Online Medical History For You</H2>
 
       <H5 style={{ marginTop: '0.5em' }}>
-        Save time. Look great. The personal styling service customized to your fit, lifestyle & spending preferences.
+        Reliable Medical Record for You. Detailed Medical Billing!
       </H5>
 
       {/* Call to action */}
