@@ -1,0 +1,176 @@
+[33mcommit 474bd25d73b87148e5ffc17aaff45d720a75192b[m[33m ([m[1;36mHEAD -> [m[1;32mcss[m[33m, [m[1;31morigin/css[m[33m)[m
+Author: xiez098 <x.masterchief117m@gmail.com>
+Date:   Sat Mar 16 15:03:20 2019 +0800
+
+    Update css
+
+[33mcommit be2fb1a47e40ce26c36695c0b34e9884035fd687[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 14:01:00 2019 +0800
+
+    Fix normalize.css
+
+[33mcommit 9814398613f275d3ef7efc63d6ac56d94c039d7b[m
+Merge: d16108d 90907ba
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:59:26 2019 +0800
+
+    Merge branch 'login-page' into develop
+
+[33mcommit 90907ba58841476cc1a146ffbb218db8cedc64b3[m[33m ([m[1;31morigin/login-page[m[33m)[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:59:04 2019 +0800
+
+    Global CSS
+
+[33mcommit 07a2a995cead64fb16ecfc95d09f3634a6a806e9[m
+Merge: e650b49 a4c049e
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:54:03 2019 +0800
+
+    Merge remote-tracking branch 'origin/design' into login-page
+
+[33mcommit e650b494df920fa821f3054a16574d7d5636a4e9[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:53:53 2019 +0800
+
+    Add Global CSS
+
+[33mcommit a4c049ed4bc80c20504ee54fb862ca5dc4aff672[m[33m ([m[1;31morigin/design[m[33m)[m
+Author: April0616 <594395096@qq.com>
+Date:   Sat Mar 16 13:52:56 2019 +0800
+
+    update file locations
+
+[33mcommit dc13657956a362944cef61cea822297cdcb224e9[m
+Author: April0616 <594395096@qq.com>
+Date:   Sat Mar 16 13:49:38 2019 +0800
+
+    add chatbot icon
+
+[33mcommit d16108dbaf6cdafc7dcea76d1ebaac1f5211ea85[m
+Merge: ca48585 807a616
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:44:27 2019 +0800
+
+    Merge branch 'login-page' into develop
+
+[33mcommit 807a6165101cf0fc87cedbcb798f58f4127e1352[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:44:03 2019 +0800
+
+    Add new alias
+
+[33mcommit 483a1153985efd47b9935548243790ad93328d25[m
+Merge: ca48585 903efe7
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 13:42:28 2019 +0800
+
+    Merge remote-tracking branch 'origin/develop' into login-page
+
+[33mcommit 903efe7f0db94795f2a87b3fa7ebb81f8eb6e055[m
+Merge: b509edc ca48585
+Author: livian1107 <livian1107@gmail.com>
+Date:   Sat Mar 16 12:40:26 2019 +0800
+
+    title fix
+
+[33mcommit b509edcc591eb616514913b9defe4caa5ed2d2b8[m
+Author: livian1107 <livian1107@gmail.com>
+Date:   Sat Mar 16 12:36:52 2019 +0800
+
+    add logo and title to login page
+
+[33mcommit ca4858500f5f722245bb304c059c1c7453ab6e33[m
+Merge: ab67271 fd880a0
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 12:14:25 2019 +0800
+
+    Merge remote-tracking branch 'origin/master' into develop
+
+[33mcommit fd880a01e770e479245a712b1e15a09237516b06[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: d538378 0955921
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 12:13:16 2019 +0800
+
+    Merge branch 'master' of https://github.com/liumcse/fosshack
+
+[33mcommit d53837882e67f096078ed79ab09e9444e9252c88[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Sat Mar 16 12:11:08 2019 +0800
+
+    Add login
+
+[33mcommit 09559219b50d9854df80fe76ba13bf658b9da866[m
+Merge: 79a826d 0ccd38b
+Author: Lai Liwen <31056545+Livian1107@users.noreply.github.com>
+Date:   Sat Mar 16 11:32:10 2019 +0800
+
+    Merge pull request #2 from liumcse/test
+    
+    set up basic pages
+
+[33mcommit 0ccd38bad3602fea44703e065d99aace385d725e[m
+Author: livian1107 <livian1107@gmail.com>
+Date:   Sat Mar 16 11:30:17 2019 +0800
+
+    basic page update
+
+[33mcommit 097f9f7a1052a0d2b1b666b3b280bab6a6327d88[m[33m ([m[1;31morigin/discovery[m[33m)[m
+Author: livian1107 <livian1107@gmail.com>
+Date:   Sat Mar 16 10:54:16 2019 +0800
+
+    add discovery page
+
+[33mcommit 79a826d64a686bca8f896331554cf9c23bdd85a6[m
+Merge: 230a7f8 61a624c
+Author: Kaishuo Zhang <zhangks98@gmail.com>
+Date:   Sat Mar 16 10:49:50 2019 +0800
+
+    Merge pull request #1 from liumcse/develop
+    
+    update readme repo url to avoid confusion
+
+[33mcommit 61a624c9978a3da265dd5db0916a9e7950aa83c7[m
+Author: Kevin Zhang <zhangks98@gmail.com>
+Date:   Sat Mar 16 10:48:57 2019 +0800
+
+    update readme repo url to avoid confusion
+
+[33mcommit 230a7f81d11e823fc2c7c62b7c509b6d2aeb4b98[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: 812b44a ab67271
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Fri Mar 15 21:24:32 2019 +0800
+
+    Merge branch 'develop'
+
+[33mcommit ab67271f35945d17e2f452ec0526358737b37c9c[m
+Merge: 812b44a 3f4abd1
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Fri Mar 15 21:24:01 2019 +0800
+
+    Merge branch 'page-skeleton' into develop
+
+[33mcommit 3f4abd1be6ddd709cff61a2bb0694f9df38e90e6[m[33m ([m[1;31morigin/page-skeleton[m[33m)[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Fri Mar 15 21:10:19 2019 +0800
+
+    Add page skeleton
+
+[33mcommit 812b44a23a434f963f077d1bab5ca6f5e67ad4ce[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Fri Mar 15 19:54:30 2019 +0800
+
+    Add hello world
+
+[33mcommit 32380deaea8a773c948f1e7670b1a80a9ce49d31[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Fri Mar 15 19:41:18 2019 +0800
+
+    Upgrade dependencies
+
+[33mcommit 0b7b4ad510f38afc3afda72ef600b6142ed26ad0[m
+Author: Mingyu Liu <mingyu.liu@grabtaxi.com>
+Date:   Fri Mar 15 19:29:14 2019 +0800
+
+    Initial commit
