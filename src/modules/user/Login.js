@@ -77,37 +77,23 @@ class Login extends Component {
     const { isLoading, error } = this.props.user
 
     return (
-      <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
+        <Grid alignCenter={true} style={{
+          backgroundImage: `url('${ APP_URL }/images/dark_cover.png')`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          height: 'calc(100vh - 5em)',
+          textAlign: 'center',
+          color: white
+        }}>
+
+       {/*<Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>*/}
+
         {/* SEO */}
         <Helmet>
           <title>Login to your account - MediChain</title>
         </Helmet>
 
-        {/* Left Content - Image Collage */}
-        <GridCell>
-          <Grid gutter={true} alignCenter={true}>
-            <GridCell justifyCenter={true}>
-              <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
-            </GridCell>
-
-            <GridCell>
-              <Grid>
-                <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_2.jpg`}/>
-                </GridCell>
-              </Grid>
-
-              <Grid>
-                <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_3.jpg`}
-                             style={{ marginTop: '1.9em' }}/>
-                </GridCell>
-              </Grid>
-            </GridCell>
-          </Grid>
-        </GridCell>
-
-        {/* Right Content */}
         <GridCell style={{ textAlign: 'center' }}>
           <H3 font="secondary" style={{ marginBottom: '1em' }}>Login to your account</H3>
 
@@ -123,7 +109,7 @@ class Login extends Component {
                 name="email"
                 value={this.state.user.email}
                 onChange={this.onChange}
-                style={{ marginTop: '1em' }}
+                style={{ marginTop: '1em', color: white}}
               />
 
               {/* Password */}
@@ -135,14 +121,14 @@ class Login extends Component {
                 name="password"
                 value={this.state.user.password}
                 onChange={this.onChange}
-                style={{ marginTop: '1em' }}
+                style={{ marginTop: '1em', color: white}}
               />
             </div>
 
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
               <Link to={userRoutes.signup.path}>
-                <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
+                <Button type="button" style={{ marginRight: '0.5em', color: white }}>Signup</Button>
               </Link>
 
               {/* Form submit */}

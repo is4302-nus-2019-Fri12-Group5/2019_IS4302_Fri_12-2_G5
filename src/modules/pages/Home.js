@@ -23,7 +23,7 @@ const Home = (props) => (
   <div>
     {/* Home */}
     <Grid alignCenter={true} style={{
-      backgroundImage: `url('${ APP_URL }/images/cover.png')`,
+      backgroundImage: `url('${ APP_URL }/images/dark_cover.png')`,
       backgroundAttachment: 'fixed',
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
