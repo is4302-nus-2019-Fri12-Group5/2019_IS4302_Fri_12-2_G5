@@ -10,26 +10,334 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
 
-/**
- * Sample access control list.
- */
-rule EverybodyCanFullAccess {
-    description: "Allow all participants read access to all resources"
-    participant: "org.healthcare.*"
+rule .. {
+	description: 
+	participant(p): "org.healthcare."
+	operation: UPDATE, CREATE, ALL, READ
+	resource(r): "org.healthcare."
+	condition: ()
+	action: ALLOW
+}
+*/
+
+
+// Basic access controls
+rule HospitalSelf {
+	description: "Hospital can update self"
+	participant(p): "org.healthcare.Hospital"
+	operation: UPDATE, READ
+	resource(r): "org.healthcare.Hospital"
+	condition: (p.getIdentifier() == r.getIdentifier())
+	action: ALLOW
+}
+
+//tested working
+rule HospitalCreateDoctor{
+	description: "Hospital is able to create and read doctors"
+	participant(p): "org.healthcare.Hospital"
+	operation:  CREATE
+	resource(r): "org.healthcare.Doctor"
+	condition: (true)
+	action: ALLOW
+}
+
+//tested working
+rule HospitalReadDoctor{
+	description: "Hospital is able to create and read doctors"
+	participant(p): "org.healthcare.Hospital"
+	operation:  READ
+	resource(r): "org.healthcare.Doctor"
+	condition: (true)
+	action: ALLOW
+}
+
+//tested
+rule HospitalCreatePatient{
+	description: "Hospital is able to create patient"
+	participant(p): "org.healthcare.Hospital"
+	operation: CREATE
+	resource(r): "org.healthcare.Patient"
+  	condition: (true)
+	action: ALLOW
+}
+
+//tested working
+rule HospitalReadPatient{
+	description: "Hospital is able to create patient"
+	participant(p): "org.healthcare.Hospital"
+	operation: READ
+	resource(r): "org.healthcare.Patient"
+  	condition: (
+     r.currentHospitals.some(function (hospital) {
+        return hospital.getIdentifier() == p.getIdentifier();  
+        } )
+      )
+	action: ALLOW
+}
+
+//tested working
+rule PatientCanReadPersonalInfo {
+	description: "Patient can access their own personal info"
+	participant(p): "org.healthcare.Patient"
+	operation: READ, UPDATE
+	resource(r): "org.healthcare.Patient"
+	condition: (p.getIdentifier() == r.getIdentifier())
+	action: ALLOW
+}
+
+//tested working
+rule DoctorCanReadPersonalInfo {
+	description: "Patient can access their own personal info"
+	participant(p): "org.healthcare.Doctor"
+	operation: READ, UPDATE
+	resource(r): "org.healthcare.Doctor"
+	condition: (p.getIdentifier() == r.getIdentifier())
+	action: ALLOW
+}
+
+rule PersonCanReadBasicMedicalInformation {
+	description: "Patient can access their own basic medical information"
+	participant(p): "org.healthcare.Person"
+	operation: READ
+	resource(r): "org.healthcare.BasicMedicalInformation"
+	condition: (p.getIdentifier() == r.person.getIdentifier())
+  	action: ALLOW
+}
+
+//tested working
+rule PatientCanReadMedicalRecords {
+	description: "Patients are able to READ medical records belonging to them."
+	participant(p): "org.healthcare.Person"
+	operation: READ
+	resource(r): "org.healthcare.MedicalRecord"
+	condition: (p.getIdentifier() == r.patient.getIdentifier())
+	action: ALLOW
+}
+
+//tested working
+rule DoctorCanViewPatientsMedicalRecords {
+	description: "Doctors can view their patient's Medical Records"
+	participant(p): "org.healthcare.Doctor"
+	operation: ALL
+	resource(r): "org.healthcare.MedicalRecord"
+	condition:
+  	(
+     r.patient.currentHospitals.some(function (hospital) {
+        return hospital.getIdentifier() == p.hospital.getIdentifier();  
+        } )
+      )
+	action: ALLOW
+}
+
+// Transactions
+// tested working
+rule PatientCanUpdatePersonalInfo {
+	description: "Patients are able to READ & UPDATE their personal data."
+	participant(p): "org.healthcare.Patient"
+	operation: CREATE
+	resource(r): "org.healthcare.UpdatePatientPersonalInfo"
+	condition: (p.getIdentifier() == r.patient.getIdentifier())
+	action: ALLOW
+}
+
+//tested working
+rule DoctorCanUpdatePersonalInfo {
+	description: "Patients are able to READ & UPDATE their personal data."
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.UpdateDoctorPersonalInfo"
+	condition: (p.getIdentifier() == r.doctor.getIdentifier())
+	action: ALLOW
+}
+//tested working
+rule AddDocToHospital {
+	description: "Hospital is able to add or remove doctor"
+	participant(p): "org.healthcare.Hospital"
+	operation: CREATE
+	resource(r): "org.healthcare.AddDocToHospital"
+	condition: (p.getIdentifier()== r.hospital.getIdentifier())
+	action: ALLOW
+}
+//tested working
+rule RemoveDocFromHospital {
+	description: "Hospital is able to add or remove doctor"
+	participant(p): "org.healthcare.Hospital"
+	operation: UPDATE
+	resource(r): "org.healthcare.RemoveDocFromHospital"
+	condition: (p.getIdentifier()== r.hospital.getIdentifier())
+	action: ALLOW
+}
+//tested workinng
+rule PatientCanAddHospitalstoList {
+	description: "Patients can decide which hospitals are in their list of hospitals."
+	participant(p): "org.healthcare.Patient"
+	operation: CREATE
+	resource(r): "org.healthcare.AddPatientHospital"
+	condition: (p.getIdentifier() == r.patient.getIdentifier())
+	action: ALLOW
+}
+//tested working
+rule PatientCanRemoveHospitalstoList {
+	description: "Patients can decide which hospitals are in their list of hospitals."
+	participant(p): "org.healthcare.Patient"
+	operation: CREATE
+	resource(r): "org.healthcare.RemovePatientHospital"
+	condition: (p.getIdentifier() == r.patient.getIdentifier())
+	action: ALLOW
+}
+
+
+// required for CreateMedicalRecord acl to work.... to update their medical records
+rule DoctorCanReadOwnPatient {
+  description: "Doctors allows to access their own patient's information"
+  participant(p): "org.healthcare.Doctor"
+  operation: ALL
+  resource(r): "org.healthcare.Patient"
+  condition:
+  (
+     r.currentHospitals.some(function (hospital) {
+        return hospital.getIdentifier() == p.hospital.getIdentifier();  
+        } )
+      )
+  action: ALLOW
+}
+
+
+// tested working
+rule DoctorCreateMedicalRecord{
+	description: "Doctor create medical record for patient"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.CreateMedicalRecord"
+	condition:
+  (
+     r.medicalRecord.patient.currentHospitals.some(function (hospital) {
+        return hospital.getIdentifier() == p.hospital.getIdentifier();  
+        } )
+      )
+	action: ALLOW
+}
+
+//tested working
+rule DoctorCanUpdateTheirMedicalRecords {
+	description: "Doctors can update thier own medical records"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.UpdateMedicalRecord"
+	condition: (p.getIdentifier() == r.medicalRecord.doctor.getIdentifier())
+	action: ALLOW
+}
+
+
+//required for CreatePrescription transaction
+rule DoctorCanCreatePresc {
+  description: "Doctors create presc"
+  participant(p): "org.healthcare.Doctor"
+  operation: CREATE
+  resource(r): "org.healthcare.Prescription"
+  condition: (true)
+  action: ALLOW
+}
+
+rule DoctorCanReadnUpdatePresc {
+  description: "Doctors create presc"
+  participant(p): "org.healthcare.Doctor"
+  operation: UPDATE, READ
+  resource(r): "org.healthcare.Prescription"
+  condition: (p.getIdentifier() == r.medicalRecord.doctor.getIdentifier())
+  action: ALLOW
+}
+
+//tested working
+rule DoctorCanCreatePrescription {
+	description: "Doctors can create prescription for patients"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.CreatePrescription"
+	condition: (p.getIdentifier() == r.prescription.medicalRecord.doctor.getIdentifier())
+  	action: ALLOW
+}
+
+//testing
+rule DoctorCanUpdateTheirPrescription {
+	description: "Doctors can create prescription for patients"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.UpdatePrescription"
+	condition: (p.getIdentifier() == r.prescription.medicalRecord.doctor.getIdentifier())
+  	action: ALLOW
+}
+
+//tested, create access not allowed still though
+rule DoctorCanCreateBasicMedicalInformationPatient {
+	description: "Doctors can create basic medical information for patients"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.CreatePatientBasicMedicalInformation"
+	condition: (p.hospital.getIdentifier() == r.BasicMedicalInformation.Patient.currentHospitals.getIdentifier())
+  	action: ALLOW
+}
+
+
+//required for CreateBasicMedicalInformation transaction
+rule DoctorCanCreateBasicMedicalInformation {
+  description: "Doctors access or create basic medical info"
+  participant(p): "org.healthcare.Doctor"
+  operation: ALL
+  resource(r): "org.healthcare.BasicMedicalInformation"
+  condition: (true)
+  action: ALLOW
+}
+//not tested yet
+rule DoctorCanCreateBasicMedicalInformationDoctor {
+	description: "Doctors can create basic medical information for patients"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.CreateDoctorBasicMedicalInformation"
+	condition: (p.hospital.getIdentifier() == r.basicmedicalinformation.person.currentHospitals.getIdentifier())
+  	action: ALLOW
+}
+
+rule DoctorCanUpdateBasicMedicalInformation {
+	description: "Doctors can create basic medical information for patients"
+	participant(p): "org.healthcare.Doctor"
+	operation: CREATE
+	resource(r): "org.healthcare.UpdateBasicMedicalInformation"
+	condition: (p.hospital.getIdentifier() == r.basicmedicalinformation.person.currentHospitals.getIdentifier())
+  	action: ALLOW
+}
+*/
+
+
+
+//System
+rule SystemACL {
+    description: "System ACL to permit all access"
+    participant: "org.hyperledger.composer.system.Participant"
     operation: ALL
-    resource: "org.healthcare.*"
+    resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }
 
-rule EverybodyCanSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "org.healthcare.*"
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: ALL
-    resource: "org.healthcare.*"
+    resource: "**"
     action: ALLOW
 }
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+
+
 
 rule SystemACL {
     description: "System ACL to permit all access"
