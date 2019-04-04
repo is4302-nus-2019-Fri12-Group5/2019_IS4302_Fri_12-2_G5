@@ -191,9 +191,15 @@ async function UpdateDoctorPersonalInfo(args) {
 
 async function AddDocToHospital(args) {
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
+    
+    return getParticipantRegistry('org.healthcare.Doctor').then(function(doctorRegistry) {
+      
       args.doctor.hospital = args.hospital;
       args.hospital.doctors.push(args.doctor);
-	  return hospitalRegistry.update(args.hospital);
+      
+      doctorRegistry.update(args.doctor);
+	  hospitalRegistry.update(args.hospital);
+    });
   });
 }
 
@@ -216,7 +222,7 @@ async function RemoveDocFromHospital(args) {
   }
 
   return getParticipantRegistry('org.healthcare.Hospital').then(function(hospitalRegistry) {
-      args.doctor.hospital.setIdentifier("resource:org");
+      args.doctor.hospital.setIdentifier("resource:org.healthcare.Hospital#dummy");
 	  return hospitalRegistry.update(args.hospital);
   });
 
@@ -276,6 +282,7 @@ async function CreatePrescription(args) {
     newPrescription.duration = passedInPrescription.duration;
     // Relationship
   	newPrescription.medicalRecord = passedInPrescription.medicalRecord;
+    newPrescription.lastModified = passedInPrescription.lastModified;
     
     // Add the new prescription to list of asset
     prescriptionRegistry.add(newPrescription);
