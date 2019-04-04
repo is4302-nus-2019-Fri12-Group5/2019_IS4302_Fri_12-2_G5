@@ -44,16 +44,16 @@ const Home = (props) => (
             Manage Your Medical Needs on Blockchain!
         </H4>
 
+
         {/* Call to action */}
-        {
-          props.user.isAuthenticated
-            ? <Link to={crateRoutes.list.path}>
-                <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
-              </Link>
-            : <Link to={userRoutes.login.path}>
-                <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
-              </Link>
-        }
+        <Link to={crateRoutes.list.path}>
+            <Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Patient</Button>
+        </Link>
+
+
+        <Link to={userRoutes.login.path}>
+            <Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Doctor</Button>
+        </Link>
       </GridCell>
     </Grid>
 
