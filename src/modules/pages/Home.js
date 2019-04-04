@@ -60,7 +60,7 @@ const Home = (props) => (
           <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
               <Link to={patientRoutes.login.path}>
-                  <Button type="button" theme="secondary" style={{ marginRight: '1 em' }}>I'm a Patient</Button>
+                  <Button type="button" theme="secondary" style={{ marginRight: '0.5em' }}>I'm a Patient</Button>
               </Link>
 
               <Link to={doctorRoutes.login.path}>

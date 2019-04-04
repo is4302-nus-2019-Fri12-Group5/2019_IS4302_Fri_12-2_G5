@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="334344d8-8928-45c7-9718-5d67390b2b69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/modules/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/routes/admin/crate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/routes/admin/crate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/routes/admin/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/routes/admin/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/routes/admin/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/routes/admin/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/routes/admin/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/routes/admin/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/routes/patient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/routes/patient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/patient/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patient/Login.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bower_components.ember-try/" />
     <ignored path="$PROJECT_DIR$/.node_modules.ember-try/" />
@@ -35,25 +31,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/modules/patient/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="137" selection-end-column="18" />
+            <state relative-caret-position="-86">
+              <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
               <folding>
                 <element signature="e#11#51#0" expanded="true" />
                 <element signature="e#230#276#0" expanded="true" />
-                <element signature="e#584#632#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modules/pages/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="60" column="33" lean-forward="true" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+            <state relative-caret-position="1196">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="e#11#36#0" expanded="true" />
                 <element signature="e#203#249#0" expanded="true" />
@@ -64,16 +59,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setup/server/load-routes.js">
+        <entry file="file://$PROJECT_DIR$/src/modules/common/header/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-944">
-              <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+            <state relative-caret-position="341">
+              <caret line="42" column="43" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="43" />
               <folding>
                 <element signature="e#11#36#0" expanded="true" />
-                <element signature="e#372#421#0" expanded="true" />
+                <element signature="e#171#220#0" expanded="true" />
+                <element signature="e#363#408#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/modules/common/header/Menu.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -128,18 +129,6 @@
               <caret line="14" column="30" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="30" />
               <folding>
                 <element signature="e#15#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setup/routes/home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-              <folding>
-                <element signature="e#15#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -209,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/setup/routes/patient.js" />
         <option value="$PROJECT_DIR$/src/setup/routes/admin/index.js" />
         <option value="$PROJECT_DIR$/src/modules/pages/Home.js" />
+        <option value="$PROJECT_DIR$/src/modules/patient/Login.js" />
       </list>
     </option>
   </component>
@@ -236,39 +226,6 @@
               <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
               <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="patient" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="setup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="setup" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
@@ -325,12 +282,12 @@
       <updated>1554262992016</updated>
       <workItem from="1554262998652" duration="3884000" />
       <workItem from="1554283226338" duration="9885000" />
-      <workItem from="1554363288417" duration="3497000" />
+      <workItem from="1554363288417" duration="4228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24945000" />
+    <option name="totallyTimeSpent" value="25676000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -369,12 +326,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/css/common.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/reset.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/service-worker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -753,26 +704,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/patient/Login.js">
+    <entry file="file://$PROJECT_DIR$/src/modules/common/header/Menu.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/common/header/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="137" selection-end-column="18" />
+        <state relative-caret-position="341">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="43" />
           <folding>
-            <element signature="e#11#51#0" expanded="true" />
-            <element signature="e#230#276#0" expanded="true" />
-            <element signature="e#584#632#0" expanded="true" />
+            <element signature="e#11#36#0" expanded="true" />
+            <element signature="e#171#220#0" expanded="true" />
+            <element signature="e#363#408#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/pages/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="60" column="33" lean-forward="true" selection-start-line="60" selection-start-column="33" selection-end-line="60" selection-end-column="33" />
+        <state relative-caret-position="1196">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="e#11#36#0" expanded="true" />
             <element signature="e#203#249#0" expanded="true" />
             <element signature="e#446#494#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/patient/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-86">
+          <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+          <folding>
+            <element signature="e#11#51#0" expanded="true" />
+            <element signature="e#230#276#0" expanded="true" />
           </folding>
         </state>
       </provider>

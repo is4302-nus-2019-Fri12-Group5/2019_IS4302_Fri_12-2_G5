@@ -16,6 +16,7 @@ import { level1 } from '../../ui/common/shadows'
 import { white } from '../../ui/common/colors'
 
 // App Imports
+import home from '../../setup/routes/home'
 import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/patient'
 import { messageShow, messageHide } from '../common/api/actions'
@@ -125,17 +126,29 @@ class Login extends Component {
               />
             </div>
 
+            {/*<div style={{ marginTop: '2em' }}>*/}
+              {/*/!* Signup link *!/*/}
+              {/*<Link to={userRoutes.signup.path}>*/}
+                {/*<Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>*/}
+              {/*</Link>*/}
+
+              {/*/!* Form submit *!/*/}
+              {/*<Button type="submit" theme="secondary" disabled={isLoading}>*/}
+                {/*Login*/}
+                {/*<Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>*/}
+            {/*</div>*/}
+
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
               <Link to={userRoutes.signup.path}>
                 <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
-              {/* Form submit */}
-              <Button type="submit" theme="secondary" disabled={isLoading}>
-                Login
-                <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
+              <Link to={home.history.path}>
+                <Button type="button" theme="secondary">Login</Button>
+              </Link>
             </div>
+
           </form>
         </GridCell>
 
