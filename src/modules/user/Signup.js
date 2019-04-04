@@ -91,29 +91,14 @@ class Signup extends Component {
       <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
         {/* SEO */}
         <Helmet>
-          <title>Create an account - Crate</title>
+          <title>Create an account - MediChain</title>
         </Helmet>
 
         {/* Left Content - Image Collage */}
         <GridCell>
           <Grid gutter={true} alignCenter={true}>
             <GridCell justifyCenter={true}>
-              <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
-            </GridCell>
-
-            <GridCell>
-              <Grid>
-                <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_2.jpg`}/>
-                </GridCell>
-              </Grid>
-
-              <Grid>
-                <GridCell justifyCenter={true}>
-                  <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/images/hospital_3.jpg`}
-                             style={{ marginTop: '1.9em' }}/>
-                </GridCell>
-              </Grid>
+              <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
             </GridCell>
           </Grid>
         </GridCell>

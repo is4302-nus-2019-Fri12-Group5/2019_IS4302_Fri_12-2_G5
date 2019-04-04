@@ -77,22 +77,22 @@ class Login extends Component {
     const { isLoading, error } = this.props.user
 
     return (
-        <Grid alignCenter={true} style={{
-          backgroundImage: `url('${ APP_URL }/images/dark_cover.png')`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          height: 'calc(100vh - 5em)',
-          textAlign: 'center',
-          color: white
-        }}>
 
-       {/*<Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>*/}
+       <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
 
         {/* SEO */}
         <Helmet>
           <title>Login to your account - MediChain</title>
         </Helmet>
+
+        {/* Left Content - Image Collage */}
+        <GridCell>
+            <Grid gutter={true} alignCenter={true}>
+                <GridCell justifyCenter={true}>
+                    <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
+                </GridCell>
+            </Grid>
+        </GridCell>
 
         <GridCell style={{ textAlign: 'center' }}>
           <H3 font="secondary" style={{ marginBottom: '1em' }}>Login to your account</H3>
@@ -100,7 +100,7 @@ class Login extends Component {
           {/* Login Form */}
           <form onSubmit={this.onSubmit}>
             <div style={{ width: '25em', margin: '0 auto' }}>
-              {/* Email */}
+              {/* Email */}s
               <Input
                 type="email"
                 fullWidth={true}
@@ -128,7 +128,7 @@ class Login extends Component {
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
               <Link to={userRoutes.signup.path}>
-                <Button type="button" style={{ marginRight: '0.5em', color: white }}>Signup</Button>
+                <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
               {/* Form submit */}
