@@ -11,7 +11,7 @@ export default {
         component: Login
     },
 
-    signup: {
+    doctorSignup: {
         path: '/doctor/signup',
         component: Signup
     },

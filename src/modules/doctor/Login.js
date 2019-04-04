@@ -127,7 +127,7 @@ class DoctorLogin extends Component {
 
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
-              <Link to={doctorRoutes.signup.path}>
+              <Link to={doctorRoutes.doctorSignup.path}>
                 <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
