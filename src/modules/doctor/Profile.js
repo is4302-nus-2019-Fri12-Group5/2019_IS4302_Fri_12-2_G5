@@ -13,6 +13,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import doctorRoutes from '../../setup/routes/doctor'
+import home from '../../setup/routes/home'
 import { logout } from './api/actions'
 
 // Component
@@ -38,11 +39,14 @@ const Profile = (props) => (
         <p style={{ color: grey2, marginBottom: '2em' }}>Email</p>
 
         <Link to={doctorRoutes.doctorSubscriptions.path}>
-          <Button theme="primary">Subscriptions</Button>
+          <Button theme="primary" style={{marginRight : '0.5em'}}>Subscriptions</Button>
         </Link>
 
         {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
-        <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
+        <Link to={home.home.path}>
+            <Button type="button" theme="secondary" >Logout</Button>
+        </Link>
+
       </GridCell>
     </Grid>
   </div>
