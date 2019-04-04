@@ -23,7 +23,7 @@ import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
-class DoctorLogin extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props)
@@ -147,7 +147,7 @@ class DoctorLogin extends Component {
 }
 
 // Component Properties
-DoctorLogin.propTypes = {
+Login.propTypes = {
   user: PropTypes.object.isRequired,
   login: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
@@ -161,4 +161,4 @@ function loginState(state) {
   }
 }
 
-export default connect(loginState, { login, messageShow, messageHide })(withRouter(DoctorLogin))
+export default connect(loginState, { login, messageShow, messageHide })(withRouter(Login))

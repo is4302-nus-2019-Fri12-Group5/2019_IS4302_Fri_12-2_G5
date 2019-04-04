@@ -1,5 +1,5 @@
 // App Imports
-import DoctorLogin from '../../modules/doctor/Login'
+import Login from '../../modules/doctor/Login'
 import Signup from '../../modules/doctor/Signup'
 import Profile from '../../modules/doctor/Profile'
 import Subscriptions from '../../modules/doctor/Subscriptions'
@@ -8,7 +8,7 @@ import Subscriptions from '../../modules/doctor/Subscriptions'
 export default {
     login: {
         path: '/doctor/login',
-        component: DoctorLogin
+        component: Login
     },
 
     signup: {
