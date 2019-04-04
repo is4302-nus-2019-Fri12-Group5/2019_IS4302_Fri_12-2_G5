@@ -48,23 +48,21 @@ This Blockchain project is based on [react-boilerplate](https://github.com/react
 
 ## Features 
 
-
-
-Here are a few highlights to look out for this project 
+What can MediChain do for you in today's world?
 
 <dl>
 
-  <dt>Next generation JavaScript</dt>
-  <dd>Use template strings, object destructuring, arrow functions, JSX syntax and more, today.</dd>
+  <dt>Integrated Payment Methods</dt>
+  <dd>Pay your doctor at your own convenience through multiple payment methods.</dd>
 
-  <dt>Component Specific Styles</dt>
-  <dd>Separate styles for each component. Style in the good old scss way but still keep it abstracted for each component.</dd>
+  <dt>Book your appointment</dt>
+  <dd>Scroll through doctors in your hospital to arrange appointment for a suitable one.</dd>
 
-  <dt>Industry-standard routing</dt>
-  <dd>It's natural to want to add pages (e.g. `/about`) to your application, and routing makes this possible.</dd>
+  <dt>Manage your patients all in one platform</dt>
+  <dd>Access/create/update your patients medical records all in this one stop platform for you doctors.</dd>
 
-  <dt>Predictable state management</dt>
-  <dd>Unidirectional data flow allows for change logging and time travel debugging.</dd>
+  <dt>Manage your doctors all in one platform</dt>
+  <dd>Add and remove doctors in your hospital in an instant</dd>
 
 </dl>
 
@@ -87,4 +85,4 @@ Project for IS4302 @ NUS SoC
 
 ## License
 
-MIT license, Copyright (c) 2018 Dinesh Pandiyan.
+MIT license, Copyright (c) 2019 Jerrald, Brandon, Yuting, Weijie, Win Phong.
