@@ -22,7 +22,7 @@ export default {
         // auth: true
     },
 
-    subscriptions: {
+    doctorSubscriptions: {
         path: '/doctor/subscriptions',
         component: Subscriptions,
         // auth: true
