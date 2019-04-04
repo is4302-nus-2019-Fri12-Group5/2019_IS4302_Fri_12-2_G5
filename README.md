@@ -68,14 +68,7 @@ What can MediChain do for you in today's world?
 
 But wait... there's more!
 
-  - *The best test setup:* Automatically guarantee code quality and non-breaking
-    changes. (Seen a react app with 99% test coverage before?)
-  - *The fastest fonts:* Say goodbye to vacant text.
-  - *Stay fast*: Profile your app's performance from the comfort of your command
-    line!
-  - *Catch problems:* TravisCI setup included by default, so your
-    tests get run automatically on each code push.
-
+  - Ever-changing, ever-improving platform by a dedicated team of professionals, aiming to change the healthcare industry
 
 
 ## Info
