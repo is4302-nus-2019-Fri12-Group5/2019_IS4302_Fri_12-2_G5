@@ -29,7 +29,7 @@ export function getList(isLoading = true) {
 
     return axios.post(routeApi, query({
       operation: 'subscriptions',
-      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
+      fields: ['id', 'patient { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
       .then(response => {
         if (response.status === 200) {
@@ -54,7 +54,7 @@ export function getList(isLoading = true) {
 }
 
 
-// Get list of subscriptions by user
+// Get list of subscriptions by patient
 export function getListByUser(isLoading = true) {
   return dispatch => {
     dispatch({
@@ -65,7 +65,7 @@ export function getListByUser(isLoading = true) {
 
     return axios.post(routeApi, query({
       operation: 'subscriptionsByUser',
-      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
+      fields: ['id', 'patient { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
       .then(response => {
         if (response.status === 200) {
@@ -100,7 +100,7 @@ export function get(slug, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'subscription',
       variables: { slug },
-      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
+      fields: ['id', 'patient { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
       .then(response => {
         dispatch({

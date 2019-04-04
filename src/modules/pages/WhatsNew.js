@@ -14,7 +14,7 @@ import { white, grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import crateRoutes from '../../setup/routes/crate'
-import userRoutes from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/patient'
 import { getList as getProductList } from '../product/api/actions'
 import Loading from '../common/Loading'
 import EmptyMessage from '../common/EmptyMessage'

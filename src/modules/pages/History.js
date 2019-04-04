@@ -15,7 +15,7 @@ import { level1 } from '../../ui/common/shadows'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import crateRoutes from '../../setup/routes/crate'
-import userRoutes from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/patient'
 
 // Component
 const History = (props) => (

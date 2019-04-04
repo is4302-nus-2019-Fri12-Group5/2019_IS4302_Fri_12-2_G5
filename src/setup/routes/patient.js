@@ -1,29 +1,29 @@
 // App Imports
-import Login from '../../modules/user/Login'
-import Signup from '../../modules/user/Signup'
-import Profile from '../../modules/user/Profile'
-import Subscriptions from '../../modules/user/Subscriptions'
+import Login from '../../modules/patient/Login'
+import Signup from '../../modules/patient/Signup'
+import Profile from '../../modules/patient/Profile'
+import Subscriptions from '../../modules/patient/Subscriptions'
 
 // User routes
 export default {
   login: {
-    path: '/user/login',
+    path: '/patient/login',
     component: Login
   },
 
   signup: {
-    path: '/user/signup',
+    path: '/patient/signup',
     component: Signup
   },
 
   profile: {
-    path: '/user/profile',
+    path: '/patient/profile',
     component: Profile,
     auth: true
   },
 
   subscriptions: {
-    path: '/user/subscriptions',
+    path: '/patient/subscriptions',
     component: Subscriptions,
     auth: true
   }

@@ -11,7 +11,7 @@ import { level1 } from '../../../ui/common/shadows'
 
 // App Imports
 import home from '../../../setup/routes/home'
-import user from '../../../setup/routes/user'
+import user from '../../../setup/routes/patient'
 import crate from '../../../setup/routes/crate'
 import admin from '../../../setup/routes/admin'
 import Logo from './Logo'

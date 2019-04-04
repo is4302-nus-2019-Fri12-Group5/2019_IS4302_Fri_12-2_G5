@@ -14,7 +14,7 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
 
-// Set a user after login or using localStorage token
+// Set a patient after login or using localStorage token
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -25,7 +25,7 @@ export function setUser(token, user) {
   return { type: SET_USER, user }
 }
 
-// Login a user using credentials
+// Login a patient using credentials
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -36,7 +36,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['patient {name, email, role}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -66,7 +66,7 @@ export function login(userCredentials, isLoading = true) {
   }
 }
 
-// Set user token and info in localStorage and cookie
+// Set patient token and info in localStorage and cookie
 export function loginSetUserLocalStorageAndCookie(token, user) {
   // Update token
   window.localStorage.setItem('token', token)
@@ -76,7 +76,7 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
   cookie.set('auth', { token, user }, { path: '/' })
 }
 
-// Register a user
+// Register a patient
 export function register(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -87,7 +87,7 @@ export function register(userDetails) {
   }
 }
 
-// Log out user and remove token from localStorage
+// Log out patient and remove token from localStorage
 export function logout() {
   return dispatch => {
     logoutUnsetUserLocalStorageAndCookie()
@@ -98,7 +98,7 @@ export function logout() {
   }
 }
 
-// Unset user token and info in localStorage and cookie
+// Unset patient token and info in localStorage and cookie
 export function logoutUnsetUserLocalStorageAndCookie() {
   // Remove token
   window.localStorage.removeItem('token')
@@ -108,7 +108,7 @@ export function logoutUnsetUserLocalStorageAndCookie() {
   cookie.remove('auth')
 }
 
-// Get user gender
+// Get patient gender
 export function getGenders() {
   return dispatch => {
     return axios.post(routeApi, query({

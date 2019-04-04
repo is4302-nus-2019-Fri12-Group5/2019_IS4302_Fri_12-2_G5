@@ -12,7 +12,7 @@ import { flushToHTML } from 'styled-jsx/server'
 import { APP_URL, NODE_ENV } from '../config/env'
 import { rootReducer } from '../store'
 import { routes } from '../routes'
-import { setUser } from '../../modules/user/api/actions'
+import { setUser } from '../../modules/patient/api/actions'
 import App from '../client/App'
 import view from '../server/view'
 

@@ -2,7 +2,7 @@
 import { APP_URL_API } from '../config/env'
 import admin from './admin'
 import home from './home'
-import user from './user'
+import user from './patient'
 import product from './product'
 import crate from './crate'
 

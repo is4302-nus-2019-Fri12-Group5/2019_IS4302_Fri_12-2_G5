@@ -52,7 +52,7 @@ export const subscriptions = (state = subscriptionsInitialState, action) => {
   }
 }
 
-// Subscriptions list by user
+// Subscriptions list by patient
 
 // Initial State
 const subscriptionsByUserInitialState = {

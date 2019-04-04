@@ -16,7 +16,7 @@ import { white, grey, grey2, grey3 } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import crateRoutes from '../../setup/routes/crate'
-import userRoutes from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/patient'
 
 // Component
 const HowItWorks = (props) => (

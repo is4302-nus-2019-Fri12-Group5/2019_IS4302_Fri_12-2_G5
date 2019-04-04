@@ -14,8 +14,8 @@ import { textLevel1 } from '../../ui/common/shadows'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
-import crateRoutes from '../../setup/routes/crate'
-import userRoutes from '../../setup/routes/user'
+import patientRoutes from '../../setup/routes/patient'
+import doctorRoutes from '../../setup/routes/doctor'
 import Onboarding from './Onboarding'
 
 // Component
@@ -46,12 +46,12 @@ const Home = (props) => (
 
 
         {/* Call to action */}
-        <Link to={crateRoutes.list.path}>
+        <Link to={patientRoutes.login.path}>
             <Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Patient</Button>
         </Link>
 
 
-        <Link to={userRoutes.login.path}>
+        <Link to={doctorRoutes.login.path}>
             <Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Doctor</Button>
         </Link>
       </GridCell>

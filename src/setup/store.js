@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 
 // App Imports
 import common from '../modules/common/api/state'
-import user from '../modules/user/api/state'
+import user from '../modules/patient/api/state'
 import * as product from '../modules/product/api/state'
 import * as subscription from '../modules/subscription/api/state'
 import * as crate from '../modules/crate/api/state'

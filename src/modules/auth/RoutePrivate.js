@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // App Imports
-import userRoutes from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/patient'
 
 // Component
 const RoutePrivate = (props) => (

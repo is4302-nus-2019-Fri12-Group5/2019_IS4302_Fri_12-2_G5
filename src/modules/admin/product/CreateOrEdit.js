@@ -23,7 +23,7 @@ import {
   getTypes as getProductTypes,
   getById as getProductById
 } from '../../product/api/actions'
-import { getGenders as getUserGenders } from '../../user/api/actions'
+import { getGenders as getUserGenders } from '../../patient/api/actions'
 import { upload, messageShow, messageHide } from '../../common/api/actions'
 import AdminMenu from '../common/Menu'
 
@@ -69,7 +69,7 @@ class CreateOrEdit extends Component {
         this.props.messageShow('There was some error fetching product types. Please try again.')
       })
 
-    // Get user genders
+    // Get patient genders
     this.props.getUserGenders()
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
