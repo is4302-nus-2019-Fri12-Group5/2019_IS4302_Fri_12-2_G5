@@ -19,12 +19,12 @@ export default {
   profile: {
     path: '/patient/profile',
     component: Profile,
-    auth: true
+    // auth: true
   },
 
   subscriptions: {
     path: '/patient/subscriptions',
     component: Subscriptions,
-    auth: true
+    // auth: true
   }
 }

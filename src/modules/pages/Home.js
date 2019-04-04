@@ -17,6 +17,7 @@ import { APP_URL } from '../../setup/config/env'
 import patientRoutes from '../../setup/routes/patient'
 import doctorRoutes from '../../setup/routes/doctor'
 import Onboarding from './Onboarding'
+import Icon from "../patient/Login";
 
 // Component
 const Home = (props) => (
@@ -46,14 +47,28 @@ const Home = (props) => (
 
 
         {/* Call to action */}
-        <Link to={patientRoutes.login.path}>
-            <Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Patient</Button>
-        </Link>
+        {/*<Link to={patientRoutes.login.path}>*/}
+            {/*<Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Patient</Button>*/}
+        {/*</Link>*/}
 
 
-        <Link to={doctorRoutes.login.path}>
-            <Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Doctor</Button>
-        </Link>
+        {/*<Link to={doctorRoutes.login.path}>*/}
+            {/*<Button theme="secondary" style={{ marginTop: '1em' }}>I'm a Doctor</Button>*/}
+        {/*</Link>*/}
+
+
+          <div style={{ marginTop: '2em' }}>
+              {/* Signup link */}
+              <Link to={patientRoutes.login.path}>
+                  <Button type="button" theme="secondary" style={{ marginRight: '1 em' }}>I'm a Patient</Button>
+              </Link>
+
+              <Link to={doctorRoutes.login.path}>
+                  <Button type="button" theme="secondary">I'm a Doctor</Button>
+              </Link>
+          </div>
+
+
       </GridCell>
     </Grid>
 

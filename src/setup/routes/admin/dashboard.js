@@ -6,6 +6,6 @@ import Dashboard from '../../../modules/admin/Dashboard'
 export const dashboard = {
   path: '/admin/dashboard',
   component: Dashboard,
-  auth: true,
+  // auth: true,
   role: params.user.roles.admin
 }

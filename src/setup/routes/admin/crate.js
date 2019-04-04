@@ -7,20 +7,20 @@ import CrateCreateOrEdit from '../../../modules/admin/crate/CreateOrEdit'
 export const crateList = {
   path: '/admin/crates',
   component: CrateList,
-  auth: true,
+  // auth: true,
   role: params.user.roles.admin
 }
 
 export const crateCreate = {
   path: '/admin/crate/create',
   component: CrateCreateOrEdit,
-  auth: true,
+  // auth: true,
   role: params.user.roles.admin
 }
 
 export const crateEdit = {
   path: (id = ':id') => (`/admin/crate/${ id }/edit`),
   component: CrateCreateOrEdit,
-  auth: true,
+  // auth: true,
   role: params.user.roles.admin
 }
