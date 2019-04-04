@@ -21,9 +21,11 @@ import doctorRoutes from '../../setup/routes/doctor'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
+import userRoutes from "../../setup/routes/doctor";
+import home from "../../setup/routes/home";
 
 // Component
-class DoctorLogin extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props)
@@ -125,17 +127,31 @@ class DoctorLogin extends Component {
               />
             </div>
 
-            <div style={{ marginTop: '2em' }}>
-              {/* Signup link */}
-              <Link to={doctorRoutes.doctorSignup.path}>
-                <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
-              </Link>
+            {/*<div style={{ marginTop: '2em' }}>*/}
+              {/*/!* Signup link *!/*/}
+              {/*<Link to={doctorRoutes.doctorSignup.path}>*/}
+                {/*<Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>*/}
+              {/*</Link>*/}
 
-              {/* Form submit */}
-              <Button type="submit" theme="secondary" disabled={isLoading}>
-                Login
-                <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-            </div>
+              {/*/!* Form submit *!/*/}
+              {/*<Button type="submit" theme="secondary" disabled={isLoading}>*/}
+                {/*Login*/}
+                {/*<Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>*/}
+            {/*</div>*/}
+
+              <div style={{ marginTop: '2em' }}>
+                  {/* Signup link */}
+                  <Link to={userRoutes.doctorSignup.path}>
+                      <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
+                  </Link>
+
+                  <Link to={userRoutes.doctorProfile.path}>
+                      <Button type="button" theme="secondary">Login</Button>
+                  </Link>
+              </div>
+
+
+
           </form>
         </GridCell>
 
@@ -147,7 +163,7 @@ class DoctorLogin extends Component {
 }
 
 // Component Properties
-DoctorLogin.propTypes = {
+Login.propTypes = {
   user: PropTypes.object.isRequired,
   login: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
@@ -161,4 +177,4 @@ function loginState(state) {
   }
 }
 
-export default connect(loginState, { login: messageShow, messageHide })(withRouter(DoctorLogin))
+export default connect(loginState, { login: messageShow, messageHide })(withRouter(Login))

@@ -16,7 +16,6 @@ import { textLevel1 } from '../../ui/common/shadows'
 import { APP_URL } from '../../setup/config/env'
 import patientRoutes from '../../setup/routes/patient'
 import doctorRoutes from '../../setup/routes/doctor'
-import doctorsRoutes from '../../setup/routes/doctors'
 import Onboarding from './Onboarding'
 import Icon from "../patient/Login";
 
@@ -64,7 +63,7 @@ const Home = (props) => (
                   <Button type="button" theme="secondary" style={{ marginRight: '0.5em' }}>I'm a Patient</Button>
               </Link>
 
-              <Link to={doctorsRoutes.dashboard.path}>
+              <Link to={doctorRoutes.doctorLogin.path}>
                   <Button type="button" theme="secondary">I'm a Doctor</Button>
               </Link>
           </div>
