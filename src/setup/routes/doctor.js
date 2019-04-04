@@ -16,15 +16,15 @@ export default {
         component: Signup
     },
 
-    profile: {
+    doctorProfile: {
         path: '/doctor/profile',
         component: Profile,
-        auth: true
+        // auth: true
     },
 
     subscriptions: {
         path: '/doctor/subscriptions',
         component: Subscriptions,
-        auth: true
+        // auth: true
     }
 }
