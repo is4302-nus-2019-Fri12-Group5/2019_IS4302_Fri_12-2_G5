@@ -17,7 +17,7 @@ import { white } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
-import userRoutes from '../../setup/routes/user'
+import doctorRoutes from '../../setup/routes/doctor'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
@@ -127,7 +127,7 @@ class Login extends Component {
 
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
-              <Link to={userRoutes.signup.path}>
+              <Link to={doctorRoutes.signup.path}>
                 <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 

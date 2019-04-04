@@ -17,7 +17,7 @@ import { white } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
-import userRoutes from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/patient'
 import { messageShow, messageHide } from '../common/api/actions'
 import { register } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'

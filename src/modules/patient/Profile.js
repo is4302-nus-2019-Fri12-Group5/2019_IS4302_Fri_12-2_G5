@@ -12,7 +12,7 @@ import Button from '../../ui/button'
 import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
-import userRoutes from '../../setup/routes/user'
+import userRoutes from '../../setup/routes/patient'
 import { logout } from './api/actions'
 
 // Component
