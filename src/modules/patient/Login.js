@@ -144,7 +144,7 @@ class Login extends Component {
                 <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
-              <Link to={home.history.path}>
+              <Link to={home.hospital.path}>
                 <Button type="button" theme="secondary">Login</Button>
               </Link>
             </div>

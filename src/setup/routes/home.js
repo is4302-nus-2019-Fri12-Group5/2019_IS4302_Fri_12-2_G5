@@ -3,7 +3,7 @@ import Home from '../../modules/pages/Home'
 import Hospital from '../../modules/pages/Hospital'
 import History from '../../modules/pages/History'
 import HowItWorks from '../../modules/pages/HowItWorks'
-import WhatsNew from '../../modules/pages/WhatsNew'
+import WhatsNew from '../../modules/pages/Balance'
 
 // Home routes
 export default {

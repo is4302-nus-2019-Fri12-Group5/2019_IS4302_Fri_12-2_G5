@@ -1,5 +1,5 @@
 // Imports
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -7,79 +7,117 @@ import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
-import { H2, H5 } from '../../ui/typography'
+import { H3 } from '../../ui/typography'
 import Button from '../../ui/button'
-import ImageTile from '../../ui/image/Tile'
-import { level1 } from '../../ui/common/shadows'
+import Icon from '../../ui/image/Tile'
+import { white, grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import crateRoutes from '../../setup/routes/crate'
 import userRoutes from '../../setup/routes/patient'
+import { getList as getProductList } from '../product/api/actions'
+import Loading from '../common/Loading'
+import EmptyMessage from '../common/EmptyMessage'
+import ProductItem from '../product/Item'
 
 // Component
-const Hospital = (props) => (
-  <Grid alignCenter={true} style={{ padding: '2em' }}>
-    {/* SEO */}
-    <Helmet>
-      <title>Hospital List For You</title>
-    </Helmet>
+class Hospital extends PureComponent {
 
-    {/* Left Content - Image Collage */}
-    <GridCell>
-      <Grid gutter={true} alignCenter={true}>
-        <GridCell justifyCenter={true}>
-          <ImageTile width={300} height={530} shadow={level1} image={`${ APP_URL }/hospital_1.jpg`} />
-        </GridCell>
+  // Runs on server only for SSR
+  static fetchData({ store }) {
+    return store.dispatch(getProductList())
+  }
 
-        <GridCell>
-          <Grid>
-            <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/hospital_2.jpg`} />
+  // Runs on client only
+  componentDidMount() {
+    this.props.getProductList()
+  }
+
+  render() {
+    const { isLoading, list } = this.props.products
+
+    return (
+        <div>
+          {/* SEO */}
+          <Helmet>
+            <title>Hospital - MediChain</title>
+          </Helmet>
+
+          {/* Top title bar */}
+          <Grid style={{ backgroundColor: grey }}>
+            <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+              <H3 font="secondary">Your Current Hospital </H3>
+
+              <p style={{ marginTop: '1em', color: grey2 }}>Watch this space to keep updated with available hospitals!</p>
             </GridCell>
           </Grid>
 
+          {/* Product list */}
           <Grid>
-            <GridCell justifyCenter={true}>
-              <ImageTile width={170} height={250} shadow={level1} image={`${ APP_URL }/hospital_3.jpg`} style={{ marginTop: '1.9em' }} />
-            </GridCell>
+            {
+              isLoading
+                  ? <Loading/>
+                  : list.length > 0
+                  ? list.map(transaction_history => (
+                      <GridCell key={transaction_history.id} style={{ textAlign: 'center' }}>
+                        <ProductItem product={transaction_history}/>
+                      </GridCell>
+                  ))
+                  : <EmptyMessage message="No hospital to show" />
+            }
           </Grid>
-        </GridCell>
-      </Grid>
-    </GridCell>
 
-    {/* Right Content */}
-    <GridCell style={{ textAlign: 'center' }}>
-      <H2 font="secondary">Hospital List For You</H2>
+            {/* Second title bar */}
+            <Grid style={{ backgroundColor: grey }}>
+                <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+                    <H3 font="secondary">More Hospitals </H3>
 
-      <H5 style={{ marginTop: '0.5em' }}>
-        Choose a hospital to find your doctor! Book the reservation today!
-      </H5>
+                    <p style={{ marginTop: '1em', color: grey2 }}>Find more hospitals!</p>
+                </GridCell>
+            </Grid>
 
-      {/* Call to action */}
-      {
-        props.user.isAuthenticated
-          ? <Link to={crateRoutes.list.path}>
-              <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
-            </Link>
-          : <Link to={userRoutes.signup.path}>
-              <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
-            </Link>
-      }
-    </GridCell>
-  </Grid>
-)
+            {/* Product list */}
+            <Grid>
+                {
+                    isLoading
+                        ? <Loading/>
+                        : list.length > 0
+                        ? list.map(transaction_history => (
+                            <GridCell key={transaction_history.id} style={{ textAlign: 'center' }}>
+                                <ProductItem product={transaction_history}/>
+                            </GridCell>
+                        ))
+                        : <EmptyMessage message="No More hospital to show" />
+                }
+            </Grid>
 
-// Component Properties
-Hospital.propTypes = {
-  user: PropTypes.object.isRequired
-}
-
-// Component State
-function menState(state) {
-  return {
-    user: state.user
+        </div>
+    )
   }
 }
 
-export default connect(menState, {})(Hospital)
+
+
+
+
+
+
+
+
+// Component Properties
+Hospital.propTypes = {
+  user: PropTypes.object.isRequired,
+  products: PropTypes.object.isRequired,
+  getProductList: PropTypes.func.isRequired
+}
+
+// Component State
+function whatsNewState(state) {
+  return {
+    user: state.user,
+    products: state.products
+  }
+}
+
+export default connect(whatsNewState, { getProductList })(Hospital)

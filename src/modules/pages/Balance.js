@@ -21,7 +21,7 @@ import EmptyMessage from '../common/EmptyMessage'
 import ProductItem from '../product/Item'
 
 // Component
-class WhatsNew extends PureComponent {
+class Balance extends PureComponent {
 
   // Runs on server only for SSR
   static fetchData({ store }) {
@@ -91,7 +91,7 @@ class WhatsNew extends PureComponent {
 }
 
 // Component Properties
-WhatsNew.propTypes = {
+Balance.propTypes = {
   user: PropTypes.object.isRequired,
   products: PropTypes.object.isRequired,
   getProductList: PropTypes.func.isRequired
@@ -105,4 +105,4 @@ function whatsNewState(state) {
   }
 }
 
-export default connect(whatsNewState, { getProductList })(WhatsNew)
+export default connect(whatsNewState, { getProductList })(Balance)
