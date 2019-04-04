@@ -89,7 +89,7 @@ class Login extends Component {
         <GridCell>
             <Grid gutter={true} alignCenter={true}>
                 <GridCell justifyCenter={true}>
-                    <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
+                    <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/hospital_2.jpg`}/>
                 </GridCell>
             </Grid>
         </GridCell>
@@ -100,7 +100,7 @@ class Login extends Component {
           {/* Login Form */}
           <form onSubmit={this.onSubmit}>
             <div style={{ width: '25em', margin: '0 auto' }}>
-              {/* Email */}s
+              {/* Email */}
               <Input
                 type="email"
                 fullWidth={true}

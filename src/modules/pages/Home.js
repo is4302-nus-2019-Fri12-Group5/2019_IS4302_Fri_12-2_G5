@@ -50,7 +50,7 @@ const Home = (props) => (
             ? <Link to={crateRoutes.list.path}>
                 <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
               </Link>
-            : <Link to={userRoutes.signup.path}>
+            : <Link to={userRoutes.login.path}>
                 <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
               </Link>
         }
