@@ -1,9 +1,8 @@
-//namespace org.example.basic
-
 namespace org.healthcare
+
 /**
-* Participants
-*/
+ * Participants
+ */
 abstract participant Person identified by NRIC {
 	o String NRIC
 	o String firstName
@@ -14,26 +13,27 @@ abstract participant Person identified by NRIC {
 	o String nationality optional
 	o String race optional
 	o Gender gender optional
+	--> BasicMedicalInformation basicMedicalInformation optional
 }
 
 participant Doctor extends Person {
 	o String licenseNum
 	o String department
 	o String title
-    --> Hospital hospital optional
+	--> Hospital hospital optional
 }
 
 participant Patient extends Person {
-	--> Hospital[] currentHospitals optional
-    --> MedicalRecord[] medicalRecords optional
+	--> Hospital[] currentHospitals
+	--> MedicalRecord[] medicalRecords
 	o DateTime lastVisit
+    o Double walletBalance
 }
-
 
 participant Hospital identified by registrationID {
 	o String registrationID
 	o String name
-	--> Doctor[] doctors optional
+	--> Doctor[] doctors
 }
 
 concept Address {
@@ -50,9 +50,8 @@ enum Gender {
 }
 
 /**
-* Assets
-*/
-
+ * Assets
+ */
 asset BasicMedicalInformation identified by basicID {
 	o String basicID
 	--> Person person
@@ -68,11 +67,11 @@ asset MedicalRecord identified by recordID {
 	o DateTime date
 	o String diagnosis
 	o Ward wardInfo optional
-    o DateTime lastModified
-    --> Person patient
+	o DateTime lastModified
+	--> Person patient
 	--> Doctor doctor
 	--> Hospital hospital
-	--> Prescription[] prescription
+	--> Prescription[] prescriptions optional
 }
 
 asset Prescription identified by presID {
@@ -82,7 +81,8 @@ asset Prescription identified by presID {
 	o UnitType unitType optional
 	o String dosage optional
 	o String duration optional
-    --> MedicalRecord medicalRecord
+	--> MedicalRecord medicalRecord
+    o DateTime lastModified
 }
 
 concept Ward {
@@ -107,12 +107,27 @@ enum UnitType {
 	o ML
 }
 
-/*
- *Transaction
- */
+enum MethodType {
+	o CASH
+}
 
-transaction UpdatePersonalInfo {
-	--> Person person
+/**
+ * Transactions
+ */
+transaction UpdatePatientPersonalInfo {
+	--> Patient patient
+	o String firstName optional
+	o String lastName optional
+	o DateTime dateOfBirth optional
+	o Address address optional
+	o String phoneNum optional
+	o String nationality optional
+	o String race optional
+	o Gender gender optional
+}
+
+transaction UpdateDoctorPersonalInfo {
+	--> Doctor doctor
 	o String firstName optional
 	o String lastName optional
 	o DateTime dateOfBirth optional
@@ -144,16 +159,15 @@ transaction RemovePatientHospital {
 }
 
 transaction CreateMedicalRecord {
-	o MedicalRecord medicalrecord
+	o MedicalRecord medicalRecord
 }
 
 transaction UpdateMedicalRecord {
-	--> MedicalRecord medicalrecord
+	--> MedicalRecord medicalRecord
 	o DateTime date optional
 	o String diagnosis optional
 	o Ward wardInfo optional
-	o Prescription prescription optional
-    o DateTime lastModified
+	o DateTime lastModified
 }
 
 transaction CreatePrescription {
@@ -163,13 +177,28 @@ transaction CreatePrescription {
 transaction UpdatePrescription {
   	--> Prescription prescription
 	o String quantity
-	o UnitType unittype
+	o UnitType unitType
 	o String dosage
 	o String duration
-    o DateTime lastModified
+	o DateTime lastModified
 }
 
+transaction CreatePatientBasicMedicalInformation {
+	o String basicID
+	--> Patient patient
+	o BloodType bloodType
+	o String height
+	o String weight
+	o String allergies 
+	o String disabilities 
+}
 
+transaction CreateDoctorBasicMedicalInformation {
+	o BasicMedicalInformation doctorBasicMedicalInformation
+}
 
-
-
+transaction TopUpWalletBalance {
+	--> Patient patient
+	o Double topUpAmount
+	o MethodType type
+}

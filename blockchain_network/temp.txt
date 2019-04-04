@@ -1,0 +1,64 @@
+/**
+ * @param {org.healthcare.CreateDoctorBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments
+ * @transaction
+ */
+async function CreateDoctorBasicMedicalInformation(args) {
+    const basicMedicalInformationRegistry = await getAssetRegistry('org.healthcare.BasicMedicalInformation');
+    const doctorRegistry = await getParticipantRegistry('org.healthcare.Doctor');
+    
+    var factory = getFactory();
+    var newBasicMedicalInformation = factory.newResource('org.healthcare', 'BasicMedicalInformation', args.basicID);
+    
+    // Relationship
+    newBasicMedicalInformation.person = args.doctor;
+    // Attribute
+    newBasicMedicalInformation.bloodType = args.bloodType;
+    newBasicMedicalInformation.height = args.height;
+    newBasicMedicalInformation.weight = args.weight;
+    newBasicMedicalInformation.allergies = args.allergies;
+    newBasicMedicalInformation.disabilities = args.disabilities;
+
+    await basicMedicalInformationRegistry.add(newBasicMedicalInformation);
+    
+    args.doctor.basicMedicalInformation = newBasicMedicalInformation;
+    await doctorRegistry.update(args.doctor);
+}
+
+/**
+ * @param {org.healthcare.CreatePatientBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments
+ * @transaction
+ */
+async function CreatePatientBasicMedicalInformation(args) {
+    const basicMedicalInformationRegistry = await getAssetRegistry('org.healthcare.BasicMedicalInformation');
+    const patientRegistry = await getParticipantRegistry('org.healthcare.Patient');
+    
+    var factory = getFactory();
+    var newBasicMedicalInformation = factory.newResource('org.healthcare', 'BasicMedicalInformation', args.basicID); 
+    
+    // Relationship
+    newBasicMedicalInformation.person = args.patient;
+    // Attribute
+    newBasicMedicalInformation.bloodType = args.bloodType;
+    newBasicMedicalInformation.height = args.height;
+    newBasicMedicalInformation.weight = args.weight;
+    newBasicMedicalInformation.allergies = args.allergies;
+    newBasicMedicalInformation.disabilities = args.disabilities;
+
+    await basicMedicalInformationRegistry.add(newBasicMedicalInformation);
+    
+    args.patient.basicMedicalInformation = newBasicMedicalInformation;
+    await patientRegistry.update(args.patient);
+}
+
+/////////////////////////////////////////
+
+transaction CreateDoctorBasicMedicalInformation {
+	o String basicID
+	--> Doctor doctor
+	o BloodType bloodType
+	o String height
+	o String weight
+	o String allergies 
+	o String disabilities 
+}
+
