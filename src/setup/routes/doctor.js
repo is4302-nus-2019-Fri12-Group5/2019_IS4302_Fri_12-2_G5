@@ -6,7 +6,7 @@ import Subscriptions from '../../modules/doctor/Subscriptions'
 
 // User routes
 export default {
-    login: {
+    doctorLogin: {
         path: '/doctor/login',
         component: Login
     },

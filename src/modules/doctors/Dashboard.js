@@ -16,7 +16,7 @@ const Dashboard = () => (
   <div>
     {/* SEO */}
     <Helmet>
-      <title>Dashboard - Admin - Crate</title>
+      <title>Dashboard - Doctor</title>
     </Helmet>
 
     {/* Top menu bar */}

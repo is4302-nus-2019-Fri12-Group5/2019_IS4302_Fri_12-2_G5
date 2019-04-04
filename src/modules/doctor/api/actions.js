@@ -14,7 +14,7 @@ export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
 
-// Set a patient after login or using localStorage token
+// Set a patient after doctorLogin or using localStorage token
 export function setUser(token, user) {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

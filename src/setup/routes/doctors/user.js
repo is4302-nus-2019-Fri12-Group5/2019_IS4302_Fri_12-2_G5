@@ -1,9 +1,9 @@
 // App Imports
-import Dashboard from '../../../modules/admin/Dashboard'
+import Dashboard from '../../../modules/doctors/Dashboard'
 
 // Admin patient routes
 export const userList = {
-  path: '/admin/users',
+  path: '/doctors/users',
   component: Dashboard,
   auth: true
 }

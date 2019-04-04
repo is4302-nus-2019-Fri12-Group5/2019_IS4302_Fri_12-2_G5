@@ -1,18 +1,18 @@
 // App Imports
 import params from '../../../setup/config/params'
-import CrateList from '../../../modules/admin/crate/List'
-import CrateCreateOrEdit from '../../../modules/admin/crate/CreateOrEdit'
+import CrateList from '../../../modules/doctors/crate/List'
+import CrateCreateOrEdit from '../../../modules/doctors/crate/CreateOrEdit'
 
 // Admin crate routes
 export const crateList = {
-  path: '/admin/crates',
+  path: '/doctors/crates',
   component: CrateList,
   // auth: true,
   role: params.user.roles.admin
 }
 
 export const crateCreate = {
-  path: '/admin/crate/create',
+  path: '/doctors/crate/create',
   component: CrateCreateOrEdit,
   // auth: true,
   role: params.user.roles.admin

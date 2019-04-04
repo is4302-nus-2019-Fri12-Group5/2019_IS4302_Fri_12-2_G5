@@ -15,7 +15,7 @@ import { Input, Textarea, Select } from '../../../ui/input'
 import { white } from "../../../ui/common/colors"
 
 // App Imports
-import admin from '../../../setup/routes/admin'
+import admin from '../../../setup/routes/doctors'
 import { routeImage } from "../../../setup/routes"
 import { renderIf, slug } from '../../../setup/helpers'
 import {
