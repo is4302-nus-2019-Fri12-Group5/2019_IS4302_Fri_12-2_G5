@@ -43,7 +43,14 @@ Now you're ready build our Blockchain Application!
 
 This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. 
 
-## Why? [![start with why](https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg?style=flat)](http://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action)
+## Troubleshooting 
+
+Common problems such as:
+1. internal/modules/cjs/loader.js:596
+    throw err;
+    FIX: REMOVE NODE_MODULES AND RUN NPM INSTALL AGAIN IN TERMINAL
+2. Cannot find module 'express-http-proxy'
+    FIX: npm install express-http-proxy
 
 
 ## Features 
