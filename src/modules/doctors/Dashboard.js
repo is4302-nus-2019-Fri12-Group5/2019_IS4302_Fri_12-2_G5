@@ -9,7 +9,7 @@ import { Grid, GridCell } from '../../ui/grid'
 import { grey3 } from '../../ui/common/colors'
 
 // App Imports
-import AdminMenu from './common/Menu'
+import DoctorMenu from './common/Menu'
 
 // Component
 const Dashboard = () => (
@@ -20,12 +20,12 @@ const Dashboard = () => (
     </Helmet>
 
     {/* Top menu bar */}
-    <AdminMenu/>
+    <DoctorMenu/>
 
     {/* Page Content */}
     <Grid style={{ padding: '2em' }}>
       <GridCell>
-        <p style={{ textAlign: 'center', color: grey3 }}>Nothing here yet. Choose an item from admin menu.</p>
+        <p style={{ textAlign: 'center', color: grey3 }}>Nothing here yet. Hello World.</p>
       </GridCell>
     </Grid>
   </div>

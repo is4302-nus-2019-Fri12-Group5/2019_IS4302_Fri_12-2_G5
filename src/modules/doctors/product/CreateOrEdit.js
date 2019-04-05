@@ -25,7 +25,7 @@ import {
 } from '../../product/api/actions'
 import { getGenders as getUserGenders } from '../../patient/api/actions'
 import { upload, messageShow, messageHide } from '../../common/api/actions'
-import AdminMenu from '../common/Menu'
+import DoctorMenu from '../common/Menu'
 
 // Component
 class CreateOrEdit extends Component {
@@ -153,7 +153,7 @@ class CreateOrEdit extends Component {
         } else {
           this.props.messageShow('Product saved successfully.')
 
-          this.props.history.push(admin.productList.path)
+          this.props.history.push(admin.doctorPatients.path)
         }
       })
       .catch(error => {
@@ -220,14 +220,14 @@ class CreateOrEdit extends Component {
         </Helmet>
 
         {/* Top menu bar */}
-        <AdminMenu/>
+        <DoctorMenu/>
 
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'left' }}>
-              <Link to={admin.productList.path}>
+              <Link to={admin.doctorPatients.path}>
                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
               </Link>
             </GridCell>

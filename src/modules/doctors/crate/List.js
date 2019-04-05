@@ -16,7 +16,7 @@ import { getList as getCrateList, remove as removeCrate } from '../../crate/api/
 import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
-import AdminMenu from '../common/Menu'
+import DoctorMenu from '../common/Menu'
 import admin from '../../../setup/routes/doctors'
 
 // Component
@@ -81,7 +81,7 @@ class List extends PureComponent {
         </Helmet>
 
         {/* Top menu bar */}
-        <AdminMenu/>
+        <DoctorMenu/>
 
         {/* Page Content */}
         <div>

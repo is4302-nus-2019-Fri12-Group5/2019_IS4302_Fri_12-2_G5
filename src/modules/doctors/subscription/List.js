@@ -12,7 +12,7 @@ import { getList as getSubscriptionsList } from '../../subscription/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
-import AdminMenu from '../common/Menu'
+import DoctorMenu from '../common/Menu'
 
 // Component
 class List extends PureComponent {
@@ -34,11 +34,11 @@ class List extends PureComponent {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Crates - Admin - Crate</title>
+          <title>Wallet - MediChain</title>
         </Helmet>
 
         {/* Top menu bar */}
-        <AdminMenu/>
+        <DoctorMenu/>
 
         {/* Page Content */}
         <div>

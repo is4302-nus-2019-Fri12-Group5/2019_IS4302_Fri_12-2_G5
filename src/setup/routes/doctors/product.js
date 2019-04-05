@@ -4,7 +4,7 @@ import ProductList from '../../../modules/doctors/product/List'
 import ProductCreateOrEdit from '../../../modules/doctors/product/CreateOrEdit'
 
 // Admin product routes
-export const productList = {
+export const doctorPatients = {
   path: '/doctors/products',
   component: ProductList,
   // auth: true,

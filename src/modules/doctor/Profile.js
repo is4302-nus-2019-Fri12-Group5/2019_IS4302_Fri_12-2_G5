@@ -13,6 +13,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import doctorRoutes from '../../setup/routes/doctor'
+import doctorsRoutes from '../../setup/routes/doctors'
 import home from '../../setup/routes/home'
 import { logout } from './api/actions'
 import ImageTile from "../../ui/image/Tile";
@@ -46,8 +47,8 @@ const Profile = (props) => (
           <p style={{ color: grey2, marginBottom: '2em' }}>Title: Director</p>
           <p style={{ color: grey2, marginBottom: '4em' }}>Fee:   100</p>
 
-        <Link to={doctorRoutes.doctorSubscriptions.path}>
-          <Button theme="primary" style={{marginRight : '0.5em'}}>Patients</Button>
+        <Link to={doctorsRoutes.dashboard.path}>
+          <Button theme="primary" style={{marginRight : '0.5em'}}>Dashboard</Button>
         </Link>
 
           {/*<Link to={}>*/}
