@@ -45,7 +45,7 @@ const HowItWorks = (props) => (
         <p style={{ marginTop: '0.5em', color: grey3 }}>The trusted hospitals will be added to your list!</p>
       </GridCell>
 
-      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_1.jpg') center top no-repeat` }}/>
+      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_1.jpeg') center top no-repeat` }}/>
     </Grid>
 
     {/* 2 - Choose Your Doctor */}
@@ -71,7 +71,7 @@ const HowItWorks = (props) => (
         <p style={{ marginTop: '0.5em', color: grey3 }}>Pay immediately through MediChain!</p>
       </GridCell>
 
-      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_3.jpg') center top no-repeat` }}/>
+      <GridCell style={{ background: `url('${ APP_URL }/images/how_it_works_3.jpeg') center top no-repeat` }}/>
     </Grid>
 
       {/* 4 - Pay when booking appointment! */}
