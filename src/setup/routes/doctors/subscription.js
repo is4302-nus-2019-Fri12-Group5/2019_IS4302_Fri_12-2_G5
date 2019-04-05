@@ -1,6 +1,6 @@
 // App Imports
 import params from '../../../setup/config/params'
-import SubscriptionList from '../../../modules/doctors/subscription/List'
+import SubscriptionList from '../../../modules/doctors/doctorWallet/List'
 
 // Admin subscriptions routes
 export const doctorWallet = {

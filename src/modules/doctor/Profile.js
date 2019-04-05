@@ -38,7 +38,8 @@ const Profile = (props) => (
             </Grid>
         </GridCell>
 
-      <GridCell style={{textAlign: 'center' }}><H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
+      <GridCell style={{textAlign: 'center' }}>
+          <H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
         {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
           <H4 style={{ marginBottom: '3em' }}>Bruce Lee</H4>
         {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}

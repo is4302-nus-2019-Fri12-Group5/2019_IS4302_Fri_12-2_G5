@@ -91,7 +91,7 @@ export const subscriptionsByUser = (state = subscriptionsByUserInitialState, act
   }
 }
 
-// Single subscription
+// Single doctorWallet
 
 // Initial State
 const subscriptionInitialState = {

@@ -89,7 +89,7 @@ export function getListByUser(isLoading = true) {
   }
 }
 
-// Get single subscription
+// Get single doctorWallet
 export function get(slug, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -120,7 +120,7 @@ export function get(slug, isLoading = true) {
   }
 }
 
-// Create subscription
+// Create doctorWallet
 export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -131,7 +131,7 @@ export function create(variables) {
   }
 }
 
-// Remove subscription
+// Remove doctorWallet
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
