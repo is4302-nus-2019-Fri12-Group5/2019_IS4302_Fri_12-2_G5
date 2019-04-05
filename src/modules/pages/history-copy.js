@@ -21,8 +21,8 @@ import { getList as getProductList } from '../product/api/actions'
 // Component
 class History extends PureComponent {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       medicalRecords: []
     }
@@ -30,12 +30,12 @@ class History extends PureComponent {
 
   // Runs on server only for SSR
   static fetchData({ store }) {
-    // return store.dispatch(getProductList())
+    return store.dispatch(getProductList())
   }
 
   // Runs on client only
   componentDidMount() {
-    // this.props.getProductList();
+    this.props.getProductList();
     console.log("Passed");
 	  fetch("/hlf/api/org.healthcare.MedicalRecord")
 	    .then(response => response.json())
@@ -53,10 +53,6 @@ class History extends PureComponent {
   }
 
   render() {
-    
-    const { medicalRecords } = this.state;
-
-    console.log(medicalRecords);
 
     return (
     <Grid alignCenter={true} style={{ padding: '2em' }}>
@@ -88,8 +84,6 @@ class History extends PureComponent {
         </Grid>
       </GridCell>
 
-      
-
       {/* Right Content */}
       <GridCell style={{ textAlign: 'center' }}>
         <H2 font="secondary">Online Medical History For You</H2>
@@ -99,7 +93,7 @@ class History extends PureComponent {
         </H5>
 
         {/* Call to action */}
-        {/* {
+        {
           props.user.isAuthenticated
             ? <Link to={crateRoutes.list.path}>
                 <Button theme="secondary" style={{ marginTop: '1em' }}>Get Subscription</Button>
@@ -107,23 +101,8 @@ class History extends PureComponent {
             : <Link to={userRoutes.signup.path}>
                 <Button theme="secondary" style={{ marginTop: '1em' }}>Get Started</Button>
               </Link>
-        } */}
+        }
       </GridCell>
-
-      <GridCell>
-          {
-            medicalRecords.map(medicalRecord => (
-                    <GridCell key={medicalRecord.recordID} style={{ textAlign: 'center' }}>
-                      <h4>{medicalRecord.diagnosis}</h4>
-                      <h4>{medicalRecord.lastModified} </h4>
-                      <h4>{medicalRecord.prescriptions}</h4>
-                      <br></br>
-
-                    </GridCell>
-                  ))
-          }
-      </GridCell>
-      
     </Grid>
     )
   }
