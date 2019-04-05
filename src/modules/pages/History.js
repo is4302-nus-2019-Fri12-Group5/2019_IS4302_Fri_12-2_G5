@@ -123,7 +123,7 @@ class History extends PureComponent {
                   ))
           }
       </GridCell>
-      
+
     </Grid>
     )
   }

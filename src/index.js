@@ -11,6 +11,7 @@ import startServer from './setup/server/start-server'
 // Create new server
 const app = new Express()
 app.use('/hlf', proxy('localhost:3001/'))
+app.use('/doctor', proxy('localhost:3002/'))
 const server = new Server(app)
 
 // Load modules

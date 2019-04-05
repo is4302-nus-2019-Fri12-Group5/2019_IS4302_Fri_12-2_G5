@@ -26,7 +26,8 @@ class Balance extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      patient: []
+      medicalRecords: [],
+      patient: ''
     }
   }
 
@@ -38,13 +39,14 @@ class Balance extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getProductList();
-    console.log("Passed");
+    console.log("Passed medical record");
+    
 	  fetch("/hlf/api/org.healthcare.MedicalRecord")
 	    .then(response => response.json())
         .then(responseData => {
           
           this.setState({
-            patient: responseData
+            medicalRecords : responseData
           });
 
         })
@@ -52,6 +54,19 @@ class Balance extends PureComponent {
           console.log('Error fetching and parsing data', error);
         });
 
+        console.log("Passed patient");
+      fetch("/hlf/api/org.healthcare.Patient")
+      .then(response => response.json())
+        .then(responseData => {
+          
+          this.setState({
+            patient: responseData.find(response => response.NRIC = "p1")
+          });
+
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
   }
 
   // componentDidMount() {
@@ -76,10 +91,10 @@ class Balance extends PureComponent {
   render() {
 
     const { isLoading, list } = this.props.products;
-    const { patient } = this.state;
+    const { patient, medicalRecords } = this.state;
 
 
-    console.log(patient);
+    console.log(medicalRecords);
     
     return (
       <div>
@@ -91,7 +106,7 @@ class Balance extends PureComponent {
         {/* Top title bar */}
         <Grid style={{ backgroundColor: grey }}>
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-            <H3 font="secondary">Your Account Balance:     230 </H3>
+            <H3 font="secondary">Your Account Balance: {patient.walletBalance} </H3>
 
             <p style={{ marginTop: '1em', color: grey2 }}>Watch this space to keep updated with your transaction record!</p>
           </GridCell>
@@ -102,12 +117,12 @@ class Balance extends PureComponent {
           {
             isLoading
               ? <Loading/>
-              : patient.length > 0
-                ? patient.map(singlePatient => (
-                    <GridCell key={singlePatient.recordID} style={{ textAlign: 'center' }}>
-                      <h4>{singlePatient.diagnosis}</h4>
-                      <h4>{singlePatient.lastModified} </h4>
-                      <h4>{singlePatient.prescriptions}</h4>
+              : medicalRecords.length > 0
+                ? medicalRecords.map(singleRecord => (
+                    <GridCell key={singleRecord.recordID} style={{ textAlign: 'center' }}>
+                      <h4>{singleRecord.diagnosis}</h4>
+                      <h4>{singleRecord.lastModified} </h4>
+                      <h4>{singleRecord.prescriptions}</h4>
                       <br></br>
 
                     </GridCell>
