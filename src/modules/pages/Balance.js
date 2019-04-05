@@ -23,6 +23,13 @@ import ProductItem from '../product/Item'
 // Component
 class Balance extends PureComponent {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      patient: []
+    }
+  }
+
   // Runs on server only for SSR
   static fetchData({ store }) {
     return store.dispatch(getProductList())
@@ -30,12 +37,48 @@ class Balance extends PureComponent {
 
   // Runs on client only
   componentDidMount() {
-    this.props.getProductList()
+    this.props.getProductList();
+    console.log("Passed");
+	  fetch("/hlf/api/org.healthcare.MedicalRecord")
+	    .then(response => response.json())
+        .then(responseData => {
+          
+          this.setState({
+            patient: responseData
+          });
+
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
   }
 
-  render() {
-    const { isLoading, list } = this.props.products
+  // componentDidMount() {
+  //   this.props.getProductList();
+  //   console.log("Passed");
+  //   fetch('/hlf/api/org.healthcare.RemovePatientHospital', {
+  //       method: 'POST',
+  //       headers: {
+  //           Accept: 'application/json',
+  //           'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //           $class:'org.healthcare.RemovePatientHospital',
+  //           patient: 'p1',
+  //           hospital: 'h1',
+  //           timestamp: new Date(),
+        
+  //       })
+  //   });   
+  // }
 
+  render() {
+    
+    const { isLoading, list } = this.props.products;
+    const { patient } = this.state;
+
+    console.log(patient);
+    
     return (
       <div>
         {/* SEO */}
@@ -57,16 +100,22 @@ class Balance extends PureComponent {
           {
             isLoading
               ? <Loading/>
-              : list.length > 0
-                ? list.map(transaction_history => (
-                    <GridCell key={transaction_history.id} style={{ textAlign: 'center' }}>
-                      <ProductItem product={transaction_history}/>
+              : patient.length > 0
+                ? patient.map(singlePatient => (
+                    <GridCell key={singlePatient.recordID} style={{ textAlign: 'center' }}>
+                      <h4>{singlePatient.diagnosis}</h4>
+                      <h4>{singlePatient.lastModified} </h4>
+                      <h4>{singlePatient.prescriptions}</h4>
+                      <br></br>
                     </GridCell>
                   ))
                 : <EmptyMessage message="No history to show" />
           }
         </Grid>
 
+        {/* <p> {patient.map(singlePatient => <li>{singlePatient.phoneNum} + "hello" </li>)} </p> */}
+
+        
         {/* Bottom call to action bar */}
         <Grid style={{ backgroundColor: grey }}>
           <GridCell style={{ padding: '3em', textAlign: 'center' }}>
