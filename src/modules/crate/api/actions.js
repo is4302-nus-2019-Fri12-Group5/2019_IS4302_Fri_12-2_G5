@@ -51,7 +51,7 @@ export function getList(orderBy = 'DESC', isLoading = true) {
   }
 }
 
-// Get single crate
+// Get single doctorMedicalRecord
 export function get(slug, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -82,7 +82,7 @@ export function get(slug, isLoading = true) {
   }
 }
 
-// Get single crate by Id
+// Get single doctorMedicalRecord by Id
 export function getById(crateId) {
   return dispatch => {
     return axios.post(routeApi, query({
@@ -93,7 +93,7 @@ export function getById(crateId) {
   }
 }
 
-// Create or update crate
+// Create or update doctorMedicalRecord
 export function createOrUpdate(crate) {
   if (crate.id > 0) {
     return update(crate)
@@ -103,18 +103,18 @@ export function createOrUpdate(crate) {
   }
 }
 
-// Create crate
+// Create doctorMedicalRecord
 export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
-      operation: 'crateCreate',
+      operation: 'recordCreate',
       variables,
       fields: ['id']
     }))
   }
 }
 
-// Update crate
+// Update doctorMedicalRecord
 export function update(crate) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -125,7 +125,7 @@ export function update(crate) {
   }
 }
 
-// Remove crate
+// Remove doctorMedicalRecord
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({

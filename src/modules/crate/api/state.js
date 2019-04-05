@@ -49,7 +49,7 @@ export const crates = (state = cratesInitialState, action) => {
   }
 }
 
-// Single crate
+// Single doctorMedicalRecord
 
 // Initial State
 const crateInitialState = {

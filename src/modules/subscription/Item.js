@@ -28,7 +28,7 @@ class Item extends PureComponent {
   }
 
   onClickUnsubscribe = (id) => {
-    let check = confirm('Are you sure you want to unsubscribe to this crate?')
+    let check = confirm('Are you sure you want to unsubscribe to this doctorMedicalRecord?')
 
     if(check) {
       this.setState({
@@ -48,7 +48,7 @@ class Item extends PureComponent {
           }
         })
         .catch(error => {
-          this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+          this.props.messageShow('There was some error subscribing to this doctorMedicalRecord. Please try again.')
         })
         .then(() => {
           this.setState({

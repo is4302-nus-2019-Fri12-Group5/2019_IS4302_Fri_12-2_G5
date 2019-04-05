@@ -17,7 +17,7 @@ import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import DoctorMenu from '../common/Menu'
-import admin from '../../../setup/routes/doctors'
+import doctorsRoute from '../../../setup/routes/doctors'
 
 // Component
 class List extends PureComponent {
@@ -34,7 +34,7 @@ class List extends PureComponent {
 
   remove = (id) => {
     if (id > 0) {
-      let check = confirm('Are you sure you want to delete this crate?')
+      let check = confirm('Are you sure you want to delete this Medical Record?')
 
       if (check) {
         this.props.messageShow('Deleting, please wait...')
@@ -45,7 +45,7 @@ class List extends PureComponent {
               if (response.data.errors && response.data.errors.length > 0) {
                 this.props.messageShow(response.data.errors[0].message)
               } else {
-                this.props.messageShow('Crate deleted successfully.')
+                this.props.messageShow('Record deleted successfully.')
 
                 this.props.getCrateList(false)
               }
@@ -77,7 +77,7 @@ class List extends PureComponent {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Crates - Admin - Crate</title>
+          <title>Records - Doctor</title>
         </Helmet>
 
         {/* Top menu bar */}
@@ -88,7 +88,7 @@ class List extends PureComponent {
           {/* Top actions bar */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'right' }}>
-              <Link to={admin.crateCreate.path}>
+              <Link to={doctorsRoute.recordCreate.path}>
                 <Button theme="secondary" style={{ marginTop: '1em' }}>
                   <Icon size={1.2} style={{ color: white }}>add</Icon> Add
                 </Button>
@@ -102,10 +102,12 @@ class List extends PureComponent {
               <table className="striped">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Created at</th>
-                  <th>Updated at</th>
+                  <th style={{ textAlign: 'center' }}>RecordID</th>
+                  <th style={{ textAlign: 'center' }}>PatientName</th>
+                  <th style={{ textAlign: 'center' }}>WardInfo</th>
+                  <th style={{ textAlign: 'center' }}>Date</th>
+                  <th style={{ textAlign: 'center' }}>Diagnosis</th>
+                  <th style={{ textAlign: 'center' }}>LastModified</th>
                   <th style={{ textAlign: 'center' }}>Actions</th>
                 </tr>
                 </thead>
@@ -138,8 +140,8 @@ class List extends PureComponent {
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
-                              <Link to={admin.crateEdit.path(id)}>
-                                <Icon size={2} style={{ color: black }}>mode_edit</Icon>
+                              <Link to={doctorsRoute.crateEdit.path(id)}>
+                                <Icon size={2} style={{ color: black }}>edit</Icon>
                               </Link>
 
                               <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
@@ -150,7 +152,7 @@ class List extends PureComponent {
                         ))
                       : <tr>
                           <td colSpan="6">
-                            <EmptyMessage message="No crates to show."/>
+                            <EmptyMessage message="No medical records to show."/>
                           </td>
                         </tr>
                 }

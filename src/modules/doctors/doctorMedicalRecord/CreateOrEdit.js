@@ -43,7 +43,7 @@ class CreateOrEdit extends Component {
   }
 
   componentDidMount() {
-    // Get crate details (edit case)
+    // Get doctorMedicalRecord details (edit case)
     this.getCrate(parseInt(this.props.match.params.id))
   }
 
@@ -60,7 +60,7 @@ class CreateOrEdit extends Component {
           }
         })
         .catch(error => {
-          this.props.messageShow('There was some error fetching crate types. Please try again.')
+          this.props.messageShow('There was some error fetching doctorMedicalRecord types. Please try again.')
         })
     }
   }
@@ -81,9 +81,9 @@ class CreateOrEdit extends Component {
       isLoading: true
     })
 
-    this.props.messageShow('Saving crate, please wait...')
+    this.props.messageShow('Saving doctorMedicalRecord, please wait...')
 
-    // Save crate
+    // Save doctorMedicalRecord
     this.props.crateCreateOrUpdate(this.state.crate)
       .then(response => {
         this.setState({

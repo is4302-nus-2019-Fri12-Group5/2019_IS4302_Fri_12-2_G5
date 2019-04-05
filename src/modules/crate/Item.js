@@ -46,7 +46,7 @@ class Item extends PureComponent {
         }
       })
       .catch(error => {
-        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+        this.props.messageShow('There was some error subscribing to this doctorMedicalRecord. Please try again.')
       })
       .then(() => {
         this.setState({
