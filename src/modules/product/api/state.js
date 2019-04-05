@@ -57,7 +57,7 @@ export const products = (state = productsInitialState, action) => {
 }
 
 
-// Single product
+// Single doctorPatient
 
 // Initial State
 const productInitialState = {

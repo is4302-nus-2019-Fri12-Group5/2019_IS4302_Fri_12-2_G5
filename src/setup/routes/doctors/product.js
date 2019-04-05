@@ -1,9 +1,9 @@
 // App Imports
 import params from '../../../setup/config/params'
-import ProductList from '../../../modules/doctors/product/List'
-import ProductCreateOrEdit from '../../../modules/doctors/product/CreateOrEdit'
+import ProductList from '../../../modules/doctors/doctorPatient/List'
+import ProductCreateOrEdit from '../../../modules/doctors/doctorPatient/CreateOrEdit'
 
-// Admin product routes
+// Admin doctorPatient routes
 export const doctorPatients = {
   path: '/doctors/products',
   component: ProductList,
@@ -12,7 +12,7 @@ export const doctorPatients = {
 }
 
 export const productCreate = {
-  path: '/doctors/product/create',
+  path: '/doctors/doctorPatient/create',
   component: ProductCreateOrEdit,
   // auth: true,
   role: params.user.roles.admin

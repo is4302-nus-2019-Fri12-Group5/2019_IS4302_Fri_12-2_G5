@@ -50,7 +50,7 @@ class CreateOrEdit extends Component {
   }
 
   componentDidMount() {
-    // Get product types
+    // Get doctorPatient types
     this.props.getProductTypes()
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
@@ -66,7 +66,7 @@ class CreateOrEdit extends Component {
         }
       })
       .catch(error => {
-        this.props.messageShow('There was some error fetching product types. Please try again.')
+        this.props.messageShow('There was some error fetching doctorPatient types. Please try again.')
       })
 
     // Get patient genders
@@ -85,10 +85,10 @@ class CreateOrEdit extends Component {
         }
       })
       .catch(error => {
-        this.props.messageShow('There was some error fetching product types. Please try again.')
+        this.props.messageShow('There was some error fetching doctorPatient types. Please try again.')
       })
 
-    // Get product details (edit case)
+    // Get doctorPatient details (edit case)
     this.getProduct(parseInt(this.props.match.params.id))
   }
 
@@ -105,7 +105,7 @@ class CreateOrEdit extends Component {
           }
         })
         .catch(error => {
-          this.props.messageShow('There was some error fetching product types. Please try again.')
+          this.props.messageShow('There was some error fetching doctorPatient types. Please try again.')
         })
     }
   }
@@ -139,9 +139,9 @@ class CreateOrEdit extends Component {
       isLoading: true
     })
 
-    this.props.messageShow('Saving product, please wait...')
+    this.props.messageShow('Saving doctorPatient, please wait...')
 
-    // Save product
+    // Save doctorPatient
     this.props.productCreateOrUpdate(this.state.product)
       .then(response => {
         this.setState({

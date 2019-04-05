@@ -58,7 +58,7 @@ export function getList(isLoading = true, forceRefresh = false) {
   }
 }
 
-// Get single product
+// Get single doctorPatient
 export function get(slug, isLoading = true) {
   return dispatch => {
     dispatch({
@@ -105,7 +105,7 @@ export function get(slug, isLoading = true) {
   }
 }
 
-// Get single product by Id
+// Get single doctorPatient by Id
 export function getById(productId) {
   return dispatch => {
     return axios.post(routeApi, query({
@@ -116,7 +116,7 @@ export function getById(productId) {
   }
 }
 
-// Get list of products related to a product
+// Get list of products related to a doctorPatient
 export function getRelatedList(productId, isLoading = true) {
   return (dispatch, getState) => {
     let state = getState()
@@ -161,7 +161,7 @@ export function getRelatedList(productId, isLoading = true) {
   }
 }
 
-// Create or update product
+// Create or update doctorPatient
 export function createOrUpdate(product) {
   if (product.id > 0) {
     return update(product)
@@ -171,7 +171,7 @@ export function createOrUpdate(product) {
   }
 }
 
-// Create product
+// Create doctorPatient
 export function create(product) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -182,7 +182,7 @@ export function create(product) {
   }
 }
 
-// Update product
+// Update doctorPatient
 export function update(product) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -193,7 +193,7 @@ export function update(product) {
   }
 }
 
-// Remove product
+// Remove doctorPatient
 export function remove(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({
@@ -204,7 +204,7 @@ export function remove(variables) {
   }
 }
 
-// Get product types
+// Get doctorPatient types
 export function getTypes() {
   return dispatch => {
     return axios.post(routeApi, query({

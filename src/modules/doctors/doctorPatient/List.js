@@ -35,7 +35,7 @@ class List extends PureComponent {
 
   remove = (id) => {
     if (id > 0) {
-      let check = confirm('Are you sure you want to delete this product?')
+      let check = confirm('Are you sure you want to delete this patient?')
 
       if (check) {
         this.props.messageShow('Deleting, please wait...')
@@ -46,7 +46,7 @@ class List extends PureComponent {
               if (response.data.errors && response.data.errors.length > 0) {
                 this.props.messageShow(response.data.errors[0].message)
               } else {
-                this.props.messageShow('Product deleted successfully.')
+                this.props.messageShow('Patient deleted successfully.')
 
                 this.props.getProductList(false)
               }
@@ -78,7 +78,7 @@ class List extends PureComponent {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Products - Admin - Crate</title>
+          <title>Patients - Doctor</title>
         </Helmet>
 
         {/* Top menu bar */}
@@ -86,16 +86,6 @@ class List extends PureComponent {
 
         {/* Page Content */}
         <div>
-          {/* Top actions bar */}
-          <Grid alignCenter={true} style={{ padding: '1em' }}>
-            <GridCell style={{ textAlign: 'right' }}>
-              <Link to={admin.productCreate.path}>
-                <Button theme="secondary" style={{ marginTop: '1em' }}>
-                  <Icon size={1.2} style={{ color: white }}>add</Icon> Add
-                </Button>
-              </Link>
-            </GridCell>
-          </Grid>
 
           {/* Product list */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
@@ -103,11 +93,11 @@ class List extends PureComponent {
               <table className="striped">
                 <thead>
                   <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Created at</th>
-                    <th>Updated at</th>
+                    <th style={{ textAlign: 'center' }}>First Name</th>
+                    <th style={{ textAlign: 'center' }}>Last Name</th>
+                    <th style={{ textAlign: 'center' }}>Phone Number</th>
+                    <th style={{ textAlign: 'center' }}>Last Visit</th>
+                    <th style={{ textAlign: 'center' }}>Number of Medical Histories</th>
                     <th style={{ textAlign: 'center' }}>Actions</th>
                   </tr>
                 </thead>
@@ -117,11 +107,11 @@ class List extends PureComponent {
                   isLoading
                     ? <tr>
                         <td colSpan="6">
-                          <Loading message="loading products..."/>
+                          <Loading message="loading patients..."/>
                         </td>
                       </tr>
                     : list.length > 0
-                      ? list.map(({ id, image, name, description, createdAt, updatedAt }) => (
+                      ? list.map(({ id, image, name, description, lastVisit, updatedAt }) => (
                           <tr key={id}>
                             <td>
                               <img src={routeImage + image} alt={name} style={{ width: 100 }}/>
@@ -136,7 +126,7 @@ class List extends PureComponent {
                             </td>
 
                             <td>
-                              { new Date(parseInt(createdAt)).toDateString() }
+                              { new Date(parseInt(lastVisit)).toDateString() }
                             </td>
 
                             <td>
@@ -156,7 +146,7 @@ class List extends PureComponent {
                         ))
                       : <tr>
                           <td colSpan="6">
-                            <EmptyMessage message="No products to show."/>
+                            <EmptyMessage message="No patients to show."/>
                           </td>
                         </tr>
                 }
