@@ -32,7 +32,7 @@ class CreateOrEdit extends Component {
 
     this.state = {
       isLoading: false,
-      record: {
+      crate: {
         id: 0,
         name: '',
         description: ''
@@ -43,19 +43,19 @@ class CreateOrEdit extends Component {
   }
 
   componentDidMount() {
-    // Get doctorMedicalRecord details (edit case)
+    // Get doctorMedicalcrate details (edit case)
     this.getCrate(parseInt(this.props.match.params.id))
   }
 
-  getCrate = (recordId) => {
-    if (recordId > 0) {
-      this.props.getRecordById(recordId)
+  getCrate = (crateId) => {
+    if (crateId > 0) {
+      this.props.getCrateById(crateId)
         .then(response => {
           if (response.data.errors && response.data.errors.length > 0) {
             this.props.messageShow(response.data.errors[0].message)
           } else {
             this.setState({
-              record: response.data.data.crateById
+              crate: response.data.data.crateById
             })
           }
         })
@@ -66,11 +66,11 @@ class CreateOrEdit extends Component {
   }
 
   onChange = (event) => {
-    let crate = this.state.record
+    let crate = this.state.crate
     crate[event.target.name] = event.target.value
 
     this.setState({
-      crate: record
+      crate: crate
     })
   }
 
@@ -84,7 +84,7 @@ class CreateOrEdit extends Component {
     this.props.messageShow('Saving Medical Record, please wait...')
 
     // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.record)
+    this.props.crateCreateOrUpdate(this.state.crate)
       .then(response => {
         this.setState({
           isLoading: false
@@ -148,21 +148,21 @@ class CreateOrEdit extends Component {
                   <Input
                     type="text"
                     fullWidth={true}
-                    placeholder="Name"
+                    placeholder="PatientID"
                     required="required"
                     name="name"
                     autocomplete="off"
-                    value={this.state.record.name}
+                    value={this.state.crate.name}
                     onChange={this.onChange}
                   />
 
                   {/* Description */}
                   <Textarea
                     fullWidth={true}
-                    placeholder="Description"
+                    placeholder="Diagnosis"
                     required="required"
                     name="description"
-                    value={this.state.record.description}
+                    value={this.state.crate.description}
                     onChange={this.onChange}
                     style={{ marginTop: '1em' }}
                   />
@@ -186,7 +186,7 @@ class CreateOrEdit extends Component {
 // Component Properties
 CreateOrEdit.propTypes = {
   crateCreateOrUpdate: PropTypes.func.isRequired,
-  getRecordById: PropTypes.func.isRequired,
+  getCrateById: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
   messageHide: PropTypes.func.isRequired
 }

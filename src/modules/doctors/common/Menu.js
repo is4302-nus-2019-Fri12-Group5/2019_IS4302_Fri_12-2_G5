@@ -6,7 +6,6 @@ import { Grid, GridCell } from '../../../ui/grid'
 import { black, grey } from "../../../ui/common/colors"
 
 // App Imports
-import doctor from '../../../setup/routes/doctor'
 import doctors from '../../../setup/routes/doctors'
 import Menu from '../../common/header/Menu'
 import MenuItem from '../../common/header/MenuItem'
@@ -18,7 +17,7 @@ const DoctorMenu = () => (
       <Menu>
         <MenuItem to={doctors.dashboard.path} type="primary" style={{ color: black }}>Dashboard</MenuItem>
 
-        <MenuItem to={doctors.doctorPatients.path} section="products" type="primary" style={{ color: black }}>Patients</MenuItem>
+        <MenuItem to={doctors.doctorPatients.path} section="products" type="primary" style={{ color: black }}>My Patients</MenuItem>
 
         <MenuItem to={doctors.doctorMedicalRecord.path} type="primary" style={{ color: black }}>Medical Records</MenuItem>
 

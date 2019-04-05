@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
-import {grey2, grey3} from '../../ui/common/colors'
+import {grey2} from '../../ui/common/colors'
 
 // App Imports
 import DoctorMenu from './common/Menu'
@@ -16,7 +16,6 @@ import {level1} from "../../ui/common/shadows";
 import {APP_URL} from "../../setup/config/env";
 import {H3, H4} from "../../ui/typography";
 import {Link} from "react-router-dom";
-import doctorsRoutes from "../../setup/routes/doctors";
 import home from "../../setup/routes/home";
 
 // Component
@@ -31,11 +30,6 @@ const Dashboard = () => (
     <DoctorMenu/>
 
     {/* Page Content */}
-    {/*<Grid style={{ padding: '2em' }}>*/}
-      {/*<GridCell>*/}
-        {/*<p style={{ textAlign: 'center', color: grey3 }}>Nothing here yet. Hello World.</p>*/}
-      {/*</GridCell>*/}
-    {/*</Grid>*/}
 
       <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
 
@@ -63,12 +57,8 @@ const Dashboard = () => (
               <p style={{ color: grey2, marginBottom: '2em' }}>Title: Director</p>
               <p style={{ color: grey2, marginBottom: '4em' }}>Fee:   100</p>
 
-              <Link to={doctorsRoutes.dashboard.path}>
-                  <Button theme="primary" style={{marginRight : '0.5em'}}>Dashboard</Button>
-              </Link>
-
               {/*<Link to={}>*/}
-              <Button type="button" style={{marginRight : '0.5em'}}>Edit</Button>
+              <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
               {/*</Link>*/}
 
               {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
