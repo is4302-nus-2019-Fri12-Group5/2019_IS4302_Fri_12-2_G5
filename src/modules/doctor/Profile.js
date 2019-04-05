@@ -12,7 +12,8 @@ import Button from '../../ui/button'
 import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
-import patientRoutes from '../../setup/routes/doctor'
+import doctorRoutes from '../../setup/routes/doctor'
+import home from '../../setup/routes/home'
 import { logout } from './api/actions'
 
 // Component
@@ -20,7 +21,7 @@ const Profile = (props) => (
   <div>
     {/* SEO */}
     <Helmet>
-      <title>My Profile - Crate</title>
+      <title>My Profile - MediChain</title>
     </Helmet>
 
     {/* Top title bar */}
@@ -32,15 +33,20 @@ const Profile = (props) => (
 
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
+        {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
+          <H4 style={{ marginBottom: '0.5em' }}>Name</H4>
+        {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
+        <p style={{ color: grey2, marginBottom: '2em' }}>Email</p>
 
-        <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-
-        <Link to={patientRoutes.subscriptions.path}>
-          <Button theme="primary">Subscriptions</Button>
+        <Link to={doctorRoutes.doctorSubscriptions.path}>
+          <Button theme="primary" style={{marginRight : '0.5em'}}>Subscriptions</Button>
         </Link>
 
-        <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
+        {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
+        <Link to={home.home.path}>
+            <Button type="button" theme="secondary" >Logout</Button>
+        </Link>
+
       </GridCell>
     </Grid>
   </div>

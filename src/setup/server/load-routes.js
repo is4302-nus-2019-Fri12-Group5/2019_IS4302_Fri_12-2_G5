@@ -39,7 +39,6 @@ export default function (app) {
 
     // HTTP status code
     let status = 200
-
     const matches = Object.values(routes).reduce((matches, route) => {
       const match = matchPath(request.url, typeof route.path === 'function' ? route.path() : route.path, route)
 

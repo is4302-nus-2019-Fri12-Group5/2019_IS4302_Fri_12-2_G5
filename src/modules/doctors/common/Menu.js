@@ -6,7 +6,7 @@ import { Grid, GridCell } from '../../../ui/grid'
 import { black, grey } from "../../../ui/common/colors"
 
 // App Imports
-import admin from '../../../setup/routes/admin'
+import admin from '../../../setup/routes/doctors'
 import Menu from '../../common/header/Menu'
 import MenuItem from '../../common/header/MenuItem'
 

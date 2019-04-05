@@ -20,7 +20,7 @@ const Profile = (props) => (
   <div>
     {/* SEO */}
     <Helmet>
-      <title>My Profile - Crate</title>
+      <title>My Profile - MediChain</title>
     </Helmet>
 
     {/* Top title bar */}

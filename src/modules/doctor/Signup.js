@@ -68,7 +68,7 @@ class Signup extends Component {
         } else {
           this.props.messageShow('Signed up successfully.')
 
-          this.props.history.push(userRoutes.login.path)
+          this.props.history.push(userRoutes.doctorLogin.path)
         }
       })
       .catch(error => {
@@ -160,7 +160,7 @@ class Signup extends Component {
 
             <div style={{ marginTop: '2em' }}>
               {/* Login link */}
-              <Link to={userRoutes.login.path}>
+              <Link to={userRoutes.doctorLogin.path}>
                 <Button type="button" style={{ marginRight: '0.5em' }}>Login</Button>
               </Link>
 

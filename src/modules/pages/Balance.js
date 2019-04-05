@@ -22,6 +22,14 @@ import ProductItem from '../product/Item'
 
 // Component
 class Balance extends PureComponent {
+  constructor(props) {
+    super(props);
+      this.state = {
+        error: null,
+        isLoaded: false,
+		patientInfo: [],
+      };
+  }
 
   constructor(props) {
     super(props);
@@ -51,6 +59,7 @@ class Balance extends PureComponent {
         .catch(error => {
           console.log('Error fetching and parsing data', error);
         });
+
   }
 
   // componentDidMount() {
@@ -73,9 +82,10 @@ class Balance extends PureComponent {
   // }
 
   render() {
-    
+
     const { isLoading, list } = this.props.products;
     const { patient } = this.state;
+
 
     console.log(patient);
     
@@ -107,6 +117,7 @@ class Balance extends PureComponent {
                       <h4>{singlePatient.lastModified} </h4>
                       <h4>{singlePatient.prescriptions}</h4>
                       <br></br>
+
                     </GridCell>
                   ))
                 : <EmptyMessage message="No history to show" />

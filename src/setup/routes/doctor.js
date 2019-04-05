@@ -6,25 +6,25 @@ import Subscriptions from '../../modules/doctor/Subscriptions'
 
 // User routes
 export default {
-    login: {
+    doctorLogin: {
         path: '/doctor/login',
         component: Login
     },
 
-    signup: {
+    doctorSignup: {
         path: '/doctor/signup',
         component: Signup
     },
 
-    profile: {
+    doctorProfile: {
         path: '/doctor/profile',
         component: Profile,
-        auth: true
+        // auth: true
     },
 
-    subscriptions: {
+    doctorSubscriptions: {
         path: '/doctor/subscriptions',
         component: Subscriptions,
-        auth: true
+        // auth: true
     }
 }

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 // App Imports
 import crate from '../../setup/routes/crate'
-import admin from '../../setup/routes/admin'
+import admin from '../../setup/routes/doctors'
 
 // Component
 const AuthCheck = (props) => (
