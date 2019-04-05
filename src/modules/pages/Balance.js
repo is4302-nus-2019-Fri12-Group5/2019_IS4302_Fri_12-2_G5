@@ -22,6 +22,14 @@ import ProductItem from '../product/Item'
 
 // Component
 class Balance extends PureComponent {
+  constructor(props) {
+    super(props);
+      this.state = {
+        error: null,
+        isLoaded: false,
+		patientInfo: [],
+      };
+  }
 
   // Runs on server only for SSR
   static fetchData({ store }) {
@@ -30,11 +38,27 @@ class Balance extends PureComponent {
 
   // Runs on client only
   componentDidMount() {
-    this.props.getProductList()
+    this.props.getProductList();
+	fetch("/hlf/api/org.healthcare.Patient")
+      .then(response => response.json())
+      .then(responseData => {
+          this.setState({
+              isLoaded: true,
+              patientInfo: responseData,
+          });
+	  })
+      .catch(error => {
+	      this.setState({
+              isLoaded: true,
+			  error
+          });
+	      console.log('Error fetching and parsing data', error);
+      });
   }
 
   render() {
     const { isLoading, list } = this.props.products
+	const { error, isLoaded, patientInfo} = this.state
 
     return (
       <div>
@@ -57,10 +81,10 @@ class Balance extends PureComponent {
           {
             isLoading
               ? <Loading/>
-              : list.length > 0
-                ? list.map(transaction_history => (
-                    <GridCell key={transaction_history.id} style={{ textAlign: 'center' }}>
-                      <ProductItem product={transaction_history}/>
+              : patientInfo.length > 0
+                ? patientInfo.map(patient => (
+                    <GridCell key={patient.NRIC} style={{ textAlign: 'center' }}>
+                      <p>{patient.dateOfBirth}</p>
                     </GridCell>
                   ))
                 : <EmptyMessage message="No history to show" />
