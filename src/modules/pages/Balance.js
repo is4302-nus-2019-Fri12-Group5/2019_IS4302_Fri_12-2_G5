@@ -22,14 +22,6 @@ import ProductItem from '../product/Item'
 
 // Component
 class Balance extends PureComponent {
-  constructor(props) {
-    super(props);
-      this.state = {
-        error: null,
-        isLoaded: false,
-		patientInfo: [],
-      };
-  }
 
   constructor(props) {
     super(props);

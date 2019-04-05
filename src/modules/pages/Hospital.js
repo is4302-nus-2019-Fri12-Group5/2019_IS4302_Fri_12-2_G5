@@ -111,12 +111,12 @@ class Hospital extends PureComponent {
 
       const hospitalToRemove = {
         $class:'org.healthcare.RemovePatientHospital',
-        patient: event.target.patient-remove.value,
-        hospital: event.target.hospital-remove.value,
+        patient: event.target.patientremove.value,
+        hospital: event.target.hospitalremove.value,
         timestamp: new Date()
       }
 
-      fetch('/hlf/api/org.healthcare.AddPatientHospital', {
+      fetch('/hlf/api/org.healthcare.RemovePatientHospital', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -154,11 +154,11 @@ class Hospital extends PureComponent {
               <form id="removeHospital" onSubmit={this.handleRemoveHospital}>
                 <label>
                   Patient:
-                  <input type="text" name="patient-remove"/>
+                  <input type="text" name="patientremove"/>
                 </label>
                 <label>
                   Hospital:
-                  <input type="text" name="hospital-remove" />
+                  <input type="text" name="hospitalremove" />
                 </label>
                 <input type="submit" value="Remove hospital" />
               </form>
