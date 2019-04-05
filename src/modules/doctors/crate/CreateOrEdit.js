@@ -22,7 +22,7 @@ import {
   getById as getCrateById
 } from '../../crate/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
-import AdminMenu from '../common/Menu'
+import DoctorMenu from '../common/Menu'
 
 // Component
 class CreateOrEdit extends Component {
@@ -95,7 +95,7 @@ class CreateOrEdit extends Component {
         } else {
           this.props.messageShow('Crate saved successfully.')
 
-          this.props.history.push(admin.crateList.path)
+          this.props.history.push(admin.doctorMedicalRecord.path)
         }
       })
       .catch(error => {
@@ -121,14 +121,14 @@ class CreateOrEdit extends Component {
         </Helmet>
 
         {/* Top menu bar */}
-        <AdminMenu/>
+        <DoctorMenu/>
 
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'left' }}>
-              <Link to={admin.crateList.path}>
+              <Link to={admin.doctorMedicalRecord.path}>
                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
               </Link>
             </GridCell>

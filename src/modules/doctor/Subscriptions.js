@@ -33,21 +33,20 @@ class Subscriptions extends PureComponent {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>My Subscriptions - MediChain</title>
+          <title>My Patients - MediChain</title>
         </Helmet>
 
         {/* Top title bar */}
         <Grid style={{ backgroundColor: grey }}>
           <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-            <H3 font="secondary">My subscriptions</H3>
+            <H3 font="secondary">My Patients</H3>
 
-            <p style={{ marginTop: '1em', color: grey2 }}>The hospitals you trust are listed here. You can
-              cancel
-              anytime.</p>
+            <p style={{ marginTop: '1em', color: grey2 }}>Your patients are listed here. You can
+              keep updated.</p>
           </GridCell>
         </Grid>
 
-        {/* Product list */}
+        {/* Patient list */}
         <Grid>
           <GridCell>
             {
@@ -59,7 +58,7 @@ class Subscriptions extends PureComponent {
                           <SubscriptionItem subscription={subscription} />
                         </div>
                       ))
-                    : <EmptyMessage message="You don't trust any hospital yet." />
+                    : <EmptyMessage message="You don't have any patient yet." />
             }
           </GridCell>
         </Grid>

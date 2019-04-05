@@ -5,5 +5,5 @@ import Dashboard from '../../../modules/doctors/Dashboard'
 export const userList = {
   path: '/doctors/users',
   component: Dashboard,
-  auth: true
+  // auth: true
 }

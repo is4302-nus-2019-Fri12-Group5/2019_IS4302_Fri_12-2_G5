@@ -4,7 +4,7 @@ import CrateList from '../../../modules/doctors/crate/List'
 import CrateCreateOrEdit from '../../../modules/doctors/crate/CreateOrEdit'
 
 // Admin crate routes
-export const crateList = {
+export const doctorMedicalRecord = {
   path: '/doctors/crates',
   component: CrateList,
   // auth: true,

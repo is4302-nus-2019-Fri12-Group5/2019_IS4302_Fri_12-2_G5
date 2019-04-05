@@ -16,7 +16,7 @@ import { getList as getProductList, remove as removeProduct } from '../../produc
 import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
-import AdminMenu from '../common/Menu'
+import DoctorMenu from '../common/Menu'
 import { routeImage } from '../../../setup/routes'
 import admin from '../../../setup/routes/doctors'
 
@@ -82,7 +82,7 @@ class List extends PureComponent {
         </Helmet>
 
         {/* Top menu bar */}
-        <AdminMenu/>
+        <DoctorMenu/>
 
         {/* Page Content */}
         <div>
