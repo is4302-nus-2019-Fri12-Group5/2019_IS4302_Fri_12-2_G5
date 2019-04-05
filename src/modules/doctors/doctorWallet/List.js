@@ -42,7 +42,7 @@ const Wallet = (props) => (
                   <GridCell>
                     <Grid gutter={true} alignCenter={true}>
                       <GridCell justifyCenter={true}>
-                        <ImageTile width={600} height={500} shadow={level1} image={`${ APP_URL }/images/how_it_works_3.jpeg`}/>
+                        <ImageTile width={650} height={500} shadow={level1} image={`${ APP_URL }/images/how_it_works_3.jpeg`}/>
                       </GridCell>
                     </Grid>
                   </GridCell>
