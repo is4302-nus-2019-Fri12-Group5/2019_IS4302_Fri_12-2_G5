@@ -22,15 +22,58 @@ import admin from '../../../setup/routes/doctors'
 
 // Component
 class List extends PureComponent {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      patients: [],
+      doctor: "",
+      doctorNRIC: localStorage.getItem('user')
+    }
+    
+    //localStorage.setItem('user', data);
 
-  // Runs on server only for SSR
+    // // getter
+    // localStorage.getItem('user');
+
+    // // remove
+    // localStorage.removeItem('user');
+
+    // // remove all
+    // localStorage.clear();
+  }
+   // Runs on server only for SSR
   static fetchData({ store }) {
     return store.dispatch(getProductList())
   }
 
   // Runs on client only
   componentDidMount() {
-    this.props.getProductList()
+    this.props.getProductList();
+    console.log("Passed");
+    fetch("/doctor/api/org.healthcare.Patient")
+	    .then(response => response.json())
+        .then(patientList => {
+
+          // const patientHospitalList = responseData.map(function(response) {
+          //   return response.currentHospitals;
+          // });
+          console.log(this.state.doctorNRIC);
+
+          console.log(patientList);
+
+          // const patientsCopy = patientList.filter(patient => patient.medicalRecords.some(medicalRecord => medicalRecord == this.state.doctorNRIC));
+
+          this.setState({
+            patients: patientList
+          });
+          
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
+        
+        console.log("Passed 2nd time");
   }
 
   remove = (id) => {
@@ -73,6 +116,7 @@ class List extends PureComponent {
 
   render() {
     const { isLoading, list } = this.props.products
+    const { patients } = this.state
 
     return (
       <div>
@@ -110,37 +154,41 @@ class List extends PureComponent {
                           <Loading message="loading patients..."/>
                         </td>
                       </tr>
-                    : list.length > 0
-                      ? list.map(({ id, image, name, description, lastVisit, updatedAt }) => (
-                          <tr key={id}>
+                    : patients.length > 0
+                      ? patients.map((patient) => (
+                          <tr key={patient.NRIC}>
                             <td>
-                              <img src={routeImage + image} alt={name} style={{ width: 100 }}/>
+                              { patient.NRIC}
                             </td>
 
                             <td>
-                              { name }
+                              { patient.dateOfBirth }
                             </td>
 
                             <td>
-                              { description }
+                              { patient.gender }
                             </td>
 
                             <td>
-                              { new Date(parseInt(lastVisit)).toDateString() }
+                              { patient.lastVisit }
+                              {/* { new Date(parseInt(lastVisit)).toDateString() } */}
                             </td>
 
                             <td>
-                              { new Date(parseInt(updatedAt)).toDateString() }
+                              { patient.medicalRecords }
+                              {/* { new Date(parseInt(updatedAt)).toDateString() } */}
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
-                              <Link to={admin.productEdit.path(id)}>
+
+                              { patient.hospital } 
+                              {/* <Link to={admin.productEdit.path(id)}>
                                 <Icon size={2} style={{ color: black }}>mode_edit</Icon>
                               </Link>
 
                               <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
                                   <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
-                                </span>
+                                </span> */}
                             </td>
                           </tr>
                         ))

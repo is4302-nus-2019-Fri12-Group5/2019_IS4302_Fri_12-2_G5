@@ -33,25 +33,40 @@ class Login extends Component {
 
     this.state = {
       user: {
-        email: '',
-        password: '',
+        nric: '',
+        password: ''
       }
     }
 
     // Function bindings
   }
 
-  onChange = (event) => {
-    let user = this.state.user
-    user[event.target.name] = event.target.value
+  onChangeEmail = (event) => {
+
+    console.log(event.target.value);
+    
+    this.setState({
+      user: {
+        nric: event.target.value,
+        password: this.state.user.password
+      }
+    });
+  }
+
+  onChangePassword = (event) => {
+
+    console.log(event.target.value);
 
     this.setState({
-      user
-    })
+      user: {
+        nric: this.state.user.nric,
+        password: event.target.value
+      }
+    });
   }
 
   onSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     this.props.messageShow('Logging in, please wait...')
 
@@ -75,6 +90,14 @@ class Login extends Component {
         }, 5000)
       })
   }
+
+  onTryLogin = () => {
+    localStorage.setItem('user', this.state.user.nric);
+    console.log(localStorage.getItem('user'));
+
+    console.log("Submitted");
+  }
+
 
   render() {
     const { isLoading, error } = this.props.user
@@ -111,8 +134,8 @@ class Login extends Component {
                 required="required"
                 name="email"
                 value={this.state.user.email}
-                onChange={this.onChange}
-                style={{ marginTop: '1em', color: white}}
+                onChange={this.onChangeEmail}
+                style={{ marginTop: '1em', color: "#333"}}
               />
 
               {/* Password */}
@@ -123,8 +146,8 @@ class Login extends Component {
                 required="required"
                 name="password"
                 value={this.state.user.password}
-                onChange={this.onChange}
-                style={{ marginTop: '1em', color: white}}
+                onChange={this.onChangePassword}
+                style={{ marginTop: '1em', color: "#333"}}
               />
             </div>
 
@@ -143,11 +166,11 @@ class Login extends Component {
               <div style={{ marginTop: '2em' }}>
                   {/* Signup link */}
                   <Link to={userRoutes.doctorSignup.path}>
-                      <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
+                      <Button type="button" style={{ marginRight: '0.5em' }} >Signup</Button>
                   </Link>
 
                   <Link to={doctorsRoutes.dashboard.path}>
-                      <Button type="button" theme="secondary">Login</Button>
+                      <Button type="button" theme="secondary" onClick={this.onTryLogin}>Login</Button>
                   </Link>
               </div>
 

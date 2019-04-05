@@ -84,7 +84,7 @@ class Hospital extends PureComponent {
         });
   }
 
-  handleAddHospital = (event) => {
+  handleAddHospital = async (event) => {
 
       event.preventDefault();
 
@@ -95,7 +95,7 @@ class Hospital extends PureComponent {
         timestamp: new Date()
       }
 
-      fetch('/hlf/api/org.healthcare.AddPatientHospital', {
+      await fetch('/hlf/api/org.healthcare.AddPatientHospital', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -103,6 +103,26 @@ class Hospital extends PureComponent {
         },
         body: JSON.stringify(newHospital)
     });
+
+  await fetch("/hlf/api/org.healthcare.Hospital")
+    .then(response => response.json())
+      .then(responseData => {
+        
+        const thePatientHospitals = this.state.selectedPatient.currentHospitals;
+
+        const filteredList = responseData.filter(hospitals => thePatientHospitals.some(c => c == "resource:org.healthcare.Hospital#" + hospitals.registrationID));
+
+        this.setState({
+          filteredHospital: filteredList
+        });
+
+        console.log("After add" + thePatientHospitals);
+        console.log(responseData);
+
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
   }
 
   handleRemoveHospital = (event) => {
@@ -127,8 +147,10 @@ class Hospital extends PureComponent {
   }
 
   render() {
+    
     const { isLoading, list } = this.props.products;
     const { hospital, filteredHospital } = this.state;
+    
     return (
         <div>
           {/* SEO */}
