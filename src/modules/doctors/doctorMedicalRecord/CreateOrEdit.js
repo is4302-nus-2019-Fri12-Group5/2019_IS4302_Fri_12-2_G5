@@ -32,7 +32,7 @@ class CreateOrEdit extends Component {
 
     this.state = {
       isLoading: false,
-      crate: {
+      record: {
         id: 0,
         name: '',
         description: ''
@@ -47,15 +47,15 @@ class CreateOrEdit extends Component {
     this.getCrate(parseInt(this.props.match.params.id))
   }
 
-  getCrate = (crateId) => {
-    if (crateId > 0) {
-      this.props.getCrateById(crateId)
+  getCrate = (recordId) => {
+    if (recordId > 0) {
+      this.props.getRecordById(recordId)
         .then(response => {
           if (response.data.errors && response.data.errors.length > 0) {
             this.props.messageShow(response.data.errors[0].message)
           } else {
             this.setState({
-              crate: response.data.data.crateById
+              record: response.data.data.crateById
             })
           }
         })
@@ -66,11 +66,11 @@ class CreateOrEdit extends Component {
   }
 
   onChange = (event) => {
-    let crate = this.state.crate
+    let crate = this.state.record
     crate[event.target.name] = event.target.value
 
     this.setState({
-      crate
+      crate: record
     })
   }
 
@@ -81,10 +81,10 @@ class CreateOrEdit extends Component {
       isLoading: true
     })
 
-    this.props.messageShow('Saving doctorMedicalRecord, please wait...')
+    this.props.messageShow('Saving Medical Record, please wait...')
 
     // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.crate)
+    this.props.crateCreateOrUpdate(this.state.record)
       .then(response => {
         this.setState({
           isLoading: false
@@ -93,7 +93,7 @@ class CreateOrEdit extends Component {
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message)
         } else {
-          this.props.messageShow('Crate saved successfully.')
+          this.props.messageShow('Medical Record saved successfully.')
 
           this.props.history.push(admin.doctorMedicalRecord.path)
         }
@@ -117,7 +117,7 @@ class CreateOrEdit extends Component {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Crate / Create or Edit - Admin - Crate</title>
+          <title>Record / Create or Edit - Doctor</title>
         </Helmet>
 
         {/* Top menu bar */}
@@ -138,7 +138,7 @@ class CreateOrEdit extends Component {
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Crate
+                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Medical Record
               </H4>
 
               {/* Form */}
@@ -152,7 +152,7 @@ class CreateOrEdit extends Component {
                     required="required"
                     name="name"
                     autocomplete="off"
-                    value={this.state.crate.name}
+                    value={this.state.record.name}
                     onChange={this.onChange}
                   />
 
@@ -162,7 +162,7 @@ class CreateOrEdit extends Component {
                     placeholder="Description"
                     required="required"
                     name="description"
-                    value={this.state.crate.description}
+                    value={this.state.record.description}
                     onChange={this.onChange}
                     style={{ marginTop: '1em' }}
                   />
@@ -186,7 +186,7 @@ class CreateOrEdit extends Component {
 // Component Properties
 CreateOrEdit.propTypes = {
   crateCreateOrUpdate: PropTypes.func.isRequired,
-  getCrateById: PropTypes.func.isRequired,
+  getRecordById: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
   messageHide: PropTypes.func.isRequired
 }

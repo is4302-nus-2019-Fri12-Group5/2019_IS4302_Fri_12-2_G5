@@ -60,7 +60,7 @@ export function get(slug, isLoading = true) {
     })
 
     return axios.post(routeApi, query({
-      operation: 'crate',
+      operation: 'record',
       variables: { slug },
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
     }))
@@ -69,7 +69,7 @@ export function get(slug, isLoading = true) {
           type: CRATES_GET_RESPONSE,
           error: null,
           isLoading: false,
-          item: response.data.data.crate
+          item: response.data.data.record
         })
       })
       .catch(error => {

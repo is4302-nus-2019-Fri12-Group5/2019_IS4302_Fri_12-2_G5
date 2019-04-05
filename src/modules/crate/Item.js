@@ -60,7 +60,7 @@ class Item extends PureComponent {
   }
 
   render() {
-    const { id, name, description } = this.props.crate
+    const { id, name, description } = this.props.record
     const { isLoading } = this.state
 
     return (
@@ -92,7 +92,7 @@ class Item extends PureComponent {
 
 // Component Properties
 Item.propTypes = {
-  crate: PropTypes.object.isRequired,
+  record: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   messageShow: PropTypes.func.isRequired,
   messageHide: PropTypes.func.isRequired
