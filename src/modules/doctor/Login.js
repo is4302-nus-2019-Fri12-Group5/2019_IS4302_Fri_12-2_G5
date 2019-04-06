@@ -48,7 +48,7 @@ class Login extends Component {
       password: this.state.user.password
     }
 
-    this.setState({
+    await this.setState({
       user: userCopy
     });
 
@@ -62,7 +62,7 @@ class Login extends Component {
       password: event.target.value
     }
 
-    this.setState({
+    await this.setState({
       user: userCopy
     });
 

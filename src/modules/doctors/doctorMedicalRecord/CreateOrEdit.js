@@ -99,7 +99,7 @@ class CreateOrEdit extends Component {
       },
     });
 
-    await console.log(this.state.medicalRecord.recordID);
+    console.log(this.state.medicalRecord.recordID);
   }
   
   onChangePatientID = async (event) => {

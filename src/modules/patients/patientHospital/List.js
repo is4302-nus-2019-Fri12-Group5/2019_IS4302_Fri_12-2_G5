@@ -29,6 +29,7 @@ class HospitalList extends PureComponent {
       filteredHospital: [],
       selectedPatient: ''
     }
+    this.refreshList = this.refreshList.bind(this);
   }
 
   // Runs on server only for SSR
@@ -39,26 +40,21 @@ class HospitalList extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getProductList();
-    console.log("Passed");
-    fetch("/hlf/api/org.healthcare.Patient")
+    console.log("Getting p1");
+    
+    fetch("/hlf/api/org.healthcare.Patient/p1")
         .then(response => response.json())
         .then(responseData => {
 
-          // const patientHospitalList = responseData.map(function(response) {
-          //   return response.currentHospitals;
-          // });
-
-          const thePatient = responseData.find((response) => response.NRIC == 'p1');
-
           this.setState({
-            selectedPatient: thePatient
+            selectedPatient: responseData
           });
         })
         .catch(error => {
           console.log('Error fetching and parsing data', error);
         });
 
-    console.log("Passed 2nd time");
+    console.log("Getting the hospital of the patient");
 
     fetch("/hlf/api/org.healthcare.Hospital")
         .then(response => response.json())
@@ -88,8 +84,8 @@ class HospitalList extends PureComponent {
 
     const newHospital = {
       $class:'org.healthcare.AddPatientHospital',
-      patient: event.target.patient.value,
-      hospital: event.target.hospital.value,
+      patient: 'resource:org.healthcare.Patient#p1',
+      hospital: event.target.value,
       timestamp: new Date()
     }
 
@@ -102,25 +98,39 @@ class HospitalList extends PureComponent {
       body: JSON.stringify(newHospital)
     });
 
-    await fetch("/hlf/api/org.healthcare.Hospital")
-        .then(response => response.json())
-        .then(responseData => {
+    this.testFunction();
+    this.refreshList();
+  }
 
-          const thePatientHospitals = this.state.selectedPatient.currentHospitals;
+  testFunction = () => {
+    console.log("Function working");
+  }
 
-          const filteredList = responseData.filter(hospitals => thePatientHospitals.some(c => c == "resource:org.healthcare.Hospital#" + hospitals.registrationID));
+  refreshList = async () => {
+    
+    const response = await fetch("/hlf/api/org.healthcare.Hospital");
+    const responseData = await response.json();
 
-          this.setState({
-            filteredHospital: filteredList
-          });
+    // await fetch("/hlf/api/org.healthcare.Hospital")
+    // .then(response => response.json())
+    // .then(responseData => {
+      
+      console.log("Response data: " + responseData);
+      const thePatientHospitals = this.state.selectedPatient.currentHospitals;
 
-          console.log("After add" + thePatientHospitals);
-          console.log(responseData);
+      const filteredList = responseData.filter(hospitals => thePatientHospitals.some(c => c == "resource:org.healthcare.Hospital#" + hospitals.registrationID));
 
-        })
-        .catch(error => {
-          console.log('Error fetching and parsing data', error);
-        });
+      console.log("The patient's hospitals: " + thePatientHospitals);
+      console.log("Before set: " + this.state.filteredHospital);
+      console.log("filteredList: " + filteredList);
+
+
+      await this.setState({
+        filteredHospital: filteredList
+      });
+
+      console.log("After click: " + thePatientHospitals);
+      await console.log(this.state.filteredHospital);
   }
 
   handleRemoveHospital = (event) => {
@@ -129,8 +139,8 @@ class HospitalList extends PureComponent {
 
     const hospitalToRemove = {
       $class:'org.healthcare.RemovePatientHospital',
-      patient: event.target.patientremove.value,
-      hospital: event.target.hospitalremove.value,
+      patient: 'resource:org.healthcare.Patient#p1',
+      hospital: event.target.value,
       timestamp: new Date()
     }
 
@@ -142,6 +152,9 @@ class HospitalList extends PureComponent {
       },
       body: JSON.stringify(hospitalToRemove)
     });
+
+    this.testFunction();
+    this.refreshList();
   }
 
   render() {
@@ -197,14 +210,15 @@ class HospitalList extends PureComponent {
                                   <Loading message="loading hospitals..."/>
                               </td>
                           </tr>
-                          : list.length > 0
-                          ? list.map(({ id, name}) => (
-                              <tr key={id}>
-                                  <td>{ id }</td>
-                                  <td>{ name }</td>
+                          : filteredHospital.length > 0
+                          ? filteredHospital.map((singleHospital) => (
+                              <tr key={singleHospital.registrationID}>
+                                  <td style={{ textAlign: 'center' }}>{ singleHospital.registrationID }</td>
+                                  <td style={{ textAlign: 'center' }}>{ singleHospital.name }</td>
                                   <td style={{ textAlign: 'center' }}>
                                       {/*<Link to={}>*/}
-                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}} value={singleHospital.registrationID}
+                                      onClick={this.handleRemoveHospital}>Remove</Button>
                                       {/*</Link>*/}
                                   </td>
                               </tr>
@@ -253,7 +267,7 @@ class HospitalList extends PureComponent {
                       <td style={{ textAlign: 'center' }}>Changi General Hospital</td>
                       <td style={{ textAlign: 'center' }}>
                           {/*<Link to={}>*/}
-                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}} >Add and Pay</Button>
                           {/*</Link>*/}
                       </td>
                   </tr>
@@ -266,17 +280,18 @@ class HospitalList extends PureComponent {
                                   <Loading message="loading hospitals..."/>
                               </td>
                           </tr>
-                          : list.length > 0
-                          ? list.map(({ id, name}) => (
-                              <tr key={id}>
-                                  <td>{ id }</td>
-                                  <td>{ name }</td>
-                                  <td style={{ textAlign: 'center' }}>
-                                      {/*<Link to={}>*/}
-                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
-                                      {/*</Link>*/}
-                                  </td>
-                              </tr>
+                          : hospital.length > 0
+                          ? hospital.map((singleHospital) => (
+                            <tr key={singleHospital.registrationID}>
+                                <td style={{ textAlign: 'center' }}>{ singleHospital.registrationID }</td>
+                                <td style={{ textAlign: 'center' }}>{ singleHospital.name }</td>
+                                <td style={{ textAlign: 'center' }}>
+                                    {/*<Link to={}>*/}
+                                    <Button type="button" theme="primary" style={{marginRight : '0.5em'}} value={singleHospital.registrationID} 
+                                    onClick={this.handleAddHospital}>Add</Button>
+                                    {/*</Link>*/}
+                                </td>
+                            </tr>
                           ))
                           : <tr>
                               <td colSpan="3">

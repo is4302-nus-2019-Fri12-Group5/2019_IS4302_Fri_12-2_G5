@@ -22,17 +22,35 @@ import doctorsRoute from '../../../setup/routes/doctors'
 // Component
 class List extends PureComponent {
 
-  // Runs on server only for SSR
-  static fetchData({ store }) {
-    return store.dispatch(getCrateList('DESC'))
+  constructor(props) {
+    super(props);
+    this.state = {
+      medicalRecords:[],
+      selectedMedicalRecord: ''
+    }
   }
+  // Runs on server only for SSR
+  // static fetchData({ store }) {
+  //   return store.dispatch(getCrateList('DESC'))
+  // }
 
   // Runs on client only
   componentDidMount() {
     this.props.getCrateList('DESC')
+    fetch("/hlf/api/org.healthcare.MedicalRecord")
+	    .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            medicalRecords: responseData
+          });
+          console.log(this.state.medicalRecords);
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
   }
 
-  remove = (id) => {
+  /* remove = (id) => {
     if (id > 0) {
       let check = confirm('Are you sure you want to delete this Medical Record?')
 
@@ -68,10 +86,40 @@ class List extends PureComponent {
           })
       }
     }
+  } */
+
+  handlePayBill = (singleRecord) => {
+
+    const selectedMedicalRecord = singleRecord;
+    
+    console.log(selectedMedicalRecord);
+    console.log(selectedMedicalRecord.patient);
+    console.log(selectedMedicalRecord.doctor);
+
+    const billToPay = {
+      $class: "org.healthcare.PayFees",
+      patient: selectedMedicalRecord.patient,
+      doctor: selectedMedicalRecord.doctor,
+    }
+        
+
+    fetch('/hlf/api/org.healthcare.PayFees', {
+      method: 'POST',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(billToPay)
+    });
+  
+    
+    
+    
   }
 
   render() {
     const { isLoading, list } = this.props.crates
+    const { medicalRecords } = this.state
 
     return (
       <div>
@@ -128,33 +176,36 @@ class List extends PureComponent {
                           <Loading message="loading crates..."/>
                         </td>
                       </tr>
-                    : list.length > 0
-                      ? list.map(({ id, name, description, createdAt, updatedAt }) => (
-                          <tr key={id}>
+                    : medicalRecords.length > 0
+                      ? medicalRecords.map((singleRecord) => (
+                          <tr key={singleRecord.recordID}>
                             <td>
-                              { name }
+                              { singleRecord.recordID }
                             </td>
 
                             <td>
-                              { description }
+                              { singleRecord.date }
                             </td>
 
                             <td>
-                              { new Date(parseInt(createdAt)).toDateString() }
+                              { singleRecord.doctor }
                             </td>
 
                             <td>
-                              { new Date(parseInt(updatedAt)).toDateString() }
+                              { singleRecord.hospital }
+                            </td>
+
+                            <td>
+                              { singleRecord.diagnosis }
+                            </td>
+
+                            <td>
+                              { singleRecord.lastModified  }
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
-                              <Link to={doctorsRoute.crateEdit.path(id)}>
-                                <Icon size={2} style={{ color: black }}>edit</Icon>
-                              </Link>
-
-                              <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
-                                <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
-                              </span>
+                              <Button type="button" theme="primary" style={{marginRight : '0.5em'}}  
+                                    onClick={() => this.handlePayBill(singleRecord)}> Pay </Button>
                             </td>
                           </tr>
                         ))

@@ -49,7 +49,7 @@ class List extends PureComponent {
   // Runs on client only
   componentDidMount() {
     this.props.getCrateList('DESC');
-	fetch("/doctor/api/org.healthcare.MedicalRecord")
+	  fetch("/doctor/api/org.healthcare.MedicalRecord")
 	    .then(response => response.json())
         .then(responseData => {
           this.setState({
@@ -153,9 +153,9 @@ class List extends PureComponent {
                       </tr>
                     : medicalRecords.length > 0
                       ? medicalRecords.map((medicalRecord) => (
-                          <tr key={medicalRecord.recordId}>
+                          <tr key={medicalRecord.recordID}>
 						                <td>
-                              { medicalRecord.recordId }
+                              { medicalRecord.recordID }
                             </td>
 							
                             <td>
