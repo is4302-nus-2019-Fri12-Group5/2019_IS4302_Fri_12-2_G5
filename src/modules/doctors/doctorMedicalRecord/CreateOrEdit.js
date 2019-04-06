@@ -33,7 +33,6 @@ class CreateOrEdit extends Component {
     this.state = {
       isLoading: false,
       medicalRecord: {
-
         recordID: '',
         date : new Date(),
         diagnosis: '',
@@ -48,6 +47,7 @@ class CreateOrEdit extends Component {
         hospital: '',
         prescriptions: []
       },
+      
     }
   }
 
@@ -76,63 +76,122 @@ class CreateOrEdit extends Component {
   //   }
   // }
 
-  onChangeRecordID = (event) => {
 
-    this.setState({
+  // handleChange = (event) => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   });
+  // }
+
+  onChangeRecordID = async (event) => {
+
+    await this.setState({
       medicalRecord: {
-        recordID: event.target.value
+        recordID: event.target.value,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
+        }
       },
     });
+
+    await console.log(this.state.medicalRecord.recordID);
   }
   
-  onChangePatientID = (event) => {
-    this.setState({
+  onChangePatientID = async (event) => {
+    
+    await this.setState({
       medicalRecord: {
-        patient: event.target.value
-      },
-    });
-  }
-
-  onChangeDiagnosis = (event) => {
-
-    this.setState({
-      medicalRecord: {
-        diagnosis: event.target.value
-      },
-    });
-  }
-
-  onChangeWardBedNum = (event) => {
-
-    this.setState({
-      medicalRecord: {
-        ward: {
-          bedNum: event.target.value
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: event.target.value,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
         }
       },
     });
+    
+    await console.log(this.state.medicalRecord.patient);
   }
 
-  onChangeWardLevel = (event) => {
+  onChangeDiagnosis = async (event) => {
 
-    this.setState({
+    await this.setState({
       medicalRecord: {
-        ward: {
-          level: event.target.value
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: event.target.value,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
         }
       },
     });
+    console.log(this.state.medicalRecord.diagnosis);
   }
 
-  onChangeWardRoomNum = (event) => {
+  onChangeWardBedNum = async (event) => {
 
-    this.setState({
+    await this.setState({
       medicalRecord: {
-        ward: {
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: event.target.value,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
+        }
+      },
+    });
+    console.log(this.state.medicalRecord.wardInfo.bedNum);
+  }
+
+  onChangeWardLevel = async (event) => {
+
+    await this.setState({
+      medicalRecord: {
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: event.target.value,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
+        }
+      },
+    });
+    console.log(this.state.medicalRecord.wardInfo.level);
+    console.log(this.state.medicalRecord.wardInfo.roomNum);
+  }
+
+  onChangeWardRoomNum = async (event) => {
+
+    await this.setState({
+      medicalRecord: {
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
           roomNum: event.target.value
         }
       },
     });
+    console.log(this.state.medicalRecord.wardInfo.roomNum);
   }
 
 
@@ -140,13 +199,11 @@ class CreateOrEdit extends Component {
     event.preventDefault()
 
     const medicalRecordToCreate = {
-      $class: 'org.healthcare.CreateMedicalRecord',
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
         date : this.state.medicalRecord.date,
         diagnosis: this.state.medicalRecord.diagnosis,
         wardInfo: {
-          $class:'org.healthcare.Ward',
           level: this.state.medicalRecord.wardInfo.level,
           roomNum: this.state.medicalRecord.wardInfo.roomNum,
           bedNum: this.state.medicalRecord.wardInfo.bedNum
@@ -155,18 +212,18 @@ class CreateOrEdit extends Component {
         patient: "resource:org.healthcare.Patient#" + this.state.medicalRecord.patient,
         doctor: "resource:org.healthcare.Doctor#d1",
         hospital: "resource:org.healthcare.Hospital#h1",
-        prescriptions: this.state.medicalRecord.prescriptions
+        prescriptions: []
       }
     }
 
-    fetch('/hlf/api/org.healthcare.CreateMedicalRecord', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(medicalRecordToCreate)
-        });
+    fetch('/doctor/api/org.healthcare.CreateMedicalRecord', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(medicalRecordToCreate)
+    });
     
     this.setState({
       isLoading: true
@@ -175,7 +232,7 @@ class CreateOrEdit extends Component {
     this.props.messageShow('Saving Medical Record, please wait...')
 
     // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.crate)
+    this.props.crateCreateOrUpdate(this.state.medicalRecord)
       .then(response => {
         this.setState({
           isLoading: false
@@ -271,6 +328,7 @@ class CreateOrEdit extends Component {
                   <Textarea
                     fullWidth={true}
                     placeholder="Ward-level"
+                    // required="required"
                     name="wardLevel"
                     value={this.state.medicalRecord.wardInfo.level}
                     onChange={this.onChangeWardLevel}
