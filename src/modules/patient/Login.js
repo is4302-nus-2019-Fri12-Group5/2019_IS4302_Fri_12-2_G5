@@ -10,6 +10,7 @@ import { Grid, GridCell } from '../../ui/grid'
 import Button from '../../ui/button'
 import ImageTile from '../../ui/image/Tile'
 import Input from '../../ui/input/Input'
+
 import H3 from '../../ui/typography/H3'
 import Icon from '../../ui/icon'
 import { level1 } from '../../ui/common/shadows'
@@ -18,7 +19,8 @@ import { white } from '../../ui/common/colors'
 // App Imports
 import home from '../../setup/routes/home'
 import { APP_URL } from '../../setup/config/env'
-import userRoutes from '../../setup/routes/patient'
+import patientRoutes from '../../setup/routes/patient'
+import patientsRoutes from '../../setup/routes/patients'
 import { messageShow, messageHide } from '../common/api/actions'
 import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
@@ -140,11 +142,11 @@ class Login extends Component {
 
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
-              <Link to={userRoutes.signup.path}>
+              <Link to={patientRoutes.signup.path}>
                 <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
-              <Link to={home.hospital.path}>
+              <Link to={patientsRoutes.patientsDashboard.path}>
                 <Button type="button" theme="secondary">Login</Button>
               </Link>
             </div>
