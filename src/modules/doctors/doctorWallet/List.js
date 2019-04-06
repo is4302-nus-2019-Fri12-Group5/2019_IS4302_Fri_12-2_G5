@@ -50,7 +50,7 @@ const Wallet = (props) => (
                   <GridCell style={{textAlign: 'center' }}>
                       <H3 font="secondary" style={{ marginBottom: '1em' }}>My Wallet</H3>
                         {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
-                        <H4 style={{ marginBottom: '3em' }}>Income:   320</H4>
+                        <H4 style={{ marginBottom: '3em' }}>Income:   320 SGD</H4>
                         {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
                         <p style={{ color: grey2, marginBottom: '2em' }}>Income increased in the last week:  30%</p>
 
