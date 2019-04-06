@@ -13,7 +13,7 @@ import { level1 } from '../../../ui/common/shadows'
 import home from '../../../setup/routes/home'
 import user from '../../../setup/routes/patient'
 import crate from '../../../setup/routes/crate'
-import admin from '../../../setup/routes/doctors'
+import doctorsRoute from '../../../setup/routes/doctors'
 import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
@@ -54,7 +54,7 @@ const Header = (props) => {
             props.user.isAuthenticated
               ?
               <Menu>
-                { props.user.details.role === 'ADMIN' && <MenuItem to={admin.dashboard.path} section="admin">Admin</MenuItem> }
+                { props.user.details.role === 'ADMIN' && <MenuItem to={doctorsRoute.dashboard.path} section="admin">Doctors</MenuItem> }
 
                 <MenuItem to={crate.list.path}>Crates</MenuItem>
 

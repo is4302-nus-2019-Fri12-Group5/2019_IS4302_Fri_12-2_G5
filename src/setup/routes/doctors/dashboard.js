@@ -3,7 +3,7 @@ import params from '../../../setup/config/params'
 import Dashboard from '../../../modules/doctors/Dashboard'
 
 // Admin dashboard routes
-export const dashboard = {
+export const doctorsDashboard = {
   path: '/doctors/dashboard',
   component: Dashboard,
   // auth: true,
