@@ -34,7 +34,7 @@ rule HospitalSelf {
 }
 
 rule HospitalReadDummy {
-	description: "Hospital can see dummy"
+	description: "Hospital can see/read dummy hospital"
 	participant(p): "org.healthcare.Hospital"
 	operation: READ
 	resource(r): "org.healthcare.Hospital"
@@ -52,7 +52,7 @@ rule PatientReadHospital {
 }
 
 //tested working
-rule HospitalCreatenReadDoctor{
+rule HospitalCreateandReadDoctor{
 	description: "Hospital is able to create and read doctors"
 	participant(p): "org.healthcare.Hospital"
 	operation:  CREATE, READ
@@ -97,7 +97,7 @@ rule PatientCanReadPersonalInfo {
 
 //tested working
 rule DoctorCanReadPersonalInfo {
-	description: "Patient can access their own personal info"
+	description: "Doctor can access their own personal info"
 	participant(p): "org.healthcare.Doctor"
 	operation: READ
 	resource(r): "org.healthcare.Doctor"
@@ -114,7 +114,7 @@ rule DoctorCanReadMedicalRecordTheyCreated {
 	action: ALLOW
 }
 
-rule PersonCanReadBasicMedicalInformation {
+rule PatientCanReadBasicMedicalInformation {
 	description: "Patient can access their own basic medical information"
 	participant(p): "org.healthcare.Person"
 	operation: READ
@@ -125,7 +125,7 @@ rule PersonCanReadBasicMedicalInformation {
 
 //tested working
 rule PatientCanReadMedicalRecords {
-	description: "Patients are able to READ medical records belonging to them."
+	description: "Patients are able to read their own medical records"
 	participant(p): "org.healthcare.Person"
 	operation: READ
 	resource(r): "org.healthcare.MedicalRecord"
@@ -292,7 +292,7 @@ rule DoctorCreateMedicalRecord{
 }
 
 rule DoctorCreateMedicalRecord_allow_create_medicalrecord{
-	description: "Doctor create medical record for patient"
+	description: "Doctor to access medical record asset for patient"
 	participant(p): "org.healthcare.Doctor"
 	operation: CREATE
 	resource(r): "org.healthcare.MedicalRecord"
@@ -302,7 +302,7 @@ rule DoctorCreateMedicalRecord_allow_create_medicalrecord{
 }
 
 rule DoctorCreateMedicalRecord_allow_update_patient {
-	description: "Doctor create medical record for patient"
+	description: "Doctor access medical record asset for patient"
 	participant(p): "org.healthcare.Doctor"
 	operation: UPDATE
 	resource(r): "org.healthcare.Patient"
@@ -328,7 +328,7 @@ rule DoctorCanUpdateTheirMedicalRecords_tx {
 }
 
 rule DoctorCanUpdateTheirMedicalRecords_allow_update_medicalrecord {
-	description: "Doctors can update thier own medical records"
+	description: "Doctors to access updatemedicalrecord transaction"
 	participant(p): "org.healthcare.Doctor"
 	operation: UPDATE
 	resource(r): "org.healthcare.MedicalRecord"
@@ -352,7 +352,7 @@ rule DoctorCanCreatePresc_tx {
 
 // tested working
 rule DoctorCanCreatePrescription_allow_create_prescription {
-	description: "Doctors can create prescription for patients"
+	description: "Doctors to access createprescription transaction"
 	participant: "org.healthcare.Doctor"
 	operation: CREATE
 	resource: "org.healthcare.Prescription"
@@ -361,7 +361,7 @@ rule DoctorCanCreatePrescription_allow_create_prescription {
 }
 
 rule DoctorCanCreatePrescription_allow_update_medicalrecord {
-	description: "Doctors can create prescription for patients"
+	description: "Doctors to access medical record for patients"
 	participant: "org.healthcare.Doctor"
 	operation: UPDATE
 	resource: "org.healthcare.MedicalRecord"
@@ -371,7 +371,7 @@ rule DoctorCanCreatePrescription_allow_update_medicalrecord {
 
 // tested working
 rule DoctorCanReadnUpdatePresc_tx {
-  description: "Doctors can read and update presc"
+  description: "Doctors can read and update prescriptionn"
   participant(p): "org.healthcare.Doctor"
   operation: CREATE
   resource(r): "org.healthcare.UpdatePrescription"
@@ -382,7 +382,7 @@ rule DoctorCanReadnUpdatePresc_tx {
 
 // tested working
 rule DoctorCanUpdateTheirPrescription_allow_update_prescription {
-	description: "Doctors can read and update prescription for patients"
+	description: "Doctors to acess updateprescription transaction"
 	participant(p): "org.healthcare.Doctor"
 	operation: UPDATE
 	resource(r): "org.healthcare.Prescription"
@@ -392,7 +392,7 @@ rule DoctorCanUpdateTheirPrescription_allow_update_prescription {
 }
 
 rule DoctorCanReadPrescriptionOfAllMedicalRecordRelatedToHospital {
-	description: "Doctors can read and update prescription for patients"
+	description: "Doctors can read prescription of medical records"
 	participant(p): "org.healthcare.Doctor"
 	operation: READ
 	resource(r): "org.healthcare.Prescription"
@@ -425,7 +425,7 @@ rule DoctorCanCreateBasicMedicalInformationPatient {
 }
 
 rule DoctorCanCreateBasicMedicalInformationPatient_allow_update_patient {
-  description: "Doctors access or create basic medical info"
+  description: "Doctors access or create basic medical info for patient"
   participant(p): "org.healthcare.Doctor"
   operation: UPDATE
   resource(r): "org.healthcare.Patient"
@@ -435,7 +435,7 @@ rule DoctorCanCreateBasicMedicalInformationPatient_allow_update_patient {
 }
 
 rule DoctorCanCreateBasicMedicalInformationPatient_allow_create_basic_medical_info {
-  description: "Doctors access or create basic medical info"
+  description: "Doctors access or create basic medical info for patient"
   participant(p): "org.healthcare.Doctor"
   operation: CREATE
   resource(r): "org.healthcare.BasicMedicalInformation"
@@ -447,7 +447,7 @@ rule DoctorCanCreateBasicMedicalInformationPatient_allow_create_basic_medical_in
 
 //required for CreateBasicMedicalInformation transaction
 rule DoctorCanCreateBasicMedicalInformation {
-  description: "Doctors access or create basic medical info"
+  description: "Doctors access or create basic medical info for themselves"
   participant(p): "org.healthcare.Doctor"
   operation: CREATE
   resource(r): "org.healthcare.CreateDoctorBasicMedicalInformation"
@@ -456,7 +456,7 @@ rule DoctorCanCreateBasicMedicalInformation {
 }
 
 rule DoctorCanCreateBasicMedicalInformation_allow_update_doctor {
-  description: "Doctors access or create basic medical info"
+  description: "Doctors to access basic medical info"
   participant(p): "org.healthcare.Doctor"
   operation: UPDATE
   resource(r): "org.healthcare.Doctor"
@@ -466,7 +466,7 @@ rule DoctorCanCreateBasicMedicalInformation_allow_update_doctor {
 }
 
 rule DoctorCanCreateBasicMedicalInformation_allow_create_basic_medical_info {
-  description: "Doctors access or create basic medical info"
+  description: "Doctors to access basic medical info"
   participant(p): "org.healthcare.Doctor"
   operation: CREATE
   resource(r): "org.healthcare.BasicMedicalInformation"
@@ -476,7 +476,7 @@ rule DoctorCanCreateBasicMedicalInformation_allow_create_basic_medical_info {
 }
 
 rule DoctorCanUpdatenReadBasicMedicalInformation {
-  description: "Doctors access or create basic medical info"
+  description: "Doctors can update/read basic medical info"
   participant(p): "org.healthcare.Doctor"
   operation: UPDATE, READ
   resource(r): "org.healthcare.BasicMedicalInformation"
@@ -521,7 +521,7 @@ rule OnlyPatientCanTopUpBalance {
 }
 
 rule OnlyPatientCanPayDoctor {
-  description: "Only patients will need to call transaction to pay fees to doctor"
+  description: "Only patients can call transaction to pay fees to doctor"
   participant(p): "org.healthcare.Patient"
   operation: CREATE
   resource(r): "org.healthcare.PayFees"
@@ -530,7 +530,7 @@ rule OnlyPatientCanPayDoctor {
 }
 
 rule PatientCanReadDoctorFee {
-  description: "Patient can read doctor details to prove"
+  description: "Patient can read doctor details to prove thier payment"
   participant(p): "org.healthcare.Patient"
   operation: READ, UPDATE
   resource(r): "org.healthcare.Doctor"
