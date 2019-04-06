@@ -17,6 +17,7 @@ import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import {H3} from "../../../ui/typography";
 import PatientMenu from '../common/Menu'
+import doctorsRoute from "../../../setup/routes/doctors";
 
 // Component
 class HospitalList extends PureComponent {
@@ -160,23 +161,62 @@ class HospitalList extends PureComponent {
           {/* Top title bar */}
           <Grid style={{ backgroundColor: grey }}>
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-              <H3 font="secondary">Your Current Hospital : Hospital Name </H3>
+              <H3 font="secondary">Your Current Hospital </H3>
             </GridCell>
           </Grid>
 
           {/* Get Current Hospital list */}
           <Grid>
-            {
-              isLoading
-                  ? <Loading/>
-                  : filteredHospital.length > 0
-                  ? filteredHospital.map(eachHospital => (
-                      <GridCell key={eachHospital.registrationID} style={{ textAlign: 'center' }}>
-                        <p> {eachHospital.registrationID} </p>
-                      </GridCell>
-                  ))
-                  : <EmptyMessage message="No hospital to show" />
-            }
+              <table className="striped">
+                  <thead>
+                  <tr>
+                      <th style={{ textAlign: 'center' }}>RegistrationID</th>
+                      <th style={{ textAlign: 'center' }}>Name</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  {/* Mock data */}
+                  <tr>
+                      <td style={{ textAlign: 'center' }}>AX001 </td>
+                      <td style={{ textAlign: 'center' }}>National University Hospital </td>
+                      <td style={{ textAlign: 'center' }}>
+
+                          {/*<Link to={}>*/}
+                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Remove</Button>
+                          {/*</Link>*/}
+
+                      </td>
+                  </tr>
+
+                  {/* Get data from backend */}
+                  {
+                      isLoading
+                          ? <tr>
+                              <td colSpan="6">
+                                  <Loading message="loading hospitals..."/>
+                              </td>
+                          </tr>
+                          : list.length > 0
+                          ? list.map(({ id, name}) => (
+                              <tr key={id}>
+                                  <td>{ id }</td>
+                                  <td>{ name }</td>
+                                  <td style={{ textAlign: 'center' }}>
+                                      {/*<Link to={}>*/}
+                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                                      {/*</Link>*/}
+                                  </td>
+                              </tr>
+                          ))
+                          : <tr>
+                              <td colSpan="3">
+                                  <EmptyMessage message="You haven't added any hospital yet. The above is Mock Data."/>
+                              </td>
+                          </tr>
+                  }
+                  </tbody>
+              </table>
           </Grid>
 
             {/* Second title bar */}
@@ -189,17 +229,63 @@ class HospitalList extends PureComponent {
 
           {/* Get All Hospital list */}
           <Grid>
-            {
-              isLoading
-                  ? <Loading/>
-                  : hospital.length > 0
-                  ? hospital.map(eachHospital => (
-                      <GridCell key={eachHospital.registrationID} style={{ textAlign: 'center' }}>
-                        <p> {eachHospital.registrationID} </p>
-                      </GridCell>
-                  ))
-                  : <EmptyMessage message="No More hospital to show" />
-            }
+              <table className="striped">
+                  <thead>
+                  <tr>
+                      <th style={{ textAlign: 'center' }}>RegistrationID</th>
+                      <th style={{ textAlign: 'center' }}>Name</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  {/* Mock data */}
+                  <tr>
+                      <td style={{ textAlign: 'center' }}>AX002 </td>
+                      <td style={{ textAlign: 'center' }}>Singapore General Hospital</td>
+                      <td style={{ textAlign: 'center' }}>
+                          {/*<Link to={}>*/}
+                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                          {/*</Link>*/}
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style={{ textAlign: 'center' }}>AX003</td>
+                      <td style={{ textAlign: 'center' }}>Changi General Hospital</td>
+                      <td style={{ textAlign: 'center' }}>
+                          {/*<Link to={}>*/}
+                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                          {/*</Link>*/}
+                      </td>
+                  </tr>
+
+                  {/* Get data from backend */}
+                  {
+                      isLoading
+                          ? <tr>
+                              <td colSpan="6">
+                                  <Loading message="loading hospitals..."/>
+                              </td>
+                          </tr>
+                          : list.length > 0
+                          ? list.map(({ id, name}) => (
+                              <tr key={id}>
+                                  <td>{ id }</td>
+                                  <td>{ name }</td>
+                                  <td style={{ textAlign: 'center' }}>
+                                      {/*<Link to={}>*/}
+                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                                      {/*</Link>*/}
+                                  </td>
+                              </tr>
+                          ))
+                          : <tr>
+                              <td colSpan="3">
+                                  <EmptyMessage message="No hospitals to show. The above is Mock Data."/>
+                              </td>
+                          </tr>
+                  }
+                  </tbody>
+              </table>
           </Grid>
 
             {/* Third title bar */}
