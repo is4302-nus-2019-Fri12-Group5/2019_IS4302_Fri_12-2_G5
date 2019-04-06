@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="334344d8-8928-45c7-9718-5d67390b2b69" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/modules/doctors/doctorWallet/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/doctors/doctorWallet/List.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/patients/patientWallet/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patients/patientWallet/List.js" afterDir="false" />
-    </list>
+    <list default="true" id="334344d8-8928-45c7-9718-5d67390b2b69" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bower_components.ember-try/" />
     <ignored path="$PROJECT_DIR$/.node_modules.ember-try/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -47,7 +44,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/modules/patients/patientMedicalRecord/List.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="168">
@@ -70,10 +67,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/modules/doctors/doctorWallet/List.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
+                <state relative-caret-position="284">
                   <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
                   <folding>
                     <element signature="e#11#55#0" expanded="true" />
@@ -284,16 +281,6 @@
             <path>
               <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
               <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="blockchain_network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -307,35 +294,15 @@
               <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="doctors" type="462c0819:PsiDirectoryNode" />
+              <item name="patients" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
               <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="doctors" type="462c0819:PsiDirectoryNode" />
-              <item name="doctorWallet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="button" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
+              <item name="patients" type="462c0819:PsiDirectoryNode" />
+              <item name="patientMedicalRecord" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -392,7 +359,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70393000" />
+    <option name="totallyTimeSpent" value="70667000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,7 +374,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1726568" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14235377" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -876,13 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/patients/patientMedicalRecord/List.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="110" column="82" selection-start-line="110" selection-start-column="82" selection-end-line="110" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/patients/patientWallet/List.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
@@ -897,12 +857,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/doctors/doctorWallet/List.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="284">
           <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
           <folding>
             <element signature="e#11#55#0" expanded="true" />
             <element signature="e#182#231#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/patients/patientMedicalRecord/List.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="110" column="82" selection-start-line="110" selection-start-column="82" selection-end-line="110" selection-end-column="82" />
         </state>
       </provider>
     </entry>

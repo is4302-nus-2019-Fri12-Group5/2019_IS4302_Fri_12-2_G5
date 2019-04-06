@@ -113,10 +113,6 @@ class List extends PureComponent {
                   <td style={{ textAlign: 'center' }}>2018/09/12</td>
                   <td style={{ textAlign: 'center' }}>
 
-                    {/*<Link to={doctorsRoute.crateEdit.path(id)}>*/}
-                      <Icon size={2} style={{ color: black }}>edit</Icon>
-                    {/*</Link>*/}
-
                     {/*<span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>*/}
                       <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
                     {/*</span>*/}
