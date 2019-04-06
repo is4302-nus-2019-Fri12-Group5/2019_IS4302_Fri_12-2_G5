@@ -41,28 +41,32 @@ class Login extends Component {
     // Function bindings
   }
 
-  onChangeNRIC = (event) => {
-
-    console.log(event.target.value);
+  onChangeNRIC = async (event) => {
     
+    const userCopy = {
+      nric: event.target.value,
+      password: this.state.user.password
+    }
+
     this.setState({
-      user: {
-        nric: event.target.value,
-        password: this.state.user.password
-      }
+      user: userCopy
     });
+
+    console.log(this.state.user.nric);
   }
 
-  onChangePassword = (event) => {
+  onChangePassword = async (event) => {
 
-    console.log(event.target.value);
+    const userCopy = {
+      nric: this.state.user.nric,
+      password: event.target.value
+    }
 
     this.setState({
-      user: {
-        nric: this.state.user.nric,
-        password: event.target.value
-      }
+      user: userCopy
     });
+
+    console.log(this.state.user.password);
   }
 
   onSubmit = (event) => {

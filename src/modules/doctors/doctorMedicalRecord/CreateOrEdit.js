@@ -33,7 +33,6 @@ class CreateOrEdit extends Component {
     this.state = {
       isLoading: false,
       medicalRecord: {
-
         recordID: '',
         date : new Date(),
         diagnosis: '',
@@ -48,6 +47,7 @@ class CreateOrEdit extends Component {
         hospital: '',
         prescriptions: []
       },
+      
     }
   }
 
@@ -76,63 +76,121 @@ class CreateOrEdit extends Component {
   //   }
   // }
 
-  onChangeRecordID = (event) => {
 
-    this.setState({
+  // handleChange = (event) => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   });
+  // }
+
+  onChangeRecordID = async (event) => {
+
+    await this.setState({
       medicalRecord: {
-        recordID: event.target.value
+        recordID: event.target.value,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
+        }
       },
     });
+
+    await console.log(this.state.medicalRecord.recordID);
   }
   
   onChangePatientID = (event) => {
     this.setState({
       medicalRecord: {
-        patient: event.target.value
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: event.target.value,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
+        }
       },
     });
+    console.log(this.state.medicalRecord.patient);
   }
 
   onChangeDiagnosis = (event) => {
 
     this.setState({
       medicalRecord: {
-        diagnosis: event.target.value
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: event.target.value,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
+        }
       },
     });
+    console.log(this.state.medicalRecord.diagnosis);
   }
 
   onChangeWardBedNum = (event) => {
 
     this.setState({
       medicalRecord: {
-        ward: {
-          bedNum: event.target.value
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: event.target.value,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
         }
       },
     });
+    console.log(this.state.medicalRecord.wardInfo.bedNum);
   }
 
   onChangeWardLevel = (event) => {
 
     this.setState({
       medicalRecord: {
-        ward: {
-          level: event.target.value
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: event.target.value,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum
         }
       },
     });
+    console.log(this.state.medicalRecord.wardInfo.level);
+    console.log(this.state.medicalRecord.wardInfo.roomNum);
   }
 
   onChangeWardRoomNum = (event) => {
 
     this.setState({
       medicalRecord: {
-        ward: {
+        
+        recordID: this.state.medicalRecord.recordID,
+        date: this.state.medicalRecord.date,
+        patient: this.state.medicalRecord.patient,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo : {
+          level: this.state.medicalRecord.wardInfo.level,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum,
           roomNum: event.target.value
         }
       },
     });
+    console.log(this.state.medicalRecord.wardInfo.roomNum);
   }
 
 
@@ -140,13 +198,11 @@ class CreateOrEdit extends Component {
     event.preventDefault()
 
     const medicalRecordToCreate = {
-      $class: 'org.healthcare.CreateMedicalRecord',
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
         date : this.state.medicalRecord.date,
         diagnosis: this.state.medicalRecord.diagnosis,
         wardInfo: {
-          $class:'org.healthcare.Ward',
           level: this.state.medicalRecord.wardInfo.level,
           roomNum: this.state.medicalRecord.wardInfo.roomNum,
           bedNum: this.state.medicalRecord.wardInfo.bedNum
@@ -160,47 +216,47 @@ class CreateOrEdit extends Component {
     }
 
     fetch('/hlf/api/org.healthcare.CreateMedicalRecord', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(medicalRecordToCreate)
-        });
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(medicalRecordToCreate)
+    });
     
-    this.setState({
-      isLoading: true
-    })
+  //   this.setState({
+  //     isLoading: true
+  //   })
 
-    this.props.messageShow('Saving Medical Record, please wait...')
+  //   this.props.messageShow('Saving Medical Record, please wait...')
 
-    // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.crate)
-      .then(response => {
-        this.setState({
-          isLoading: false
-        })
+  //   // Save doctorMedicalRecord
+  //   this.props.crateCreateOrUpdate(this.state.crate)
+  //     .then(response => {
+  //       this.setState({
+  //         isLoading: false
+  //       })
 
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Medical Record saved successfully.')
+  //       if (response.data.errors && response.data.errors.length > 0) {
+  //         this.props.messageShow(response.data.errors[0].message)
+  //       } else {
+  //         this.props.messageShow('Medical Record saved successfully.')
 
-          this.props.history.push(admin.doctorMedicalRecord.path)
-        }
-      })
-      .catch(error => {
-        this.props.messageShow('There was some error. Please try again.')
+  //         this.props.history.push(admin.doctorMedicalRecord.path)
+  //       }
+  //     })
+  //     .catch(error => {
+  //       this.props.messageShow('There was some error. Please try again.')
 
-        this.setState({
-          isLoading: false
-        })
-      })
-      .then(() => {
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+  //       this.setState({
+  //         isLoading: false
+  //       })
+  //     })
+  //     .then(() => {
+  //       window.setTimeout(() => {
+  //         this.props.messageHide()
+  //       }, 5000)
+  //     })
   }
 
   render() {
@@ -271,6 +327,7 @@ class CreateOrEdit extends Component {
                   <Textarea
                     fullWidth={true}
                     placeholder="Ward-level"
+                    // required="required"
                     name="wardLevel"
                     value={this.state.medicalRecord.wardInfo.level}
                     onChange={this.onChangeWardLevel}
