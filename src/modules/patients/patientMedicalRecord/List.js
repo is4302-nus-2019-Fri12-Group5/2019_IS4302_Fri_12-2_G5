@@ -113,9 +113,9 @@ class List extends PureComponent {
                   <td style={{ textAlign: 'center' }}>2018/09/12</td>
                   <td style={{ textAlign: 'center' }}>
 
-                    {/*<span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>*/}
-                      <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
-                    {/*</span>*/}
+                    {/*<Link to={}>*/}
+                    <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Pay the doctor</Button>
+                    {/*</Link>*/}
 
                   </td>
                 </tr>

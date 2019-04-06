@@ -3,12 +3,10 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Grid, GridCell } from '../../../ui/grid'
 import Button from '../../../ui/button'
-import Icon from '../../../ui/icon'
 import {white, black, grey, grey2, grey3} from '../../../ui/common/colors'
 
 // App Imports
@@ -17,7 +15,6 @@ import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import {H3} from "../../../ui/typography";
 import PatientMenu from '../common/Menu'
-import doctorsRoute from "../../../setup/routes/doctors";
 
 // Component
 class HospitalList extends PureComponent {
@@ -183,7 +180,7 @@ class HospitalList extends PureComponent {
                       <td style={{ textAlign: 'center' }}>
 
                           {/*<Link to={}>*/}
-                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Remove</Button>
+                          <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Remove</Button>
                           {/*</Link>*/}
 
                       </td>
@@ -204,7 +201,7 @@ class HospitalList extends PureComponent {
                                   <td>{ name }</td>
                                   <td style={{ textAlign: 'center' }}>
                                       {/*<Link to={}>*/}
-                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                                      <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Add</Button>
                                       {/*</Link>*/}
                                   </td>
                               </tr>
@@ -244,7 +241,7 @@ class HospitalList extends PureComponent {
                       <td style={{ textAlign: 'center' }}>Singapore General Hospital</td>
                       <td style={{ textAlign: 'center' }}>
                           {/*<Link to={}>*/}
-                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                          <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Add</Button>
                           {/*</Link>*/}
                       </td>
                   </tr>
@@ -253,7 +250,7 @@ class HospitalList extends PureComponent {
                       <td style={{ textAlign: 'center' }}>Changi General Hospital</td>
                       <td style={{ textAlign: 'center' }}>
                           {/*<Link to={}>*/}
-                          <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Add and Pay</Button>
+                          <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Add</Button>
                           {/*</Link>*/}
                       </td>
                   </tr>

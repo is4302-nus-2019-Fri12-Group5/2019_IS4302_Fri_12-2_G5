@@ -17,7 +17,7 @@ const DoctorMenu = () => (
       <Menu>
         <MenuItem to={doctors.doctorsDashboard.path} type="primary" style={{ color: black }}>Profile</MenuItem>
 
-        <MenuItem to={doctors.doctorPatients.path} section="products" type="primary" style={{ color: black }}>My Patients</MenuItem>
+        <MenuItem to={doctors.doctorPatients.path} section="products" type="primary" style={{ color: black }}>Patients</MenuItem>
 
         <MenuItem to={doctors.doctorMedicalRecord.path} type="primary" style={{ color: black }}>Medical Records</MenuItem>
 
