@@ -184,7 +184,7 @@ class List extends PureComponent {
                             <td style={{ textAlign: 'center' }}>
                               
                               <Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>
-                                <Icon size={2} style={{ color: black }} value={medicalRecord.recordID}> Edit </Icon>
+                                <Icon size={2} style={{ color: black }} value={medicalRecord.recordID}>edit</Icon>
                               </Link>
                               
                               {/* <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
