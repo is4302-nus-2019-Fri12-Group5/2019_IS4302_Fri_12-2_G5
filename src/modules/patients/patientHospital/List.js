@@ -128,6 +128,8 @@ class HospitalList extends PureComponent {
 
       console.log("After click: " + thePatientHospitals);
       await console.log(this.state.filteredHospital);
+
+      window.location.reload();
   }
 
   handleRemoveHospital = (event) => {

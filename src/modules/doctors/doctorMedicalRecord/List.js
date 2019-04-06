@@ -18,6 +18,7 @@ import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import DoctorMenu from '../common/Menu'
 import doctorsRoute from '../../../setup/routes/doctors'
+import Edit from './Edit'
 
 // Component
 class List extends PureComponent {
@@ -172,7 +173,7 @@ class List extends PureComponent {
                               { medicalRecord.date }
                             </td>
 
-							<td>
+							              <td>
                               { medicalRecord.diagnosis }
                             </td>
 
@@ -181,12 +182,12 @@ class List extends PureComponent {
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
-                              { medicalRecord.hospital}
-                              {/* <Link to={doctorsRoute.crateEdit.path(id)}>
-                                <Icon size={2} style={{ color: black }}>edit</Icon>
+                              
+                              <Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>
+                                <Icon size={2} style={{ color: black }} value={medicalRecord.recordID}> Edit </Icon>
                               </Link>
-
-                              <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
+                              
+                              {/* <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
                                 <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
                               </span> */}
                             </td>
