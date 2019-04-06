@@ -1,6 +1,5 @@
 // App Imports
 import Home from '../../modules/pages/Home'
-import Hospital from '../../modules/pages/Hospital'
 import History from '../../modules/pages/History'
 import HowItWorks from '../../modules/pages/HowItWorks'
 import WhatsNew from '../../modules/pages/Balance'
@@ -13,13 +12,8 @@ export default {
     exact: true
   },
 
-  hospital: {
-    path: '/hospital',
-    component: Hospital
-  },
-
-  history: {
-    path: '/history',
+  doctorHowItWorks: {
+    path: '/doctorHowItWorks',
     component: History
   },
 
