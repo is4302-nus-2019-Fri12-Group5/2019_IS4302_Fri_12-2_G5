@@ -21,7 +21,26 @@ import doctorsRoute from '../../../setup/routes/doctors'
 
 // Component
 class List extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      medicalRecords: [],
+      doctor: "",
+      doctorNRIC: localStorage.getItem('user')
+    }
+    
+    //localStorage.setItem('user', data);
 
+    // // getter
+    // localStorage.getItem('user');
+
+    // // remove
+    // localStorage.removeItem('user');
+
+    // // remove all
+    // localStorage.clear();
+  }
+  
   // Runs on server only for SSR
   static fetchData({ store }) {
     return store.dispatch(getCrateList('DESC'))
@@ -29,7 +48,18 @@ class List extends PureComponent {
 
   // Runs on client only
   componentDidMount() {
-    this.props.getCrateList('DESC')
+    this.props.getCrateList('DESC');
+	fetch("/doctor/api/org.healthcare.MedicalRecord")
+	    .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            medicalRecords: responseData
+          });
+          console.log(this.state.medicalRecords);
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
   }
 
   remove = (id) => {
@@ -72,6 +102,7 @@ class List extends PureComponent {
 
   render() {
     const { isLoading, list } = this.props.crates
+	  const { medicalRecords } = this.state
 
     return (
       <div>
@@ -117,36 +148,47 @@ class List extends PureComponent {
                   isLoading
                     ? <tr>
                         <td colSpan="6">
-                          <Loading message="loading crates..."/>
+                          <Loading message="loading records..."/>
                         </td>
                       </tr>
-                    : list.length > 0
-                      ? list.map(({ id, image, name, description, createdAt, updatedAt }) => (
-                          <tr key={id}>
+                    : medicalRecords.length > 0
+                      ? medicalRecords.map((medicalRecord) => (
+                          <tr key={medicalRecord.recordId}>
+						                <td>
+                              { medicalRecord.recordId }
+                            </td>
+							
                             <td>
-                              { name }
+                              { medicalRecord.patient }
                             </td>
 
                             <td>
-                              { description }
+                              { medicalRecord.wardInfo.level }-
+                              { medicalRecord.wardInfo.roomNum }-
+                              { medicalRecord.wardInfo.bedNum }
                             </td>
 
                             <td>
-                              { new Date(parseInt(createdAt)).toDateString() }
+                              { medicalRecord.date }
+                            </td>
+
+							<td>
+                              { medicalRecord.diagnosis }
                             </td>
 
                             <td>
-                              { new Date(parseInt(updatedAt)).toDateString() }
+                              { medicalRecord.lastModified }
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
-                              <Link to={doctorsRoute.crateEdit.path(id)}>
+                              { medicalRecord.hospital}
+                              {/* <Link to={doctorsRoute.crateEdit.path(id)}>
                                 <Icon size={2} style={{ color: black }}>edit</Icon>
                               </Link>
 
                               <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
                                 <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
-                              </span>
+                              </span> */}
                             </td>
                           </tr>
                         ))

@@ -41,7 +41,7 @@ class Login extends Component {
     // Function bindings
   }
 
-  onChangeEmail = (event) => {
+  onChangeNRIC = (event) => {
 
     console.log(event.target.value);
     
@@ -128,13 +128,13 @@ class Login extends Component {
             <div style={{ width: '25em', margin: '0 auto' }}>
               {/* Email */}
               <Input
-                type="email"
+                type="text"
                 fullWidth={true}
-                placeholder="Email"
+                placeholder="NRIC"
                 required="required"
-                name="email"
-                value={this.state.user.email}
-                onChange={this.onChangeEmail}
+                name="nric"
+                value={this.state.user.nric}
+                onChange={this.onChangeNRIC}
                 style={{ marginTop: '1em', color: "#333"}}
               />
 
@@ -169,7 +169,7 @@ class Login extends Component {
                       <Button type="button" style={{ marginRight: '0.5em' }} >Signup</Button>
                   </Link>
 
-                  <Link to={doctorsRoutes.dashboard.path}>
+                  <Link to={doctorsRoutes.doctorsDashboard.path}>
                       <Button type="button" theme="secondary" onClick={this.onTryLogin}>Login</Button>
                   </Link>
               </div>

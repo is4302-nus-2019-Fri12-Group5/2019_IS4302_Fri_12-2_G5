@@ -32,51 +32,142 @@ class CreateOrEdit extends Component {
 
     this.state = {
       isLoading: false,
-      crate: {
-        id: 0,
-        name: '',
-        description: ''
+      medicalRecord: {
+
+        recordID: '',
+        date : new Date(),
+        diagnosis: '',
+        wardInfo: {
+          level: '',
+          roomNum: '',
+          bedNum: ''
+        },
+        lastModified: new Date(),
+        patient:'',
+        doctor:'',
+        hospital: '',
+        prescriptions: []
       },
-      crateTypes: [],
-      userGenders: [],
     }
   }
 
   componentDidMount() {
     // Get doctorMedicalcrate details (edit case)
-    this.getCrate(parseInt(this.props.match.params.id))
+    // this.getCrate(parseInt(this.props.match.params.id))
+
+  
   }
 
-  getCrate = (crateId) => {
-    if (crateId > 0) {
-      this.props.getCrateById(crateId)
-        .then(response => {
-          if (response.data.errors && response.data.errors.length > 0) {
-            this.props.messageShow(response.data.errors[0].message)
-          } else {
-            this.setState({
-              crate: response.data.data.crateById
-            })
-          }
-        })
-        .catch(error => {
-          this.props.messageShow('There was some error fetching doctorMedicalRecord types. Please try again.')
-        })
-    }
-  }
+  // getCrate = (crateId) => {
+  //   if (crateId > 0) {
+  //     this.props.getCrateById(crateId)
+  //       .then(response => {
+  //         if (response.data.errors && response.data.errors.length > 0) {
+  //           this.props.messageShow(response.data.errors[0].message)
+  //         } else {
+  //           this.setState({
+  //             crate: response.data.data.crateById
+  //           })
+  //         }
+  //       })
+  //       .catch(error => {
+  //         this.props.messageShow('There was some error fetching doctorMedicalRecord types. Please try again.')
+  //       })
+  //   }
+  // }
 
-  onChange = (event) => {
-    let crate = this.state.crate
-    crate[event.target.name] = event.target.value
+  onChangeRecordID = (event) => {
 
     this.setState({
-      crate: crate
-    })
+      medicalRecord: {
+        recordID: event.target.value
+      },
+    });
   }
+  
+  onChangePatientID = (event) => {
+    this.setState({
+      medicalRecord: {
+        patient: event.target.value
+      },
+    });
+  }
+
+  onChangeDiagnosis = (event) => {
+
+    this.setState({
+      medicalRecord: {
+        diagnosis: event.target.value
+      },
+    });
+  }
+
+  onChangeWardBedNum = (event) => {
+
+    this.setState({
+      medicalRecord: {
+        ward: {
+          bedNum: event.target.value
+        }
+      },
+    });
+  }
+
+  onChangeWardLevel = (event) => {
+
+    this.setState({
+      medicalRecord: {
+        ward: {
+          level: event.target.value
+        }
+      },
+    });
+  }
+
+  onChangeWardRoomNum = (event) => {
+
+    this.setState({
+      medicalRecord: {
+        ward: {
+          roomNum: event.target.value
+        }
+      },
+    });
+  }
+
 
   onSubmit = (event) => {
     event.preventDefault()
 
+    const medicalRecordToCreate = {
+      $class: 'org.healthcare.CreateMedicalRecord',
+      medicalRecord: {
+        recordID: this.state.medicalRecord.recordID,
+        date : this.state.medicalRecord.date,
+        diagnosis: this.state.medicalRecord.diagnosis,
+        wardInfo: {
+          $class:'org.healthcare.Ward',
+          level: this.state.medicalRecord.wardInfo.level,
+          roomNum: this.state.medicalRecord.wardInfo.roomNum,
+          bedNum: this.state.medicalRecord.wardInfo.bedNum
+        },
+        lastModified: new Date(),
+        patient: "resource:org.healthcare.Patient#" + this.state.medicalRecord.patient,
+        doctor: "resource:org.healthcare.Doctor#d1",
+        hospital: "resource:org.healthcare.Hospital#h1",
+        prescriptions: this.state.medicalRecord.prescriptions
+      }
+    }
+
+    fetch('/hlf/api/org.healthcare.CreateMedicalRecord', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(medicalRecordToCreate)
+        });
+    
     this.setState({
       isLoading: true
     })
@@ -148,12 +239,22 @@ class CreateOrEdit extends Component {
                   <Input
                     type="text"
                     fullWidth={true}
+                    placeholder="Record ID"
+                    required="required"
+                    name="recordID"
+                    autoComplete="off"
+                    value={this.state.medicalRecord.recordID}
+                    onChange={this.onChangeRecordID}
+                  />
+                  
+                  <Textarea
+                    fullWidth={true}
                     placeholder="PatientID"
                     required="required"
-                    name="name"
-                    autocomplete="off"
-                    value={this.state.crate.name}
-                    onChange={this.onChange}
+                    name="patientID"
+                    value={this.state.medicalRecord.patient}
+                    onChange={this.onChangePatientID}
+                    style={{ marginTop: '1em' }}
                   />
 
                   {/* Description */}
@@ -161,9 +262,36 @@ class CreateOrEdit extends Component {
                     fullWidth={true}
                     placeholder="Diagnosis"
                     required="required"
-                    name="description"
-                    value={this.state.crate.description}
-                    onChange={this.onChange}
+                    name="diagonsis"
+                    value={this.state.medicalRecord.diagnosis}
+                    onChange={this.onChangeDiagnosis}
+                    style={{ marginTop: '1em' }}
+                  /> 
+
+                  <Textarea
+                    fullWidth={true}
+                    placeholder="Ward-level"
+                    name="wardLevel"
+                    value={this.state.medicalRecord.wardInfo.level}
+                    onChange={this.onChangeWardLevel}
+                    style={{ marginTop: '1em' }}
+                  />
+
+                  <Textarea
+                    fullWidth={true}
+                    placeholder="Ward-roomNum"
+                    name="roomNum"
+                    value={this.state.medicalRecord.wardInfo.roomNum}
+                    onChange={this.onChangeWardRoomNum}
+                    style={{ marginTop: '1em' }}
+                  />
+                  
+                  <Textarea
+                    fullWidth={true}
+                    placeholder="Ward-bedNum"
+                    name="bedNum"
+                    value={this.state.medicalRecord.wardInfo.bedNum}
+                    onChange={this.onChangeWardBedNum}
                     style={{ marginTop: '1em' }}
                   />
                 </div>
