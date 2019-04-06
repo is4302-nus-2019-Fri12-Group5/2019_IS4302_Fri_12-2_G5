@@ -33,7 +33,7 @@ class Login extends Component {
 
     this.state = {
       user: {
-        email: '',
+        username: '',
         password: '',
       }
     }
@@ -50,7 +50,7 @@ class Login extends Component {
     })
   }
 
-  onSubmit = (event) => {
+  /*onSubmit = (event) => {
     event.preventDefault()
 
     this.props.messageShow('Logging in, please wait...')
@@ -74,6 +74,15 @@ class Login extends Component {
           this.props.messageHide()
         }, 5000)
       })
+  }*/
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.user.username == "bcd" && this.state.user.password == "password") {
+      this.props.history.push(patientsRoutes.patientsDashboard.path);
+    } else {
+      alert('Failed to login.');
+    }
   }
 
   render() {
@@ -92,7 +101,7 @@ class Login extends Component {
         <GridCell>
             <Grid gutter={true} alignCenter={true}>
                 <GridCell justifyCenter={true}>
-                    <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/hospital_2.jpg`}/>
+                    <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/hospital_1.jpg`}/>
                 </GridCell>
             </Grid>
         </GridCell>
@@ -103,16 +112,16 @@ class Login extends Component {
           {/* Login Form */}
           <form onSubmit={this.onSubmit}>
             <div style={{ width: '25em', margin: '0 auto' }}>
-              {/* Email */}
+              {/* Username */}
               <Input
-                type="email"
+                type="username"
                 fullWidth={true}
-                placeholder="Email"
+                placeholder="Username"
                 required="required"
-                name="email"
-                value={this.state.user.email}
+                name="username"
+                value={this.state.user.username}
                 onChange={this.onChange}
-                style={{ marginTop: '1em', color: white}}
+                style={{ marginTop: '1em', color: "#333"}}
               />
 
               {/* Password */}
@@ -124,7 +133,7 @@ class Login extends Component {
                 name="password"
                 value={this.state.user.password}
                 onChange={this.onChange}
-                style={{ marginTop: '1em', color: white}}
+                style={{ marginTop: '1em', color: "#333"}}
               />
             </div>
 
@@ -146,9 +155,7 @@ class Login extends Component {
                 <Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>
               </Link>
 
-              <Link to={patientsRoutes.patientsDashboard.path}>
-                <Button type="button" theme="secondary">Login</Button>
-              </Link>
+              <Button type="submit" theme="secondary">Login</Button>
             </div>
 
           </form>
