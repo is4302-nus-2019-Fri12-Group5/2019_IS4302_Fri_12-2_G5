@@ -15,8 +15,7 @@ import { white, grey, grey2, grey3 } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
-import crateRoutes from '../../setup/routes/crate'
-import userRoutes from '../../setup/routes/patient'
+import patientRoutes from '../../setup/routes/patient'
 
 // Component
 const HowItWorks = (props) => (
@@ -31,7 +30,7 @@ const HowItWorks = (props) => (
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H3 font="secondary">How it works</H3>
 
-        <p style={{ marginTop: '1em', color: grey2 }}>Just 3 easy steps to approach the doctor and get subscription issued!</p>
+        <p style={{ marginTop: '1em', color: grey2 }}>Just 4 easy steps to approach a doctor and get subscription issued!</p>
       </GridCell>
     </Grid>
 
@@ -91,15 +90,9 @@ const HowItWorks = (props) => (
     {/* Bottom call to action bar */}
     <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '3em', textAlign: 'center' }}>
-        {
-          props.user.isAuthenticated
-            ? <Link to={crateRoutes.list.path}>
-                <Button theme="primary">Subscribe <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-              </Link>
-            : <Link to={userRoutes.signup.path}>
-                <Button theme="primary">Start <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
-              </Link>
-        }
+          <Link to={patientRoutes.signup.path}>
+              <Button theme="primary">Subscribe <Icon size={1.2}>Patient SignUp</Icon></Button>
+          </Link>
       </GridCell>
     </Grid>
   </div>

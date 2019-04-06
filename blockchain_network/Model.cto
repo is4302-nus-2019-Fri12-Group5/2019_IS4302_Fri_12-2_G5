@@ -4,208 +4,214 @@ namespace org.healthcare
  * Participants
  */
 abstract participant Person identified by NRIC {
-	o String NRIC
-	o String firstName
-	o String lastName
-	o DateTime dateOfBirth
-	o Address address
-	o String phoneNum
-	o String nationality 
-	o String race
-	o Gender gender
+    o String NRIC
+    o String firstName
+    o String lastName
+    o DateTime dateOfBirth
+    o Address address
+    o String phoneNum
+    o String nationality 
+    o String race
+    o Gender gender
     o Double walletBalance
-	--> BasicMedicalInformation basicMedicalInformation
+    --> BasicMedicalInformation basicMedicalInformation
 }
 
 participant Doctor extends Person {
-	o String licenseNum
-	o String department
-	o String title
+    o String licenseNum
+    o String department
+    o String title
     o Double fee
-	--> Hospital hospital 
+    --> Hospital hospital 
 }
 
 participant Patient extends Person {
-	--> Hospital[] currentHospitals
-	--> MedicalRecord[] medicalRecords
-	o DateTime lastVisit
+    --> Hospital[] currentHospitals
+    --> MedicalRecord[] medicalRecords
+    o DateTime lastVisit
 }
 
 participant Hospital identified by registrationID {
-	o String registrationID
-	o String name
-	--> Doctor[] doctors
-}
-
-concept Address {
-	o String street
-	o String aptNum
-	o String country
-	o String city
-	o String postalCode
-}
-
-enum Gender {
-	o MALE
-	o FEMALE
+    o String registrationID
+    o String name
+    --> Doctor[] doctors
 }
 
 /**
  * Assets
  */
 asset BasicMedicalInformation identified by basicID {
-	o String basicID
-	--> Person person
-	o BloodType bloodType
-	o String height
-	o String weight
-	o String allergies 
-	o String disabilities 
+    o String basicID
+    --> Person person
+    o BloodType bloodType
+    o String height
+    o String weight
+    o String allergies 
+    o String disabilities 
 }
 
 asset MedicalRecord identified by recordID {
-	o String recordID
-	o DateTime date
-	o String diagnosis
-	o Ward wardInfo 
-	o DateTime lastModified
-	--> Person patient
-	--> Doctor doctor
-	--> Hospital hospital
-	--> Prescription[] prescriptions 
+    o String recordID
+    o DateTime date
+    o String diagnosis
+    o Ward wardInfo 
+    o DateTime lastModified
+    --> Person patient
+    --> Doctor doctor
+    --> Hospital hospital
+    --> Prescription[] prescriptions 
 }
 
 asset Prescription identified by presID {
-	o String presID
-   	o String drugName
-	o String quantity 
-	o UnitType unitType 
-	o String dosage 
-	o String duration 
-	--> MedicalRecord medicalRecord
+    o String presID
+    o String drugName
+    o Double quantity
+    o UnitType unitType 
+    o String dosage 
+    o String duration 
+    --> MedicalRecord medicalRecord
     o DateTime lastModified
 }
 
+/**
+ * Concepts
+ */
 concept Ward {
-	o String level
-	o String roomNum
-	o String bedNum
+    o String level
+    o String roomNum
+    o String bedNum
+}
+
+concept Address {
+    o String street
+    o String aptNum
+    o String country
+    o String city
+    o String postalCode
+}
+
+/**
+ * Enumerations
+ */
+enum Gender {
+    o MALE
+    o FEMALE
 }
 
 enum BloodType {
-	o A_POSITIVE
-	o A_NEGATIVE
-	o B_POSITIVE
-	o B_NEGATIVE
-	o O_POSITIVE
-	o O_NEGATIVE
-	o AB_POSITIVE
-	o AB_NEGATIVE
+    o A_POSITIVE
+    o A_NEGATIVE
+    o B_POSITIVE
+    o B_NEGATIVE
+    o O_POSITIVE
+    o O_NEGATIVE
+    o AB_POSITIVE
+    o AB_NEGATIVE
 }
 
 enum UnitType {
-	o TABLET
-	o ML
+    o TABLET
+    o ML
 }
 
 enum MethodType {
-	o CASH
+    o CASH
 }
 
 /**
  * Transactions
  */
 transaction UpdatePatientPersonalInfo {
-	--> Patient patient
-	o String firstName 
-	o String lastName 
-	o DateTime dateOfBirth 
-	o Address address 
-	o String phoneNum 
-	o String nationality 
-	o String race 
-	o Gender gender 
+    --> Patient patient
+    o String firstName 
+    o String lastName 
+    o DateTime dateOfBirth 
+    o Address address 
+    o String phoneNum 
+    o String nationality 
+    o String race 
+    o Gender gender 
 }
 
 transaction UpdateDoctorPersonalInfo {
-	--> Doctor doctor
-	o String firstName 
-	o String lastName 
-	o DateTime dateOfBirth 
-	o Address address 
-	o String phoneNum 
-	o String nationality 
-	o String race 
-	o Gender gender 
+    --> Doctor doctor
+    o String firstName 
+    o String lastName 
+    o DateTime dateOfBirth 
+    o Address address 
+    o String phoneNum 
+    o String nationality 
+    o String race 
+    o Gender gender 
 }
 
 transaction AddDocToHospital {
-	--> Hospital hospital
-	--> Doctor doctor
+    --> Hospital hospital
+    --> Doctor doctor
 }
 
 transaction RemoveDocFromHospital {
-	--> Hospital hospital
-	--> Doctor doctor
+    --> Hospital hospital
+    --> Doctor doctor
     --> Hospital dummyHospital
 }
 
 transaction AddPatientHospital {
-	--> Patient patient
-	--> Hospital hospital
+    --> Patient patient
+    --> Hospital hospital
 }
 
 transaction RemovePatientHospital {
-	--> Patient patient
-	--> Hospital hospital
+    --> Patient patient
+    --> Hospital hospital
 }
 
 transaction CreateMedicalRecord {
-	o MedicalRecord medicalRecord
+    o MedicalRecord medicalRecord
 }
 
 transaction UpdateMedicalRecord {
-	--> MedicalRecord medicalRecord
-	o DateTime date 
-	o String diagnosis 
-	o Ward wardInfo 
-	o DateTime lastModified
+    --> MedicalRecord medicalRecord
+    o DateTime date 
+    o String diagnosis 
+    o Ward wardInfo 
+    o DateTime lastModified
 }
 
 transaction CreatePrescription {
-  	o Prescription prescription
+    o Prescription prescription
 }
 
 transaction UpdatePrescription {
-  	--> Prescription prescription
-	o String quantity
-	o UnitType unitType
-	o String dosage
-	o String duration
-	o DateTime lastModified
+    --> Prescription prescription
+    o Double quantity
+    o UnitType unitType
+    o String dosage
+    o String duration
+    o DateTime lastModified
 }
 
 transaction CreatePatientBasicMedicalInformation {
-	o String basicID
-	--> Patient patient
-	o BloodType bloodType
-	o String height
-	o String weight
-	o String allergies 
-	o String disabilities 
+    o String basicID
+    --> Patient patient
+    o BloodType bloodType
+    o String height
+    o String weight
+    o String allergies 
+    o String disabilities 
 }
 
 transaction CreateDoctorBasicMedicalInformation {
-	o BasicMedicalInformation doctorBasicMedicalInformation
+    o BasicMedicalInformation doctorBasicMedicalInformation
 }
 
 transaction TopUpWalletBalance {
-	--> Patient patient
-	o Double topUpAmount
-	o MethodType type
+    --> Patient patient
+    o Double topUpAmount
+    o MethodType type
 }
 
 transaction PayFees {
-  --> Patient patient
-  --> Doctor doctor
+    --> Patient patient
+    --> Doctor doctor
 }

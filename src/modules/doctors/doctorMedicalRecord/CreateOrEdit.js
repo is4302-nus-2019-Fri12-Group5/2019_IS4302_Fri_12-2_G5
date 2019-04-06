@@ -243,7 +243,7 @@ class CreateOrEdit extends Component {
         } else {
           this.props.messageShow('Medical Record saved successfully.')
 
-          this.props.history.push(admin.doctorMedicalRecord.path)
+          this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
         }
       })
       .catch(error => {

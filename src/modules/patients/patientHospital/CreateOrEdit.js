@@ -153,7 +153,7 @@ class CreateOrEdit extends Component {
         } else {
           this.props.messageShow('Product saved successfully.')
 
-          this.props.history.push(admin.doctorPatients.path)
+          this.props.doctorHowItWorks.push(admin.doctorPatients.path)
         }
       })
       .catch(error => {

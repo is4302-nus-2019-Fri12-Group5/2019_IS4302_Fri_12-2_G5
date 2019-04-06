@@ -11,9 +11,6 @@ import { level1 } from '../../../ui/common/shadows'
 
 // App Imports
 import home from '../../../setup/routes/home'
-import user from '../../../setup/routes/patient'
-import crate from '../../../setup/routes/crate'
-import doctorsRoute from '../../../setup/routes/doctors'
 import Logo from './Logo'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
@@ -38,37 +35,8 @@ const Header = (props) => {
 
           {/* Left menu */}
           <Menu style={{ float: 'left', marginTop: '0.5em', marginLeft: '2em' }}>
-            <MenuItem to={home.hospital.path}>Hospitals</MenuItem>
-
-            <MenuItem to={home.history.path}>History</MenuItem>
-
-            <MenuItem to={home.howItWorks.path}>How It Works</MenuItem>
-
-            <MenuItem to={home.whatsNew.path}>Balance</MenuItem>
+              <MenuItem to={home.howItWorks.path}>How It Works</MenuItem>
           </Menu>
-        </GridCell>
-
-        {/* Right menu */}
-        <GridCell style={{ textAlign: 'right' }}>
-          {
-            props.user.isAuthenticated
-              ?
-              <Menu>
-                { props.user.details.role === 'ADMIN' && <MenuItem to={doctorsRoute.dashboard.path} section="admin">Doctors</MenuItem> }
-
-                <MenuItem to={crate.list.path}>Crates</MenuItem>
-
-                <MenuItem to={user.subscriptions.path}>Subscriptions</MenuItem>
-
-                <MenuItem to={user.profile.path}>Profile</MenuItem>
-              </Menu>
-              :
-              <Menu>
-                <MenuItem to={user.login.path}>Login</MenuItem>
-
-                <MenuItem to={user.signup.path}>Signup</MenuItem>
-              </Menu>
-          }
         </GridCell>
       </Grid>
     </header>
