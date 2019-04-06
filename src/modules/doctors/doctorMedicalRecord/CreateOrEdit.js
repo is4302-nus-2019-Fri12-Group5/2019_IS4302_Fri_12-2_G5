@@ -102,8 +102,9 @@ class CreateOrEdit extends Component {
     await console.log(this.state.medicalRecord.recordID);
   }
   
-  onChangePatientID = (event) => {
-    this.setState({
+  onChangePatientID = async (event) => {
+    
+    await this.setState({
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
         date: this.state.medicalRecord.date,
@@ -116,12 +117,13 @@ class CreateOrEdit extends Component {
         }
       },
     });
-    console.log(this.state.medicalRecord.patient);
+    
+    await console.log(this.state.medicalRecord.patient);
   }
 
-  onChangeDiagnosis = (event) => {
+  onChangeDiagnosis = async (event) => {
 
-    this.setState({
+    await this.setState({
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
         date: this.state.medicalRecord.date,
@@ -137,9 +139,9 @@ class CreateOrEdit extends Component {
     console.log(this.state.medicalRecord.diagnosis);
   }
 
-  onChangeWardBedNum = (event) => {
+  onChangeWardBedNum = async (event) => {
 
-    this.setState({
+    await this.setState({
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
         date: this.state.medicalRecord.date,
@@ -155,9 +157,9 @@ class CreateOrEdit extends Component {
     console.log(this.state.medicalRecord.wardInfo.bedNum);
   }
 
-  onChangeWardLevel = (event) => {
+  onChangeWardLevel = async (event) => {
 
-    this.setState({
+    await this.setState({
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
         date: this.state.medicalRecord.date,
@@ -174,11 +176,10 @@ class CreateOrEdit extends Component {
     console.log(this.state.medicalRecord.wardInfo.roomNum);
   }
 
-  onChangeWardRoomNum = (event) => {
+  onChangeWardRoomNum = async (event) => {
 
-    this.setState({
+    await this.setState({
       medicalRecord: {
-        
         recordID: this.state.medicalRecord.recordID,
         date: this.state.medicalRecord.date,
         patient: this.state.medicalRecord.patient,
@@ -211,11 +212,11 @@ class CreateOrEdit extends Component {
         patient: "resource:org.healthcare.Patient#" + this.state.medicalRecord.patient,
         doctor: "resource:org.healthcare.Doctor#d1",
         hospital: "resource:org.healthcare.Hospital#h1",
-        prescriptions: this.state.medicalRecord.prescriptions
+        prescriptions: []
       }
     }
 
-    fetch('/hlf/api/org.healthcare.CreateMedicalRecord', {
+    fetch('/doctor/api/org.healthcare.CreateMedicalRecord', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -224,39 +225,39 @@ class CreateOrEdit extends Component {
         body: JSON.stringify(medicalRecordToCreate)
     });
     
-  //   this.setState({
-  //     isLoading: true
-  //   })
+    this.setState({
+      isLoading: true
+    })
 
-  //   this.props.messageShow('Saving Medical Record, please wait...')
+    this.props.messageShow('Saving Medical Record, please wait...')
 
-  //   // Save doctorMedicalRecord
-  //   this.props.crateCreateOrUpdate(this.state.crate)
-  //     .then(response => {
-  //       this.setState({
-  //         isLoading: false
-  //       })
+    // Save doctorMedicalRecord
+    this.props.crateCreateOrUpdate(this.state.medicalRecord)
+      .then(response => {
+        this.setState({
+          isLoading: false
+        })
 
-  //       if (response.data.errors && response.data.errors.length > 0) {
-  //         this.props.messageShow(response.data.errors[0].message)
-  //       } else {
-  //         this.props.messageShow('Medical Record saved successfully.')
+        if (response.data.errors && response.data.errors.length > 0) {
+          this.props.messageShow(response.data.errors[0].message)
+        } else {
+          this.props.messageShow('Medical Record saved successfully.')
 
-  //         this.props.history.push(admin.doctorMedicalRecord.path)
-  //       }
-  //     })
-  //     .catch(error => {
-  //       this.props.messageShow('There was some error. Please try again.')
+          this.props.history.push(admin.doctorMedicalRecord.path)
+        }
+      })
+      .catch(error => {
+        this.props.messageShow('There was some error. Please try again.')
 
-  //       this.setState({
-  //         isLoading: false
-  //       })
-  //     })
-  //     .then(() => {
-  //       window.setTimeout(() => {
-  //         this.props.messageHide()
-  //       }, 5000)
-  //     })
+        this.setState({
+          isLoading: false
+        })
+      })
+      .then(() => {
+        window.setTimeout(() => {
+          this.props.messageHide()
+        }, 5000)
+      })
   }
 
   render() {
