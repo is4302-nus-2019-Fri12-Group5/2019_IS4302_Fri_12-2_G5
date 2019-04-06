@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="334344d8-8928-45c7-9718-5d67390b2b69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/how-it-works/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/how-it-works/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/how-it-works/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/men/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/men/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/men/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/women/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/women/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/stock/women/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/patient/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patient/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/patients/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patients/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/pages/Hospital.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/pages/Hospital.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/patients/common/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patients/common/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/patients/patientDoctor/CreateOrEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patients/patientHospital/CreateOrEdit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/patients/patientDoctor/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/patients/patientHospital/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setup/routes/patients/doctors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/routes/patients/doctors.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bower_components.ember-try/" />
     <ignored path="$PROJECT_DIR$/.node_modules.ember-try/" />
@@ -30,47 +24,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/modules/doctor/Login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-695">
-              <caret line="147" selection-start-line="147" selection-end-line="147" />
-              <folding>
-                <element signature="e#11#51#0" expanded="true" />
-                <element signature="e#230#276#0" expanded="true" />
-                <element signature="e#584#632#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/modules/doctors/common/Menu.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#52#101#0" expanded="true" />
-                <element signature="e#174#225#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/modules/patient/Login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="148" column="60" selection-start-line="148" selection-start-column="60" selection-end-line="148" selection-end-column="60" />
-              <folding>
-                <element signature="e#11#51#0" expanded="true" />
-                <element signature="e#230#276#0" expanded="true" />
-                <element signature="e#584#626#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/setup/routes/patients/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
@@ -82,27 +35,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modules/patients/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="44" column="115" selection-start-line="44" selection-start-column="115" selection-end-line="44" selection-end-column="115" />
+            <state relative-caret-position="368">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding>
                 <element signature="e#11#36#0" expanded="true" />
                 <element signature="e#163#209#0" expanded="true" />
-                <element signature="e#271#310#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setup/routes/patients/doctors.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#15#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/modules/patients/common/Menu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="437">
+              <caret line="19" column="119" selection-start-line="19" selection-start-column="119" selection-end-line="19" selection-end-column="119" />
               <folding>
                 <element signature="e#52#101#0" expanded="true" />
                 <element signature="e#174#227#0" expanded="true" />
@@ -122,38 +62,68 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/modules/pages/Home.js">
+        <entry file="file://$PROJECT_DIR$/src/modules/patients/patientHospital/CreateOrEdit.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/modules/patients/patientHospital/List.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+            <state relative-caret-position="516">
+              <caret line="242" column="41" lean-forward="true" selection-start-line="242" selection-start-column="41" selection-end-line="242" selection-end-column="41" />
+              <folding>
+                <element signature="e#11#55#0" expanded="true" />
+                <element signature="e#222#271#0" expanded="true" />
+                <element signature="e#432#526#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/input/Input.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
               <folding>
                 <element signature="e#11#36#0" expanded="true" />
-                <element signature="e#203#249#0" expanded="true" />
-                <element signature="e#446#494#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setup/routes/doctor.js">
+        <entry file="file://$PROJECT_DIR$/src/ui/button/Button.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-              <folding>
-                <element signature="e#15#61#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-179" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/modules/doctors/doctorMedicalRecord/CreateOrEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1830">
+              <caret line="295" column="20" lean-forward="true" selection-start-line="295" selection-start-column="20" selection-end-line="295" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setup/routes/doctors/patients.js">
+        <entry file="file://$PROJECT_DIR$/src/modules/common/EmptyMessage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="184">
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/modules/pages/Hospital.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="206" column="48" selection-start-line="206" selection-start-column="48" selection-end-line="206" selection-end-column="48" />
               <folding>
-                <element signature="e#15#64#0" expanded="true" />
+                <element signature="e#462#510#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -170,10 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>men</find>
-      <find>Email</find>
-      <find>login to</find>
-      <find>image</find>
       <find>fix me up</find>
       <find>get st</find>
       <find>userRoutes</find>
@@ -200,6 +166,10 @@
       <find>doctor</find>
       <find>CrateCreate</find>
       <find>admin</find>
+      <find>watch this</find>
+      <find>add</find>
+      <find>add more</find>
+      <find>input</find>
     </findStrings>
     <replaceStrings>
       <replace>crate</replace>
@@ -214,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/setup/routes/home.js" />
         <option value="$PROJECT_DIR$/src/modules/common/NotFound.js" />
         <option value="$PROJECT_DIR$/public/manifest.json" />
         <option value="$PROJECT_DIR$/src/modules/pages/History.js" />
@@ -228,7 +197,6 @@
         <option value="$PROJECT_DIR$/src/setup/routes/admin/dashboard.js" />
         <option value="$PROJECT_DIR$/src/setup/routes/admin/product.js" />
         <option value="$PROJECT_DIR$/src/setup/routes/admin/index.js" />
-        <option value="$PROJECT_DIR$/src/modules/pages/Hospital.js" />
         <option value="$PROJECT_DIR$/src/setup/server/load-routes.js" />
         <option value="$PROJECT_DIR$/src/setup/routes/patient.js" />
         <option value="$PROJECT_DIR$/src/modules/patient/Profile.js" />
@@ -261,10 +229,12 @@
         <option value="$PROJECT_DIR$/src/setup/routes/patients/wallet.js" />
         <option value="$PROJECT_DIR$/src/modules/patients/patientDoctor/List.js" />
         <option value="$PROJECT_DIR$/src/setup/routes/patients/doctors.js" />
-        <option value="$PROJECT_DIR$/src/modules/patients/common/Menu.js" />
         <option value="$PROJECT_DIR$/src/modules/doctors/common/Menu.js" />
         <option value="$PROJECT_DIR$/src/modules/patient/Login.js" />
         <option value="$PROJECT_DIR$/src/modules/patients/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/modules/patients/common/Menu.js" />
+        <option value="$PROJECT_DIR$/src/modules/pages/Hospital.js" />
+        <option value="$PROJECT_DIR$/src/modules/patients/patientHospital/List.js" />
       </list>
     </option>
   </component>
@@ -297,12 +267,6 @@
             <path>
               <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
               <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -310,6 +274,28 @@
               <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="doctors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="doctors" type="462c0819:PsiDirectoryNode" />
+              <item name="doctorMedicalRecord" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
@@ -317,6 +303,34 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="patients" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="patients" type="462c0819:PsiDirectoryNode" />
+              <item name="patientHospital" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="button" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blockchain-healthcare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blockchain-healthcare" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="input" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -373,7 +387,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65803000" />
+    <option name="totallyTimeSpent" value="67908000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,12 +402,12 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22762509" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.205074" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4947146" weight="0.22576177" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4947146" visible="true" weight="0.03685504" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3280098" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -411,24 +425,19 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/modules/patients/patientHospital/List.js</url>
+          <line>162</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/modules/patient/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-          <folding>
-            <element signature="e#11#36#0" expanded="true" />
-            <element signature="e#203#249#0" expanded="true" />
-            <element signature="e#401#452#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/setup/helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/setup/routes/patient.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-24">
@@ -498,16 +507,6 @@
             <element signature="e#11#36#0" expanded="true" />
             <element signature="e#203#249#0" expanded="true" />
             <element signature="e#501#549#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/pages/Hospital.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4646">
-          <caret line="210" column="1" selection-start-line="210" selection-start-column="1" selection-end-line="210" selection-end-column="1" />
-          <folding>
-            <element signature="e#462#510#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -583,16 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/input/Input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-683">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-          <folding>
-            <element signature="e#11#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/es5-shim/tests/lib/jasmine.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
@@ -640,13 +629,6 @@
             <element signature="e#171#220#0" expanded="true" />
             <element signature="e#363#408#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/doctors/doctorMedicalRecord/CreateOrEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1840">
-          <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -749,9 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/patients/patientDoctor/CreateOrEdit.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/setup/routes/patients/wallet.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -772,13 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/patients/patientDoctor/List.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/setup/routes/doctors/patients.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -795,17 +767,6 @@
           <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#15#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modules/patients/common/Menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#52#101#0" expanded="true" />
-            <element signature="e#174#227#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -877,15 +838,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/patients/common/Menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="119" selection-start-line="19" selection-start-column="119" selection-end-line="19" selection-end-column="119" />
+          <folding>
+            <element signature="e#52#101#0" expanded="true" />
+            <element signature="e#174#227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/patients/patientHospital/CreateOrEdit.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/pages/Hospital.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="206" column="48" selection-start-line="206" selection-start-column="48" selection-end-line="206" selection-end-column="48" />
+          <folding>
+            <element signature="e#462#510#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/modules/patients/Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="44" column="115" selection-start-line="44" selection-start-column="115" selection-end-line="44" selection-end-column="115" />
+        <state relative-caret-position="368">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
           <folding>
             <element signature="e#11#36#0" expanded="true" />
             <element signature="e#163#209#0" expanded="true" />
-            <element signature="e#271#310#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/common/EmptyMessage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/patients/patientHospital/List.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="242" column="41" lean-forward="true" selection-start-line="242" selection-start-column="41" selection-end-line="242" selection-end-column="41" />
+          <folding>
+            <element signature="e#11#55#0" expanded="true" />
+            <element signature="e#222#271#0" expanded="true" />
+            <element signature="e#432#526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/input/Input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#11#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/button/Button.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-179" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules/doctors/doctorMedicalRecord/CreateOrEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1830">
+          <caret line="295" column="20" lean-forward="true" selection-start-line="295" selection-start-column="20" selection-end-line="295" selection-end-column="20" />
         </state>
       </provider>
     </entry>
