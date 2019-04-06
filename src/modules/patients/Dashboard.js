@@ -42,34 +42,23 @@ const Dashboard = () => (
           <GridCell>
               <Grid gutter={true} alignCenter={true}>
                   <GridCell justifyCenter={true}>
-                      <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/patient_1.jpg`}/>
+                      <ImageTile width={700} height={530} shadow={level1} image={`${ APP_URL }/images/patient_1.jpeg`}/>
                   </GridCell>
               </Grid>
           </GridCell>
-
-          {/*o String NRIC*/}
-          {/*o String firstName*/}
-          {/*o String lastName*/}
-          {/*o DateTime dateOfBirth*/}
-          {/*o Address address*/}
-          {/*o String phoneNum*/}
-          {/*o String nationality*/}
-          {/*o String race*/}
-          {/*o Gender gender*/}
-          {/*o Double walletBalance*/}
-          {/*--> Hospital[] currentHospitals*/}
-          {/*--> MedicalRecord[] medicalRecords*/}
-          {/*o DateTime lastVisit*/}
 
           <GridCell style={{textAlign: 'center' }}>
               <H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
               {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
               <H4 style={{ marginBottom: '3em' }}>Brown Tan</H4>
               {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
-              <p style={{ color: grey2, marginBottom: '2em' }}>License:   AX000123</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Department:   Orthopedics</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Title: Director</p>
-              <p style={{ color: grey2, marginBottom: '4em' }}>Fee:   100</p>
+              <p style={{ color: grey2, marginBottom: '2em' }}>NRIC: ABCD000K</p>
+              <p style={{ color: grey2, marginBottom: '2em' }}>Date of Birth: 1983/03/22</p>
+              <p style={{ color: grey2, marginBottom: '2em' }}>Address: Quant Road 23, Shan District</p>
+              <p style={{ color: grey2, marginBottom: '2em' }}>Phone: 8888 8888</p>
+              <p style={{ color: grey2, marginBottom: '2em' }}>Nationality: Singaporean</p>
+              <p style={{ color: grey2, marginBottom: '2em' }}>Race: Chinese</p>
+              <p style={{ color: grey2, marginBottom: '4em' }}>Gender: Male</p>
 
               {/*<Link to={}>*/}
               <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>

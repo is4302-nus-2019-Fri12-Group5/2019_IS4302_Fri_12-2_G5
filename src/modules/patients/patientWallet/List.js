@@ -50,17 +50,18 @@ const Wallet = (props) => (
                   <GridCell style={{textAlign: 'center' }}>
                       <H3 font="secondary" style={{ marginBottom: '1em' }}>My Wallet</H3>
                         {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
-                        <H4 style={{ marginBottom: '3em' }}>Income:   320</H4>
+                        <H4 style={{ marginBottom: '3em' }}>Balance:  1000 SGD</H4>
                         {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
-                        <p style={{ color: grey2, marginBottom: '2em' }}>Income increased in the last week:  30%</p>
+                        <p style={{ color: grey2, marginBottom: '2em' }}>Your spending in the past month:  500 SGD</p>
 
                         {/*<Link to={doctorsRoutes.dashboard.path}>*/}
-                        <Button theme="primary" style={{marginRight : '0.5em'}}>Withdraw</Button>
+                        <Button theme="primary" style={{marginRight : '0.5em'}}>Top Up</Button>
                         {/*</Link>*/}
 
                         {/*<Link to={home.home.path}>*/}
-                        <Button type="button" theme="secondary" >Share</Button>
+                        <Button type="button" theme="secondary" >Withdraw</Button>
                         {/*</Link>*/}
+
                   </GridCell>
               </Grid>
           </div>

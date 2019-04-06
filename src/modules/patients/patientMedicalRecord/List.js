@@ -77,7 +77,7 @@ class List extends PureComponent {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Records - Doctor</title>
+          <title>Records - Patient</title>
         </Helmet>
 
         {/* Top menu bar */}
@@ -85,27 +85,17 @@ class List extends PureComponent {
 
         {/* Page Content */}
         <div>
-          {/* Top actions bar */}
-          <Grid alignCenter={true} style={{ padding: '1em' }}>
-            <GridCell style={{ textAlign: 'right' }}>
-              <Link to={doctorsRoute.recordCreate.path}>
-                <Button theme="secondary" style={{ marginTop: '1em' }}>
-                  <Icon size={1.2} style={{ color: white }}>add</Icon> Add
-                </Button>
-              </Link>
-            </GridCell>
-          </Grid>
 
-          {/* Crate list */}
+          {/* Medical Record list */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <table className="striped">
                 <thead>
                 <tr>
                   <th style={{ textAlign: 'center' }}>RecordID</th>
-                  <th style={{ textAlign: 'center' }}>PatientName</th>
-                  <th style={{ textAlign: 'center' }}>WardInfo</th>
                   <th style={{ textAlign: 'center' }}>Date</th>
+                  <th style={{ textAlign: 'center' }}>Doctor</th>
+                  <th style={{ textAlign: 'center' }}>Hospital</th>
                   <th style={{ textAlign: 'center' }}>Diagnosis</th>
                   <th style={{ textAlign: 'center' }}>LastModified</th>
                   <th style={{ textAlign: 'center' }}>Actions</th>
@@ -113,6 +103,24 @@ class List extends PureComponent {
                 </thead>
 
                 <tbody>
+                {/* Mock data */}
+                <tr>
+                  <td style={{ textAlign: 'center' }}>GX04001 </td>
+                  <td style={{ textAlign: 'center' }}>2018/09/12 </td>
+                  <td style={{ textAlign: 'center' }}>Bruce Lee</td>
+                  <td style={{ textAlign: 'center' }}>National University Hospital</td>
+                  <td style={{ textAlign: 'center' }}>Bad Cold with peritonsillr bscess.</td>
+                  <td style={{ textAlign: 'center' }}>2018/09/12</td>
+                  <td style={{ textAlign: 'center' }}>
+
+                    {/*<span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>*/}
+                      <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
+                    {/*</span>*/}
+
+                  </td>
+                </tr>
+
+                {/* Get data from backend */}
                 {
                   isLoading
                     ? <tr>
@@ -121,7 +129,7 @@ class List extends PureComponent {
                         </td>
                       </tr>
                     : list.length > 0
-                      ? list.map(({ id, image, name, description, createdAt, updatedAt }) => (
+                      ? list.map(({ id, name, description, createdAt, updatedAt }) => (
                           <tr key={id}>
                             <td>
                               { name }
@@ -152,10 +160,11 @@ class List extends PureComponent {
                         ))
                       : <tr>
                           <td colSpan="6">
-                            <EmptyMessage message="No medical records to show."/>
+                            <EmptyMessage message="No medical records to show. The above is Mock Data."/>
                           </td>
                         </tr>
                 }
+
                 </tbody>
               </table>
             </GridCell>

@@ -15,9 +15,9 @@ const DoctorMenu = () => (
   <Grid style={{ backgroundColor: grey }}>
     <GridCell style={{ padding: '2em', textAlign: 'center' }}>
       <Menu>
-        <MenuItem to={patients.patientsDashboard.path} type="primary" style={{ color: black }}>Dashboard</MenuItem>
+        <MenuItem to={patients.patientsDashboard.path} type="primary" style={{ color: black }}>Profile</MenuItem>
 
-        <MenuItem to={patients.patientDoctors.path} section="products" type="primary" style={{ color: black }}>Doctors</MenuItem>
+        <MenuItem to={patients.patientDoctors.path} section="products" type="primary" style={{ color: black }}>Hospitals</MenuItem>
 
         <MenuItem to={patients.patientMedicalRecord.path} type="primary" style={{ color: black }}>Medical Records</MenuItem>
 

@@ -19,7 +19,6 @@ import userRoutes from '../../setup/routes/patient'
 import { getList as getProductList } from '../product/api/actions'
 import Loading from '../common/Loading'
 import EmptyMessage from '../common/EmptyMessage'
-import ProductItem from '../product/Item'
 
 // Component
 class Hospital extends PureComponent {
@@ -147,7 +146,6 @@ class Hospital extends PureComponent {
   }
 
   render() {
-    
     const { isLoading, list } = this.props.products;
     const { hospital, filteredHospital } = this.state;
     
@@ -226,18 +224,10 @@ class Hospital extends PureComponent {
                         : <EmptyMessage message="No More hospital to show" />
                 }
             </Grid>
-
         </div>
     )
   }
 }
-
-
-
-
-
-
-
 
 
 // Component Properties

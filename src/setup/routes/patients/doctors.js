@@ -1,6 +1,6 @@
 // App Imports
 import params from '../../../setup/config/params'
-import DoctorList from '../../../modules/patients/patientDoctor/List'
+import DoctorList from '../../../modules/patients/patientHospital/List'
 
 // See all the hospitals
 export const patientDoctors = {
