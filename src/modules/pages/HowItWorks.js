@@ -91,7 +91,7 @@ const HowItWorks = (props) => (
     <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '3em', textAlign: 'center' }}>
           <Link to={patientRoutes.signup.path}>
-              <Button theme="primary">Subscribe <Icon size={1.2}>Patient SignUp</Icon></Button>
+              <Button theme="primary"><Icon size={1.2}>PATIENT SIGNUP</Icon></Button>
           </Link>
       </GridCell>
     </Grid>

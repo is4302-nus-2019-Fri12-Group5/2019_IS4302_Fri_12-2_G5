@@ -69,7 +69,7 @@ class Login extends Component {
     console.log(this.state.user.password);
   }
 
-  onSubmit = (event) => {
+  /*onSubmit = (event) => {
     event.preventDefault();
 
     this.props.messageShow('Logging in, please wait...')
@@ -93,6 +93,14 @@ class Login extends Component {
           this.props.messageHide()
         }, 5000)
       })
+  }*/
+  onSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.user.nric == "abc" && this.state.user.password == "password") {
+      this.props.history.push(doctorsRoutes.doctorsDashboard.path);
+    } else {
+      alert('Failed to login.');
+    }
   }
 
   onTryLogin = () => {
@@ -134,7 +142,7 @@ class Login extends Component {
               <Input
                 type="text"
                 fullWidth={true}
-                placeholder="NRIC"
+                placeholder="Username"
                 required="required"
                 name="nric"
                 value={this.state.user.nric}
@@ -173,9 +181,7 @@ class Login extends Component {
                       <Button type="button" style={{ marginRight: '0.5em' }} >Signup</Button>
                   </Link>
 
-                  <Link to={doctorsRoutes.doctorsDashboard.path}>
-                      <Button type="button" theme="secondary" onClick={this.onTryLogin}>Login</Button>
-                  </Link>
+                  <Button type="submit" theme="secondary" onClick={this.onTryLogin}>Login</Button>
               </div>
 
 
