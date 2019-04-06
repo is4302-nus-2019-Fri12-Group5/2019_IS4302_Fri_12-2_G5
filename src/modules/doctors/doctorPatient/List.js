@@ -137,9 +137,10 @@ class List extends PureComponent {
               <table className="striped">
                 <thead>
                   <tr>
+                    <th style={{ textAlign: 'center' }}>NRIC</th>
                     <th style={{ textAlign: 'center' }}>First Name</th>
                     <th style={{ textAlign: 'center' }}>Last Name</th>
-                    <th style={{ textAlign: 'center' }}>Phone Number</th>
+                    <th style={{ textAlign: 'center' }}>Gender</th>
                     <th style={{ textAlign: 'center' }}>Last Visit</th>
                     <th style={{ textAlign: 'center' }}>Number of Medical Histories</th>
                     <th style={{ textAlign: 'center' }}>Actions</th>
@@ -157,31 +158,35 @@ class List extends PureComponent {
                     : patients.length > 0
                       ? patients.map((patient) => (
                           <tr key={patient.NRIC}>
-                            <td>
+                            <td style={{ textAlign: 'center' }}>
                               { patient.NRIC}
                             </td>
 
-                            <td>
-                              { patient.dateOfBirth }
+                            <td style={{ textAlign: 'center' }}>
+                              { patient.firstName }
                             </td>
 
-                            <td>
+                            <td style={{ textAlign: 'center' }}>
+                              { patient.lastName }
+                            </td>
+
+                            <td style={{ textAlign: 'center' }}>
                               { patient.gender }
-                            </td>
-
-                            <td>
-                              { patient.lastVisit }
                               {/* { new Date(parseInt(lastVisit)).toDateString() } */}
                             </td>
 
-                            <td>
-                              { patient.medicalRecords }
+                            <td style={{ textAlign: 'center' }}>
+                              { patient.lastVisit } 
+                            </td>
+
+                            <td style={{ textAlign: 'center' }}>
+                              { patient.medicalRecords.length }
                               {/* { new Date(parseInt(updatedAt)).toDateString() } */}
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
 
-                              { patient.hospital } 
+                              { patient.currentHospitals.length } 
                               {/* <Link to={admin.productEdit.path(id)}>
                                 <Icon size={2} style={{ color: black }}>mode_edit</Icon>
                               </Link>

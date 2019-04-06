@@ -44,7 +44,8 @@ class Edit extends Component {
   componentDidMount() {
     // Get doctorMedicalcrate details (edit case)
     // this.getCrate(parseInt(this.props.match.params.id))
-    console.log(this.props.match.params.id)
+    console.log(this.props)
+    
     fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.props.match.params.id}`)
 	    .then(response => response.json())
         .then(responseData => {
@@ -104,117 +105,6 @@ class Edit extends Component {
     console.log("Date: " + this.state.date);
     console.log("Ward bed num: " + this.state.wardBedNum);
   }
-
-//   onChangeRecordID = async (event) => {
-
-//     await this.setState({
-//       medicalRecord: {
-//         recordID: event.target.value,
-//         date: this.state.medicalRecord.date,
-//         patient: this.state.medicalRecord.patient,
-//         diagnosis: this.state.medicalRecord.diagnosis,
-//         wardInfo : {
-//           level: this.state.medicalRecord.wardInfo.level,
-//           bedNum: this.state.medicalRecord.wardInfo.bedNum,
-//           roomNum: this.state.medicalRecord.wardInfo.roomNum
-//         }
-//       },
-//     });
-
-//     console.log(this.state.medicalRecord.recordID);
-//   }
-  
-//   onChangePatientID = async (event) => {
-    
-//     await this.setState({
-//       medicalRecord: {
-//         recordID: this.state.medicalRecord.recordID,
-//         date: this.state.medicalRecord.date,
-//         patient: event.target.value,
-//         diagnosis: this.state.medicalRecord.diagnosis,
-//         wardInfo : {
-//           level: this.state.medicalRecord.wardInfo.level,
-//           bedNum: this.state.medicalRecord.wardInfo.bedNum,
-//           roomNum: this.state.medicalRecord.wardInfo.roomNum
-//         }
-//       },
-//     });
-    
-//     await console.log(this.state.medicalRecord.patient);
-//   }
-
-//   onChangeDiagnosis = async (event) => {
-
-//     await this.setState({
-//       medicalRecord: {
-//         recordID: this.state.medicalRecord.recordID,
-//         date: this.state.medicalRecord.date,
-//         patient: this.state.medicalRecord.patient,
-//         diagnosis: event.target.value,
-//         wardInfo : {
-//           level: this.state.medicalRecord.wardInfo.level,
-//           bedNum: this.state.medicalRecord.wardInfo.bedNum,
-//           roomNum: this.state.medicalRecord.wardInfo.roomNum
-//         }
-//       },
-//     });
-//     console.log(this.state.medicalRecord.diagnosis);
-//   }
-
-//   onChangeWardBedNum = async (event) => {
-
-//     await this.setState({
-//       medicalRecord: {
-//         recordID: this.state.medicalRecord.recordID,
-//         date: this.state.medicalRecord.date,
-//         patient: this.state.medicalRecord.patient,
-//         diagnosis: this.state.medicalRecord.diagnosis,
-//         wardInfo : {
-//           level: this.state.medicalRecord.wardInfo.level,
-//           bedNum: event.target.value,
-//           roomNum: this.state.medicalRecord.wardInfo.roomNum
-//         }
-//       },
-//     });
-//     console.log(this.state.medicalRecord.wardInfo.bedNum);
-//   }
-
-//   onChangeWardLevel = async (event) => {
-
-//     await this.setState({
-//       medicalRecord: {
-//         recordID: this.state.medicalRecord.recordID,
-//         date: this.state.medicalRecord.date,
-//         patient: this.state.medicalRecord.patient,
-//         diagnosis: this.state.medicalRecord.diagnosis,
-//         wardInfo : {
-//           level: event.target.value,
-//           bedNum: this.state.medicalRecord.wardInfo.bedNum,
-//           roomNum: this.state.medicalRecord.wardInfo.roomNum
-//         }
-//       },
-//     });
-//     console.log(this.state.medicalRecord.wardInfo.level);
-//     console.log(this.state.medicalRecord.wardInfo.roomNum);
-//   }
-
-//   onChangeWardRoomNum = async (event) => {
-
-//     await this.setState({
-//       medicalRecord: {
-//         recordID: this.state.medicalRecord.recordID,
-//         date: this.state.medicalRecord.date,
-//         patient: this.state.medicalRecord.patient,
-//         diagnosis: this.state.medicalRecord.diagnosis,
-//         wardInfo : {
-//           level: this.state.medicalRecord.wardInfo.level,
-//           bedNum: this.state.medicalRecord.wardInfo.bedNum,
-//           roomNum: event.target.value
-//         }
-//       },
-//     });
-//     console.log(this.state.medicalRecord.wardInfo.roomNum);
-//   }
 
 
   onSubmit = (event) => {
@@ -352,6 +242,16 @@ class Edit extends Component {
                     value={this.state.wardLevel}
                     onChange={this.handleChange}
                   />
+
+                  <Input
+                    type="text"
+                    fullWidth={true}
+                    placeholder="Ward Room Num"
+                    name="wardRoomNum"
+                    autoComplete="off"
+                    value={this.state.wardRoomNum}
+                    onChange={this.handleChange}
+                  />    
                   
                   <Input
                     type="text"
@@ -362,63 +262,6 @@ class Edit extends Component {
                     value={this.state.wardBedNum}
                     onChange={this.handleChange}
                   />
-                  
-                  <Input
-                    type="text"
-                    fullWidth={true}
-                    placeholder="Ward Room Num"
-                    name="wardRoomNum"
-                    autoComplete="off"
-                    value={this.state.wardRoomNum}
-                    onChange={this.handleChange}
-                  />
-                  {/* <Textarea
-                    fullWidth={true}
-                    placeholder="PatientID"
-                    required="required"
-                    name="patient"
-                    value={this.state.patient}
-                    onChange={this.onChangePatientID}
-                    style={{ marginTop: '1em' }}
-                  />
-
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Diagnosis"
-                    required="required"
-                    name="diagnosis"
-                    value={this.state.medicalRecord.diagnosis}
-                    onChange={this.onChangeDiagnosis}
-                    style={{ marginTop: '1em' }}
-                  /> 
-
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Ward-level"
-                    // required="required"
-                    name="ward.level"
-                    value={this.state.medicalRecord.wardInfo.level}
-                    onChange={this.onChangeWardLevel}
-                    style={{ marginTop: '1em' }}
-                  />
-
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Ward-roomNum"
-                    name="roomNum"
-                    value={this.state.medicalRecord.wardInfo.roomNum}
-                    onChange={this.onChangeWardRoomNum}
-                    style={{ marginTop: '1em' }}
-                  />
-                  
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Ward-bedNum"
-                    name="bedNum"
-                    value={this.state.medicalRecord.wardInfo.bedNum}
-                    onChange={this.onChangeWardBedNum}
-                    style={{ marginTop: '1em' }}
-                  /> */}
                 </div>
 
                 {/* Form submit */}
