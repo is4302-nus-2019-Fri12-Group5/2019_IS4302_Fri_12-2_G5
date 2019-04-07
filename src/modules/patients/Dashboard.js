@@ -1,5 +1,5 @@
 // Imports
-import React from 'react'
+import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -19,61 +19,110 @@ import {Link} from "react-router-dom";
 import home from "../../setup/routes/home";
 
 // Component
-const Dashboard = () => (
-  <div>
-    {/* SEO */}
-    <Helmet>
-      <title>Dashboard - Patient</title>
-    </Helmet>
+class Dashboard extends PureComponent {
 
-    {/* Top menu bar */}
-    <PatientMenu/>
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentPatient: '',
+      street: '',
+      aptNum: '',
+      city: '',
+      country: '',
+      postalCode: '',
+    }
+  }
 
-    {/* Page Content */}
+  componentDidMount() {
+    fetch("/hlf/api/org.healthcare.Patient/p1")
+	    .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            currentPatient: responseData
+          });
+          console.log("Apt num of current patient: " + this.state.currentPatient.address.aptNum);
+          
+          this.setAddress();
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
+  }
 
-      <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
+  setAddress = async () => {
+    
+    this.setState({
+      street: this.state.currentPatient.address.street,
+      aptNum: this.state.currentPatient.address.aptNum,
+      city: this.state.currentPatient.address.city,
+      country: this.state.currentPatient.address.country,
+      postalCode: this.state.currentPatient.address.postalCode,
+    })
+  }
 
+
+  render() {
+    
+    let {currentPatient} = this.state;
+
+    return (
+        <div>
           {/* SEO */}
           <Helmet>
-              <title>My Profile - MediChain</title>
+            <title>Dashboard - Patient</title>
           </Helmet>
 
-          {/* Left Content - Image Collage */}
-          <GridCell>
-              <Grid gutter={true} alignCenter={true}>
-                  <GridCell justifyCenter={true}>
-                      <ImageTile width={700} height={530} shadow={level1} image={`${ APP_URL }/images/patient_1.jpeg`}/>
-                  </GridCell>
-              </Grid>
-          </GridCell>
+          {/* Top menu bar */}
+          <PatientMenu/>
 
-          <GridCell style={{textAlign: 'center' }}>
-              <H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
-              {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
-              <H4 style={{ marginBottom: '3em' }}>Brown Tan</H4>
-              {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
-              <p style={{ color: grey2, marginBottom: '2em' }}>NRIC: ABCD000K</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Date of Birth: 1983/03/22</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Address: Quant Road 23, Shan District</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Phone: 8888 8888</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Nationality: Singaporean</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Race: Chinese</p>
-              <p style={{ color: grey2, marginBottom: '4em' }}>Gender: Male</p>
+          {/* Page Content */}
 
-              {/*<Link to={}>*/}
-              <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
-              {/*</Link>*/}
+            <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
 
-              {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
-              <Link to={home.home.path}>
-                  <Button type="button" theme="secondary" >Logout</Button>
-              </Link>
-          </GridCell>
+                {/* SEO */}
+                <Helmet>
+                    <title>My Profile - MediChain</title>
+                </Helmet>
 
-      </Grid>
+                {/* Left Content - Image Collage */}
+                <GridCell>
+                    <Grid gutter={true} alignCenter={true}>
+                        <GridCell justifyCenter={true}>
+                            <ImageTile width={700} height={530} shadow={level1} image={`${ APP_URL }/images/patient_1.jpeg`}/>
+                        </GridCell>
+                    </Grid>
+                </GridCell>
 
-  </div>
-)
+                <GridCell style={{textAlign: 'center' }}>
+                    <H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
+                    {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
+                    <H4 style={{ marginBottom: '3em' }}>{currentPatient.firstName} {currentPatient.lastName}</H4>
+                    {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
+                    <p style={{ color: grey2, marginBottom: '2em' }}>NRIC: {currentPatient.NRIC}</p>
+                    <p style={{ color: grey2, marginBottom: '2em' }}>Date of Birth: {currentPatient.dateOfBirth} </p>
+                    <p style={{ color: grey2, marginBottom: '2em' }}>Address: {this.state.aptNum}, {this.state.street}, 
+                         {this.state.city}, {this.state.postalCode}, {this.state.country} </p>
+                    <p style={{ color: grey2, marginBottom: '2em' }}>Phone: {currentPatient.phoneNum} </p>
+                    <p style={{ color: grey2, marginBottom: '2em' }}>Nationality: {currentPatient.nationality}</p>
+                    <p style={{ color: grey2, marginBottom: '2em' }}>Race: {currentPatient.race}</p>
+                    <p style={{ color: grey2, marginBottom: '4em' }}>Gender: {currentPatient.gender}</p>
+
+                    {/*<Link to={}>*/}
+                    <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
+                    {/*</Link>*/}
+
+                    {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
+                    <Link to={home.home.path}>
+                        <Button type="button" theme="secondary" >Logout</Button>
+                    </Link>
+                </GridCell>
+
+            </Grid>
+
+        </div>
+      )
+    }
+}
 
 // Component Properties
 Dashboard.propTypes = {

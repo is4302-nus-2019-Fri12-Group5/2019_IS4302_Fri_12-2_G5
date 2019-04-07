@@ -18,7 +18,6 @@ import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import DoctorMenu from '../common/Menu'
 import doctorsRoute from '../../../setup/routes/doctors'
-import Edit from './Edit'
 
 // Component
 class List extends PureComponent {
