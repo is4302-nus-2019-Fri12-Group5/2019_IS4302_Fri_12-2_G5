@@ -7,5 +7,5 @@ export const patientsDashboard = {
     path: '/patients/dashboard',
     component: Dashboard,
     // auth: true,
-    // role: params.user.roles.admin
+    // role: params.user.roles.doctorsRoutes
 }

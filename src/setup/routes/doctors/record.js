@@ -2,6 +2,7 @@
 import params from '../../../setup/config/params'
 import RecordList from '../../../modules/doctors/doctorMedicalRecord/RecordList'
 import PrescriptionList from '../../../modules/doctors/doctorMedicalRecord/PrescriptionList'
+import PrescriptionEdit from '../../../modules/doctors/doctorMedicalRecord/EditPrescription'
 import RecordCreateOrEdit from '../../../modules/doctors/doctorMedicalRecord/CreateOrEditRecord'
 import RecordEdit from '../../../modules/doctors/doctorMedicalRecord/EditRecord'
 
@@ -20,6 +21,13 @@ export const doctorPrescription = {
   role: params.user.roles.admin
 }
 
+export const doctorEditPrescription = {
+  path: '/doctors/pres/edit',
+  component: PrescriptionEdit,
+  // auth: true,
+  role: params.user.roles.admin
+}
+
 export const recordCreate = {
   path: '/doctors/doctorMedicalRecord/create',
   component: RecordCreateOrEdit,
@@ -28,7 +36,7 @@ export const recordCreate = {
 }
 
 export const recordEdit = {
-  // path: (id = ':id') => (`/admin/crate/${ id }/edit`),
+  // path: (id = ':id') => (`/doctorsRoutes/crate/${ id }/edit`),
   path: (id = ':id') => (`/doctors/doctorMedicalRecord/edit/${ id }`),
   component: RecordEdit,
   // auth: true,

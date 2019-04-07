@@ -15,7 +15,7 @@ import { Input, Textarea } from '../../../ui/input'
 import { white } from "../../../ui/common/colors"
 
 // App Imports
-import admin from '../../../setup/routes/doctors'
+import doctorsRoutes from '../../../setup/routes/doctors'
 import { slug } from '../../../setup/helpers'
 import {
   createOrUpdate as crateCreateOrUpdate,
@@ -153,7 +153,7 @@ class EditRecord extends Component {
         } else {
           this.props.messageShow('Medical Record saved successfully.')
 
-          this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
+          this.props.doctorHowItWorks.push(doctorsRoutes.doctorMedicalRecord.path)
         }
       })
       .catch(error => {
@@ -186,7 +186,7 @@ class EditRecord extends Component {
           {/* Top actions bar */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'left' }}>
-              <Link to={admin.doctorMedicalRecord.path}>
+              <Link to={doctorsRoutes.doctorMedicalRecord.path}>
                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
               </Link>
             </GridCell>
