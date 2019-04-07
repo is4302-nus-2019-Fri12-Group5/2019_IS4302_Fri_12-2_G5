@@ -8,13 +8,13 @@ export const patientsDashboard = {
     path: '/patients/dashboard',
     component: Dashboard,
     // auth: true,
-    // role: params.user.roles.admin
+    // role: params.user.roles.doctorsRoutes
 }
 
 export const patientsDashboardEdit = {
     path: '/patients/edit',
     component: Edit,
     // auth: true,
-    // role: params.user.roles.admin
+    // role: params.user.roles.doctorsRoutes
     // role: params.user.roles.doctorsRoutes
 }

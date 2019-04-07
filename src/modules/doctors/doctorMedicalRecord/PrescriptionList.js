@@ -52,11 +52,11 @@ class PrescriptionList extends Component {
                         </GridCell>
 
                         <GridCell style={{ textAlign: 'right' }}>
-                            {/*<Link to={doctorsRoutes.recordCreate.path}>*/}
+                            <Link to={doctorsRoutes.doctorCreatePrescription.path}>
                                 <Button theme="secondary" style={{ marginTop: '1em' }}>
                                     <Icon size={1.2} style={{ color: white }}>add</Icon> Add
                                 </Button>
-                            {/*</Link>*/}
+                            </Link>
                         </GridCell>
                     </Grid>
 
