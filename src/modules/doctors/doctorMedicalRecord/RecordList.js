@@ -216,7 +216,7 @@ class RecordList extends PureComponent {
                             
                             <td>
                               <Link to={doctorsRoute.doctorPrescription.path(medicalRecord.recordID)}>
-                                <Button theme="primary" style={{ marginRight: '1em' }}> See Prescription </Button>
+                                <Button theme="primary" style={{ marginRight: '1em' }}> See Prescriptions </Button>
                               </Link>
                             </td>
                           </tr>

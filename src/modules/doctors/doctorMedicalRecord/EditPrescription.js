@@ -27,96 +27,97 @@ import DoctorMenu from '../common/Menu'
 // Component
 class EditPrescription extends Component {
 
-    // constructor(props) {
-    //     super(props)
-    //
-    //     this.state = {
-    //         isLoading: false,
-    //         date : '',
-    //         diagnosis: '',
-    //         wardLevel: '',
-    //         wardRoomNum: '',
-    //         wardBedNum: '',
-    //         currentMedicalRecord: ''
-    //     }
-    // }
-    //
-    // componentDidMount() {
-    //     // Get doctorMedicalcrate details (edit case)
-    //     // this.getCrate(parseInt(this.props.match.params.id))
-    //     console.log(this.props)
-    //
-    //     fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.props.match.params.id}`)
-    //         .then(response => response.json())
-    //         .then(responseData => {
-    //             this.setState({
-    //                 currentMedicalRecord: responseData,
-    //             });
-    //             console.log(this.state.currentMedicalRecord);
-    //
-    //             this.updateState();
-    //
-    //         })
-    //         .catch(error => {
-    //             console.log('Error fetching and parsing data', error);
-    //         });
-    //
-    //
-    // }
-    //
-    // updateState = async () => {
-    //     await this.setState({
-    //         date: this.state.currentMedicalRecord.date,
-    //         diagnosis: this.state.currentMedicalRecord.diagnosis,
-    //         wardLevel: this.state.currentMedicalRecord.wardInfo.level,
-    //         wardRoomNum: this.state.currentMedicalRecord.wardInfo.roomNum,
-    //         wardBedNum: this.state.currentMedicalRecord.wardInfo.bedNum,
-    //     });
-    //
-    //     console.log(this.state.date);
-    //     console.log(this.state.diagnosis);
-    //     console.log(this.state.wardBedNum);
-    // }
-    // handleChange = async (event) => {
-    //
-    //     await this.setState({
-    //         [event.target.name]: event.target.value
-    //     });
-    //
-    //     console.log("Diagnosis: " + this.state.diagnosis);
-    //     console.log("Date: " + this.state.date);
-    //     console.log("Ward bed num: " + this.state.wardBedNum);
-    // }
-    //
-    //
-    // onSubmit = (event) => {
-    //     event.preventDefault()
-    //
-    //     console.log(this.state.date);
-    //     console.log(this.state.diagnosis);
-    //     console.log(this.state.wardBedNum);
-    //
-    //     const medicalRecordToUpdate = {
-    //         medicalRecord: this.state.currentMedicalRecord.recordID,
-    //         date : this.state.date,
-    //         diagnosis: this.state.diagnosis,
-    //         wardInfo: {
-    //             level: this.state.wardLevel,
-    //             roomNum: this.state.wardRoomNum,
-    //             bedNum: this.state.wardBedNum
-    //         },
-    //         lastModified: new Date(),
-    //     }
-    //
-    //     fetch('/doctor/api/org.healthcare.UpdateMedicalRecord', {
-    //         method: 'POST',
-    //         headers: {
-    //             Accept: 'application/json',
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(medicalRecordToUpdate)
-    //     });
-    //
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+            isLoading: false,
+            date : '',
+            diagnosis: '',
+            wardLevel: '',
+            wardRoomNum: '',
+            wardBedNum: '',
+            currentMedicalRecord: ''
+        }
+    }
+    
+    componentDidMount() {
+        // Get doctorMedicalcrate details (edit case)
+        // this.getCrate(parseInt(this.props.match.params.id))
+        console.log(this.props)
+    
+        fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.props.match.params.id}`)
+            .then(response => response.json())
+            .then(responseData => {
+                this.setState({
+                    currentMedicalRecord: responseData,
+                });
+                console.log(this.state.currentMedicalRecord);
+    
+                this.updateState();
+    
+            })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
+            });
+    
+    
+    }
+    
+    updateState = async () => {
+        await this.setState({
+            date: this.state.currentMedicalRecord.date,
+            diagnosis: this.state.currentMedicalRecord.diagnosis,
+            wardLevel: this.state.currentMedicalRecord.wardInfo.level,
+            wardRoomNum: this.state.currentMedicalRecord.wardInfo.roomNum,
+            wardBedNum: this.state.currentMedicalRecord.wardInfo.bedNum,
+        });
+    
+        console.log(this.state.date);
+        console.log(this.state.diagnosis);
+        console.log(this.state.wardBedNum);
+    }
+    handleChange = async (event) => {
+    
+        await this.setState({
+            [event.target.name]: event.target.value
+        });
+    
+        console.log("Diagnosis: " + this.state.diagnosis);
+        console.log("Date: " + this.state.date);
+        console.log("Ward bed num: " + this.state.wardBedNum);
+    }
+    
+    
+    onSubmit = (event) => {
+        event.preventDefault()
+    
+        console.log(this.state.date);
+        console.log(this.state.diagnosis);
+        console.log(this.state.wardBedNum);
+    
+        const medicalRecordToUpdate = {
+            medicalRecord: this.state.currentMedicalRecord.recordID,
+            date : this.state.date,
+            diagnosis: this.state.diagnosis,
+            wardInfo: {
+                level: this.state.wardLevel,
+                roomNum: this.state.wardRoomNum,
+                bedNum: this.state.wardBedNum
+            },
+            lastModified: new Date(),
+        }
+    
+        fetch('/doctor/api/org.healthcare.UpdateMedicalRecord', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(medicalRecordToUpdate)
+        });
+    }
+    
     //     this.setState({
     //         isLoading: true
     //     })
@@ -178,16 +179,16 @@ class EditPrescription extends Component {
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell>
                             <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                                {this.props.match.params.id === undefined ? 'Create' : 'EditPrescription'}
                                 Edit Prescription
                             </H4>
                             {/* Form */}
                             <form onSubmit={this.onSubmit}>
                                 <div style={{ width: '25em', margin: '0 auto' }}>
                                 {/*}*/}
-                                    <h3 style={{ marginTop: '1em', textAlign: 'center' }} fullWidth={true} >
-                                        {this.state.currentMedicalRecord.recordID}
-                                    </h3>
+                                    <h2 style={{ marginTop: '1em', textAlign: 'center' }} fullWidth={true} >
+                                        {/* {this.state.currentMedicalRecord.recordID} */}
+                                        Prescription
+                                    </h2>
 
                                     <Input
                                         type="text"

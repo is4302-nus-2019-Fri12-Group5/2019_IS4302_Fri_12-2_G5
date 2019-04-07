@@ -22,8 +22,7 @@ import {
     getById as getCrateById
 } from '../../crate/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
-import DoctorMenu from '../common/Menu'
-import Loading from "../../patients/patientMedicalRecord/List";
+import EmptyMessage from '../../common/EmptyMessage'
 
 // Component
 class PrescriptionList extends Component {
@@ -31,16 +30,42 @@ class PrescriptionList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            isLoading: true,
+            prescriptions: [],
+            medicalRecord: ''
         }
     }
 
     componentDidMount() {
-        
+        fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.props.match.params.id}`)
+	    .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            medicalRecord: responseData
+          });
+
+          this.updatePrescriptionList();
+          console.log(responseData);
+
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
     }
 
+    updatePrescriptionList = async () => {
+
+        await this.setState({
+            prescriptions: this.state.medicalRecord.prescriptions
+        })
+
+        console.log(this.state.prescriptions)
+    };
+
     render() {
-        let input_list = [];
+
+        const { prescriptions, isLoading } = this.state;
+        
         return (
             <div>
                 {/* SEO */}
@@ -49,7 +74,7 @@ class PrescriptionList extends Component {
                 </Helmet>
 
                 {/* Top menu bar */}
-                <DoctorMenu/>
+                {/* <DoctorMenu/> */}
 
                 {/* Page Content */}
 
@@ -58,7 +83,7 @@ class PrescriptionList extends Component {
                     {/* Top actions bar */}
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell style={{ textAlign: 'left' }}>
-                            <Link to={doctorsRoutes.doctorMedicalRecord.path}>
+                            <Link to={doctorsRoutes.doctorPrescription.path(this.props.match.params.id)}>
                                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
                             </Link>
                         </GridCell>
@@ -113,52 +138,49 @@ class PrescriptionList extends Component {
                                 </tr>
 
                                 {/* Get data from backend */}
-                                {/*{*/}
-                                    {/*isLoading*/}
-                                        {/*? <tr>*/}
-                                            {/*<td colSpan="6">*/}
-                                                {/*<Loading message="loading..."/>*/}
-                                            {/*</td>*/}
-                                        {/*</tr>*/}
-                                        {/*: medicalRecords.length > 0*/}
-                                        {/*? medicalRecords.map((singleRecord) => (*/}
-                                            {/*<tr key={singleRecord.recordID}>*/}
-                                                {/*<td>*/}
-                                                    {/*{ singleRecord.recordID }*/}
-                                                {/*</td>*/}
+                                {
+                                    prescriptions.length > 0
+                                            ? prescriptions.map((singlePrescription) => (
+                                            <tr key={singlePrescription.presID}>
+                                                <td>
+                                                    { singlePrescription.presID }
+                                                </td>
 
-                                                {/*<td>*/}
-                                                    {/*{ singleRecord.date }*/}
-                                                {/*</td>*/}
+                                                <td>
+                                                    { singlePrescription.drugName }
+                                                </td>
 
-                                                {/*<td>*/}
-                                                    {/*{ singleRecord.doctor }*/}
-                                                {/*</td>*/}
+                                                <td>
+                                                    { singlePrescription.quantity }
+                                                </td>
 
-                                                {/*<td>*/}
-                                                    {/*{ singleRecord.hospital }*/}
-                                                {/*</td>*/}
+                                                <td>
+                                                    { singlePrescription.unitType }
+                                                </td>
 
-                                                {/*<td>*/}
-                                                    {/*{ singleRecord.diagnosis }*/}
-                                                {/*</td>*/}
+                                                <td>
+                                                    { singlePrescription.dosage }
+                                                </td>
 
-                                                {/*<td>*/}
-                                                    {/*{ singleRecord.lastModified  }*/}
-                                                {/*</td>*/}
+                                                <td>
+                                                    { singlePrescription.duration }
+                                                </td>
 
-                                                {/*<td style={{ textAlign: 'center' }}>*/}
-                                                    {/*<Button type="button" theme="primary" style={{marginRight : '0.5em'}}*/}
-                                                            {/*onClick={() => this.handlePayBill(singleRecord)}> Pay </Button>*/}
-                                                {/*</td>*/}
-                                            {/*</tr>*/}
-                                        {/*))*/}
-                                        {/*: <tr>*/}
-                                            {/*<td colSpan="6">*/}
-                                                {/*<EmptyMessage message="No prescription to show. The above is Mock Data."/>*/}
-                                            {/*</td>*/}
-                                        {/*</tr>*/}
-                                {/*}*/}
+                                                <td style={{ textAlign: 'center' }}>
+                                                    {/* <Button type="button" theme="primary" style={{marginRight : '0.5em'}}
+                                                            onClick={() => this.handlePayBill(singleRecord)}> Pay </Button> */}
+                                                <Link to={doctorsRoutes.doctorEditPrescription.path(singlePrescription.presID)}>
+                                                    <Icon size={2} style={{ color: black }}>edit</Icon>
+                                                </Link>
+                                                </td>
+                                            </tr>
+                                        ))
+                                        : <tr>
+                                            <td colSpan="6">
+                                                <EmptyMessage message="No prescription to show. The above is Mock Data."/>
+                                            </td>
+                                        </tr>
+                                }
 
                                 </tbody>
                             </table>
