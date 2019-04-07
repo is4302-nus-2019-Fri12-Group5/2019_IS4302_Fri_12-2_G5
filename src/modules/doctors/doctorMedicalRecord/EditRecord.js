@@ -25,7 +25,7 @@ import { messageShow, messageHide } from '../../common/api/actions'
 import DoctorMenu from '../common/Menu'
 
 // Component
-class Edit extends Component {
+class EditRecord extends Component {
 
   constructor(props) {
     super(props)
@@ -196,7 +196,7 @@ class Edit extends Component {
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Medical Record
+                {this.props.match.params.id === undefined ? 'Create' : 'EditRecord'} Medical Record
               </H4>
               {/* Form */}
               <form onSubmit={this.onSubmit}>
@@ -280,7 +280,7 @@ class Edit extends Component {
 }
 
 // Component Properties
-Edit.propTypes = {
+EditRecord.propTypes = {
   crateCreateOrUpdate: PropTypes.func.isRequired,
   getCrateById: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
@@ -292,4 +292,4 @@ export default withRouter(connect(null, {
   getCrateById,
   messageShow,
   messageHide
-})(Edit))
+})(EditRecord))

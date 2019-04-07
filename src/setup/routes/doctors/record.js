@@ -1,9 +1,9 @@
 // App Imports
 import params from '../../../setup/config/params'
-import RecordList from '../../../modules/doctors/doctorMedicalRecord/List'
-import PrescriptionList from '../../../modules/doctors/doctorMedicalRecord/Prescription'
-import RecordCreateOrEdit from '../../../modules/doctors/doctorMedicalRecord/CreateOrEdit'
-import RecordEdit from '../../../modules/doctors/doctorMedicalRecord/Edit'
+import RecordList from '../../../modules/doctors/doctorMedicalRecord/RecordList'
+import PrescriptionList from '../../../modules/doctors/doctorMedicalRecord/PrescriptionList'
+import RecordCreateOrEdit from '../../../modules/doctors/doctorMedicalRecord/CreateOrEditRecord'
+import RecordEdit from '../../../modules/doctors/doctorMedicalRecord/EditRecord'
 
 // Admin doctorMedicalRecord routes
 export const doctorMedicalRecord = {

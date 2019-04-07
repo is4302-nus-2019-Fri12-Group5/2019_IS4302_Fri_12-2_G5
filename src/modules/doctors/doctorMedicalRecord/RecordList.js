@@ -18,10 +18,10 @@ import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import DoctorMenu from '../common/Menu'
 import doctorsRoute from '../../../setup/routes/doctors'
-import Edit from './Edit'
+import Edit from './EditRecord'
 
 // Component
-class List extends PureComponent {
+class RecordList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -232,7 +232,7 @@ class List extends PureComponent {
 }
 
 // Component Properties
-List.propTypes = {
+RecordList.propTypes = {
   crates: PropTypes.object.isRequired,
   getCrateList: PropTypes.func.isRequired,
   removeCrate: PropTypes.func.isRequired,
@@ -247,4 +247,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getCrateList, removeCrate, messageShow, messageHide })(List)
+export default connect(listState, { getCrateList, removeCrate, messageShow, messageHide })(RecordList)

@@ -25,7 +25,7 @@ import { messageShow, messageHide } from '../../common/api/actions'
 import DoctorMenu from '../common/Menu'
 
 // Component
-class CreateOrEdit extends Component {
+class CreateOrEditRecord extends Component {
 
   constructor(props) {
     super(props)
@@ -455,7 +455,7 @@ class CreateOrEdit extends Component {
 }
 
 // Component Properties
-CreateOrEdit.propTypes = {
+CreateOrEditRecord.propTypes = {
   crateCreateOrUpdate: PropTypes.func.isRequired,
   getCrateById: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
@@ -467,4 +467,4 @@ export default withRouter(connect(null, {
   getCrateById,
   messageShow,
   messageHide
-})(CreateOrEdit))
+})(CreateOrEditRecord))

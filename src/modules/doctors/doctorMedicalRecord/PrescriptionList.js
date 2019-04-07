@@ -12,7 +12,7 @@ import Button from '../../../ui/button'
 import Icon from '../../../ui/icon'
 import H4 from '../../../ui/typography/H4'
 import { Input, Textarea } from '../../../ui/input'
-import { white } from "../../../ui/common/colors"
+import {black, white} from "../../../ui/common/colors"
 
 // App Imports
 import admin from '../../../setup/routes/doctors'
@@ -94,11 +94,9 @@ class PrescriptionList extends Component {
                                     <td style={{ textAlign: 'center' }}>1 month</td>
                                     <td style={{ textAlign: 'center' }}>23/03/2017</td>
                                     <td style={{ textAlign: 'center' }}>
-
-                                        {/*<Link to={}>*/}
-                                        <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Edit</Button>
+                                        {/*<Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>*/}
+                                        <Icon size={2} style={{ color: black }}>edit</Icon>
                                         {/*</Link>*/}
-
                                     </td>
                                 </tr>
 
