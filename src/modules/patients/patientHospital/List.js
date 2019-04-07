@@ -26,17 +26,9 @@ class HospitalList extends PureComponent {
       filteredHospital: [],
       selectedPatient: ''
     }
-    this.refreshList = this.refreshList.bind(this);
   }
 
-  // Runs on server only for SSR
-  static fetchData({ store }) {
-    return store.dispatch(getProductList())
-  }
-
-  // Runs on client only
   componentDidMount() {
-    this.props.getProductList();
     console.log("Getting p1");
     
     fetch("/hlf/api/org.healthcare.Patient")
@@ -53,13 +45,18 @@ class HospitalList extends PureComponent {
 
     console.log("Getting the hospital of the patient");
 
+    window.setTimeout(() => {
+      this.getHospital();
+    }, 1000)
+  }
+
+  getHospital = () => {
     fetch("/hlf/api/org.healthcare.Hospital")
-        .then(response => response.json())
+      .then(response => response.json())
         .then(responseData => {
 
           const thePatientHospitals = this.state.selectedPatient.currentHospitals;
-
-          const filteredList = responseData.filter(hospitals => thePatientHospitals.some(c => c == "resource:org.healthcare.Hospital#" + hospitals.registrationID));
+          const filteredList = responseData.filter(hospitals => thePatientHospitals.some(hospital => hospital == "resource:org.healthcare.Hospital#" + hospitals.registrationID));
 
           this.setState({
             hospital: responseData,
@@ -75,7 +72,7 @@ class HospitalList extends PureComponent {
         });
   }
 
-  handleAddHospital = async (event) => {
+  handleAddHospital = (event) => {
 
     event.preventDefault();
 
@@ -86,7 +83,7 @@ class HospitalList extends PureComponent {
       timestamp: new Date()
     }
 
-    await fetch('/hlf/api/org.healthcare.AddPatientHospital', {
+    fetch('/hlf/api/org.healthcare.AddPatientHospital', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -95,41 +92,9 @@ class HospitalList extends PureComponent {
       body: JSON.stringify(newHospital)
     });
 
-    this.testFunction();
-    this.refreshList();
-  }
-
-  testFunction = () => {
-    console.log("Function working");
-  }
-
-  refreshList = async () => {
-    
-    const response = await fetch("/hlf/api/org.healthcare.Hospital");
-    const responseData = await response.json();
-
-    // await fetch("/hlf/api/org.healthcare.Hospital")
-    // .then(response => response.json())
-    // .then(responseData => {
-      
-      console.log("Response data: " + responseData);
-      const thePatientHospitals = this.state.selectedPatient.currentHospitals;
-
-      const filteredList = responseData.filter(hospitals => thePatientHospitals.some(c => c == "resource:org.healthcare.Hospital#" + hospitals.registrationID));
-
-      console.log("The patient's hospitals: " + thePatientHospitals);
-      console.log("Before set: " + this.state.filteredHospital);
-      console.log("filteredList: " + filteredList);
-
-
-      await this.setState({
-        filteredHospital: filteredList
-      });
-
-      console.log("After click: " + thePatientHospitals);
-      await console.log(this.state.filteredHospital);
-
+    window.setTimeout(() => {
       window.location.reload();
+    }, 1000)
   }
 
   handleRemoveHospital = (event) => {
@@ -152,8 +117,9 @@ class HospitalList extends PureComponent {
       body: JSON.stringify(hospitalToRemove)
     });
 
-    this.testFunction();
-    this.refreshList();
+    window.setTimeout(() => {
+      window.location.reload();
+    }, 1000)
   }
 
   render() {

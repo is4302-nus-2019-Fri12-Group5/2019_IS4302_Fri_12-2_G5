@@ -195,17 +195,16 @@ class EditRecord extends Component {
               {/* Form */}
               <form onSubmit={this.onSubmit}>
                 <div style={{ width: '25em', margin: '0 auto' }}>
-                  {/* Name */}
                   
-                  <h3 
+                  <H4
                     style={{ marginTop: '1em', textAlign: 'center' }} 
                     fullWidth={true} >
                     
                      {this.state.currentMedicalRecord.recordID} 
                      
-                  </h3>
+                  </H4>
                 
-                
+                  Diagnosis
                   <Input
                     type="text"
                     fullWidth={true}
@@ -215,8 +214,10 @@ class EditRecord extends Component {
                     autoComplete="off"
                     value={this.state.diagnosis}
                     onChange={this.handleChange}
+                    style={{ marginBottom: '2em' }}
                   />
 
+                  Date
                   <Input
                     type="text"
                     fullWidth={true}
@@ -225,8 +226,10 @@ class EditRecord extends Component {
                     autoComplete="off"
                     value={this.state.date}
                     onChange={this.handleChange}
+                    style={{ marginBottom: '2em' }}
                   />
 
+                  Ward - Level
                   <Input
                     type="text"
                     fullWidth={true}
@@ -235,8 +238,10 @@ class EditRecord extends Component {
                     autoComplete="off"
                     value={this.state.wardLevel}
                     onChange={this.handleChange}
+                    style={{ marginBottom: '2em' }}
                   />
 
+                  Ward - Room Number
                   <Input
                     type="text"
                     fullWidth={true}
@@ -245,8 +250,10 @@ class EditRecord extends Component {
                     autoComplete="off"
                     value={this.state.wardRoomNum}
                     onChange={this.handleChange}
-                  />    
-                  
+                    style={{ marginBottom: '2em' }}
+                  />
+
+                  Ward - Bed Number
                   <Input
                     type="text"
                     fullWidth={true}
@@ -255,6 +262,7 @@ class EditRecord extends Component {
                     autoComplete="off"
                     value={this.state.wardBedNum}
                     onChange={this.handleChange}
+                    style={{ marginBottom: '2em' }}
                   />
                 </div>
 

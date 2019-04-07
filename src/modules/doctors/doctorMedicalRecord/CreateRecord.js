@@ -339,7 +339,8 @@ class CreateRecord extends Component {
                 {/* Form */}
                 <form onSubmit={this.onSubmit}>
                   <div style={{ width: '25em', margin: '0 auto' }}>
-                    {/* Name */}
+                    
+                    Record ID
                     <Input
                         type="text"
                         fullWidth={true}
@@ -348,9 +349,10 @@ class CreateRecord extends Component {
                         name="recordID"
                         autoComplete="off"
                         value={this.state.medicalRecord.recordID}
-                        onChange={this.onChangeRecordID}
+                        style={{ marginBottom: '2em' }}
                     />
 
+                    Patient ID / NRIC
                     <Input
                         type="text"
                         fullWidth={true}
@@ -359,20 +361,22 @@ class CreateRecord extends Component {
                         name="patientID"
                         value={this.state.medicalRecord.patient}
                         onChange={this.onChangePatientID}
-                        style={{ marginTop: '1em' }}
+                        style={{ marginBottom: '2em' }}
                     />
 
-                    {/* Description */}
-                    <Textarea
+                    Diagnosis
+                    <Input
+                        type="text"
                         fullWidth={true}
                         placeholder="Diagnosis"
                         required="required"
                         name="diagonsis"
                         value={this.state.medicalRecord.diagnosis}
                         onChange={this.onChangeDiagnosis}
-                        style={{ marginTop: '1em' }}
+                        style={{ marginBottom: '2em' }}
                     />
 
+                    Ward - Level
                     <Input
                         type="text"
                         fullWidth={true}
@@ -381,9 +385,10 @@ class CreateRecord extends Component {
                         name="wardLevel"
                         value={this.state.medicalRecord.wardInfo.level}
                         onChange={this.onChangeWardLevel}
-                        style={{ marginTop: '1em' }}
+                        style={{ marginBottom: '2em' }}
                     />
 
+                    Ward - Room Number
                     <Input
                         type="text"
                         fullWidth={true}
@@ -391,9 +396,10 @@ class CreateRecord extends Component {
                         name="roomNum"
                         value={this.state.medicalRecord.wardInfo.roomNum}
                         onChange={this.onChangeWardRoomNum}
-                        style={{ marginTop: '1em' }}
+                        style={{ marginBottom: '2em' }}
                     />
 
+                    Ward - Bed Number
                     <Input
                         type="text"
                         fullWidth={true}
@@ -401,7 +407,7 @@ class CreateRecord extends Component {
                         name="bedNum"
                         value={this.state.medicalRecord.wardInfo.bedNum}
                         onChange={this.onChangeWardBedNum}
-                        style={{ marginTop: '1em' }}
+                        style={{ marginBottom: '2em' }}
                     />
                   </div>
 

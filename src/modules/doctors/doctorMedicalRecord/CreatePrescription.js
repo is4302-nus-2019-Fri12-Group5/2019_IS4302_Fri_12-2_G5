@@ -209,7 +209,8 @@ class PrescriptionCreate extends Component {
                                     />
 
                                     Unit Type
-                                    <Textarea
+                                    <Input
+                                        type="text"
                                         fullWidth={true}
                                         placeholder="TABLET / ML"
                                         required="required"
@@ -224,7 +225,6 @@ class PrescriptionCreate extends Component {
                                         type="text"
                                         fullWidth={true}
                                         placeholder="e.g. 3 times a day"
-                                        // required="required"
                                         name="dosage"
                                         value={this.state.dosage}
                                         onChange={this.handleChange}
