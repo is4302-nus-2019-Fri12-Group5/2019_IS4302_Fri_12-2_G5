@@ -31,14 +31,25 @@ class Wallet extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-
+      currentDoctor:''
     }
   }
 
   componentDidMount() {
-
+    fetch("/doctor/api/org.healthcare.Doctor")
+	    .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            currentDoctor: responseData[0]
+          });
+          
+          console.log(responseData[0]);
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
   }
-  
+
   render() {
     
     return(
@@ -66,7 +77,7 @@ class Wallet extends PureComponent {
                     <GridCell style={{textAlign: 'center' }}>
                         <H3 font="secondary" style={{ marginBottom: '1em' }}>My Wallet</H3>
                           {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
-                          <H4 style={{ marginBottom: '3em' }}>Income:   320 SGD</H4>
+                          <H4 style={{ marginBottom: '3em' }}>Income:   {this.state.currentDoctor.walletBalance} SGD</H4>
                           {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
                           {/* <p style={{ color: grey2, marginBottom: '2em' }}>Income increased in the last week:  30%</p> */}
 

@@ -37,12 +37,12 @@ class Wallet extends PureComponent {
 
   componentDidMount() {
 
-    fetch("/hlf/api/org.healthcare.Patient/p1")
+    fetch("/hlf/api/org.healthcare.Patient")
       .then(response => response.json())
         .then(responseData => {
           
           this.setState({
-            patient: responseData
+            patient: responseData[0]
           });
 
         })
@@ -80,7 +80,7 @@ class Wallet extends PureComponent {
                       {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
                       <H4 style={{ marginBottom: '3em' }}>Balance:  {this.state.patient.walletBalance} SGD</H4>
                       {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
-                      <p style={{ color: grey2, marginBottom: '2em' }}>Your spending in the past month:  500 SGD</p>
+                      {/* <p style={{ color: grey2, marginBottom: '2em' }}>Your spending in the past month:  500 SGD</p> */}
 
                       {/*<Link to={doctorsRoutes.dashboard.path}>*/}
                       <Button theme="primary" style={{marginRight : '0.5em'}}>Top Up</Button>

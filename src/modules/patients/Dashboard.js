@@ -6,17 +6,19 @@ import { Helmet } from 'react-helmet'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
-import {grey2} from '../../ui/common/colors'
+import {grey2, black, white} from '../../ui/common/colors'
 
 // App Imports
 import PatientMenu from './common/Menu'
 import ImageTile from "../../ui/image/Tile";
+import Icon from '../../ui/icon'
 import Button from '../../ui/button'
 import {level1} from "../../ui/common/shadows";
 import {APP_URL} from "../../setup/config/env";
 import {H3, H4} from "../../ui/typography";
 import {Link} from "react-router-dom";
 import home from "../../setup/routes/home";
+import patientRoutes from '../../setup/routes/patients'
 
 // Component
 class Dashboard extends PureComponent {
@@ -34,11 +36,11 @@ class Dashboard extends PureComponent {
   }
 
   componentDidMount() {
-    fetch("/hlf/api/org.healthcare.Patient/p1")
+    fetch("/hlf/api/org.healthcare.Patient")
 	    .then(response => response.json())
         .then(responseData => {
           this.setState({
-            currentPatient: responseData
+            currentPatient: responseData[0]
           });
           console.log("Apt num of current patient: " + this.state.currentPatient.address.aptNum);
           
@@ -107,9 +109,13 @@ class Dashboard extends PureComponent {
                     <p style={{ color: grey2, marginBottom: '2em' }}>Race: {currentPatient.race}</p>
                     <p style={{ color: grey2, marginBottom: '4em' }}>Gender: {currentPatient.gender}</p>
 
-                    {/*<Link to={}>*/}
-                    <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
-                    {/*</Link>*/}
+                    {/* <Link to={}>
+                    <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit-Button</Button>
+                    </Link> */}
+
+                    <Link to={patientRoutes.patientsDashboardEdit.path}>
+                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
+                    </Link>
 
                     {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
                     <Link to={home.home.path}>
