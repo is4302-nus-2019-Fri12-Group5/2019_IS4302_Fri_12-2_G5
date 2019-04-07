@@ -1,13 +1,21 @@
 // App Imports
 import params from '../../../setup/config/params'
 import RecordList from '../../../modules/doctors/doctorMedicalRecord/List'
+import PrescriptionList from '../../../modules/doctors/doctorMedicalRecord/Prescription'
 import RecordCreateOrEdit from '../../../modules/doctors/doctorMedicalRecord/CreateOrEdit'
 import RecordEdit from '../../../modules/doctors/doctorMedicalRecord/Edit'
 
 // Admin doctorMedicalRecord routes
 export const doctorMedicalRecord = {
-  path: '/doctors/crates',
+  path: '/doctors/records',
   component: RecordList,
+  // auth: true,
+  role: params.user.roles.admin
+}
+
+export const doctorPrescription = {
+  path: '/doctors/pres',
+  component: PrescriptionList,
   // auth: true,
   role: params.user.roles.admin
 }
