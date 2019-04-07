@@ -23,10 +23,10 @@ import {
 } from '../../crate/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 import DoctorMenu from '../common/Menu'
+import Loading from "../../patients/patientMedicalRecord/List";
 
 // Component
 class PrescriptionList extends Component {
-
     render() {
         let input_list = [];
         return (
@@ -40,6 +40,8 @@ class PrescriptionList extends Component {
                 <DoctorMenu/>
 
                 {/* Page Content */}
+
+
                 <div>
                     {/* Top actions bar */}
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
@@ -50,7 +52,108 @@ class PrescriptionList extends Component {
                         </GridCell>
                     </Grid>
 
+                    {/*asset Prescription identified by presID {*/}
+                    {/*o String presID*/}
+                    {/*o String drugName*/}
+                    {/*o String quantity*/}
+                    {/*o UnitType unitType*/}
+                    {/*o String dosage*/}
+                    {/*o String duration*/}
+                    {/*--> MedicalRecord medicalRecord*/}
+                    {/*o DateTime lastModified*/}
+                {/*}*/}
                     {/* Prescription list */}
+                    <Grid alignCenter={true} style={{ padding: '1em' }}>
+                        <GridCell>
+                            <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
+                                Prescription of Medical Record A002
+                            </H4>
+
+                            <table className="striped">
+                                <thead>
+                                <tr>
+                                    <th style={{ textAlign: 'center' }}>Pres ID</th>
+                                    <th style={{ textAlign: 'center' }}>Drug Name</th>
+                                    <th style={{ textAlign: 'center' }}>Quantity</th>
+                                    <th style={{ textAlign: 'center' }}>Unit Type</th>
+                                    <th style={{ textAlign: 'center' }}>Dosage</th>
+                                    <th style={{ textAlign: 'center' }}>Duration</th>
+                                    <th style={{ textAlign: 'center' }}>Last Modified</th>
+                                    <th style={{ textAlign: 'center' }}>Actions</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {/* Mock data */}
+                                <tr>
+                                    <td style={{ textAlign: 'center' }}>GX04001 </td>
+                                    <td style={{ textAlign: 'center' }}>Vitamin c </td>
+                                    <td style={{ textAlign: 'center' }}>2</td>
+                                    <td style={{ textAlign: 'center' }}>tablet</td>
+                                    <td style={{ textAlign: 'center' }}>/</td>
+                                    <td style={{ textAlign: 'center' }}>1 month</td>
+                                    <td style={{ textAlign: 'center' }}>23/03/2017</td>
+                                    <td style={{ textAlign: 'center' }}>
+
+                                        {/*<Link to={}>*/}
+                                        <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Edit</Button>
+                                        {/*</Link>*/}
+
+                                    </td>
+                                </tr>
+
+                                {/* Get data from backend */}
+                                {/*{*/}
+                                    {/*isLoading*/}
+                                        {/*? <tr>*/}
+                                            {/*<td colSpan="6">*/}
+                                                {/*<Loading message="loading..."/>*/}
+                                            {/*</td>*/}
+                                        {/*</tr>*/}
+                                        {/*: medicalRecords.length > 0*/}
+                                        {/*? medicalRecords.map((singleRecord) => (*/}
+                                            {/*<tr key={singleRecord.recordID}>*/}
+                                                {/*<td>*/}
+                                                    {/*{ singleRecord.recordID }*/}
+                                                {/*</td>*/}
+
+                                                {/*<td>*/}
+                                                    {/*{ singleRecord.date }*/}
+                                                {/*</td>*/}
+
+                                                {/*<td>*/}
+                                                    {/*{ singleRecord.doctor }*/}
+                                                {/*</td>*/}
+
+                                                {/*<td>*/}
+                                                    {/*{ singleRecord.hospital }*/}
+                                                {/*</td>*/}
+
+                                                {/*<td>*/}
+                                                    {/*{ singleRecord.diagnosis }*/}
+                                                {/*</td>*/}
+
+                                                {/*<td>*/}
+                                                    {/*{ singleRecord.lastModified  }*/}
+                                                {/*</td>*/}
+
+                                                {/*<td style={{ textAlign: 'center' }}>*/}
+                                                    {/*<Button type="button" theme="primary" style={{marginRight : '0.5em'}}*/}
+                                                            {/*onClick={() => this.handlePayBill(singleRecord)}> Pay </Button>*/}
+                                                {/*</td>*/}
+                                            {/*</tr>*/}
+                                        {/*))*/}
+                                        {/*: <tr>*/}
+                                            {/*<td colSpan="6">*/}
+                                                {/*<EmptyMessage message="No prescription to show. The above is Mock Data."/>*/}
+                                            {/*</td>*/}
+                                        {/*</tr>*/}
+                                {/*}*/}
+
+                                </tbody>
+                            </table>
+                        </GridCell>
+                    </Grid>
 
                 </div>
             </div>
