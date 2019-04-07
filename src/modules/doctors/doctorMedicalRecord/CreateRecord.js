@@ -294,13 +294,10 @@ class CreateRecord extends Component {
         <div id={i} style={{ width: '25em', margin: '0 auto' }}>
 
           {/* Auto-generate presID */}
-          <H4 style={{ marginTop: '2em', marginBottom: '0.5em' }}>Prescription: 1</H4>
-
-          Drug name
           <Input
               type="text"
               fullWidth={true}
-              placeholder="Drug Name"
+              placeholder="Prescription ID"
               required="required"
               name="drugName"
               // autoComplete="on"
@@ -308,54 +305,6 @@ class CreateRecord extends Component {
               onChange={this.onChange}
               style={{ marginBottom: '2em' }}
           />
-
-          Quantity
-          <Input
-              type="text"
-              fullWidth={true}
-              placeholder="Quantity"
-              required="required"
-              name="quantity"
-              value={this.state.quantity}
-              onChange={this.onChange}
-              style={{ marginBottom: '2em' }}
-          />
-
-          Unit Type
-            <Input
-                type="text"
-                fullWidth={true}
-                placeholder="TABLET or ML"
-                required="required"
-                name="unitType"
-                value={this.state.unitType}
-                onChange={this.onChange}
-                style={{ marginBottom: '2em' }}
-            />
-
-          Dosage
-          <Input
-              type="text"
-              fullWidth={true}
-              placeholder="Dosage"
-              required="required"
-              name="dosage"
-              value={this.state.dosage}
-              onChange={this.onChange}
-              style={{ marginBottom: '2em' }}
-          />
-
-          Duration
-          <Input
-              type="text"
-              fullWidth={true}
-              placeholder="Duration"
-              name="duration"
-              value={this.state.duration}
-              onChange={this.onChange}
-              style={{ marginBottom: '2em' }}
-          />
-
         </div>
     );
     this.setState({
@@ -466,14 +415,14 @@ class CreateRecord extends Component {
                   <div style={{ marginTop: '2em', textAlign: 'center' }}>
                     {[...this.state.input_list]}
                     <Button style={{textAlign: 'center' }} onClick={this.add_new_input.bind(this)}>
-                      <Icon size={1.2}>add</Icon> Add Prescription
+                      <Icon size={1.2}>add</Icon> Add Prescription ID
                     </Button>
                   </div>
 
                   {/* Form submit */}
                   <div style={{ marginTop: '2em', textAlign: 'center' }}>
                     <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
-                      <Icon size={1.2} style={{ color: white }}>check</Icon> Save
+                      <Icon size={1.2} style={{ color: white }}>check</Icon> Create
                     </Button>
                   </div>
                 </form>

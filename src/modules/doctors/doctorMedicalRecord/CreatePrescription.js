@@ -374,16 +374,6 @@ class PrescriptionCreate extends Component {
                                         onChange={this.onChangeWardRoomNum}
                                         style={{ marginTop: '1em' }}
                                     />
-
-                                    <Input
-                                        type="text"
-                                        fullWidth={true}
-                                        placeholder="Ward-bedNum"
-                                        name="bedNum"
-                                        value={this.state.medicalRecord.wardInfo.bedNum}
-                                        onChange={this.onChangeWardBedNum}
-                                        style={{ marginTop: '1em' }}
-                                    />
                                 </div>
 
                                 {/* Form submit */}
