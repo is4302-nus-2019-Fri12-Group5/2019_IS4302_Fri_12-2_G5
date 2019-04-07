@@ -47,7 +47,7 @@ class CreateOrEdit extends Component {
         hospital: '',
         prescriptions: []
       },
-      
+      input_list: [],
     }
   }
 
@@ -55,7 +55,7 @@ class CreateOrEdit extends Component {
     // Get doctorMedicalcrate details (edit case)
     // this.getCrate(parseInt(this.props.match.params.id))
 
-  
+
   }
 
   // getCrate = (crateId) => {
@@ -101,9 +101,9 @@ class CreateOrEdit extends Component {
 
     console.log(this.state.medicalRecord.recordID);
   }
-  
+
   onChangePatientID = async (event) => {
-    
+
     await this.setState({
       medicalRecord: {
         recordID: this.state.medicalRecord.recordID,
@@ -117,7 +117,7 @@ class CreateOrEdit extends Component {
         }
       },
     });
-    
+
     await console.log(this.state.medicalRecord.patient);
   }
 
@@ -217,14 +217,14 @@ class CreateOrEdit extends Component {
     }
 
     fetch('/doctor/api/org.healthcare.CreateMedicalRecord', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(medicalRecordToCreate)
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(medicalRecordToCreate)
     });
-    
+
     this.setState({
       isLoading: true
     })
@@ -233,138 +233,223 @@ class CreateOrEdit extends Component {
 
     // Save doctorMedicalRecord
     this.props.crateCreateOrUpdate(this.state.medicalRecord)
-      .then(response => {
-        this.setState({
-          isLoading: false
+        .then(response => {
+          this.setState({
+            isLoading: false
+          })
+
+          if (response.data.errors && response.data.errors.length > 0) {
+            this.props.messageShow(response.data.errors[0].message)
+          } else {
+            this.props.messageShow('Medical Record saved successfully.')
+
+            this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
+          }
         })
+        .catch(error => {
+          this.props.messageShow('There was some error. Please try again.')
 
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Medical Record saved successfully.')
-
-          this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
-        }
-      })
-      .catch(error => {
-        this.props.messageShow('There was some error. Please try again.')
-
-        this.setState({
-          isLoading: false
+          this.setState({
+            isLoading: false
+          })
         })
-      })
-      .then(() => {
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+        .then(() => {
+          window.setTimeout(() => {
+            this.props.messageHide()
+          }, 5000)
+        })
   }
 
-  render() {
-    return (
-      <div>
-        {/* SEO */}
-        <Helmet>
-          <title>Record / Create or Edit - Doctor</title>
-        </Helmet>
+  add_new_input() {
+    let i = this.state.input_list.length;
+    let val = this.state.input_list;
+    val.push(
+        <div id={i} style={{ width: '25em', margin: '0 auto' }}>
 
-        {/* Top menu bar */}
-        <DoctorMenu/>
+          {/* Auto-generate presID */}
+          <H4 style={{ marginTop: '2em', marginBottom: '0.5em' }}>Prescription: 1</H4>
 
-        {/* Page Content */}
-        <div>
-          {/* Top actions bar */}
-          <Grid alignCenter={true} style={{ padding: '1em' }}>
-            <GridCell style={{ textAlign: 'left' }}>
-              <Link to={admin.doctorMedicalRecord.path}>
-                <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
-              </Link>
-            </GridCell>
-          </Grid>
+          {/* Drug Name */}
+          <Input
+              type="text"
+              fullWidth={true}
+              placeholder="Drug Name"
+              required="required"
+              name="recordID"
+              autoComplete="on"
+              value={this.state.medicalRecord.recordID}
+              onChange={this.onChangeRecordID}
+          />
 
-          {/* Crate list */}
-          <Grid alignCenter={true} style={{ padding: '1em' }}>
-            <GridCell>
-              <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Medical Record
-              </H4>
+          <Input
+              type="text"
+              fullWidth={true}
+              placeholder="Quantity"
+              required="required"
+              name="patientID"
+              value={this.state.medicalRecord.patient}
+              onChange={this.onChangePatientID}
+              style={{ marginTop: '1em' }}
+          />
 
-              {/* Form */}
-              <form onSubmit={this.onSubmit}>
-                <div style={{ width: '25em', margin: '0 auto' }}>
-                  {/* Name */}
-                  <Input
-                    type="text"
-                    fullWidth={true}
-                    placeholder="Record ID"
-                    required="required"
-                    name="recordID"
-                    autoComplete="off"
-                    value={this.state.medicalRecord.recordID}
-                    onChange={this.onChangeRecordID}
-                  />
-                  
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="PatientID"
-                    required="required"
-                    name="patientID"
-                    value={this.state.medicalRecord.patient}
-                    onChange={this.onChangePatientID}
-                    style={{ marginTop: '1em' }}
-                  />
+          {/* Description */}
+          <Input
+              type="text"
+              fullWidth={true}
+              placeholder="Unit Type"
+              required="required"
+              name="diagonsis"
+              value={this.state.medicalRecord.diagnosis}
+              onChange={this.onChangeDiagnosis}
+              style={{ marginTop: '1em' }}
+          />
 
-                  {/* Description */}
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Diagnosis"
-                    required="required"
-                    name="diagonsis"
-                    value={this.state.medicalRecord.diagnosis}
-                    onChange={this.onChangeDiagnosis}
-                    style={{ marginTop: '1em' }}
-                  /> 
+          <Input
+              type="text"
+              fullWidth={true}
+              placeholder="Dosage"
+              // required="required"
+              name="wardLevel"
+              value={this.state.medicalRecord.wardInfo.level}
+              onChange={this.onChangeWardLevel}
+              style={{ marginTop: '1em' }}
+          />
 
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Ward-level"
-                    // required="required"
-                    name="wardLevel"
-                    value={this.state.medicalRecord.wardInfo.level}
-                    onChange={this.onChangeWardLevel}
-                    style={{ marginTop: '1em' }}
-                  />
+          <Input
+              type="text"
+              fullWidth={true}
+              placeholder="Duration"
+              name="roomNum"
+              value={this.state.medicalRecord.wardInfo.roomNum}
+              onChange={this.onChangeWardRoomNum}
+              style={{ marginTop: '1em', marginBottom: '2em' }}
+          />
 
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Ward-roomNum"
-                    name="roomNum"
-                    value={this.state.medicalRecord.wardInfo.roomNum}
-                    onChange={this.onChangeWardRoomNum}
-                    style={{ marginTop: '1em' }}
-                  />
-                  
-                  <Textarea
-                    fullWidth={true}
-                    placeholder="Ward-bedNum"
-                    name="bedNum"
-                    value={this.state.medicalRecord.wardInfo.bedNum}
-                    onChange={this.onChangeWardBedNum}
-                    style={{ marginTop: '1em' }}
-                  />
-                </div>
-
-                {/* Form submit */}
-                <div style={{ marginTop: '2em', textAlign: 'center' }}>
-                  <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
-                    <Icon size={1.2} style={{ color: white }}>check</Icon> Save
-                  </Button>
-                </div>
-              </form>
-            </GridCell>
-          </Grid>
         </div>
-      </div>
+    );
+    this.setState({
+      input_list:val
+    })
+  }
+
+
+  render() {
+    let input_list = [];
+    return (
+        <div>
+          {/* SEO */}
+          <Helmet>
+            <title>Record / Create or Edit - Doctor</title>
+          </Helmet>
+
+          {/* Top menu bar */}
+          <DoctorMenu/>
+
+          {/* Page Content */}
+          <div>
+            {/* Top actions bar */}
+            <Grid alignCenter={true} style={{ padding: '1em' }}>
+              <GridCell style={{ textAlign: 'left' }}>
+                <Link to={admin.doctorMedicalRecord.path}>
+                  <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
+                </Link>
+              </GridCell>
+            </Grid>
+
+            {/* Crate list */}
+            <Grid alignCenter={true} style={{ padding: '1em' }}>
+              <GridCell>
+                <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
+                  {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Medical Record
+                </H4>
+
+                {/* Form */}
+                <form onSubmit={this.onSubmit}>
+                  <div style={{ width: '25em', margin: '0 auto' }}>
+                    {/* Name */}
+                    <Input
+                        type="text"
+                        fullWidth={true}
+                        placeholder="Record ID"
+                        required="required"
+                        name="recordID"
+                        autoComplete="off"
+                        value={this.state.medicalRecord.recordID}
+                        onChange={this.onChangeRecordID}
+                    />
+
+                    <Input
+                        type="text"
+                        fullWidth={true}
+                        placeholder="Patient ID"
+                        required="required"
+                        name="patientID"
+                        value={this.state.medicalRecord.patient}
+                        onChange={this.onChangePatientID}
+                        style={{ marginTop: '1em' }}
+                    />
+
+                    {/* Description */}
+                    <Textarea
+                        fullWidth={true}
+                        placeholder="Diagnosis"
+                        required="required"
+                        name="diagonsis"
+                        value={this.state.medicalRecord.diagnosis}
+                        onChange={this.onChangeDiagnosis}
+                        style={{ marginTop: '1em' }}
+                    />
+
+                    <Input
+                        type="text"
+                        fullWidth={true}
+                        placeholder="Ward-level"
+                        // required="required"
+                        name="wardLevel"
+                        value={this.state.medicalRecord.wardInfo.level}
+                        onChange={this.onChangeWardLevel}
+                        style={{ marginTop: '1em' }}
+                    />
+
+                    <Input
+                        type="text"
+                        fullWidth={true}
+                        placeholder="Ward-roomNum"
+                        name="roomNum"
+                        value={this.state.medicalRecord.wardInfo.roomNum}
+                        onChange={this.onChangeWardRoomNum}
+                        style={{ marginTop: '1em' }}
+                    />
+
+                    <Input
+                        type="text"
+                        fullWidth={true}
+                        placeholder="Ward-bedNum"
+                        name="bedNum"
+                        value={this.state.medicalRecord.wardInfo.bedNum}
+                        onChange={this.onChangeWardBedNum}
+                        style={{ marginTop: '1em' }}
+                    />
+                  </div>
+
+                  <div style={{ marginTop: '2em', textAlign: 'center' }}>
+                    {[...this.state.input_list]}
+                    <Button style={{textAlign: 'center' }} onClick={this.add_new_input.bind(this)}>
+                      <Icon size={1.2}>add</Icon> Add Prescription
+                    </Button>
+                  </div>
+
+                  {/* Form submit */}
+                  <div style={{ marginTop: '2em', textAlign: 'center' }}>
+                    <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
+                      <Icon size={1.2} style={{ color: white }}>check</Icon> Save
+                    </Button>
+                  </div>
+                </form>
+              </GridCell>
+            </Grid>
+          </div>
+        </div>
     )
   }
 }
