@@ -329,9 +329,9 @@ class CreateRecord extends Component {
             {/* Top actions bar */}
             <Grid alignCenter={true} style={{ padding: '1em' }}>
               <GridCell style={{ textAlign: 'left' }}>
-                <Link to={admin.doctorMedicalRecord.path}>
-                  <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
-                </Link>
+                {/* <Link to={admin.doctorMedicalRecord.path}> */}
+                  <Button onClick={() => window.history.back() }><Icon size={1.2}>arrow_back</Icon> Back</Button>
+                {/* </Link> */}
               </GridCell>
             </Grid>
 

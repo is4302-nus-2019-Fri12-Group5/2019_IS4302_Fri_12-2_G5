@@ -13,6 +13,7 @@ import Icon from '../../../ui/icon'
 import H4 from '../../../ui/typography/H4'
 import { Input, Textarea } from '../../../ui/input'
 import {black, white} from "../../../ui/common/colors"
+import { renderIf } from '../../../setup/helpers'
 
 // App Imports
 import doctorsRoutes from '../../../setup/routes/doctors'
@@ -23,6 +24,7 @@ import {
 } from '../../crate/api/actions'
 import { messageShow, messageHide } from '../../common/api/actions'
 import EmptyMessage from '../../common/EmptyMessage'
+import DoctorMenu from '../common/Menu'
 
 // Component
 class PrescriptionList extends Component {
@@ -32,20 +34,28 @@ class PrescriptionList extends Component {
         this.state = {
             isLoading: true,
             prescriptions: [],
-            medicalRecord: ''
+            associatedMedicalRecord: '',
+            associatedPatient: ''
         }
     }
 
     componentDidMount() {
-        fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.props.match.params.id}`)
+
+        fetch(`/doctor/api/org.healthcare.Prescription`)
 	    .then(response => response.json())
         .then(responseData => {
+
+          const filteredData = responseData.filter(response => response.medicalRecord == `resource:org.healthcare.MedicalRecord#${this.props.match.params.id}`);
+            
           this.setState({
-            medicalRecord: responseData
+            prescriptions: filteredData,
+            associatedMedicalRecord: this.props.match.params.id
           });
 
-          this.updatePrescriptionList();
-          console.log(responseData);
+          this.retrieveAssociatedPatient();
+
+          console.log(this.state.prescriptions);
+          console.log("Associated medical record: " + this.state.associatedMedicalRecord);
 
         })
         .catch(error => {
@@ -53,18 +63,20 @@ class PrescriptionList extends Component {
         });
     }
 
-    updatePrescriptionList = async () => {
-
-        await this.setState({
-            prescriptions: this.state.medicalRecord.prescriptions
+    retrieveAssociatedPatient = () => {
+        fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.state.associatedMedicalRecord}`)
+	      .then(response => response.json())
+            .then(responseData => {
+         
+            this.setState({
+                associatedPatient: responseData.patient.split("#")[1]
+            });
         })
-
-        console.log(this.state.prescriptions)
-    };
+    }
 
     render() {
 
-        const { prescriptions, isLoading } = this.state;
+        const { prescriptions } = this.state;
         
         return (
             <div>
@@ -75,7 +87,7 @@ class PrescriptionList extends Component {
 
                 {/* Top menu bar */}
                 {/* <DoctorMenu/> */}
-
+                <DoctorMenu/>
                 {/* Page Content */}
 
 
@@ -83,13 +95,19 @@ class PrescriptionList extends Component {
                     {/* Top actions bar */}
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell style={{ textAlign: 'left' }}>
-                            <Link to={doctorsRoutes.doctorPrescription.path(this.props.match.params.id)}>
-                                <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
-                            </Link>
+                            
+                            {renderIf( true , () =>
+                                <Link to={doctorsRoutes.doctorPatientsRecord.path(this.state.associatedPatient)}>
+                                    <Button><Icon size={1.2}>arrow_back</Icon> Back to Medical Records of Associated Patient </Button>
+                                </Link>)
+                            }
+
+                            {/* <Button onClick={() => window.history.back() }><Icon size={1.2}>arrow_back</Icon> Back</Button> */}
+
                         </GridCell>
 
                         <GridCell style={{ textAlign: 'right' }}>
-                            <Link to={doctorsRoutes.doctorCreatePrescription.path}>
+                            <Link to={doctorsRoutes.doctorCreatePrescription.path(this.state.associatedMedicalRecord)}>
                                 <Button theme="secondary" style={{ marginTop: '1em' }}>
                                     <Icon size={1.2} style={{ color: white }}>add</Icon> Add
                                 </Button>
@@ -142,28 +160,32 @@ class PrescriptionList extends Component {
                                     prescriptions.length > 0
                                             ? prescriptions.map((singlePrescription) => (
                                             <tr key={singlePrescription.presID}>
-                                                <td>
+                                                <td style={{ textAlign: 'center' }}>
                                                     { singlePrescription.presID }
                                                 </td>
 
-                                                <td>
+                                                <td style={{ textAlign: 'center' }}>
                                                     { singlePrescription.drugName }
                                                 </td>
 
-                                                <td>
+                                                <td style={{ textAlign: 'center' }}>
                                                     { singlePrescription.quantity }
-                                                </td>
+                                                </td >
 
-                                                <td>
+                                                <td style={{ textAlign: 'center' }}>
                                                     { singlePrescription.unitType }
                                                 </td>
 
-                                                <td>
+                                                <td style={{ textAlign: 'center' }}>
                                                     { singlePrescription.dosage }
                                                 </td>
 
-                                                <td>
+                                                <td style={{ textAlign: 'center' }}>
                                                     { singlePrescription.duration }
+                                                </td>
+
+                                                <td style={{ textAlign: 'center' }}>
+                                                    { singlePrescription.lastModified }
                                                 </td>
 
                                                 <td style={{ textAlign: 'center' }}>

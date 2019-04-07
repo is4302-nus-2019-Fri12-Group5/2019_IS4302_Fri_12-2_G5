@@ -30,7 +30,7 @@ export const doctorEditPrescription = {
 }
 
 export const doctorCreatePrescription = {
-  path: '/doctors/createPrescription',
+  path: (id = ':id') => (`/doctors/createPrescription/${id}`),
   component: PrescriptionCreate,
   // auth: true,
   role: params.user.roles.admin

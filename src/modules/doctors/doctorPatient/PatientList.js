@@ -26,21 +26,10 @@ class PatientList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      patients: [],
-      doctor: "",
+      patients: []
       // doctorNRIC: localStorage.getItem('user')  // comment this for UI TESTING
     }
     
-    //localStorage.setItem('user', data);
-
-    // // getter
-    // localStorage.getItem('user');
-
-    // // remove
-    // localStorage.removeItem('user');
-
-    // // remove all
-    // localStorage.clear();
   }
    // Runs on server only for SSR
   static fetchData({ store }) {
@@ -49,20 +38,10 @@ class PatientList extends PureComponent {
 
   // Runs on client only
   componentDidMount() {
-    this.props.getProductList();
-    console.log("Passed");
+    // this.props.getProductList();
     fetch("/doctor/api/org.healthcare.Patient")
 	    .then(response => response.json())
         .then(patientList => {
-
-          // const patientHospitalList = responseData.map(function(response) {
-          //   return response.currentHospitals;
-          // });
-          console.log(this.state.doctorNRIC);
-
-          console.log(patientList);
-
-          // const patientsCopy = patientList.filter(patient => patient.medicalRecords.some(medicalRecord => medicalRecord == this.state.doctorNRIC));
 
           this.setState({
             patients: patientList
@@ -72,8 +51,6 @@ class PatientList extends PureComponent {
         .catch(error => {
           console.log('Error fetching and parsing data', error);
         });
-        
-        console.log("Passed 2nd time");
   }
 
   remove = (id) => {
@@ -162,7 +139,7 @@ class PatientList extends PureComponent {
                     </Link>
 
                     {/*this message button just for future*/}
-                    <Icon size={2} style={{ color: black }}>email</Icon>
+                    {/* <Icon size={2} style={{ color: black }}>email</Icon> */}
 
                   </td>
                 </tr>
@@ -177,7 +154,7 @@ class PatientList extends PureComponent {
                       ? patients.map((patient) => (
                           <tr key={patient.NRIC}>
                             <td style={{ textAlign: 'center' }}>
-                              { patient.NRIC}
+                              { patient.NRIC }
                             </td>
 
                             <td style={{ textAlign: 'center' }}>
@@ -204,12 +181,11 @@ class PatientList extends PureComponent {
 
                             <td style={{ textAlign: 'center' }}>
 
-                              { patient.currentHospitals.length } 
-                              {/* <Link to={admin.productEdit.path(id)}>
-                                <Icon size={2} style={{ color: black }}>mode_edit</Icon>
-                              </Link>
+                            <Link to={doctorsRoutes.doctorPatientsRecord.path(patient.NRIC)}>
+                              <Button theme="secondary" style={{ marginRight: '1em' }}>Medical Records</Button>
+                            </Link>
 
-                              <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
+                              {/* <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
                                   <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
                                 </span> */}
                             </td>

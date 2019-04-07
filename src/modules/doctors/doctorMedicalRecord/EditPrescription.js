@@ -31,13 +31,13 @@ class EditPrescription extends Component {
         super(props)
     
         this.state = {
-            isLoading: false,
-            date : '',
-            diagnosis: '',
-            wardLevel: '',
-            wardRoomNum: '',
-            wardBedNum: '',
-            currentMedicalRecord: ''
+            quantity: '',
+            unitType: '',
+            dosage: '',
+            duration: '',
+            currentPrescription: '',
+            associatedMedicalRecord: '',
+            isPosted: false
         }
     }
     
@@ -46,16 +46,13 @@ class EditPrescription extends Component {
         // this.getCrate(parseInt(this.props.match.params.id))
         console.log(this.props)
     
-        fetch(`/doctor/api/org.healthcare.MedicalRecord/${this.props.match.params.id}`)
+        fetch(`/doctor/api/org.healthcare.Prescription/${this.props.match.params.id}`)
             .then(response => response.json())
             .then(responseData => {
                 this.setState({
-                    currentMedicalRecord: responseData,
+                    currentPrescription: responseData,
                 });
-                console.log(this.state.currentMedicalRecord);
-    
                 this.updateState();
-    
             })
             .catch(error => {
                 console.log('Error fetching and parsing data', error);
@@ -66,55 +63,56 @@ class EditPrescription extends Component {
     
     updateState = async () => {
         await this.setState({
-            date: this.state.currentMedicalRecord.date,
-            diagnosis: this.state.currentMedicalRecord.diagnosis,
-            wardLevel: this.state.currentMedicalRecord.wardInfo.level,
-            wardRoomNum: this.state.currentMedicalRecord.wardInfo.roomNum,
-            wardBedNum: this.state.currentMedicalRecord.wardInfo.bedNum,
+            quantity: this.state.currentPrescription.quantity,
+            unitType: this.state.currentPrescription.unitType,
+            dosage: this.state.currentPrescription.dosage,
+            duration: this.state.currentPrescription.duration,
+            associatedMedicalRecord: this.state.currentPrescription.medicalRecord.split("#")[1]
         });
     
-        console.log(this.state.date);
-        console.log(this.state.diagnosis);
-        console.log(this.state.wardBedNum);
+        console.log("Qty: " + this.state.quantity);
+        console.log("Unit type: " + this.state.unitType);
+        console.log("Dosage: " + this.state.dosage);
+        console.log("associatedMedicalRecord: " + this.state.associatedMedicalRecord);
     }
+   
     handleChange = async (event) => {
     
         await this.setState({
             [event.target.name]: event.target.value
         });
-    
-        console.log("Diagnosis: " + this.state.diagnosis);
-        console.log("Date: " + this.state.date);
-        console.log("Ward bed num: " + this.state.wardBedNum);
     }
     
     
     onSubmit = (event) => {
         event.preventDefault()
     
-        console.log(this.state.date);
-        console.log(this.state.diagnosis);
-        console.log(this.state.wardBedNum);
-    
-        const medicalRecordToUpdate = {
-            medicalRecord: this.state.currentMedicalRecord.recordID,
-            date : this.state.date,
-            diagnosis: this.state.diagnosis,
-            wardInfo: {
-                level: this.state.wardLevel,
-                roomNum: this.state.wardRoomNum,
-                bedNum: this.state.wardBedNum
-            },
+        const prescriptionToUpdate = {
+            prescription: this.state.currentPrescription.presID,
+            quantity : this.state.quantity,
+            unitType: this.state.unitType,
+            dosage: this.state.dosage,
+            duration: this.state.duration,
             lastModified: new Date(),
         }
+
+        this.setState({
+            isPosted: true
+        })
     
-        fetch('/doctor/api/org.healthcare.UpdateMedicalRecord', {
+        fetch('/doctor/api/org.healthcare.UpdatePrescription', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(medicalRecordToUpdate)
+            body: JSON.stringify(prescriptionToUpdate),
+        })
+        .catch(error => {
+            console.log('Error parsing / posting data', error);
+            this.setState({
+                isPosted: false
+            })
         });
     }
     
@@ -169,7 +167,7 @@ class EditPrescription extends Component {
                     {/* Top actions bar */}
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell style={{ textAlign: 'left' }}>
-                            <Link to={doctorsRoutes.doctorPrescription.path}>
+                            <Link to={doctorsRoutes.doctorPrescription.path(this.state.associatedMedicalRecord)}>
                                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
                             </Link>
                         </GridCell>
@@ -190,52 +188,60 @@ class EditPrescription extends Component {
                                         Prescription
                                     </h2>
 
+                                    Quantity
                                     <Input
                                         type="text"
                                         fullWidth={true}
-                                        placeholder="Quantity"
+                                        placeholder="e.g. 60"
                                         required="required"
-                                        name="diagnosis"
+                                        name="quantity"
                                         autoComplete="off"
-                                        value={this.state.diagnosis}
+                                        value={this.state.quantity}
                                         onChange={this.handleChange}
+                                        style={{ marginBottom: '2em' }}
                                     />
 
+                                    Unit Type 
                                     <Input
                                         type="text"
                                         fullWidth={true}
-                                        placeholder="Unit Type"
-                                        name="date"
+                                        placeholder="TABLET or ML"
+                                        name="unitType"
                                         autoComplete="off"
-                                        value={this.state.date}
+                                        value={this.state.unitType}
                                         onChange={this.handleChange}
+                                        style={{ marginBottom: '2em' }}
                                     />
 
+                                    Dosage
                                     <Input
                                         type="text"
                                         fullWidth={true}
-                                        placeholder="Dosage"
-                                        name="wardLevel"
+                                        placeholder="e.g. 3 times a day"
+                                        name="dosage"
                                         autoComplete="off"
-                                        value={this.state.wardLevel}
+                                        value={this.state.dosage}
                                         onChange={this.handleChange}
+                                        style={{ marginBottom: '2em' }}
                                     />
 
+                                    Duration
                                     <Input
                                         type="text"
                                         fullWidth={true}
-                                        placeholder="Duration"
-                                        name="wardRoomNum"
+                                        placeholder="e.g. 2 weeks"
+                                        name="duration"
                                         autoComplete="off"
-                                        value={this.state.wardRoomNum}
+                                        value={this.state.duration}
                                         onChange={this.handleChange}
+                                        style={{ marginBottom: '2em' }}
                                     />
 
                                 </div>
 
                                 {/* Form submit */}
                                 <div style={{ marginTop: '2em', textAlign: 'center' }}>
-                                    <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
+                                    <Button type="submit" theme="secondary" disabled={this.state.isPosted}>
                                         <Icon size={1.2} style={{ color: white }}>check</Icon> Save
                                     </Button>
                                 </div>

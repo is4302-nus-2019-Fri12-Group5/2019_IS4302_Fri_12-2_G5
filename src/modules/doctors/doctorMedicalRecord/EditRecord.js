@@ -186,9 +186,9 @@ class EditRecord extends Component {
           {/* Top actions bar */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'left' }}>
-              <Link to={doctorsRoutes.doctorMedicalRecord.path}>
-                <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
-              </Link>
+              {/* <Link to={doctorsRoutes.doctorMedicalRecord.path}> */}
+                <Button onClick={() => window.history.back() }><Icon size={1.2}>arrow_back</Icon> Back</Button>
+              {/* </Link> */}
             </GridCell>
           </Grid>
 
@@ -196,7 +196,7 @@ class EditRecord extends Component {
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                {this.props.match.params.id === undefined ? 'Create' : 'EditRecord'} Medical Record
+                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Medical Record
               </H4>
               {/* Form */}
               <form onSubmit={this.onSubmit}>

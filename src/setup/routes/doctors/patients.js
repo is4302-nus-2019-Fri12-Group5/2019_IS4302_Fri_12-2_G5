@@ -13,7 +13,7 @@ export const doctorPatients = {
 }
 
 export const doctorPatientsRecord = {
-  path: '/doctors/patientsRecord',
+  path: (id = ':id') => (`/doctors/patientsRecord/${id}`),
   component: PatientRecordList,
   // auth: true,
   role: params.user.roles.admin

@@ -30,16 +30,7 @@ class RecordList extends PureComponent {
       // doctorNRIC: localStorage.getItem('user') //I need to comment this line, or I can't test mock data
     }
     
-    //localStorage.setItem('user', data);
-
-    // // getter
-    // localStorage.getItem('user');
-
-    // // remove
-    // localStorage.removeItem('user');
-
-    // // remove all
-    // localStorage.clear();
+    console.log("Record List props: " + this.props);
   }
   
   // Runs on server only for SSR

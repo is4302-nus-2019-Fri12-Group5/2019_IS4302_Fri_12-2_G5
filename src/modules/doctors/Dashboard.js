@@ -1,5 +1,5 @@
 // Imports
-import React from 'react'
+import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -19,58 +19,88 @@ import {Link} from "react-router-dom";
 import home from "../../setup/routes/home";
 
 // Component
-const Dashboard = () => (
-  <div>
-    {/* SEO */}
-    <Helmet>
-      <title>Dashboard - Doctor</title>
-    </Helmet>
+class Dashboard extends PureComponent {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      doctor: ''
+    }
+  }
 
-    {/* Top menu bar */}
-    <DoctorMenu/>
+  componentDidMount() {
 
-    {/* Page Content */}
+    fetch(`/doctor/api/org.healthcare.Doctor`)
+    .then(response => response.json())
+      .then(responseData => {
+        this.setState({
+          doctor: responseData[0]
+        })
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
+  }
 
-      <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
 
-          {/* SEO */}
-          <Helmet>
-              <title>My Profile - MediChain</title>
-          </Helmet>
+  render() {
+    
+    const {doctor} = this.state;
 
-          {/* Left Content - Image Collage */}
-          <GridCell>
-              <Grid gutter={true} alignCenter={true}>
-                  <GridCell justifyCenter={true}>
-                      <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/doctor_1.jpg`}/>
-                  </GridCell>
-              </Grid>
-          </GridCell>
+    return (
+    <div>
+      {/* SEO */}
+      <Helmet>
+        <title>Dashboard - Doctor</title>
+      </Helmet>
 
-          <GridCell style={{textAlign: 'center' }}>
-              <H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
-              {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
-              <H4 style={{ marginBottom: '3em' }}>Bruce Lee</H4>
-              {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
-              <p style={{ color: grey2, marginBottom: '2em' }}>License:   AX000123</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Department:   Orthopedics</p>
-              <p style={{ color: grey2, marginBottom: '2em' }}>Title: Director</p>
-              <p style={{ color: grey2, marginBottom: '4em' }}>Fee:   100</p>
+      {/* Top menu bar */}
+      <DoctorMenu/>
 
-              {/*<Link to={}>*/}
-              <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
-              {/*</Link>*/}
+      {/* Page Content */}
 
-              {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
-              <Link to={home.home.path}>
-                  <Button type="button" theme="secondary" >Logout</Button>
-              </Link>
-          </GridCell>
+        <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
 
-      </Grid>
+            {/* SEO */}
+            <Helmet>
+                <title>My Profile - MediChain</title>
+            </Helmet>
 
-  </div>
-)
+            {/* Left Content - Image Collage */}
+            <GridCell>
+                <Grid gutter={true} alignCenter={true}>
+                    <GridCell justifyCenter={true}>
+                        <ImageTile width={700} height={630} shadow={level1} image={`${ APP_URL }/images/doctor_1.jpg`}/>
+                    </GridCell>
+                </Grid>
+            </GridCell>
+
+            <GridCell style={{textAlign: 'center' }}>
+                <H3 font="secondary" style={{ marginBottom: '1em' }}>My Profile</H3>
+                {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
+                <H4 style={{ marginBottom: '3em' }}> {doctor.firstName} {doctor.lastName} </H4>
+                {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
+                <p style={{ color: grey2, marginBottom: '2em' }}>License:   {doctor.licenseNum}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>Department:   {doctor.department}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>Title: {doctor.title}</p>
+                <p style={{ color: grey2, marginBottom: '4em' }}>Fee:   {doctor.fee}</p>
+
+                {/*<Link to={}>*/}
+                <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
+                {/*</Link>*/}
+
+                {/*<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>*/}
+                <Link to={home.home.path}>
+                    <Button type="button" theme="secondary" >Logout</Button>
+                </Link>
+            </GridCell>
+
+        </Grid>
+
+    </div>
+    )
+  }
+}
 
 // Component Properties
 Dashboard.propTypes = {
