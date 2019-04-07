@@ -50,23 +50,22 @@ class PrescriptionList extends Component {
                                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
                             </Link>
                         </GridCell>
+
+                        <GridCell style={{ textAlign: 'right' }}>
+                            {/*<Link to={doctorsRoutes.recordCreate.path}>*/}
+                                <Button theme="secondary" style={{ marginTop: '1em' }}>
+                                    <Icon size={1.2} style={{ color: white }}>add</Icon> Add
+                                </Button>
+                            {/*</Link>*/}
+                        </GridCell>
                     </Grid>
 
-                    {/*asset Prescription identified by presID {*/}
-                    {/*o String presID*/}
-                    {/*o String drugName*/}
-                    {/*o String quantity*/}
-                    {/*o UnitType unitType*/}
-                    {/*o String dosage*/}
-                    {/*o String duration*/}
-                    {/*--> MedicalRecord medicalRecord*/}
-                    {/*o DateTime lastModified*/}
                 {/*}*/}
                     {/* Prescription list */}
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell>
                             <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                                Prescription of Medical Record A002
+                                Prescriptions of Medical Record A002
                             </H4>
 
                             <table className="striped">
