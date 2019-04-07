@@ -19,6 +19,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="node_modules blockchain-healthcare" level="project" />
   </component>
 </module>
