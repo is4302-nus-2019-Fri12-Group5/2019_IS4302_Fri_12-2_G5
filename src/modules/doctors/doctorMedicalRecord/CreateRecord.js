@@ -30,7 +30,7 @@ class CreateRecord extends Component {
     super(props)
 
     this.state = {
-      isLoading: false,
+      isPosted: false,
       medicalRecord: {
         recordID: '',
         date : new Date(),
@@ -217,6 +217,10 @@ class CreateRecord extends Component {
       }
     }
 
+    this.setState({
+      isPosted: true
+    })
+
     fetch('/doctor/api/org.healthcare.CreateMedicalRecord', {
       method: 'POST',
       headers: {
@@ -224,41 +228,31 @@ class CreateRecord extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(medicalRecordToCreate)
-    });
-
-    this.setState({
-      isLoading: true
     })
+    .catch(error => {
+      console.log('Error parsing / posting data', error);
+      this.setState({
+          isPosted: false
+      })
+    });
 
     this.props.messageShow('Saving Medical Record, please wait...')
 
-    // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.medicalRecord)
-        .then(response => {
-          this.setState({
-            isLoading: false
-          })
+    window.setTimeout(() => {
+        this.props.messageHide()
 
-          if (response.data.errors && response.data.errors.length > 0) {
-            this.props.messageShow(response.data.errors[0].message)
-          } else {
-            this.props.messageShow('Medical Record saved successfully.')
+        console.log("Is is posted? " + this.state.isPosted);
 
-            this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
-          }
-        })
-        .catch(error => {
-          this.props.messageShow('There was some error. Please try again.')
+        this.state.isPosted ? 
+            this.props.messageShow('Medical record created successfully!') : this.props.messageShow('Error occured, please try again')
+        
+        window.setTimeout(() => {
+                this.props.messageHide()
+        }, 3000)
+        
+        window.history.back();
 
-          this.setState({
-            isLoading: false
-          })
-        })
-        .then(() => {
-          window.setTimeout(() => {
-            this.props.messageHide()
-          }, 5000)
-        })
+    }, 1500)
   }
 
   onSubmitPrescription = (event) => {
@@ -411,16 +405,16 @@ class CreateRecord extends Component {
                     />
                   </div>
 
-                  <div style={{ marginTop: '2em', textAlign: 'center' }}>
+                  {/* <div style={{ marginTop: '2em', textAlign: 'center' }}>
                     {[...this.state.input_list]}
                     <Button style={{textAlign: 'center' }} onClick={this.add_new_input.bind(this)}>
                       <Icon size={1.2}>add</Icon> Add Prescription ID
                     </Button>
-                  </div>
+                  </div> */}
 
                   {/* Form submit */}
                   <div style={{ marginTop: '2em', textAlign: 'center' }}>
-                    <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
+                    <Button type="submit" theme="secondary" disabled={this.state.isPosted}>
                       <Icon size={1.2} style={{ color: white }}>check</Icon> Create
                     </Button>
                   </div>

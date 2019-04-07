@@ -144,13 +144,7 @@ class PatientList extends PureComponent {
                   </td>
                 </tr>
                 {
-                  isLoading
-                    ? <tr>
-                        <td colSpan="6">
-                          <Loading message="loading patients..."/>
-                        </td>
-                      </tr>
-                    : patients.length > 0
+                  patients.length > 0
                       ? patients.map((patient) => (
                           <tr key={patient.NRIC}>
                             <td style={{ textAlign: 'center' }}>

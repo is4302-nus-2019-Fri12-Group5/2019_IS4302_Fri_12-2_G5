@@ -114,6 +114,24 @@ class EditPrescription extends Component {
                 isPosted: false
             })
         });
+
+        this.props.messageShow('Updating Prescription, please wait...')
+
+        window.setTimeout(() => {
+            this.props.messageHide()
+
+            console.log("Is is posted? " + this.state.isPosted);
+
+            this.state.isPosted ? 
+                this.props.messageShow('Medical record updated successfully!') : this.props.messageShow('Error occured, please try again')
+            
+            window.setTimeout(() => {
+            this.props.messageHide()
+            }, 3000)
+            
+            window.history.back();
+
+        }, 1500)
     }
     
     //     this.setState({

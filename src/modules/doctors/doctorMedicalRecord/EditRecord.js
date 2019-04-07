@@ -31,7 +31,7 @@ class EditRecord extends Component {
     super(props)
 
     this.state = {
-      isLoading: false,
+      isPosted: false,
       date : '',
       diagnosis: '',
       wardLevel: '',
@@ -126,6 +126,10 @@ class EditRecord extends Component {
         lastModified: new Date(),
     }
 
+    this.setState({
+      isPosted: true
+    })
+
     fetch('/doctor/api/org.healthcare.UpdateMedicalRecord', {
         method: 'POST',
         headers: {
@@ -133,41 +137,31 @@ class EditRecord extends Component {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(medicalRecordToUpdate)
-    });
-    
-    this.setState({
-      isLoading: true
     })
-
-    this.props.messageShow('Saving Medical Record, please wait...')
-
-    // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.medicalRecord)
-      .then(response => {
-        this.setState({
-          isLoading: false
-        })
-
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Medical Record saved successfully.')
-
-          this.props.doctorHowItWorks.push(doctorsRoutes.doctorMedicalRecord.path)
-        }
+    .catch(error => {
+      console.log('Error parsing / posting data', error);
+      this.setState({
+          isPosted: false
       })
-      .catch(error => {
-        this.props.messageShow('There was some error. Please try again.')
+    });
 
-        this.setState({
-          isLoading: false
-        })
-      })
-      .then(() => {
+    this.props.messageShow('Updating Medical Record, please wait...')
+
+    window.setTimeout(() => {
+        this.props.messageHide()
+
+        console.log("Is is posted? " + this.state.isPosted);
+
+        this.state.isPosted ? 
+            this.props.messageShow('Medical record updated successfully!') : this.props.messageShow('Error occured, please try again')
+        
         window.setTimeout(() => {
           this.props.messageHide()
-        }, 5000)
-      })
+        }, 3000)
+        
+        window.history.back();
+
+    }, 1500)
   }
 
   render() {
@@ -266,7 +260,7 @@ class EditRecord extends Component {
 
                 {/* Form submit */}
                 <div style={{ marginTop: '2em', textAlign: 'center' }}>
-                  <Button type="submit" theme="secondary" disabled={this.state.isLoading}>
+                  <Button type="submit" theme="secondary" disabled={this.state.isPosted}>
                     <Icon size={1.2} style={{ color: white }}>check</Icon> Save
                   </Button>
                 </div>

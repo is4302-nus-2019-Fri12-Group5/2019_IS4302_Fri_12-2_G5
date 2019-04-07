@@ -83,7 +83,7 @@ class PrescriptionCreate extends Component {
             })
         });
     
-        this.props.messageShow('Saving Medical Record, please wait...')
+        this.props.messageShow('Saving Prescription, please wait...')
 
         window.setTimeout(() => {
             this.props.messageHide()
@@ -91,7 +91,7 @@ class PrescriptionCreate extends Component {
             console.log("Is is posted? " + this.state.isPosted);
 
             this.state.isPosted ? 
-                this.props.messageShow('Prescription successfully created!') : this.props.messageShow('Error occured, please try again')
+                this.props.messageShow('Prescription created successfully!') : this.props.messageShow('Error occured, please try again')
             
             window.setTimeout(() => {
                     this.props.messageHide()
@@ -99,7 +99,7 @@ class PrescriptionCreate extends Component {
             
             this.props.history.push(doctorsRoutes.doctorPrescription.path(this.props.match.params.id));
 
-        }, 2000)
+        }, 1500)
 
         // // Save doctorMedicalRecord
         // this.props.crateCreateOrUpdate(this.state.medicalRecord)

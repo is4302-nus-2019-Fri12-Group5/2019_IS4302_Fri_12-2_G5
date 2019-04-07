@@ -54,44 +54,6 @@ class RecordList extends PureComponent {
         });
   }
 
-  remove = (id) => {
-    if (id > 0) {
-      let check = confirm('Are you sure you want to delete this Medical Record?')
-
-      if (check) {
-        this.props.messageShow('Deleting, please wait...')
-
-        this.props.removeCrate({ id })
-          .then(response => {
-            if (response.status === 200) {
-              if (response.data.errors && response.data.errors.length > 0) {
-                this.props.messageShow(response.data.errors[0].message)
-              } else {
-                this.props.messageShow('Record deleted successfully.')
-
-                this.props.getCrateList(false)
-              }
-            } else {
-              this.props.messageShow('Please try again.')
-            }
-          })
-          .catch(error => {
-            this.props.messageShow('There was some error. Please try again.')
-
-          })
-          .then(() => {
-            this.setState({
-              isLoading: false
-            })
-
-            window.setTimeout(() => {
-              this.props.messageHide()
-            }, 5000)
-          })
-      }
-    }
-  }
-
   render() {
     const { isLoading, list } = this.props.crates
 	  const { medicalRecords } = this.state
@@ -159,13 +121,7 @@ class RecordList extends PureComponent {
 
                 {/* Get data from backend */}
                 {
-                  isLoading
-                    ? <tr>
-                        <td colSpan="6">
-                          <Loading message="loading records..."/>
-                        </td>
-                      </tr>
-                    : medicalRecords.length > 0
+                  medicalRecords.length > 0
                       ? medicalRecords.map((medicalRecord) => (
                           <tr key={medicalRecord.recordID}>
 						                <td>

@@ -169,7 +169,7 @@ class HospitalList extends PureComponent {
 
             {/* Top menu bar */}
             <PatientMenu/>
-
+        <div>
           {/* Top title bar */}
           <Grid style={{ backgroundColor: grey }}>
             <GridCell style={{ padding: '2em', textAlign: 'center' }}>
@@ -193,11 +193,7 @@ class HospitalList extends PureComponent {
                       <td style={{ textAlign: 'center' }}>AX001 </td>
                       <td style={{ textAlign: 'center' }}>National University Hospital </td>
                       <td style={{ textAlign: 'center' }}>
-
-                          {/*<Link to={}>*/}
                           <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Remove</Button>
-                          {/*</Link>*/}
-
                       </td>
                   </tr>
 
@@ -286,10 +282,8 @@ class HospitalList extends PureComponent {
                                 <td style={{ textAlign: 'center' }}>{ singleHospital.registrationID }</td>
                                 <td style={{ textAlign: 'center' }}>{ singleHospital.name }</td>
                                 <td style={{ textAlign: 'center' }}>
-                                    {/*<Link to={}>*/}
                                     <Button type="button" theme="primary" style={{marginRight : '0.5em'}} value={singleHospital.registrationID} 
                                     onClick={this.handleAddHospital}>Add</Button>
-                                    {/*</Link>*/}
                                 </td>
                             </tr>
                           ))
@@ -301,50 +295,8 @@ class HospitalList extends PureComponent {
                   }
                   </tbody>
               </table>
-          </Grid>
-
-            {/* Third title bar */}
-            <Grid style={{ backgroundColor: grey }}>
-                <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-                    <H3 font="secondary">Manage Your Hospitals </H3>
-                    <p style={{ marginTop: '1em', color: grey2 }}>Add or Remove a hospital!</p>
-                </GridCell>
-            </Grid>
-
-            {/* Add new hospital */}
-            <Grid>
-                <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-                    {/* Retrival Forms */}
-                    <form id="addHospital" onSubmit={this.handleAddHospital}>
-                        <label style={{ textAlign: 'center', color: grey3, flex: 1, padding: 10 }}>
-                            Patient:
-                            <input type="text" name="patient"/>
-                        </label>
-                        <label style={{ textAlign: 'center', color: grey3, flex: 1, padding: 10 }}>
-                            Hospital:
-                            <input type="text" name="hospital" />
-                        </label>
-                        <input type="submit"  style={{ textAlign: 'center', flex: 1, padding: 10 }} value="Add hospital" />
-                    </form>
-                </GridCell>
-            </Grid>
-
-            {/* Remove hospital */}
-            <Grid>
-                <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-                    <form id="removeHospital" onSubmit={this.handleRemoveHospital}>
-                        <label style={{ textAlign: 'center', color: grey3, flex: 1, padding: 10 }}>
-                            Patient:
-                            <input type="text" name="patientremove"/>
-                        </label>
-                        <label style={{ textAlign: 'center', color: grey3, flex: 1, padding: 10 }}>
-                            Hospital:
-                            <input type="text" name="hospitalremove" />
-                        </label>
-                        <input type="submit" style={{ textAlign: 'center', flex: 1, padding: 10 }} value="Remove hospital" />
-                    </form>
-                </GridCell>
-            </Grid>
+          </Grid>>
+          </div>
         </div>
     )
   }
