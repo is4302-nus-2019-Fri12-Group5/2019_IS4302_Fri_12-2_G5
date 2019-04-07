@@ -18,15 +18,16 @@ import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import DoctorMenu from '../common/Menu'
 import doctorsRoute from '../../../setup/routes/doctors'
+import Edit from './EditRecord'
 
 // Component
-class List extends PureComponent {
+class RecordList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       medicalRecords: [],
       doctor: "",
-      doctorNRIC: localStorage.getItem('user')
+      // doctorNRIC: localStorage.getItem('user') //I need to comment this line, or I can't test mock data
     }
     
     //localStorage.setItem('user', data);
@@ -144,6 +145,28 @@ class List extends PureComponent {
                 </thead>
 
                 <tbody>
+                {/*mock data for testing*/}
+                <tr>
+                  <td style={{ textAlign: 'center' }}>A002</td>
+                  <td style={{ textAlign: 'center' }}>Thomas Tan</td>
+                  <td style={{ textAlign: 'center' }}>305</td>
+                  <td style={{ textAlign: 'center' }}>30/04/2017</td>
+                  <td style={{ textAlign: 'center' }}>BAD things</td>
+                  <td style={{ textAlign: 'center' }}>30/04/2017</td>
+                  <td style={{ textAlign: 'center' }}>
+                    {/*see prescriptions*/}
+                    <Link to={doctorsRoute.doctorPrescription.path}>
+                      <Button theme="primary" style={{ marginRight: '1em' }}>See Prescription</Button>
+                    </Link>
+
+                    {/*edit records*/}
+                    {/*<Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>*/}
+                      <Icon size={2} style={{ color: black }}>edit</Icon>
+                    {/*</Link>*/}
+                  </td>
+                </tr>
+
+                {/* Get data from backend */}
                 {
                   isLoading
                     ? <tr>
@@ -209,7 +232,7 @@ class List extends PureComponent {
 }
 
 // Component Properties
-List.propTypes = {
+RecordList.propTypes = {
   crates: PropTypes.object.isRequired,
   getCrateList: PropTypes.func.isRequired,
   removeCrate: PropTypes.func.isRequired,
@@ -224,4 +247,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getCrateList, removeCrate, messageShow, messageHide })(List)
+export default connect(listState, { getCrateList, removeCrate, messageShow, messageHide })(RecordList)

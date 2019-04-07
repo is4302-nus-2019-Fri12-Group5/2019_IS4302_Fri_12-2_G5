@@ -15,7 +15,7 @@ import { Input, Textarea } from '../../../ui/input'
 import { white } from "../../../ui/common/colors"
 
 // App Imports
-import admin from '../../../setup/routes/doctors'
+import doctorsRoutes from '../../../setup/routes/doctors'
 import { slug } from '../../../setup/helpers'
 import {
   createOrUpdate as crateCreateOrUpdate,
@@ -25,7 +25,7 @@ import { messageShow, messageHide } from '../../common/api/actions'
 import DoctorMenu from '../common/Menu'
 
 // Component
-class Edit extends Component {
+class EditRecord extends Component {
 
   constructor(props) {
     super(props)
@@ -153,7 +153,7 @@ class Edit extends Component {
         } else {
           this.props.messageShow('Medical Record saved successfully.')
 
-          this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
+          this.props.doctorHowItWorks.push(doctorsRoutes.doctorMedicalRecord.path)
         }
       })
       .catch(error => {
@@ -186,7 +186,7 @@ class Edit extends Component {
           {/* Top actions bar */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell style={{ textAlign: 'left' }}>
-              <Link to={admin.doctorMedicalRecord.path}>
+              <Link to={doctorsRoutes.doctorMedicalRecord.path}>
                 <Button><Icon size={1.2}>arrow_back</Icon> Back</Button>
               </Link>
             </GridCell>
@@ -196,7 +196,7 @@ class Edit extends Component {
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                {this.props.match.params.id === undefined ? 'Create' : 'Edit'} Medical Record
+                {this.props.match.params.id === undefined ? 'Create' : 'EditRecord'} Medical Record
               </H4>
               {/* Form */}
               <form onSubmit={this.onSubmit}>
@@ -280,7 +280,7 @@ class Edit extends Component {
 }
 
 // Component Properties
-Edit.propTypes = {
+EditRecord.propTypes = {
   crateCreateOrUpdate: PropTypes.func.isRequired,
   getCrateById: PropTypes.func.isRequired,
   messageShow: PropTypes.func.isRequired,
@@ -292,4 +292,4 @@ export default withRouter(connect(null, {
   getCrateById,
   messageShow,
   messageHide
-})(Edit))
+})(EditRecord))

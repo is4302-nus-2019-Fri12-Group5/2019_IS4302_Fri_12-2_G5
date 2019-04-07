@@ -16,4 +16,5 @@ export const patientsDashboardEdit = {
     component: Edit,
     // auth: true,
     // role: params.user.roles.admin
+    // role: params.user.roles.doctorsRoutes
 }
