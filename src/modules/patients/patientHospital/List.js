@@ -39,12 +39,12 @@ class HospitalList extends PureComponent {
     this.props.getProductList();
     console.log("Getting p1");
     
-    fetch("/hlf/api/org.healthcare.Patient/p1")
+    fetch("/hlf/api/org.healthcare.Patient")
         .then(response => response.json())
         .then(responseData => {
 
           this.setState({
-            selectedPatient: responseData
+            selectedPatient: responseData[0]
           });
         })
         .catch(error => {

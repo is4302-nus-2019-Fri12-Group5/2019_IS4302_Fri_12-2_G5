@@ -48,7 +48,16 @@ class CreateOrEditRecord extends Component {
         prescriptions: []
       },
       input_list: [],
+      presID: '',
+      drugName: '',
+      quantity: '',
+      unitType: '',
+      dosage: '',
+      duration: ''
     }
+
+    this. add_new_input.bind(this)
+    this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -74,13 +83,6 @@ class CreateOrEditRecord extends Component {
   //         this.props.messageShow('There was some error fetching doctorMedicalRecord types. Please try again.')
   //       })
   //   }
-  // }
-
-
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
   // }
 
   onChangeRecordID = async (event) => {
@@ -260,6 +262,31 @@ class CreateOrEditRecord extends Component {
         })
   }
 
+  onSubmitPrescription = (event) => {
+    // {
+    //   "$class": "org.healthcare.CreatePrescription",
+    //   "prescription": {
+    //     "$class": "org.healthcare.Prescription",
+    //     "presID": "string",
+    //     "drugName": "string",
+    //     "quantity": "string",
+    //     "unitType": "TABLET",
+    //     "dosage": "string",
+    //     "duration": "string",
+    //     "medicalRecord": {},
+    //     "lastModified": "2019-04-07T03:03:23.944Z"
+    //   },
+    //   "transactionId": "string",
+    //   "timestamp": "2019-04-07T03:03:23.944Z"
+    // }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
   add_new_input() {
     let i = this.state.input_list.length;
     let val = this.state.input_list;
@@ -269,60 +296,64 @@ class CreateOrEditRecord extends Component {
           {/* Auto-generate presID */}
           <H4 style={{ marginTop: '2em', marginBottom: '0.5em' }}>Prescription: 1</H4>
 
-          {/* Drug Name */}
+          Drug name
           <Input
               type="text"
               fullWidth={true}
               placeholder="Drug Name"
               required="required"
-              name="recordID"
-              autoComplete="on"
-              value={this.state.medicalRecord.recordID}
-              onChange={this.onChangeRecordID}
+              name="drugName"
+              // autoComplete="on"
+              value={this.state.drugName}
+              onChange={this.onChange}
+              style={{ marginBottom: '2em' }}
           />
 
+          Quantity
           <Input
               type="text"
               fullWidth={true}
               placeholder="Quantity"
               required="required"
-              name="patientID"
-              value={this.state.medicalRecord.patient}
-              onChange={this.onChangePatientID}
-              style={{ marginTop: '1em' }}
+              name="quantity"
+              value={this.state.quantity}
+              onChange={this.onChange}
+              style={{ marginBottom: '2em' }}
           />
 
-          {/* Description */}
-          <Input
-              type="text"
-              fullWidth={true}
-              placeholder="Unit Type"
-              required="required"
-              name="diagonsis"
-              value={this.state.medicalRecord.diagnosis}
-              onChange={this.onChangeDiagnosis}
-              style={{ marginTop: '1em' }}
-          />
+          Unit Type
+            <Input
+                type="text"
+                fullWidth={true}
+                placeholder="TABLET or ML"
+                required="required"
+                name="unitType"
+                value={this.state.unitType}
+                onChange={this.onChange}
+                style={{ marginBottom: '2em' }}
+            />
 
+          Dosage
           <Input
               type="text"
               fullWidth={true}
               placeholder="Dosage"
-              // required="required"
-              name="wardLevel"
-              value={this.state.medicalRecord.wardInfo.level}
-              onChange={this.onChangeWardLevel}
-              style={{ marginTop: '1em' }}
+              required="required"
+              name="dosage"
+              value={this.state.dosage}
+              onChange={this.onChange}
+              style={{ marginBottom: '2em' }}
           />
 
+          Duration
           <Input
               type="text"
               fullWidth={true}
               placeholder="Duration"
-              name="roomNum"
-              value={this.state.medicalRecord.wardInfo.roomNum}
-              onChange={this.onChangeWardRoomNum}
-              style={{ marginTop: '1em', marginBottom: '2em' }}
+              name="duration"
+              value={this.state.duration}
+              onChange={this.onChange}
+              style={{ marginBottom: '2em' }}
           />
 
         </div>

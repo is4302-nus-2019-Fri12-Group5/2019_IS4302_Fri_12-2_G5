@@ -25,47 +25,76 @@ import home from "../../../setup/routes/home";
 import {logout} from "../../doctor/api/actions";
 
 // Component
-const Wallet = (props) => (
-      <div>
-          {/* SEO */}
-          <Helmet>
-            <title>My Wallet - MediChain</title>
-          </Helmet>
 
-          {/* Top menu bar */}
-          <DoctorMenu/>
+class Wallet extends PureComponent {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentDoctor:''
+    }
+  }
 
-          {/* Page Content */}
-          <div>
-              <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
-                  {/* Left Content - Image Collage */}
-                  <GridCell>
-                    <Grid gutter={true} alignCenter={true}>
-                      <GridCell justifyCenter={true}>
-                        <ImageTile width={650} height={500} shadow={level1} image={`${ APP_URL }/images/how_it_works_3.jpeg`}/>
-                      </GridCell>
-                    </Grid>
-                  </GridCell>
+  componentDidMount() {
+    fetch("/doctor/api/org.healthcare.Doctor")
+	    .then(response => response.json())
+        .then(responseData => {
+          this.setState({
+            currentDoctor: responseData[0]
+          });
+          
+          console.log(responseData[0]);
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
+  }
 
-                  <GridCell style={{textAlign: 'center' }}>
-                      <H3 font="secondary" style={{ marginBottom: '1em' }}>My Wallet</H3>
-                        {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
-                        <H4 style={{ marginBottom: '3em' }}>Income:   320 SGD</H4>
-                        {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
-                        <p style={{ color: grey2, marginBottom: '2em' }}>Income increased in the last week:  30%</p>
+  render() {
+    
+    return(
+        <div>
+            {/* SEO */}
+            <Helmet>
+              <title>My Wallet - MediChain</title>
+            </Helmet>
 
-                        {/*<Link to={doctorsRoutes.dashboard.path}>*/}
-                        <Button theme="primary" style={{marginRight : '0.5em'}}>Withdraw</Button>
-                        {/*</Link>*/}
+            {/* Top menu bar */}
+            <DoctorMenu/>
 
-                        {/*<Link to={home.home.path}>*/}
-                        <Button type="button" theme="secondary" >Share</Button>
-                        {/*</Link>*/}
-                  </GridCell>
-              </Grid>
-          </div>
-      </div>
-)
+            {/* Page Content */}
+            <div>
+                <Grid gutter={true} alignCenter={true} style={{ padding: '2em' }}>
+                    {/* Left Content - Image Collage */}
+                    <GridCell>
+                      <Grid gutter={true} alignCenter={true}>
+                        <GridCell justifyCenter={true}>
+                          <ImageTile width={650} height={500} shadow={level1} image={`${ APP_URL }/images/how_it_works_3.jpeg`}/>
+                        </GridCell>
+                      </Grid>
+                    </GridCell>
+
+                    <GridCell style={{textAlign: 'center' }}>
+                        <H3 font="secondary" style={{ marginBottom: '1em' }}>My Wallet</H3>
+                          {/*<H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>*/}
+                          <H4 style={{ marginBottom: '3em' }}>Income:   {this.state.currentDoctor.walletBalance} SGD</H4>
+                          {/*<p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>*/}
+                          {/* <p style={{ color: grey2, marginBottom: '2em' }}>Income increased in the last week:  30%</p> */}
+
+                          {/*<Link to={doctorsRoutes.dashboard.path}>*/}
+                          <Button theme="primary" style={{marginRight : '0.5em'}}>Withdraw</Button>
+                          {/*</Link>*/}
+
+                          {/*<Link to={home.home.path}>*/}
+                          <Button type="button" theme="secondary" >Share</Button>
+                          {/*</Link>*/}
+                    </GridCell>
+                </Grid>
+            </div>
+        </div>
+      )
+  } 
+}
 
 // Component Properties
 Wallet.propTypes = {
