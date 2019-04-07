@@ -3,7 +3,8 @@ import params from '../../../setup/config/params'
 import RecordList from '../../../modules/doctors/doctorMedicalRecord/RecordList'
 import PrescriptionList from '../../../modules/doctors/doctorMedicalRecord/PrescriptionList'
 import PrescriptionEdit from '../../../modules/doctors/doctorMedicalRecord/EditPrescription'
-import RecordCreateOrEdit from '../../../modules/doctors/doctorMedicalRecord/CreateOrEditRecord'
+import PrescriptionCreate from '../../../modules/doctors/doctorMedicalRecord/CreatePrescription'
+import RecordCreate from '../../../modules/doctors/doctorMedicalRecord/CreateRecord'
 import RecordEdit from '../../../modules/doctors/doctorMedicalRecord/EditRecord'
 
 // Admin doctorMedicalRecord routes
@@ -22,15 +23,22 @@ export const doctorPrescription = {
 }
 
 export const doctorEditPrescription = {
-  path: (id = ':id') => (`/doctors/pres/edit/${id}`),
+  path: '/doctors/editPrescription',
   component: PrescriptionEdit,
+  // auth: true,
+  role: params.user.roles.admin
+}
+
+export const doctorCreatePrescription = {
+  path: '/doctors/createPrescription',
+  component: PrescriptionCreate,
   // auth: true,
   role: params.user.roles.admin
 }
 
 export const recordCreate = {
   path: '/doctors/doctorMedicalRecord/create',
-  component: RecordCreateOrEdit,
+  component: RecordCreate,
   // auth: true,
   role: params.user.roles.admin
 }
