@@ -160,9 +160,12 @@ class List extends PureComponent {
                   <td style={{ textAlign: 'center' }}>Bad Cold with peritonsillr bscess.</td>
                   <td style={{ textAlign: 'center' }}>2018/09/12</td>
                   <td style={{ textAlign: 'center' }}>
+                    {/*<Link to={}>*/}
+                    <Button type="button" style={{marginRight : '0.5em'}}>See Prescriptions</Button>
+                    {/*</Link>*/}
 
                     {/*<Link to={}>*/}
-                    <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Pay the doctor</Button>
+                    <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Pay Doctor</Button>
                     {/*</Link>*/}
 
                   </td>

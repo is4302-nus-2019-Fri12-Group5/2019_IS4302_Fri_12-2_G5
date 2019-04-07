@@ -17,18 +17,18 @@ import { messageShow, messageHide } from '../../common/api/actions'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import DoctorMenu from '../common/Menu'
+import doctorsRoutes from '../../../setup/routes/doctors'
 import { routeImage } from '../../../setup/routes'
-import admin from '../../../setup/routes/doctors'
 
 // Component
-class List extends PureComponent {
+class PatientList extends PureComponent {
   
   constructor(props) {
     super(props);
     this.state = {
       patients: [],
       doctor: "",
-      doctorNRIC: localStorage.getItem('user')
+      // doctorNRIC: localStorage.getItem('user')  // comment this for UI TESTING
     }
     
     //localStorage.setItem('user', data);
@@ -148,6 +148,24 @@ class List extends PureComponent {
                 </thead>
 
                 <tbody>
+                {/*mock data for testing*/}
+                <tr>
+                  <td style={{ textAlign: 'center' }}>A12344WED</td>
+                  <td style={{ textAlign: 'center' }}>Kelvin</td>
+                  <td style={{ textAlign: 'center' }}>Bro</td>
+                  <td style={{ textAlign: 'center' }}>Male</td>
+                  <td style={{ textAlign: 'center' }}>23/04/2018</td>
+                  <td style={{ textAlign: 'center' }}>5</td>
+                  <td style={{ textAlign: 'center' }}>
+                    <Link to={doctorsRoutes.patientMedicalRecord.path}>
+                      <Button theme="primary" style={{ marginRight: '1em' }}>Medical Records</Button>
+                    </Link>
+
+                    {/*this message button just for future*/}
+                    <Icon size={2} style={{ color: black }}>email</Icon>
+
+                  </td>
+                </tr>
                 {
                   isLoading
                     ? <tr>
@@ -214,7 +232,7 @@ class List extends PureComponent {
 }
 
 // Component Properties
-List.propTypes = {
+PatientList.propTypes = {
   products: PropTypes.object.isRequired,
   getProductList: PropTypes.func.isRequired,
   removeProduct: PropTypes.func.isRequired,
@@ -229,4 +247,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getProductList, removeProduct, messageShow, messageHide })(List)
+export default connect(listState, { getProductList, removeProduct, messageShow, messageHide })(PatientList)
