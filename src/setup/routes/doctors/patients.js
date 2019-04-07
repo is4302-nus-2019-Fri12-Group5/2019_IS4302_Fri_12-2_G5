@@ -1,12 +1,20 @@
 // App Imports
 import params from '../../../setup/config/params'
-import ProductList from '../../../modules/doctors/doctorPatient/PatientList'
+import PatientList from '../../../modules/doctors/doctorPatient/PatientList'
+import PatientRecordList from '../../../modules/doctors/doctorPatient/PatientMedicalRecord'
 import ProductCreateOrEdit from '../../../modules/doctors/doctorPatient/CreateOrEdit'
 
 // Admin doctorPatient routes
 export const doctorPatients = {
   path: '/doctors/patients',
-  component: ProductList,
+  component: PatientList,
+  // auth: true,
+  role: params.user.roles.admin
+}
+
+export const doctorPatientsRecord = {
+  path: '/doctors/patientsRecord',
+  component: PatientRecordList,
   // auth: true,
   role: params.user.roles.admin
 }

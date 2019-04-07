@@ -118,17 +118,17 @@ class RecordList extends PureComponent {
         {/* Page Content */}
         <div>
           {/* Top actions bar */}
-          <Grid alignCenter={true} style={{ padding: '1em' }}>
-            <GridCell style={{ textAlign: 'right' }}>
-              <Link to={doctorsRoute.recordCreate.path}>
-                <Button theme="secondary" style={{ marginTop: '1em' }}>
-                  <Icon size={1.2} style={{ color: white }}>add</Icon> Add
-                </Button>
-              </Link>
-            </GridCell>
-          </Grid>
+          {/*<Grid alignCenter={true} style={{ padding: '1em' }}>*/}
+            {/*<GridCell style={{ textAlign: 'right' }}>*/}
+              {/*<Link to={doctorsRoute.recordCreate.path}>*/}
+                {/*<Button theme="secondary" style={{ marginTop: '1em' }}>*/}
+                  {/*<Icon size={1.2} style={{ color: white }}>add</Icon> Add*/}
+                {/*</Button>*/}
+              {/*</Link>*/}
+            {/*</GridCell>*/}
+          {/*</Grid>*/}
 
-          {/* Crate list */}
+          {/* Record list */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
             <GridCell>
               <table className="striped">
