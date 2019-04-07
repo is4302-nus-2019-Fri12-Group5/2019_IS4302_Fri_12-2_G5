@@ -157,8 +157,8 @@ class PatientList extends PureComponent {
                   <td style={{ textAlign: 'center' }}>23/04/2018</td>
                   <td style={{ textAlign: 'center' }}>5</td>
                   <td style={{ textAlign: 'center' }}>
-                    <Link to={doctorsRoutes.patientMedicalRecord.path}>
-                      <Button theme="primary" style={{ marginRight: '1em' }}>Medical Records</Button>
+                    <Link to={doctorsRoutes.doctorPatientsRecord.path}>
+                      <Button theme="secondary" style={{ marginRight: '1em' }}>Medical Records</Button>
                     </Link>
 
                     {/*this message button just for future*/}
