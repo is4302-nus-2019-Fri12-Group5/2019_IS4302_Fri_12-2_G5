@@ -213,6 +213,12 @@ class RecordList extends PureComponent {
                                 <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
                               </span> */}
                             </td>
+                            
+                            <td>
+                              <Link to={doctorsRoute.doctorPrescription.path(medicalRecord.recordID)}>
+                                <Button theme="primary" style={{ marginRight: '1em' }}> See Prescription </Button>
+                              </Link>
+                            </td>
                           </tr>
                         ))
                       : <tr>

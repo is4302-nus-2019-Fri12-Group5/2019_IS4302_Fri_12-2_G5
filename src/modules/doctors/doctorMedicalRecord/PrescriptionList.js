@@ -27,6 +27,18 @@ import Loading from "../../patients/patientMedicalRecord/List";
 
 // Component
 class PrescriptionList extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    componentDidMount() {
+        
+    }
+
     render() {
         let input_list = [];
         return (
@@ -66,7 +78,7 @@ class PrescriptionList extends Component {
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell>
                             <H4 font="secondary" style={{ marginBottom: '1em', textAlign: 'center' }}>
-                                Prescription of Medical Record A002
+                                Prescription of Medical Record {this.props.match.params.id}
                             </H4>
 
                             <table className="striped">

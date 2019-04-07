@@ -15,14 +15,14 @@ export const doctorMedicalRecord = {
 }
 
 export const doctorPrescription = {
-  path: '/doctors/pres',
+  path: (id = ':id') => (`/doctors/pres/${id}`),
   component: PrescriptionList,
   // auth: true,
   role: params.user.roles.admin
 }
 
 export const doctorEditPrescription = {
-  path: '/doctors/pres/edit',
+  path: (id = ':id') => (`/doctors/pres/edit/${id}`),
   component: PrescriptionEdit,
   // auth: true,
   role: params.user.roles.admin
