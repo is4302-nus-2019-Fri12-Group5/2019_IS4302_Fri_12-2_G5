@@ -5,7 +5,7 @@ import ProductCreateOrEdit from '../../../modules/doctors/doctorPatient/CreateOr
 
 // Admin doctorPatient routes
 export const doctorPatients = {
-  path: '/doctors/products',
+  path: '/doctors/patients',
   component: ProductList,
   // auth: true,
   role: params.user.roles.admin

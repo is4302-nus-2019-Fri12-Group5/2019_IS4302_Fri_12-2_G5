@@ -16,7 +16,6 @@ import { white } from "../../../ui/common/colors"
 
 // App Imports
 import admin from '../../../setup/routes/doctors'
-import { slug } from '../../../setup/helpers'
 import {
   createOrUpdate as crateCreateOrUpdate,
   getById as getCrateById

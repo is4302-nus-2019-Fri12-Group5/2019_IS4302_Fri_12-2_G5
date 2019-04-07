@@ -186,7 +186,9 @@ class EditPrescription extends Component {
                                 <div style={{ width: '25em', margin: '0 auto' }}>
                                 {/*}*/}
                                     <h3 style={{ marginTop: '1em', textAlign: 'center' }} fullWidth={true} >
-                                        {this.state.currentMedicalRecord.recordID}
+                                        {/*{this.state.currentMedicalRecord.recordID}*/}
+                                        {/*Mock Data for UI Testing*/}
+                                        Record ID 3
                                     </h3>
 
                                     <Input
