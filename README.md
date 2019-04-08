@@ -36,8 +36,9 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 <dt>Hyperledger Composer</dt>
 0. Set up the lab environment as per instructions in https://github.com/suenchunhui/easy-hyperledger-composer 
-<br>1. Download the blockchain-healthcare/blockchain_network/healthcare-blockchain(Clean).bna file 
-<br>2. Run the following commands:
+<br> 1.Download the blockchain-healthcare/blockchain_network/healthcare-blockchain(Clean).bna file
+
+<br> 2.Run the following commands:
 <br> - cd easy-hyperledger-composer
 <br> - npm run build_image
 <br> - npm run test_bna
@@ -45,25 +46,31 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 <br> - npm run start_fabric
 <br> - npm run start_playground
 <br> - go to localhost:8080/ and import our healthcare-blockchain(Clean).bna file in and deploy
-<br> - Under Credentials for System Adminstrator, select 'ID and Secret', input Enrollment ID: Admin and Enrollment Secret: Adminpw
-<br>3. Set up the following participants:
+
+<br> - Under Credentials for System Adminstrator, select 'ID and Secret'
+<br> - Input Enrollment ID: admin and Enrollment Secret: adminpw
+
+<br> 3. Set up the following participants:
 <br> - Hospital identified as H1
 <br> - Doctor identified as D1 assigned to H1 hospital
 <br> - Patient identified as P1 assigned to H1 hospital
+
 <br>4. Issue new identities to participants on the composer.
 <br> - Doctor D1 as D1
 <br> - Patient P1 as P1
+
 <br>5. To start the rest server:
     <br> - npm run start_rest-server P1@blockchain-healthcare 3001
     <br> - npm run start_rest-server D1@blockchain-healthcare 3002
 
-Great! Now you have the blockchain network up and running!
+**Great! Now you have the blockchain network up and running!
 
-<dt> **Front-End** </dt>
+<dl> Front-End 
 1. Clone this repo using `git clone https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare.git`
 2. Move to the appropriate directory: `cd blockchain-healthcare`
 3. Run `yarn` or `npm install` to install dependencies.
 4. Run `npm start` to see the example app at `http://localhost:3000`.
+</dl>
 
 **Now you're ready to build on our Blockchain Application!**
 
