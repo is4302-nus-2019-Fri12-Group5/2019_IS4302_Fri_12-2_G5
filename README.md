@@ -1,42 +1,6 @@
 # Blockchain-healthcare
 IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
-
-
-[IMAGE](https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt1.JPG)
-
-[IMAGE](https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt2.JPG)
-
-### Doctor
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-Dashboard.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-create presccription.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-Edit_Prescription.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-medical records.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-medical_records_of_selected_patient.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-PatientList.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Doctor-prescription of selected record.JPG)
-
-
-### PATIENTS
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient-Dashboard.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient-Hospital List.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient-MedicalRecord.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient- Update Personal Info.JPG)
-
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/wallet.JPG)
-
-
 <br />
 
 
@@ -78,11 +42,11 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 <img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-Dashboard.JPG" alt="is4302 banner" align="center" />
 
-<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-Hospital List.JPG" alt="is4302 banner" align="center" />
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-HospitalList.JPG" alt="is4302 banner" align="center" />
 
 <img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-MedicalRecord.JPG" alt="is4302 banner" align="center" />
 
-<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient- Update Personal Info.JPG" alt="is4302 banner" align="center" />
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-Update Personal Info.JPG" alt="is4302 banner" align="center" />
 
 <img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/wallet.JPG" alt="is4302 banner" align="center" />
 
@@ -205,9 +169,10 @@ Project for IS4302 @ NUS SoC
 
 ## Disclaimer
 
-This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. 
+This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. We also implement this based on [Crate](https://github.com/atulmy/crate) template
 
 
 ## License
 
 MIT license, Copyright (c) 2019 Jerrald, Brandon, Yuting, Weijie, Win Phong.
+
