@@ -87,8 +87,8 @@ What can MediChain do for you in today's world?
   <dt>Integrated Payment Methods</dt>
   <dd>Pay your doctor at your own convenience through multiple payment methods.</dd>
 
-  <dt>Book your appointment</dt>
-  <dd>Scroll through doctors in your hospital to arrange appointment for a suitable one.</dd>
+  <dt>Add your preferred hospital</dt>
+  <dd>Add your hospital for easier access.</dd>
 
   <dt>Manage your patients all in one platform</dt>
   <dd>Access/create/update your patients medical records all in this one stop platform for you doctors.</dd>
