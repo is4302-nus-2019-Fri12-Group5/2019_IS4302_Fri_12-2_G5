@@ -46,22 +46,21 @@ Follow the instructions below.
 <br> - npm run start_fabric
 <br> - npm run start_playground
 <br> - go to localhost:8080/ and import our healthcare-blockchain(Clean).bna file in and deploy
-
 <br> - Under Credentials for System Adminstrator, select 'ID and Secret'
 <br> - Input Enrollment ID: admin and Enrollment Secret: adminpw
 
 <br> 3. Set up the following participants:
-<br> - Hospital identified as H1
-<br> - Doctor identified as D1 assigned to H1 hospital
-<br> - Patient identified as P1 assigned to H1 hospital
+<br> - Hospital identified as h1
+<br> - Doctor identified as d1 assigned to h1 hospital
+<br> - Patient identified as p1 assigned to h1 hospital
 
 <br>4. Issue new identities to participants on the composer.
-<br> - Doctor D1 as D1
-<br> - Patient P1 as P1
+<br> - Doctor d1 as d1
+<br> - Patient p1 as p1
 
 <br>5. To start the rest server:
-    <br> - npm run start_rest-server P1@blockchain-healthcare 3001
-    <br> - npm run start_rest-server D1@blockchain-healthcare 3002
+<br> - npm run start_rest-server p1@blockchain-healthcare 3001
+<br> - npm run start_rest-server d1@blockchain-healthcare 3002
 
 **Great! Now you have the blockchain network up and running!
 
@@ -82,7 +81,6 @@ Follow the instructions below.
 <br> **Logging in as a doctor**
 <br> userid : abc
 <br> password: password
-
 
 ## Troubleshooting 
 
