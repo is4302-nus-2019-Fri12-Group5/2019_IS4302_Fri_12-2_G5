@@ -61,8 +61,8 @@ Great! Now you have the blockchain network up and running!
 
 <dt> Front-End </dt>
 1. Clone this repo using `git clone https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare.git`
-2. Move to the appropriate directory: `cd blockchain-healthcare`.<br />
-3. Run `yarn` or `npm install` to install dependencies.<br />
+2. Move to the appropriate directory: `cd blockchain-healthcare`
+3. Run `yarn` or `npm install` to install dependencies.
 4. Run `npm start` to see the example app at `http://localhost:3000`.
 
 Now you're ready to build on our Blockchain Application!
@@ -71,7 +71,7 @@ This Blockchain project is based on [react-boilerplate](https://github.com/react
 
 ## Troubleshooting 
 
-Common problems such as:
+****Common problems when launching front-end such as:*****
 1. internal/modules/cjs/loader.js:596 throw err;
     <br>Error: Cannot find module './types.json</br>
     <br>FIX: Remove node_modules folder and re-run npm install on terminal</br>
