@@ -34,6 +34,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 ## Quick start
 
+<dt> Front-End </dt>
 1. Clone this repo using `git clone https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare.git`
 2. Move to the appropriate directory: `cd blockchain-healthcare`.<br />
 3. Run `yarn` or `npm install` to install dependencies.<br />
@@ -46,12 +47,11 @@ This Blockchain project is based on [react-boilerplate](https://github.com/react
 ## Troubleshooting 
 
 Common problems such as:
-1. internal/modules/cjs/loader.js:596
-    throw err;
-    <br>Error: Cannot find module './types.json
-    FIX: Remove node_modules folder and re-run npm install on terminal</br>
+1. internal/modules/cjs/loader.js:596 throw err;
+    <br>Error: Cannot find module './types.json</br>
+    <br>FIX: Remove node_modules folder and re-run npm install on terminal</br>
 2. Cannot find module 'express-http-proxy'
-    FIX: npm install express-http-proxy
+    <br>FIX: npm install express-http-proxy</br>
 
 
 ## Features 
