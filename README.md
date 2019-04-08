@@ -36,15 +36,14 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 <dt>Hyperledger Composer</dt>
 0. Set up the lab environment as per instructions in https://github.com/suenchunhui/easy-hyperledger-composer 
-<br>1. Download the blockchain-healthcare/blockchain_network/healthcare-blockchain(Clean).bna file into the easy-hyperledger-composer folder
+<br>1. Download the blockchain-healthcare/blockchain_network/healthcare-blockchain(Clean).bna file 
 <br>2. Run the following commands:
 <br> - npm run build_image
 <br> - npm run test_bna
 <br> - npm run setup_crypto
 <br> - npm run start_fabric
-    <br> - npm run build_bna blockchain-healthcare(clean).bna
-    <br> - npm run install_bna blockchain-healthcare(clean).bna
-    <br> - npm run start_playground
+<br> - npm run start_playground
+<br> - go to localhost:8080/ and import our healthcare-blockchain(Clean).bna file in and deploy
 <br>3. Set up the following participants:
 <br> - Hospital identified as H1
 <br> - Doctor identified as D1 assigned to H1 hospital
