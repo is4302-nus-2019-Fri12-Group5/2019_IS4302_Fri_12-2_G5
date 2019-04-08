@@ -35,6 +35,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 ## Quick start
 
 <dt>Hyperledger Composer</dt>
+
 0. Set up the lab environment as per instructions in https://github.com/suenchunhui/easy-hyperledger-composer 
 <br> 1.Download the blockchain-healthcare/blockchain_network/healthcare-blockchain(Clean).bna file
 
@@ -65,12 +66,12 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 **Great! Now you have the blockchain network up and running!
 
-<dl> Front-End 
+<br> **Front-End 
+
 1. Clone this repo using `git clone https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare.git`
 2. Move to the appropriate directory: `cd blockchain-healthcare`
 3. Run `yarn` or `npm install` to install dependencies.
 4. Run `npm start` to see the example app at `http://localhost:3000`.
-</dl>
 
 **Now you're ready to build on our Blockchain Application!**
 
@@ -84,7 +85,6 @@ This Blockchain project is based on [react-boilerplate](https://github.com/react
     <br>FIX: Remove node_modules folder and re-run npm install on terminal</br>
 2. Cannot find module 'express-http-proxy'
     <br>FIX: npm install express-http-proxy</br>
-
 
 ## Features 
 
@@ -108,7 +108,7 @@ What can MediChain do for you in today's world?
 
 But wait... there's more!
 
-  - Ever-changing, ever-improving platform by a dedicated team of professionals, aiming to change the healthcare industry
+  - Ever-changing, ever-improving platform by a dedicated team of professionals, aspiring to change the healthcare industry
 
 
 ## Info
