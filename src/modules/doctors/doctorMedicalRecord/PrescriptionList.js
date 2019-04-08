@@ -138,21 +138,6 @@ class PrescriptionList extends Component {
                                 </thead>
 
                                 <tbody>
-                                {/* Mock data */}
-                                {/* <tr>
-                                    <td style={{ textAlign: 'center' }}>GX04001 </td>
-                                    <td style={{ textAlign: 'center' }}>Vitamin c </td>
-                                    <td style={{ textAlign: 'center' }}>2</td>
-                                    <td style={{ textAlign: 'center' }}>tablet</td>
-                                    <td style={{ textAlign: 'center' }}>/</td>
-                                    <td style={{ textAlign: 'center' }}>1 month</td>
-                                    <td style={{ textAlign: 'center' }}>23/03/2017</td>
-                                    <td style={{ textAlign: 'center' }}>
-                                        <Link to={doctorsRoutes.doctorEditPrescription.path}>
-                                            <Icon size={2} style={{ color: black }}>edit</Icon>
-                                        </Link>
-                                    </td>
-                                </tr> */}
 
                                 {/* Get data from backend */}
                                 {

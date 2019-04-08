@@ -40,8 +40,6 @@ class PrescriptionCreate extends Component {
             duration: '',
         }
 
-        // this. add_new_input.bind(this)
-        // this.handleChange.bind(this)
     }
 
     componentDidMount() {
@@ -101,33 +99,6 @@ class PrescriptionCreate extends Component {
 
         }, 1500)
 
-        // // Save doctorMedicalRecord
-        // this.props.crateCreateOrUpdate(this.state.medicalRecord)
-        //     .then(response => {
-        //         this.setState({
-        //             isLoading: false
-        //         })
-    
-        //         if (response.data.errors && response.data.errors.length > 0) {
-        //             this.props.messageShow(response.data.errors[0].message)
-        //         } else {
-        //             this.props.messageShow('Medical Record saved successfully.')
-    
-        //             this.props.doctorHowItWorks.push(doctorsRoutes.doctorMedicalRecord.path)
-        //         }
-        //     })
-        //     .catch(error => {
-        //         this.props.messageShow('There was some error. Please try again.')
-    
-        //         this.setState({
-        //             isLoading: false
-        //         })
-        //     })
-        //     .then(() => {
-        //         window.setTimeout(() => {
-        //             this.props.messageHide()
-        //         }, 5000)
-        //     })
     }
     
     handleChange = (event) => {

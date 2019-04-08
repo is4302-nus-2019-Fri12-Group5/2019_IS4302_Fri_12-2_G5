@@ -27,7 +27,6 @@ class RecordList extends PureComponent {
     this.state = {
       medicalRecords: [],
       doctor: "",
-      // doctorNRIC: localStorage.getItem('user') //I need to comment this line, or I can't test mock data
     }
     
     console.log("Record List props: " + this.props);
@@ -70,16 +69,6 @@ class RecordList extends PureComponent {
 
         {/* Page Content */}
         <div>
-          {/* Top actions bar */}
-          {/*<Grid alignCenter={true} style={{ padding: '1em' }}>*/}
-            {/*<GridCell style={{ textAlign: 'right' }}>*/}
-              {/*<Link to={doctorsRoute.recordCreate.path}>*/}
-                {/*<Button theme="secondary" style={{ marginTop: '1em' }}>*/}
-                  {/*<Icon size={1.2} style={{ color: white }}>add</Icon> Add*/}
-                {/*</Button>*/}
-              {/*</Link>*/}
-            {/*</GridCell>*/}
-          {/*</Grid>*/}
 
           {/* Record list */}
           <Grid alignCenter={true} style={{ padding: '1em' }}>
@@ -98,24 +87,6 @@ class RecordList extends PureComponent {
                 </thead>
 
                 <tbody>
-{/*                 
-                <tr>
-                  <td style={{ textAlign: 'center' }}>A002</td>
-                  <td style={{ textAlign: 'center' }}>Thomas Tan</td>
-                  <td style={{ textAlign: 'center' }}>305</td>
-                  <td style={{ textAlign: 'center' }}>30/04/2017</td>
-                  <td style={{ textAlign: 'center' }}>BAD things</td>
-                  <td style={{ textAlign: 'center' }}>30/04/2017</td>
-                  <td style={{ textAlign: 'center' }}>
-
-                    <Link to={doctorsRoute.doctorPrescription.path}>
-                      <Button theme="primary" style={{ marginRight: '1em' }}>See Prescription</Button>
-                    </Link>
-                      <Icon size={2} style={{ color: black }}>edit</Icon>
-                  </td>
-                  <td style={{ textAlign: 'center' }}></td>
-                </tr> */}
-
                 {/* Get data from backend */}
                 {
                   medicalRecords.length > 0
@@ -152,10 +123,7 @@ class RecordList extends PureComponent {
                               <Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>
                                 <Icon size={2} style={{ color: black }} value={medicalRecord.recordID}>edit</Icon>
                               </Link>
-                              
-                              {/* <span style={{ cursor: 'pointer' }} onClick={this.remove.bind(this, id)}>
-                                <Icon size={2} style={{ marginLeft: '0.5em' }}>delete</Icon>
-                              </span> */}
+
                             </td>
                             
                             <td>

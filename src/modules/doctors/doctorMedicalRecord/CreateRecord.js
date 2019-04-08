@@ -60,29 +60,8 @@ class CreateRecord extends Component {
   }
 
   componentDidMount() {
-    // Get doctorMedicalcrate details (edit case)
-    // this.getCrate(parseInt(this.props.match.params.id))
-
-
   }
 
-  // getCrate = (crateId) => {
-  //   if (crateId > 0) {
-  //     this.props.getCrateById(crateId)
-  //       .then(response => {
-  //         if (response.data.errors && response.data.errors.length > 0) {
-  //           this.props.messageShow(response.data.errors[0].message)
-  //         } else {
-  //           this.setState({
-  //             crate: response.data.data.crateById
-  //           })
-  //         }
-  //       })
-  //       .catch(error => {
-  //         this.props.messageShow('There was some error fetching doctorMedicalRecord types. Please try again.')
-  //       })
-  //   }
-  // }
 
   onChangeRecordID = async (event) => {
 

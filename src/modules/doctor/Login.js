@@ -69,31 +69,6 @@ class Login extends Component {
     console.log(this.state.user.password);
   }
 
-  /*onSubmit = (event) => {
-    event.preventDefault();
-
-    this.props.messageShow('Logging in, please wait...')
-
-    this.props.login(this.state.user)
-      .then(response => {
-        if (this.props.user.error && this.props.user.error.length > 0) {
-          this.props.messageShow(this.props.user.error)
-
-          window.setTimeout(() => {
-            this.props.messageHide()
-          }, 5000)
-        } else {
-          this.props.messageHide()
-        }
-      })
-      .catch(error => {
-        this.props.messageShow(this.props.user.error)
-
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
-  }*/
   onSubmit = (event) => {
     event.preventDefault();
     if (this.state.user.nric == "abc" && this.state.user.password == "password") {
@@ -162,18 +137,6 @@ class Login extends Component {
                 style={{ marginTop: '1em', color: "#333"}}
               />
             </div>
-
-            {/*<div style={{ marginTop: '2em' }}>*/}
-              {/*/!* Signup link *!/*/}
-              {/*<Link to={doctorRoutes.doctorSignup.path}>*/}
-                {/*<Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>*/}
-              {/*</Link>*/}
-
-              {/*/!* Form submit *!/*/}
-              {/*<Button type="submit" theme="secondary" disabled={isLoading}>*/}
-                {/*Login*/}
-                {/*<Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>*/}
-            {/*</div>*/}
 
               <div style={{ marginTop: '2em' }}>
                   {/* Signup link */}
