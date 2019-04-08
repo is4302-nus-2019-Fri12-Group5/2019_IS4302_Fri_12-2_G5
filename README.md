@@ -54,8 +54,8 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 <br> - Doctor D1 as D1
 <br> - Patient P1 as P1
 <br>5. To start the rest server:
-    <br> - npm run start_rest-server P1@blockchain-healthcare(Clean) 3001
-    <br> - npm run start_rest-server D1@blockchain-healthcare(Clean) 3002
+    <br> - npm run start_rest-server P1@blockchain-healthcare 3001
+    <br> - npm run start_rest-server D1@blockchain-healthcare 3002
 
 Great! Now you have the blockchain network up and running!
 
