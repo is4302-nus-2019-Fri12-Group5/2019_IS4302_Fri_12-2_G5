@@ -36,6 +36,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 Follow the instructions below.
 ## Hyperledger Composer
 <br> 0. Set up the lab environment as per instructions in https://github.com/suenchunhui/easy-hyperledger-composer 
+
 <br> 1. Download the fileblockchain_network/healthcare-blockchain(Clean).bna file from the github directory
 
 <br> 2.Run the following commands:
@@ -60,6 +61,7 @@ Follow the instructions below.
 <br> - Doctor d1 as d1
 
 <br> 5. Use ID of participant h1
+
 <br> 6. Perform AddDocToHospital transaction to add d1 into h1's list of doctors
 
 <br> 7. To start the rest server:
@@ -86,6 +88,17 @@ Follow the instructions below.
 <br> userid : abc
 <br> password: password
 
+## Shutting down of blockchain network
+
+<br> 1. Stop the rest server:
+<br> - npm run stop_rest-server p1@blockchain-healthcare 3001
+<br> - npm run stop_rest-server d1@blockchain-healthcare 3002
+
+<br> 2. To tear down the network, run the following commands:
+<br> - npm run stop_playground
+<br> - npm run stop_fabric
+<br> - npm run clean_network
+
 ## Troubleshooting 
 
 **Common problems when launching front-end such as:**
@@ -94,6 +107,11 @@ Follow the instructions below.
     <br>FIX: Remove node_modules folder and re-run npm install on terminal</br>
 2. Cannot find module 'express-http-proxy'
     <br>FIX: npm install express-http-proxy</br>
+3. Unable to build the network
+    <br> FIX: 
+    <br> 1. npm run stop_playground (if started)
+    <br> 2. npm run stop_fabric (if started)
+    <br> 3. npm run clean_network
 
 ## Features 
 
