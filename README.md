@@ -45,6 +45,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 <br> - npm run start_fabric
 <br> - npm run start_playground
 <br> - go to localhost:8080/ and import our healthcare-blockchain(Clean).bna file in and deploy
+<br> - Under Credentials for System Adminstrator, select 'ID and Secret', input Enrollment ID: Admin and Enrollment Secret: Adminpw
 <br>3. Set up the following participants:
 <br> - Hospital identified as H1
 <br> - Doctor identified as D1 assigned to H1 hospital
