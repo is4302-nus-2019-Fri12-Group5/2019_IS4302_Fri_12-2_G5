@@ -34,7 +34,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 ## Quick start
 
-<dt>Hyperledger Composer</dt>
+## Hyperledger Composer
 
 <br> 0. Set up the lab environment as per instructions in https://github.com/suenchunhui/easy-hyperledger-composer 
 <br> 1. Download the fileblockchain_network/healthcare-blockchain(Clean).bna file from the github directory
@@ -66,7 +66,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 **Great! Now you have the blockchain network up and running!
 
-<br> **Front-End 
+## Front-End 
 
 1. Clone this repo using `git clone https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare.git`
 2. Move to the appropriate directory: `cd blockchain-healthcare`
@@ -75,7 +75,16 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 **Now you're ready to build on our Blockchain Application!**
 
-This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. 
+## Logging in
+
+<br> Logging in as a patient
+<br> userid : bcd
+<br> password: password
+
+<br> Logging in as a doctor
+<br> userid : abc
+<br> password: password
+
 
 ## Troubleshooting 
 
@@ -114,6 +123,10 @@ But wait... there's more!
 ## Info
 
 Project for IS4302 @ NUS SoC
+
+## Disclaimer
+
+This Blockchain project is based on [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), which is the ultimate starter template for kickstarting a React project. 
 
 
 ## License
