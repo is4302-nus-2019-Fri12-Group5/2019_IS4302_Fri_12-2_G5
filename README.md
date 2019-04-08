@@ -55,9 +55,9 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 <br>5. To start the rest server:
     <br> - npm run start_rest-server P1@blockchain-healthcare(Clean) 3001
     <br> - npm run start_rest-server D1@blockchain-healthcare(Clean) 3002
-<br />  
+<br>
 Great! Now you have the blockchain network up and running!
-
+<br>
 <dt> Front-End </dt>
 1. Clone this repo using `git clone https://github.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare.git`
 2. Move to the appropriate directory: `cd blockchain-healthcare`.<br />
