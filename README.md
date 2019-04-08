@@ -3,9 +3,9 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 ### HOW IT WORKS
 
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/How_it_works-pt1.JPG)
+[IMAGE](https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt1.JPG)
 
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/How_it_works-pt2.JPG)
+[IMAGE](https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt2.JPG)
 
 ### Doctor
 
@@ -26,13 +26,13 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 ### PATIENTS
 
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient - Dashboard.JPG)
+[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient-Dashboard.JPG)
 
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient - Hospital List.JPG)
+[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient-Hospital List.JPG)
 
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient - Medical Record.JPG)
+[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient-MedicalRecord.JPG)
 
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient - Update Personal Info.JPG)
+[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/Patient- Update Personal Info.JPG)
 
 [IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/wallet.JPG)
 
@@ -42,7 +42,15 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 <div align="center">Project Images</div>
 
+<div align="center">How it works</div>
+
 <br />
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt1.JPG" alt="is4302 banner" align="center" />
+
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt2.JPG" alt="is4302 banner" align="center" />
+
 
 <img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/banner.png" alt="is4302 banner" align="center" />
 
