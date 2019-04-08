@@ -45,11 +45,17 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
     <br> - npm run build_bna blockchain-healthcare(clean).bna
     <br> - npm run install_bna blockchain-healthcare(clean).bna
     <br> - npm run start_playground
-<br>3. Set up hospital, doctor and patient participants.
+<br>3. Set up the following participants:
+<br> - Hospital identified as H1
+<br> - Doctor identified as D1 assigned to H1 hospital
+<br> - Patient identified as P1 assigned to H1 hospital
 <br>4. Issue new identities to participants on the composer.
+<br> - Doctor D1 as D1
+<br> - Patient P1 as P1
 <br>5. To start the rest server:
-    <br> - npm run start_rest-server {participant ID}@blockchain-healthcare(Clean) 3001
-    
+    <br> - npm run start_rest-server P1@blockchain-healthcare(Clean) 3001
+    <br> - npm run start_rest-server D1@blockchain-healthcare(Clean) 3002
+<br />  
 Great! Now you have the blockchain network up and running!
 
 <dt> Front-End </dt>
