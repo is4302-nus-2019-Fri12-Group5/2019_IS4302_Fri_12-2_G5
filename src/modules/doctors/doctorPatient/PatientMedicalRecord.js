@@ -86,7 +86,7 @@ class PatientRecordList extends PureComponent {
                     <Grid alignCenter={true} style={{ padding: '1em' }}>
                         <GridCell>
                             <H5 type="primary" style={{ marginBottom: '1em', textAlign: 'center'}}>
-                                Medical Records of Patient: Kelvin Tan
+                                Medical Records of Patient: {this.props.match.params.id}
                             </H5>
 
                             <table className="striped">
@@ -97,40 +97,31 @@ class PatientRecordList extends PureComponent {
                                     <th style={{ textAlign: 'center' }}>Date</th>
                                     <th style={{ textAlign: 'center' }}>Diagnosis</th>
                                     <th style={{ textAlign: 'center' }}>LastModified</th>
-                                    <th style={{ textAlign: 'center' }}>Actions</th>
+                                    <th style={{ textAlign: 'center' }} colSpan="2">Actions</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                {/*mock data for testing*/}
-                                <tr>
+                                {/* <tr>
                                     <td style={{ textAlign: 'center' }}>A002</td>
                                     <td style={{ textAlign: 'center' }}>305</td>
                                     <td style={{ textAlign: 'center' }}>30/04/2017</td>
-                                    <td style={{ textAlign: 'center' }}>BAD things</td>
+                                    <td style={{ textAlign: 'center' }}>Mock data for UI testing</td>
                                     <td style={{ textAlign: 'center' }}>30/04/2017</td>
                                     <td style={{ textAlign: 'center' }}>
-                                        {/*see prescriptions*/}
                                         <Link to={doctorsRoute.doctorPrescription.path}>
                                             <Button theme="primary" style={{ marginRight: '1em' }}>See Prescription</Button>
                                         </Link>
 
-                                        {/*edit records*/}
-                                        {/*<Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>*/}
                                         <Icon size={2} style={{ color: black }}>edit</Icon>
-                                        {/*</Link>*/}
                                     </td>
-                                </tr>
+                                </tr> */}
 
                                 {   medicalRecords.length > 0
                                     ? medicalRecords.map((medicalRecord) => (
                                         <tr key={medicalRecord.recordID}>
                                                         <td>
                                             { medicalRecord.recordID }
-                                            </td>
-                                            
-                                            <td>
-                                            { medicalRecord.patient }
                                             </td>
 
                                             <td>

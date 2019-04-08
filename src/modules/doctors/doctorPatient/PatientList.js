@@ -53,44 +53,6 @@ class PatientList extends PureComponent {
         });
   }
 
-  remove = (id) => {
-    if (id > 0) {
-      let check = confirm('Are you sure you want to delete this patient?')
-
-      if (check) {
-        this.props.messageShow('Deleting, please wait...')
-
-        this.props.removeProduct({ id })
-          .then(response => {
-            if (response.status === 200) {
-              if (response.data.errors && response.data.errors.length > 0) {
-                this.props.messageShow(response.data.errors[0].message)
-              } else {
-                this.props.messageShow('Patient deleted successfully.')
-
-                this.props.getProductList(false)
-              }
-            } else {
-              this.props.messageShow('Please try again.')
-            }
-          })
-          .catch(error => {
-            this.props.messageShow('There was some error. Please try again.')
-
-          })
-          .then(() => {
-            this.setState({
-              isLoading: false
-            })
-
-            window.setTimeout(() => {
-              this.props.messageHide()
-            }, 5000)
-          })
-      }
-    }
-  }
-
   render() {
     const { isLoading, list } = this.props.products
     const { patients } = this.state
@@ -126,7 +88,7 @@ class PatientList extends PureComponent {
 
                 <tbody>
                 {/*mock data for testing*/}
-                <tr>
+                {/* <tr>
                   <td style={{ textAlign: 'center' }}>A12344WED</td>
                   <td style={{ textAlign: 'center' }}>Kelvin</td>
                   <td style={{ textAlign: 'center' }}>Bro</td>
@@ -137,12 +99,8 @@ class PatientList extends PureComponent {
                     <Link to={doctorsRoutes.doctorPatientsRecord.path}>
                       <Button theme="secondary" style={{ marginRight: '1em' }}>Medical Records</Button>
                     </Link>
-
-                    {/*this message button just for future*/}
-                    {/* <Icon size={2} style={{ color: black }}>email</Icon> */}
-
                   </td>
-                </tr>
+                </tr> */}
                 {
                   patients.length > 0
                       ? patients.map((patient) => (

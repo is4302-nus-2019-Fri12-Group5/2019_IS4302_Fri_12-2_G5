@@ -139,7 +139,7 @@ class PrescriptionList extends Component {
 
                                 <tbody>
                                 {/* Mock data */}
-                                <tr>
+                                {/* <tr>
                                     <td style={{ textAlign: 'center' }}>GX04001 </td>
                                     <td style={{ textAlign: 'center' }}>Vitamin c </td>
                                     <td style={{ textAlign: 'center' }}>2</td>
@@ -148,12 +148,11 @@ class PrescriptionList extends Component {
                                     <td style={{ textAlign: 'center' }}>1 month</td>
                                     <td style={{ textAlign: 'center' }}>23/03/2017</td>
                                     <td style={{ textAlign: 'center' }}>
-                                        {/*<Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>*/}
                                         <Link to={doctorsRoutes.doctorEditPrescription.path}>
                                             <Icon size={2} style={{ color: black }}>edit</Icon>
                                         </Link>
                                     </td>
-                                </tr>
+                                </tr> */}
 
                                 {/* Get data from backend */}
                                 {

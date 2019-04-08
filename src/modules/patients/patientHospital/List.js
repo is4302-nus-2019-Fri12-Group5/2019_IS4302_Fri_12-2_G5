@@ -155,19 +155,19 @@ class HospitalList extends PureComponent {
 
                   <tbody>
                   {/* Mock data */}
-                  <tr>
+                  {/* <tr>
                       <td style={{ textAlign: 'center' }}>AX001 </td>
                       <td style={{ textAlign: 'center' }}>National University Hospital </td>
                       <td style={{ textAlign: 'center' }}>
                           <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Remove</Button>
                       </td>
-                  </tr>
+                  </tr> */}
 
                   {/* Get data from backend */}
                   {
                       isLoading
                           ? <tr>
-                              <td colSpan="6">
+                              <td colSpan="3">
                                   <Loading message="loading hospitals..."/>
                               </td>
                           </tr>
@@ -178,7 +178,7 @@ class HospitalList extends PureComponent {
                                   <td style={{ textAlign: 'center' }}>{ singleHospital.name }</td>
                                   <td style={{ textAlign: 'center' }}>
                                       {/*<Link to={}>*/}
-                                      <Button type="button" theme="primary" style={{marginRight : '0.5em'}} value={singleHospital.registrationID}
+                                      <Button type="button" theme="secondary" style={{marginRight : '0.5em'}} value={singleHospital.registrationID}
                                       onClick={this.handleRemoveHospital}>Remove</Button>
 
                                       {/*</Link>*/}
@@ -215,30 +215,26 @@ class HospitalList extends PureComponent {
 
                   <tbody>
                   {/* Mock data */}
-                  <tr>
+                  {/* <tr>
                       <td style={{ textAlign: 'center' }}>AX002 </td>
                       <td style={{ textAlign: 'center' }}>Singapore General Hospital</td>
                       <td style={{ textAlign: 'center' }}>
-                          {/*<Link to={}>*/}
                           <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Add</Button>
-                          {/*</Link>*/}
                       </td>
                   </tr>
                   <tr>
                       <td style={{ textAlign: 'center' }}>AX003</td>
                       <td style={{ textAlign: 'center' }}>Changi General Hospital</td>
                       <td style={{ textAlign: 'center' }}>
-                          {/*<Link to={}>*/}
                           <Button type="button" theme="secondary" style={{marginRight : '0.5em'}}>Add</Button>
-                          {/*</Link>*/}
                       </td>
-                  </tr>
+                  </tr> */}
 
                   {/* Get data from backend */}
                   {
                       isLoading
                           ? <tr>
-                              <td colSpan="6">
+                              <td colSpan="3">
                                   <Loading message="loading hospitals..."/>
                               </td>
                           </tr>

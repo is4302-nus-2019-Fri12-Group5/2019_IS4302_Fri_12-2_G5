@@ -38,7 +38,8 @@ class Edit extends Component {
       country: '',
       postalCode: '',
       phoneNum:'',
-      nationality:''
+      nationality:'',
+      isPosted: false
     }
   }
 
@@ -63,24 +64,6 @@ class Edit extends Component {
         });
   }
 
-  // getCrate = (crateId) => {
-  //   if (crateId > 0) {
-  //     this.props.getCrateById(crateId)
-  //       .then(response => {
-  //         if (response.data.errors && response.data.errors.length > 0) {
-  //           this.props.messageShow(response.data.errors[0].message)
-  //         } else {
-  //           this.setState({
-  //             crate: response.data.data.crateById
-  //           })
-  //         }
-  //       })
-  //       .catch(error => {
-  //         this.props.messageShow('There was some error fetching doctorMedicalRecord types. Please try again.')
-  //       })
-  //   }
-  // }
-
   updateState = async () => {
     
     await this.setState({
@@ -99,10 +82,6 @@ class Edit extends Component {
     await this.setState({
       [event.target.name]: event.target.value
     });
-
-    // console.log("Diagnosis: " + this.state.diagnosis);
-    // console.log("Date: " + this.state.date);
-    // console.log("Ward bed num: " + this.state.wardBedNum);
   }
 
 
@@ -127,6 +106,10 @@ class Edit extends Component {
       gender: this.state.currentPatient.gender
     }
 
+    this.setState({
+      isPosted: true
+    })
+
     fetch('/hlf/api/org.healthcare.UpdatePatientPersonalInfo', {
         method: 'POST',
         headers: {
@@ -134,43 +117,31 @@ class Edit extends Component {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(patientToUpdate)
-    });
-    
-    this.setState({
-      isLoading: true
     })
-
-    console.log(this.props)
-
-    this.props.messageShow('Saving Medical Record, please wait...')
-
-    // Save doctorMedicalRecord
-    this.props.crateCreateOrUpdate(this.state.currentPatient)
-      .then(response => {
-        this.setState({
-          isLoading: false
-        })
-
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Medical Record saved successfully.')
-
-          this.props.doctorHowItWorks.push(admin.doctorMedicalRecord.path)
-        }
+    .catch(error => {
+      console.log('Error parsing / posting data', error);
+      this.setState({
+        isPosted: false
       })
-      .catch(error => {
-        this.props.messageShow('There was some error. Please try again.')
+    });
 
-        this.setState({
-          isLoading: false
-        })
-      })
-      .then(() => {
+    this.props.messageShow('Saving patient\'s personal information, please wait...')
+
+    window.setTimeout(() => {
+        this.props.messageHide()
+
+        console.log("Is is posted? " + this.state.isPosted);
+
+        this.state.isPosted ? 
+            this.props.messageShow('Patient\'s medical information updated successfully!') : this.props.messageShow('Error occured, please try again')
+        
         window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+            this.props.messageHide()
+        }, 3000)
+        
+        window.history.back();
+
+    }, 1500)
   }
 
   render() {

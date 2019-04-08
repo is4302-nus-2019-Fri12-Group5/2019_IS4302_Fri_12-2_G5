@@ -349,6 +349,7 @@ class CreateRecord extends Component {
                         name="recordID"
                         autoComplete="off"
                         value={this.state.medicalRecord.recordID}
+                        onChange={this.onChangeRecordID}
                         style={{ marginBottom: '2em' }}
                     />
 

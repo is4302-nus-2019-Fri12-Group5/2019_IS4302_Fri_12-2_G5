@@ -93,12 +93,12 @@ class RecordList extends PureComponent {
                   <th style={{ textAlign: 'center' }}>Date</th>
                   <th style={{ textAlign: 'center' }}>Diagnosis</th>
                   <th style={{ textAlign: 'center' }}>LastModified</th>
-                  <th style={{ textAlign: 'center' }}>Actions</th>
+                  <th style={{ textAlign: 'center' }} colSpan="2">Actions</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                {/*mock data for testing*/}
+{/*                 
                 <tr>
                   <td style={{ textAlign: 'center' }}>A002</td>
                   <td style={{ textAlign: 'center' }}>Thomas Tan</td>
@@ -107,46 +107,43 @@ class RecordList extends PureComponent {
                   <td style={{ textAlign: 'center' }}>BAD things</td>
                   <td style={{ textAlign: 'center' }}>30/04/2017</td>
                   <td style={{ textAlign: 'center' }}>
-                    {/*see prescriptions*/}
+
                     <Link to={doctorsRoute.doctorPrescription.path}>
                       <Button theme="primary" style={{ marginRight: '1em' }}>See Prescription</Button>
                     </Link>
-
-                    {/*edit records*/}
-                    {/*<Link to={doctorsRoute.recordEdit.path(medicalRecord.recordID)}>*/}
                       <Icon size={2} style={{ color: black }}>edit</Icon>
-                    {/*</Link>*/}
                   </td>
-                </tr>
+                  <td style={{ textAlign: 'center' }}></td>
+                </tr> */}
 
                 {/* Get data from backend */}
                 {
                   medicalRecords.length > 0
                       ? medicalRecords.map((medicalRecord) => (
                           <tr key={medicalRecord.recordID}>
-						                <td>
+						                <td style={{ textAlign: 'center' }}>
                               { medicalRecord.recordID }
                             </td>
 							
-                            <td>
+                            <td style={{ textAlign: 'center' }}>
                               { medicalRecord.patient }
                             </td>
 
-                            <td>
+                            <td style={{ textAlign: 'center' }}>
                               { medicalRecord.wardInfo.level }-
                               { medicalRecord.wardInfo.roomNum }-
                               { medicalRecord.wardInfo.bedNum }
                             </td>
 
-                            <td>
+                            <td style={{ textAlign: 'center' }}>
                               { medicalRecord.date }
                             </td>
 
-							              <td>
+							              <td style={{ textAlign: 'center' }}>
                               { medicalRecord.diagnosis }
                             </td>
 
-                            <td>
+                            <td style={{ textAlign: 'center' }}>
                               { medicalRecord.lastModified }
                             </td>
 
@@ -169,7 +166,7 @@ class RecordList extends PureComponent {
                           </tr>
                         ))
                       : <tr>
-                          <td colSpan="6">
+                          <td colSpan="7">
                             <EmptyMessage message="No medical records to show."/>
                           </td>
                         </tr>
