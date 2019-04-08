@@ -54,7 +54,7 @@ const HowItWorks = (props) => (
       <GridCell justifyCenter={true} style={{ textAlign: 'center', padding: '8em 0em' }}>
         <Icon size={4} style={{ color: grey3, textShadow: textLevel1 }}>looks_two</Icon>
 
-        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Choose Your Doctor</H4>
+        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Consult the available doctors</H4>
 
         <p style={{ marginTop: '0.5em', color: grey3 }}>All trusted doctors will be added to your list!</p>
       </GridCell>
@@ -65,7 +65,7 @@ const HowItWorks = (props) => (
       <GridCell justifyCenter={true} style={{ textAlign: 'center', padding: '8em 0em' }}>
         <Icon size={4} style={{ color: grey3, textShadow: textLevel1 }}>looks_3</Icon>
 
-        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Pay when booking appointment!</H4>
+        <H4 style={{ marginTop: '0.5em', textTransform: 'uppercase' }}>Pay according to medical record after consultation!</H4>
 
         <p style={{ marginTop: '0.5em', color: grey3 }}>Pay immediately through MediChain!</p>
       </GridCell>

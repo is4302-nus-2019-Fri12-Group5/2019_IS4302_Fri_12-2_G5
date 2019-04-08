@@ -40,8 +40,8 @@ Follow the instructions below.
 
 <br> 2.Run the following commands:
 <br> - cd easy-hyperledger-composer
-<br> - npm run build_image
-<br> - npm run test_bna
+<br> - npm run build_image (only for first time setup, skip if not required)
+<br> - npm run test_bna (only for first time setup, skip if not required)
 <br> - npm run setup_crypto
 <br> - npm run start_fabric
 <br> - npm run start_playground
@@ -50,15 +50,19 @@ Follow the instructions below.
 <br> - Input Enrollment ID: admin and Enrollment Secret: adminpw
 
 <br> 3. Set up the following participants:
-<br> - Hospital identified as h1
-<br> - Doctor identified as d1 assigned to h1 hospital
-<br> - Patient identified as p1 assigned to h1 hospital
+<br> - Hospital identified as h1 (registrationID)
+<br> - Doctor identified as d1 (NRIC)
+<br> - Patient identified as p1 (NRIC)
 
-<br>4. Issue new identities to participants on the composer.
-<br> - Doctor d1 as d1
+<br> 4. Issue new identities to participants on the composer and activate each user before proceeding to next step.
+<br> - Hospital h1 as h1 
 <br> - Patient p1 as p1
+<br> - Doctor d1 as d1
 
-<br>5. To start the rest server:
+<br> 5. Use ID of participant h1
+<br> 6. Perform AddDocToHospital transaction to add d1 into h1's list of doctors
+
+<br> 7. To start the rest server:
 <br> - npm run start_rest-server p1@blockchain-healthcare 3001
 <br> - npm run start_rest-server d1@blockchain-healthcare 3002
 
