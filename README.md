@@ -3,6 +3,30 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 <br />
 
+## Features 
+
+What can MediChain do for you in today's world?
+
+<dl>
+
+  <dt>Integrated Payment Methods</dt>
+  <dd>Pay your doctor at your own convenience through multiple payment methods.</dd>
+
+  <dt>Add your preferred hospital</dt>
+  <dd>Add your hospital for easier access.</dd>
+
+  <dt>Manage your patients all in one platform</dt>
+  <dd>Access/create/update your patients medical records all in this one stop platform for you doctors.</dd>
+
+  <dt>Manage your doctors all in one platform</dt>
+  <dd>Add and remove doctors in your hospital in an instant</dd>
+
+</dl>
+
+But wait... there's more!
+
+  - Ever-changing, ever-improving platform by a dedicated team of professionals, aspiring to change the healthcare industry
+
 
 ## Project Images
 
@@ -151,29 +175,6 @@ Follow the instructions below.
 2. Cannot find module 'express-http-proxy'
     <br>FIX: npm install express-http-proxy</br>
 
-## Features 
-
-What can MediChain do for you in today's world?
-
-<dl>
-
-  <dt>Integrated Payment Methods</dt>
-  <dd>Pay your doctor at your own convenience through multiple payment methods.</dd>
-
-  <dt>Add your preferred hospital</dt>
-  <dd>Add your hospital for easier access.</dd>
-
-  <dt>Manage your patients all in one platform</dt>
-  <dd>Access/create/update your patients medical records all in this one stop platform for you doctors.</dd>
-
-  <dt>Manage your doctors all in one platform</dt>
-  <dd>Add and remove doctors in your hospital in an instant</dd>
-
-</dl>
-
-But wait... there's more!
-
-  - Ever-changing, ever-improving platform by a dedicated team of professionals, aspiring to change the healthcare industry
 
 
 ## Info
