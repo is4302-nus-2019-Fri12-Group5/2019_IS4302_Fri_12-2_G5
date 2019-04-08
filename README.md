@@ -49,7 +49,7 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 <br>4. Issue new identities to participants on the composer.
 <br>5. To start the rest server:
     <br>npm run start_rest-server {participant ID}@blockchain-healthcare(Clean) 3001
-    
+    * [AngularJS] - HTML enhanced for web apps!
 Great! Now you have the blockchain network up and running!
 
 <dt> Front-End </dt>
