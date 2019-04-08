@@ -12,9 +12,7 @@ import ImageTile from '../../ui/image/Tile'
 import Input from '../../ui/input/Input'
 
 import H3 from '../../ui/typography/H3'
-import Icon from '../../ui/icon'
 import { level1 } from '../../ui/common/shadows'
-import { white } from '../../ui/common/colors'
 
 // App Imports
 import home from '../../setup/routes/home'
@@ -49,32 +47,6 @@ class Login extends Component {
       user
     })
   }
-
-  /*onSubmit = (event) => {
-    event.preventDefault()
-
-    this.props.messageShow('Logging in, please wait...')
-
-    this.props.login(this.state.user)
-      .then(response => {
-        if (this.props.user.error && this.props.user.error.length > 0) {
-          this.props.messageShow(this.props.user.error)
-
-          window.setTimeout(() => {
-            this.props.messageHide()
-          }, 5000)
-        } else {
-          this.props.messageHide()
-        }
-      })
-      .catch(error => {
-        this.props.messageShow(this.props.user.error)
-
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
-  }*/
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -137,17 +109,6 @@ class Login extends Component {
               />
             </div>
 
-            {/*<div style={{ marginTop: '2em' }}>*/}
-              {/*/!* Signup link *!/*/}
-              {/*<Link to={userRoutes.signup.path}>*/}
-                {/*<Button type="button" style={{ marginRight: '0.5em' }}>Signup</Button>*/}
-              {/*</Link>*/}
-
-              {/*/!* Form submit *!/*/}
-              {/*<Button type="submit" theme="secondary" disabled={isLoading}>*/}
-                {/*Login*/}
-                {/*<Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>*/}
-            {/*</div>*/}
 
             <div style={{ marginTop: '2em' }}>
               {/* Signup link */}
