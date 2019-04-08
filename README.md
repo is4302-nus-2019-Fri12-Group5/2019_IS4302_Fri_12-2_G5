@@ -48,8 +48,8 @@ This Blockchain project is based on [react-boilerplate](https://github.com/react
 Common problems such as:
 1. internal/modules/cjs/loader.js:596
     throw err;
-    Error: Cannot find module './types.json
-    FIX: REMOVE NODE_MODULES AND RUN NPM INSTALL AGAIN IN TERMINAL
+    <br>Error: Cannot find module './types.json
+    FIX: Remove node_modules folder and re-run npm install on terminal</br>
 2. Cannot find module 'express-http-proxy'
     FIX: npm install express-http-proxy
 
