@@ -1,7 +1,7 @@
 # Blockchain-healthcare
 IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
-### HOW IT WORKS
+
 
 [IMAGE](https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt1.JPG)
 
@@ -37,12 +37,12 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 [IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/readme/wallet.JPG)
 
 
-
 <br />
 
-<div align="center">Project Images</div>
 
-<div align="center">How it works</div>
+### Project Images
+
+### HOW IT WORKS
 
 <br />
 
@@ -51,11 +51,41 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 
 <img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/How_it_works-pt2.JPG" alt="is4302 banner" align="center" />
 
+### Doctor
 
-<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/banner.png" alt="is4302 banner" align="center" />
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-Dashboard.JPG" alt="is4302 banner" align="center" />
 
 
-<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/banner.png" alt="is4302 banner" align="center" />
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-create presccription.JPG" alt="is4302 banner" align="center" />
+
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-Edit_Prescription.JPG" alt="is4302 banner" align="center" />
+
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-medical records.JPG" alt="is4302 banner" align="center" />
+
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-medical_records_of_selected_patient.JPG" alt="is4302 banner" align="center" />
+
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-PatientList.JPG" alt="is4302 banner" align="center" />
+
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Doctor-prescription of selected record.JPG" alt="is4302 banner" align="center" />
+
+
+### PATIENTS
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-Dashboard.JPG" alt="is4302 banner" align="center" />
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-Hospital List.JPG" alt="is4302 banner" align="center" />
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient-MedicalRecord.JPG" alt="is4302 banner" align="center" />
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/Patient- Update Personal Info.JPG" alt="is4302 banner" align="center" />
+
+<img src="https://raw.githubusercontent.com/is4302-nus-2019-Fri12-Group5/blockchain-healthcare/master/public/images/readme/wallet.JPG" alt="is4302 banner" align="center" />
+
 
 
 <br />
