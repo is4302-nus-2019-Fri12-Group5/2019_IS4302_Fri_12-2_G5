@@ -84,6 +84,8 @@ class Dashboard extends PureComponent {
                 <p style={{ color: grey2, marginBottom: '2em' }}>Department:   {doctor.department}</p>
                 <p style={{ color: grey2, marginBottom: '2em' }}>Title: {doctor.title}</p>
                 <p style={{ color: grey2, marginBottom: '4em' }}>Fee:   {doctor.fee}</p>
+                <p style={{ color: grey2, marginBottom: '4em' }}>Hospital:   {doctor.hospital}</p>
+
 
                 {/*<Link to={}>*/}
                 <Button type="button" theme="primary" style={{marginRight : '0.5em'}}>Edit</Button>
