@@ -33,9 +33,8 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 </div>
 
 ## Quick start
-
+Follow the instructions below.
 ## Hyperledger Composer
-
 <br> 0. Set up the lab environment as per instructions in https://github.com/suenchunhui/easy-hyperledger-composer 
 <br> 1. Download the fileblockchain_network/healthcare-blockchain(Clean).bna file from the github directory
 
@@ -76,19 +75,18 @@ IS4302 Healthcare with Blockchain Technology - 2019 Friday 12-2pm Team 5
 **Now you're ready to build on our Blockchain Application!**
 
 ## Logging in
-
-<br> Logging in as a patient
+<br> **Logging in as a patient**
 <br> userid : bcd
 <br> password: password
 
-<br> Logging in as a doctor
+<br> **Logging in as a doctor**
 <br> userid : abc
 <br> password: password
 
 
 ## Troubleshooting 
 
-****Common problems when launching front-end such as:****
+**Common problems when launching front-end such as:**
 1. internal/modules/cjs/loader.js:596 throw err;
     <br>Error: Cannot find module './types.json</br>
     <br>FIX: Remove node_modules folder and re-run npm install on terminal</br>
