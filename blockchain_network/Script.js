@@ -45,7 +45,7 @@ async function CreateDoctorBasicMedicalInformation(args) {
  * @param {org.healthcare.CreatePatientBasicMedicalInformation} args - the CreateBasicMedicalInformation transaction arguments
  * @transaction
  */
-async function CreatePatientBasicMedicalInformation(args) {
+async function createPatientBasicMedicalInformation(args) {
     const basicMedicalInformationRegistry = await getAssetRegistry('org.healthcare.BasicMedicalInformation');
     const patientRegistry = await getParticipantRegistry('org.healthcare.Patient');
 
